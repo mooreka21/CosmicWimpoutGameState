@@ -2,8 +2,7 @@ package edu.up.cs301.counter;
 
 import edu.up.cs301.game.GameComputerPlayer;
 import edu.up.cs301.game.infoMsg.GameInfo;
-import edu.up.cs301.game.util.Tickable;
-    
+
 /**
  * A computer-version of a counter-player.  Since this is such a simple game,
  * it just sends "+" and "-" commands with equal probability, at an average
