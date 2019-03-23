@@ -53,14 +53,14 @@ public class CosmicWimpoutLocalGame extends LocalGame {
 	protected boolean makeMove(GameAction action) {
 		Log.i("action", action.getClass().toString());
 		
-		if (action instanceof CounterMoveAction) {
+		if (action instanceof CosmicWimpoutActions) {
 		
 			// cast so that we Java knows it's a CounterMoveAction
-			CounterMoveAction cma = (CounterMoveAction)action;
+			CosmicWimpoutActions cma = (CosmicWimpoutActions)action;
 
 			// Update the counter values based upon the action
-			int result = gameState.getCounter() + (cma.isPlus() ? 1 : -1);
-			gameState.setCounter(result);
+			//int result = gameState.getCounter() + (cma.isPlus() ? 1 : -1);
+			//gameState.setCounter(result);
 			
 			// denote that this was a legal/successful move
 			return true;
@@ -92,10 +92,10 @@ public class CosmicWimpoutLocalGame extends LocalGame {
 	 */
 	@Override
 	protected String checkIfGameOver() {
-		
+
 		// get the value of the counter
 		int counterVal = this.gameState.getCounter();
-		
+
 		if (counterVal >= TARGET_MAGNITUDE) {
 			// counter has reached target magnitude, so return message that
 			// player 0 has won.

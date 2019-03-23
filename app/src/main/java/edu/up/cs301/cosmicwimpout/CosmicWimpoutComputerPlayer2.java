@@ -90,7 +90,7 @@ public class CosmicWimpoutComputerPlayer2 extends CosmicWimpoutComputerPlayer {
 					new Runnable() {
 						public void run() {
 						if (cosmicWimpoutValueTextView != null && currentGameState != null) {
-							cosmicWimpoutValueTextView.setText("" + currentGameState.getCounter());
+							//cosmicWimpoutValueTextView.setText("" + currentGameState.getCounter());
 						}
 					}});
 		}
@@ -126,14 +126,14 @@ public class CosmicWimpoutComputerPlayer2 extends CosmicWimpoutComputerPlayer {
 		activityForGui.setContentView(R.layout.cosmicwimpout_human_player);
 
 		// remember who our text view is, for updating the counter value
-		this.cosmicWimpoutValueTextView =
-				(TextView) activityForGui.findViewById(R.id.counterValueTextView);
+		//this.cosmicWimpoutValueTextView =
+				//(TextView) activityForGui.findViewById(R.id.counterValueTextView);
 		
 		// disable the buttons, since they will have no effect anyway
-		Button plusButton = (Button)activityForGui.findViewById(R.id.plusButton);
-		plusButton.setEnabled(false);
-		Button minusButton = (Button)activityForGui.findViewById(R.id.minusButton);
-		minusButton.setEnabled(false);
+		//Button plusButton = (Button)activityForGui.findViewById(R.id.plusButton);
+		//plusButton.setEnabled(false);
+		//Button minusButton = (Button)activityForGui.findViewById(R.id.minusButton);
+		//minusButton.setEnabled(false);
 		
 		// if the state is non=null, update the display
 		if (currentGameState != null) {
