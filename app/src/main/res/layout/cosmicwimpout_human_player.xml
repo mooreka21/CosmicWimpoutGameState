@@ -70,7 +70,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@drawable/bolts" />
+            android:src="@drawable/bolts" />
 
     </LinearLayout>
 
@@ -87,7 +87,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@drawable/halfcircles" />
+            android:src="@drawable/halfcircles" />
 
     </LinearLayout>
 
@@ -104,7 +104,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@drawable/five" />
+            android:src="@drawable/five" />
 
     </LinearLayout>
 
@@ -120,7 +120,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@drawable/stars" />
+            android:src="@drawable/stars" />
 
     </LinearLayout>
 
@@ -136,7 +136,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@drawable/blackbolt" />
+            android:src="@drawable/blackbolt" />
 
     </LinearLayout>
 
