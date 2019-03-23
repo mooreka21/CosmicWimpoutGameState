@@ -14,7 +14,7 @@ import android.util.Log;
  * @author Andrew M. Nuxoll
  * @version July 2013
  */
-public class CounterLocalGame extends LocalGame {
+public class CosmicWimpoutLocalGame extends LocalGame {
 
 	// When a counter game is played, any number of players. The first player
 	// is trying to get the counter value to TARGET_MAGNITUDE; the second player,
@@ -24,7 +24,7 @@ public class CounterLocalGame extends LocalGame {
 	public static final int TARGET_MAGNITUDE = 10;
 
 	// the game's state
-	private CounterState gameState;
+	private CosmicWimpoutState gameState;
 	
 	/**
 	 * can this player move
@@ -41,9 +41,9 @@ public class CounterLocalGame extends LocalGame {
 	/**
 	 * This ctor should be called when a new counter game is started
 	 */
-	public CounterLocalGame() {
+	public CosmicWimpoutLocalGame() {
 		// initialize the game state, with the counter value starting at 0
-		this.gameState = new CounterState(0);
+		this.gameState = new CosmicWimpoutState(gameState);
 	}
 
 	/**
@@ -75,10 +75,10 @@ public class CounterLocalGame extends LocalGame {
 	 * send the updated state to a given player
 	 */
 	@Override
-	protected void sendUpdatedStateTo(GamePlayer p) {
+	protected void sendUpdatedStateTo(GamePlayer player) {
 		// this is a perfect-information game, so we'll make a
 		// complete copy of the state to send to the player
-		p.sendInfo(new CounterState(gameState));
+		player.sendInfo(new CosmicWimpoutState(gameState));
 		
 	}//sendUpdatedSate
 	

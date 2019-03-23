@@ -22,14 +22,14 @@ import android.widget.TextView;
 * @author Andrew M. Nuxoll
 * @version September 2013
 */
-public class CounterComputerPlayer2 extends CounterComputerPlayer1 {
+public class CosmicWimpoutComputerPlayer2 extends CosmicWimpoutComputerPlayer {
 	
 	/*
 	 * instance variables
 	 */
 	
 	// the most recent game state, as given to us by the CounterLocalGame
-	private CounterState currentGameState = null;
+	private CosmicWimpoutState currentGameState = null;
 	
 	// If this player is running the GUI, the activity (null if the player is
 	// not running a GUI).
@@ -37,7 +37,7 @@ public class CounterComputerPlayer2 extends CounterComputerPlayer1 {
 	
 	// If this player is running the GUI, the widget containing the counter's
 	// value (otherwise, null);
-	private TextView counterValueTextView = null;
+	private TextView cosmicWimpoutValueTextView = null;
 	
 	// If this player is running the GUI, the handler for the GUI thread (otherwise
 	// null)
@@ -49,7 +49,7 @@ public class CounterComputerPlayer2 extends CounterComputerPlayer1 {
 	 * @param name
 	 * 		the player's name
 	 */
-	public CounterComputerPlayer2(String name) {
+	public CosmicWimpoutComputerPlayer2(String name) {
 		super(name);
 	}
 	
@@ -70,9 +70,9 @@ public class CounterComputerPlayer2 extends CounterComputerPlayer1 {
 		if (game == null) {
 			return;
 		}
-		else if (info instanceof CounterState) {
+		else if (info instanceof CosmicWimpoutState) {
 			// if we indeed have a counter-state, update the GUI
-			currentGameState = (CounterState)info;
+			currentGameState = (CosmicWimpoutState)info;
 			updateDisplay();
 		}
 	}
@@ -89,8 +89,8 @@ public class CounterComputerPlayer2 extends CounterComputerPlayer1 {
 			guiHandler.post(
 					new Runnable() {
 						public void run() {
-						if (counterValueTextView != null && currentGameState != null) {
-							counterValueTextView.setText("" + currentGameState.getCounter());
+						if (cosmicWimpoutValueTextView != null && currentGameState != null) {
+							cosmicWimpoutValueTextView.setText("" + currentGameState.getCounter());
 						}
 					}});
 		}
@@ -126,7 +126,7 @@ public class CounterComputerPlayer2 extends CounterComputerPlayer1 {
 		activityForGui.setContentView(R.layout.counter_human_player);
 
 		// remember who our text view is, for updating the counter value
-		this.counterValueTextView =
+		this.cosmicWimpoutValueTextView =
 				(TextView) activityForGui.findViewById(R.id.counterValueTextView);
 		
 		// disable the buttons, since they will have no effect anyway

@@ -13,21 +13,26 @@ import edu.up.cs301.game.util.Tickable;
  * @author Andrew M. Nuxoll
  * @version September 2013
  */
-public class CounterComputerPlayer1 extends GameComputerPlayer implements Tickable {
-	
+public class CosmicWimpoutComputerPlayer extends GameComputerPlayer {
+
+	//instance variables
+	private int ScoresFromCopy[] = new int[];
+	private int numRollsThisTurn;
+	private float odds;
+	private int intelligence;
     /**
-     * Constructor for objects of class CounterComputerPlayer1
+     * Constructor for objects of class CosmicWimpoutComputerPlayer
      * 
      * @param name
      * 		the player's name
      */
-    public CounterComputerPlayer1(String name) {
+    public CosmicWimpoutComputerPlayer(String name) {
         // invoke superclass constructor
         super(name);
         
         // start the timer, ticking 20 times per second
-        getTimer().setInterval(50);
-        getTimer().start();
+        //getTimer().setInterval(50);
+        //getTimer().start();
     }
     
     /**
@@ -41,18 +46,5 @@ public class CounterComputerPlayer1 extends GameComputerPlayer implements Tickab
 		// Do nothing, as we ignore all state in deciding our next move. It
 		// depends totally on the timer and random numbers.
 	}
-	
-	/**
-	 * callback method: the timer ticked
-	 */
-	protected void timerTicked() {
-		// 5% of the time, increment or decrement the counter
-		if (Math.random() >= 0.05) return; // do nothing 95% of the time
 
-		// "flip a coin" to determine whether to increment or decrement
-		boolean move = Math.random() >= 0.5;
-		
-		// send the move-action to the game
-		game.sendAction(new CounterMoveAction(this, move));
-	}
 }

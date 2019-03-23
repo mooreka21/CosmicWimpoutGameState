@@ -23,15 +23,15 @@ import android.view.View.OnClickListener;
  * @author Andrew M. Nuxoll
  * @version July 2013
  */
-public class CounterHumanPlayer extends GameHumanPlayer implements OnClickListener {
+public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClickListener {
 
 	/* instance variables */
 	
 	// The TextView the displays the current counter value
-	private TextView counterValueTextView;
+	private TextView cosmicWimpoutValueTextView;
 	
 	// the most recent game state, as given to us by the CounterLocalGame
-	private CounterState state;
+	private CosmicWimpoutState state;
 	
 	// the android activity that we are running
 	private GameMainActivity myActivity;
@@ -41,7 +41,7 @@ public class CounterHumanPlayer extends GameHumanPlayer implements OnClickListen
 	 * @param name
 	 * 		the player's name
 	 */
-	public CounterHumanPlayer(String name) {
+	public CosmicWimpoutHumanPlayer(String name) {
 		super(name);
 	}
 
@@ -60,7 +60,9 @@ public class CounterHumanPlayer extends GameHumanPlayer implements OnClickListen
 	 */
 	protected void updateDisplay() {
 		// set the text in the appropriate widget
-		counterValueTextView.setText("" + state.getCounter());
+		cosmicWimpoutValueTextView.setText("" + state.getDiceVal());
+		cosmicWimpoutValueTextView.setText("" + state.getWhoseTurn());
+
 	}
 
 	/**
@@ -101,10 +103,10 @@ public class CounterHumanPlayer extends GameHumanPlayer implements OnClickListen
 	@Override
 	public void receiveInfo(GameInfo info) {
 		// ignore the message if it's not a CounterState message
-		if (!(info instanceof CounterState)) return;
+		if (!(info instanceof CosmicWimpoutState)) return;
 		
 		// update our state; then update the display
-		this.state = (CounterState)info;
+		this.state = (CosmicWimpoutState) info;
 		updateDisplay();
 	}
 	
@@ -130,7 +132,7 @@ public class CounterHumanPlayer extends GameHumanPlayer implements OnClickListen
 		minusButton.setOnClickListener(this);
 
 		// remember the field that we update to display the counter's value
-		this.counterValueTextView =
+		this.cosmicWimpoutValueTextView =
 				(TextView) activity.findViewById(R.id.counterValueTextView);
 		
 		// if we have a game state, "simulate" that we have just received
