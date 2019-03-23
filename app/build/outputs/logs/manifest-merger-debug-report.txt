@@ -47,12 +47,12 @@ ADDED from /Users/kaylamoore/Documents/School/UP 2018-2019/UP Spring 19/CS 301A 
 		ADDED from /Users/kaylamoore/Documents/School/UP 2018-2019/UP Spring 19/CS 301A (OO)/Project/CosmicWimpoutGameState/app/src/main/AndroidManifest.xml:10:9-45
 	android:theme
 		ADDED from /Users/kaylamoore/Documents/School/UP 2018-2019/UP Spring 19/CS 301A (OO)/Project/CosmicWimpoutGameState/app/src/main/AndroidManifest.xml:12:9-40
-activity#edu.up.cs301.counter.CounterMainActivity
+activity#edu.up.cs301.cosmicwimpout.CounterMainActivity
 ADDED from /Users/kaylamoore/Documents/School/UP 2018-2019/UP Spring 19/CS 301A (OO)/Project/CosmicWimpoutGameState/app/src/main/AndroidManifest.xml:14:9-20:20
 	android:configChanges
 		ADDED from /Users/kaylamoore/Documents/School/UP 2018-2019/UP Spring 19/CS 301A (OO)/Project/CosmicWimpoutGameState/app/src/main/AndroidManifest.xml:15:13-83
 	android:name
-		ADDED from /Users/kaylamoore/Documents/School/UP 2018-2019/UP Spring 19/CS 301A (OO)/Project/CosmicWimpoutGameState/app/src/main/AndroidManifest.xml:14:19-74
+		ADDED from /Users/kaylamoore/Documents/School/UP 2018-2019/UP Spring 19/CS 301A (OO)/Project/CosmicWimpoutGameState/app/src/main/AndroidManifest.xml:14:19-80
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
 ADDED from /Users/kaylamoore/Documents/School/UP 2018-2019/UP Spring 19/CS 301A (OO)/Project/CosmicWimpoutGameState/app/src/main/AndroidManifest.xml:16:13-19:29
 action#android.intent.action.MAIN

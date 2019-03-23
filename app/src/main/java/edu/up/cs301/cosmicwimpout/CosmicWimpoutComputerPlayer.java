@@ -15,7 +15,7 @@ import edu.up.cs301.game.infoMsg.GameInfo;
 public class CosmicWimpoutComputerPlayer extends GameComputerPlayer {
 
 	//instance variables
-	private int ScoresFromCopy[] = new int[];
+	private int ScoresFromCopy[] = new int[10];
 	private int numRollsThisTurn;
 	private float odds;
 	private int intelligence;

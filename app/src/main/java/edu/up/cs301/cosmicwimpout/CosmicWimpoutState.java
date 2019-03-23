@@ -90,7 +90,7 @@ public class CosmicWimpoutState extends GameState {
 	 * @param playerId
 	 * @returns an int
 	 */
-	public int totalDiceScore(Dice[] ourDice, int playerId){
+	public int totalDiceScore(Die[] ourDice, int playerId){
 		//SUPERNOVA AND FREIGHT TRAIN CHECKING
 		if(     ourDice[0].dieState == 1 &&
 				ourDice[1].dieState == 1 &&
