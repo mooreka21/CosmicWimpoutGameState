@@ -70,7 +70,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            app:srcCompat="@drawable/bolts" />
+            android:src="@drawable/bolts" />
 
     </LinearLayout>
 
@@ -87,7 +87,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            app:srcCompat="@drawable/halfcircles" />
+            android:src="@drawable/halfcircles" />
 
     </LinearLayout>
 
@@ -104,7 +104,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            app:srcCompat="@drawable/five" />
+            android:src="@drawable/five" />
 
     </LinearLayout>
 
@@ -115,14 +115,12 @@
         android:orientation="horizontal">
 
 
-
-
         <ImageView
             android:id="@+id/imageView6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            app:srcCompat="@drawable/stars" />
+            android:src="@drawable/stars" />
 
     </LinearLayout>
 
@@ -138,7 +136,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            app:srcCompat="@drawable/blackbolt" />
+            android:src="@drawable/blackbolt" />
 
     </LinearLayout>
 
@@ -167,7 +165,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="End Game" />
+            android:text="Quit" />
 
     </LinearLayout>
 
