@@ -123,7 +123,7 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 		myActivity = activity;
 		
 	    // Load the layout resource for our GUI
-		activity.setContentView(R.layout.counter_human_player);
+		activity.setContentView(R.layout.cosmicWimpout_human_player);
 		
 		// make this object the listener for both the '+' and '-' 'buttons
 		Button plusButton = (Button) activity.findViewById(R.id.plusButton);

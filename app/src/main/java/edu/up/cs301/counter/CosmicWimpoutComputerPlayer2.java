@@ -123,7 +123,7 @@ public class CosmicWimpoutComputerPlayer2 extends CosmicWimpoutComputerPlayer {
 		this.guiHandler = new Handler();
 		
 		// Load the layout resource for the our GUI's configuration
-		activityForGui.setContentView(R.layout.counter_human_player);
+		activityForGui.setContentView(R.layout.cosmicWimpout_human_player);
 
 		// remember who our text view is, for updating the counter value
 		this.cosmicWimpoutValueTextView =
