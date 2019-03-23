@@ -64,12 +64,6 @@
         android:layout_weight="1"
         android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/ReRoll1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Re-Roll Dice 1" />
 
         <ImageView
             android:id="@+id/imageView4"
@@ -86,12 +80,7 @@
         android:layout_weight="1"
         android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/button3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Re-Roll Dice 2" />
+
 
         <ImageView
             android:id="@+id/imageView3"
@@ -108,12 +97,7 @@
         android:layout_weight="1"
         android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/button5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Re-Roll Dice 3" />
+
 
         <ImageView
             android:id="@+id/imageView5"
@@ -131,12 +115,7 @@
         android:orientation="horizontal">
 
 
-        <Button
-            android:id="@+id/button8"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Re-Roll Dice 4" />
+
 
         <ImageView
             android:id="@+id/imageView6"
@@ -153,12 +132,7 @@
         android:layout_weight="1"
         android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/button9"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Re-Roll Dice 5" />
+
 
         <ImageView
             android:id="@+id/imageView7"
