@@ -1,4 +1,4 @@
-package edu.up.cs301.counter;
+package edu.up.cs301.cosmicwimpout;
 
 public class RollSingleDie extends RollAllDice{
 
