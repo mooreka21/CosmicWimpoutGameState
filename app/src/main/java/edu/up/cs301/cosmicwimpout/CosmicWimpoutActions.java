@@ -30,23 +30,7 @@ public class CosmicWimpoutActions extends GameAction {
      * @return return true if legal move
      */
     public boolean rollAllDice(int playerId){
-        if(playerId == whoseTurn) {
-            //rolls all dice giving each a value 1-6
-            for(int i = 0; i < 5; i++) {
-                this.diceArray[i].dieState = (int) (Math.random() * 6 + 1);
-            }
-            if(totalDiceScore(diceArray,playerId) != -1) {
-                turnScore = turnScore + totalDiceScore(diceArray,playerId);
-            }
-            else{
-                turnScore = 0;
-            }
-            return true;
-        }
-        else{
-            // illegal move
-            return false;
-        }
+        return false;
     }
 
     /**
@@ -55,13 +39,7 @@ public class CosmicWimpoutActions extends GameAction {
      * @return true if legal move
      */
     public boolean endGame(int playerId){
-        if(playerId == whoseTurn) {
-            return true;
-        }
-        else{
-            // illegal move
-            return false;
-        }
+        return false;
     }
 
     /**
@@ -71,29 +49,7 @@ public class CosmicWimpoutActions extends GameAction {
      * @return true if legal move
      */
     public boolean endTurn(int playerId) {
-        if(playerId == whoseTurn) {
-            int currentScore = playerArrayList.get(playerId-1).getPlayerScore();
-            if(playerId == 1){
-                playerArrayList.get(playerId - 1).setPlayerScore(currentScore + turnScore);
-                whoseTurn = 2;
-                turnScore = 0; //reset turn score to 0 for next player
-            }
-            else if(playerId == 2){
-                playerArrayList.get(playerId - 1).setPlayerScore(currentScore + turnScore);
-                whoseTurn = 3;
-                turnScore = 0;
-            }
-            else if(playerId == 3){
-                playerArrayList.get(playerId - 1).setPlayerScore(currentScore + turnScore);
-                whoseTurn = 1;
-                turnScore = 0; //reset turnScore to 0
-            }
-            return true;
-        }
-        else{
-            // illegal move
-            return false;
-        }
+        return false;
     }
 
     /**
@@ -104,22 +60,7 @@ public class CosmicWimpoutActions extends GameAction {
      * @return true if valid
      */
     public boolean rollSingleDie(int playerId, int id ){
-        if(playerId == whoseTurn) {
-            diceArray[id-1].rollMe();
-            if(totalDiceScore(diceArray,playerId) != -1) {
-                turnScore = turnScore + totalDiceScore(diceArray,playerId);
-            }
-            else{
-                turnScore = 0;
-                this.endTurn(playerId);
-
-            }
-            return true;
-        }
-        else{
-            // illegal move
-            return false;
-        }
+        return false;
     }
     /**
      * getter method, to tell whether the move is a "plus"
