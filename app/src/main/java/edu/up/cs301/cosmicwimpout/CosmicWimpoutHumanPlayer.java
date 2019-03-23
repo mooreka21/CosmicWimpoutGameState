@@ -60,8 +60,8 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 	 */
 	protected void updateDisplay() {
 		// set the text in the appropriate widget
-		cosmicWimpoutValueTextView.setText("" + state.getDiceVal());
-		cosmicWimpoutValueTextView.setText("" + state.getWhoseTurn());
+		//cosmicWimpoutValueTextView.setText("" + state.getDiceVal());
+		//cosmicWimpoutValueTextView.setText("" + state.getWhoseTurn());
 
 	}
 
@@ -73,24 +73,7 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 	 * 		the button that was clicked
 	 */
 	public void onClick(View button) {
-		// if we are not yet connected to a game, ignore
-		if (game == null) return;
-
-		// Construct the action and send it to the game
 		GameAction action = null;
-		if (button.getId() == R.id.plusButton) {
-			// plus button: create "increment" action
-			action = new CounterMoveAction(this, true);
-		}
-		else if (button.getId() == R.id.minusButton) {
-			// minus button: create "decrement" action
-			action = new CounterMoveAction(this, false);
-		}
-		else {
-			// something else was pressed: ignore
-			return;
-		}
-		
 		game.sendAction(action); // send action to the game
 	}// onClick
 	
@@ -126,14 +109,14 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 		activity.setContentView(R.layout.cosmicwimpout_human_player);
 		
 		// make this object the listener for both the '+' and '-' 'buttons
-		Button plusButton = (Button) activity.findViewById(R.id.plusButton);
+		/*Button plusButton = (Button) activity.findViewById(R.id.plusButton);
 		plusButton.setOnClickListener(this);
 		Button minusButton = (Button) activity.findViewById(R.id.minusButton);
-		minusButton.setOnClickListener(this);
+		minusButton.setOnClickListener(this);*/
 
 		// remember the field that we update to display the counter's value
-		this.cosmicWimpoutValueTextView =
-				(TextView) activity.findViewById(R.id.counterValueTextView);
+		/*this.cosmicWimpoutValueTextView =
+				(TextView) activity.findViewById(R.id.counterValueTextView);*/
 		
 		// if we have a game state, "simulate" that we have just received
 		// the state from the game so that the GUI values are updated
