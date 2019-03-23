@@ -1,4 +1,4 @@
-package edu.up.cs301.counter;
+package edu.up.cs301.cosmicwimpout;
 
 import edu.up.cs301.game.infoMsg.GameState;
 import java.util.ArrayList;
