@@ -133,4 +133,19 @@ public class CosmicWimpoutState extends GameState {
 			return false;
 		}
 	}
+
+	/**
+	 * endGame - will quit the game and return back to main menu
+	 * @param playerId
+	 * @return true if legal move
+	 */
+	public boolean endGame(int playerId){
+		if(playerId == whoseTurn) {
+			return true;
+		}
+		else{
+			// illegal move
+			return false;
+		}
+	}
 }
