@@ -68,7 +68,11 @@ public class CosmicWimpoutLocalGame extends LocalGame {
 			int whoseTurn = this.gameState.getWhoseTurn();
 			return this.gameState.rollAllDice(whoseTurn);
 		}
-		
+		else if (action instanceof CosmicWimpoutActionRollSelectedDie){
+			CosmicWimpoutActionRollSelectedDie act = (CosmicWimpoutActionRollSelectedDie) action;
+			int whoseTurn = this.gameState.getWhoseTurn();
+			return this.gameState.rollSingleDie(whoseTurn, act.getThisDieId());
+		}
 		return false;
 	}//makeMove
 	

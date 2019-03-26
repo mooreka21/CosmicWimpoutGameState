@@ -5,8 +5,15 @@ import edu.up.cs301.game.actionMsg.GameAction;
 
 public class CosmicWimpoutActionRollSelectedDie extends GameAction {
     private static final long serialVersionUID= 95598448L;
-    public CosmicWimpoutActionRollSelectedDie(GamePlayer player, Die ourDie){
-        ourDie.rollMe();
+    private int selectedDieId;
+
+    public CosmicWimpoutActionRollSelectedDie(GamePlayer player, int selectedDieId){
         super(player);
+        this.selectedDieId = selectedDieId;
+
+    }
+
+    public int getThisDieId(){
+        return selectedDieId;
     }
 }

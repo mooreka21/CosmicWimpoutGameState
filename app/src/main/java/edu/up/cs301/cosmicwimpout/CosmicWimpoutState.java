@@ -173,4 +173,33 @@ public class CosmicWimpoutState extends GameState {
 			return false;
 		}
 	}
+
+	public boolean rollSingleDie(int playerId, int id ){
+		if(playerId == whoseTurn) {
+			diceArray[id-1].rollMe();
+			if(totalDiceScore(diceArray,playerId) != -1) {
+				turnScore = turnScore + totalDiceScore(diceArray,playerId);
+			}
+			else{
+				turnScore = 0;
+				this.endTurn(playerId);
+
+			}
+			return true;
+		}
+		else{
+			// illegal move
+			return false;
+		}
+	}
+
+	public int diceScoreForOneDice(int playerId, int diceID){
+		if(diceID == 1){
+			return 10;
+		}
+		if(diceID == 5){
+			return 5;
+		}
+		return -1;
+	}
 }
