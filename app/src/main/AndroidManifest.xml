@@ -7,7 +7,6 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
-        android:icon="@drawable/flamingsun"
         android:label="Cosmic Wimpout"
         android:theme="@style/AppTheme" >
 
