@@ -43,7 +43,7 @@ public class CosmicWimpoutLocalGame extends LocalGame {
 	 */
 	public CosmicWimpoutLocalGame() {
 		// initialize the game state, with the counter value starting at 0
-		this.gameState = new CosmicWimpoutState(gameState);
+		this.gameState = new CosmicWimpoutState();
 	}
 
 	/**

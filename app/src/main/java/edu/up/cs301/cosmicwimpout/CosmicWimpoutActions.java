@@ -49,6 +49,8 @@ public class CosmicWimpoutActions extends GameAction {
      * @return true if legal move
      */
     public boolean endTurn(int playerId) {
+
+
         return false;
     }
 
