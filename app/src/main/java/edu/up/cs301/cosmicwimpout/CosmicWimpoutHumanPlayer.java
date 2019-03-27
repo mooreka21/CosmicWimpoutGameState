@@ -5,6 +5,10 @@ import edu.up.cs301.game.GameMainActivity;
 import edu.up.cs301.game.R;
 import edu.up.cs301.game.actionMsg.GameAction;
 import edu.up.cs301.game.infoMsg.GameInfo;
+import edu.up.cs301.game.infoMsg.IllegalMoveInfo;
+import edu.up.cs301.game.infoMsg.NotYourTurnInfo;
+
+import android.graphics.Color;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -70,11 +74,106 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 	 * sets the counter value in the text view
 	 */
 	protected void updateDisplay() {
+
 		this.player1Score.setText("Player1: " + state.getPlayer1Score());
 		this.player2Score.setText("Player2: " + state.getPlayer2Score());
 		this.player3Score.setText("Player3: " + state.getPlayer3Score());
 
+		if(state.getDiceVal(0).equals("Tens")){
+			this.die1.setImageResource(R.drawable.ten);
+		}
+		else if(state.getDiceVal(0).equals("Moons")){
+			this.die1.setImageResource(R.drawable.halfcircles);
+		}
+		else if(state.getDiceVal(0).equals("Triangles")){
+			this.die1.setImageResource(R.drawable.triangle);
+		}
+		else if(state.getDiceVal(0).equals("Bolts")){
+			this.die1.setImageResource(R.drawable.bolts);
+		}
+		else if(state.getDiceVal(0).equals("Fives")){
+			this.die1.setImageResource(R.drawable.five);
+		}
+		else if(state.getDiceVal(0).equals("Stars")){
+			this.die1.setImageResource(R.drawable.stars);
+		}
 
+		if(state.getDiceVal(1).equals("Tens")){
+			this.die2.setImageResource(R.drawable.ten);
+		}
+		else if(state.getDiceVal(1).equals("Moons")){
+			this.die2.setImageResource(R.drawable.halfcircles);
+		}
+		else if(state.getDiceVal(1).equals("Triangles")){
+			this.die2.setImageResource(R.drawable.triangle);
+		}
+		else if(state.getDiceVal(1).equals("Bolts")){
+			this.die2.setImageResource(R.drawable.bolts);
+		}
+		else if(state.getDiceVal(1).equals("Fives")){
+			this.die2.setImageResource(R.drawable.five);
+		}
+		else if(state.getDiceVal(1).equals("Stars")){
+			this.die2.setImageResource(R.drawable.stars);
+		}
+
+		if(state.getDiceVal(2).equals("Tens")){
+			this.die3.setImageResource(R.drawable.blackten);
+		}
+		else if(state.getDiceVal(0).equals("Moons")){
+			this.die3.setImageResource(R.drawable.blacktwocircles);
+		}
+		else if(state.getDiceVal(0).equals("Flaming Sun")){
+			this.die3.setImageResource(R.drawable.flamingsun);
+		}
+		else if(state.getDiceVal(0).equals("Bolts")){
+			this.die3.setImageResource(R.drawable.blackbolt);
+		}
+		else if(state.getDiceVal(0).equals("Fives")){
+			this.die3.setImageResource(R.drawable.blackfive);
+		}
+		else if(state.getDiceVal(0).equals("Stars")){
+			this.die3.setImageResource(R.drawable.blackstar);
+		}
+
+		if(state.getDiceVal(3).equals("Tens")){
+			this.die4.setImageResource(R.drawable.ten);
+		}
+		else if(state.getDiceVal(3).equals("Moons")){
+			this.die4.setImageResource(R.drawable.halfcircles);
+		}
+		else if(state.getDiceVal(3).equals("Triangles")){
+			this.die4.setImageResource(R.drawable.triangle);
+		}
+		else if(state.getDiceVal(3).equals("Bolts")){
+			this.die4.setImageResource(R.drawable.bolts);
+		}
+		else if(state.getDiceVal(3).equals("Fives")){
+			this.die4.setImageResource(R.drawable.five);
+		}
+		else if(state.getDiceVal(3).equals("Stars")){
+			this.die4.setImageResource(R.drawable.stars);
+		}
+
+		if(state.getDiceVal(4).equals("Tens")){
+			this.die5.setImageResource(R.drawable.ten);
+		}
+		else if(state.getDiceVal(4).equals("Moons")){
+			this.die5.setImageResource(R.drawable.halfcircles);
+		}
+		else if(state.getDiceVal(4).equals("Triangles")){
+			this.die5.setImageResource(R.drawable.triangle);
+		}
+		else if(state.getDiceVal(4).equals("Bolts")){
+			this.die5.setImageResource(R.drawable.bolts);
+		}
+		else if(state.getDiceVal(4).equals("Fives")){
+			this.die5.setImageResource(R.drawable.five);
+		}
+		else if(state.getDiceVal(4).equals("Stars")){
+			this.die5.setImageResource(R.drawable.stars);
+		}
+		
 	}
 
 	/**
@@ -117,9 +216,11 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 	 */
 	@Override
 	public void receiveInfo(GameInfo info) {
+		if(info instanceof IllegalMoveInfo || info instanceof NotYourTurnInfo){
+			flash(Color.RED, 50);
+		}
 		// ignore the message if it's not a CounterState message
 		if (!(info instanceof CosmicWimpoutState)) return;
-
 
 		// update our state; then update the display
 		this.state = (CosmicWimpoutState) info;
@@ -156,6 +257,7 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 		this.die3 = myActivity.findViewById(R.id.die3);
 		this.die4 = myActivity.findViewById(R.id.die4);
 		this.die5 = myActivity.findViewById(R.id.die5);
+
 
 		endGameButton.setOnClickListener(this);
 		endTurnButton.setOnClickListener(this);
