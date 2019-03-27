@@ -7,7 +7,7 @@ import edu.up.cs301.cosmicwimpout.Die;
 /**
  * This contains the state for the Counter game. The state consist of simply
  * the value of the counter.
- * 
+ *
  * @author Steven R. Vegdahl
  * @version July 2013
  */

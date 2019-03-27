@@ -6,8 +6,8 @@ import edu.up.cs301.game.infoMsg.GameInfo;
 /**
  * A computer-version of a counter-player.  Since this is such a simple game,
  * it just sends "+" and "-" commands with equal probability, at an average
- * rate of one per second. 
- * 
+ * rate of one per second.
+ *
  * @author Steven R. Vegdahl
  * @author Andrew M. Nuxoll
  * @version September 2013
@@ -21,23 +21,23 @@ public class CosmicWimpoutComputerPlayer extends GameComputerPlayer {
 	private int intelligence;
 	private CosmicWimpoutState state;
 
-    /**
-     * Constructor for objects of class CosmicWimpoutComputerPlayer
-     * 
-     * @param name
-     * 		the player's name
-     */
-    public CosmicWimpoutComputerPlayer(String name) {
-        // invoke superclass constructor
-        super(name);
-    }
-    
-    /**
-     * callback method--game's state has changed
-     * 
-     * @param info
-     * 		the information (presumably containing the game's state)
-     */
+	/**
+	 * Constructor for objects of class CosmicWimpoutComputerPlayer
+	 *
+	 * @param name
+	 * 		the player's name
+	 */
+	public CosmicWimpoutComputerPlayer(String name) {
+		// invoke superclass constructor
+		super(name);
+	}
+
+	/**
+	 * callback method--game's state has changed
+	 *
+	 * @param info
+	 * 		the information (presumably containing the game's state)
+	 */
 	@Override
 	protected void receiveInfo(GameInfo info) {
 		int currentTurn = -1;

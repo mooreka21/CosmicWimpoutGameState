@@ -19,11 +19,11 @@ import android.view.View.OnClickListener;
  * A GUI of a counter-player. The GUI displays the current value of the counter,
  * and allows the human player to press the '+' and '-' buttons in order to
  * send moves to the game.
- * 
+ *
  * Just for fun, the GUI is implemented so that if the player presses either button
  * when the counter-value is zero, the screen flashes briefly, with the flash-color
  * being dependent on whether the player is player 0 or player 1.
- * 
+ *
  * @author Steven R. Vegdahl
  * @author Andrew M. Nuxoll
  * @version July 2013
@@ -31,7 +31,7 @@ import android.view.View.OnClickListener;
 public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClickListener {
 
 	/* instance variables */
-	
+
 	// The TextView the displays the current counter value
 	private TextView player1Score;
 	private TextView player2Score;
@@ -44,13 +44,13 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 	private Button rollSelectedButton = null;
 
 	private ImageView die1, die2, die3, die4, die5;
-	
+
 	// the most recent game state, as given to us by the CounterLocalGame
 	private CosmicWimpoutState state;
-	
+
 	// the android activity that we are running
 	private GameMainActivity myActivity;
-	
+
 	/**
 	 * constructor
 	 * @param name
@@ -62,14 +62,14 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 
 	/**
 	 * Returns the GUI's top view object
-	 * 
+	 *
 	 * @return
 	 * 		the top object in the GUI's view heirarchy
 	 */
 	public View getTopView() {
 		return myActivity.findViewById(R.id.top_gui_layout);
 	}
-	
+
 	/**
 	 * sets the counter value in the text view
 	 */
@@ -173,13 +173,13 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 		else if(state.getDiceVal(4).equals("Stars")){
 			this.die5.setImageResource(R.drawable.stars);
 		}
-		
+
 	}
 
 	/**
 	 * this method gets called when the user clicks the '+' or '-' button. It
 	 * creates a new CounterMoveAction to return to the parent activity.
-	 * 
+	 *
 	 * @param button
 	 * 		the button that was clicked
 	 */
@@ -205,12 +205,12 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 		else if(button == rollSelectedButton){
 			game.sendAction(rollSelectedAct);
 		}
-		 // send action to the game
+		// send action to the game
 	}// onClick
-	
+
 	/**
 	 * callback method when we get a message (e.g., from the game)
-	 * 
+	 *
 	 * @param info
 	 * 		the message
 	 */
@@ -226,22 +226,22 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 		this.state = (CosmicWimpoutState) info;
 		updateDisplay();
 	}
-	
+
 	/**
 	 * callback method--our game has been chosen/rechosen to be the GUI,
 	 * called from the GUI thread
-	 * 
+	 *
 	 * @param activity
 	 * 		the activity under which we are running
 	 */
 	public void setAsGui(GameMainActivity activity) {
-		
+
 		// remember the activity
 		this.myActivity = activity;
-		
-	    // Load the layout resource for our GUI
+
+		// Load the layout resource for our GUI
 		activity.setContentView(R.layout.cosmicwimpout_human_player);
-		
+
 		this.player1Score = myActivity.findViewById(R.id.player1Score);
 		this.player2Score = myActivity.findViewById(R.id.player2Score);
 		this.player3Score = myActivity.findViewById(R.id.player3Score);
