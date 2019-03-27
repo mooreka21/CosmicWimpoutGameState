@@ -35,7 +35,10 @@ public class CosmicWimpoutLocalGame extends LocalGame {
 	 */
 	@Override
 	protected boolean canMove(int playerIdx) {
-		return true;
+		if(gameState.getWhoseTurn() == playerIdx) {
+			return true;
+		}
+		return false;
 	}
 
 	/**

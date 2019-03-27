@@ -43,7 +43,7 @@ public class CosmicWimpoutState extends GameState {
 	 * In the test iteration, this initializes three players
 	 */
 	public CosmicWimpoutState(){
-		whoseTurn = 1;
+		whoseTurn = 0;
 		numPlayers = 3;
 		this.prevState = null;
 		//for loop creates dice in all diceArray indices.
@@ -358,15 +358,15 @@ public class CosmicWimpoutState extends GameState {
 	 */
 	public boolean endTurn(int playerId) {
 		if(playerId == whoseTurn) {
-			int currentScore = playerArrayList.get(playerId-1).getPlayerScore();
-			if(playerId == 1){
-				playerArrayList.get(playerId - 1).setPlayerScore(currentScore + turnScore);
-				whoseTurn = 2;
+			int currentScore = playerArrayList.get(playerId).getPlayerScore();
+			if(playerId == 0){
+				playerArrayList.get(playerId).setPlayerScore(currentScore + turnScore);
+				whoseTurn = 1;
 				turnScore = 0; //reset turn score to 0 for next player
 			}
-			else if(playerId == 2){
-				playerArrayList.get(playerId - 1).setPlayerScore(currentScore + turnScore);
-				whoseTurn = 3;
+			else if(playerId == 1){
+				playerArrayList.get(playerId).setPlayerScore(currentScore + turnScore);
+				whoseTurn = 0;
 				turnScore = 0;
 			}
 			else if(playerId == 3){
