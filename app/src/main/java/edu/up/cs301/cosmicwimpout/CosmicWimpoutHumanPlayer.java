@@ -7,6 +7,7 @@ import edu.up.cs301.game.actionMsg.GameAction;
 import edu.up.cs301.game.infoMsg.GameInfo;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.view.View.OnClickListener;
 
@@ -30,13 +31,15 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 	// The TextView the displays the current counter value
 	private TextView player1Score = null;
 	private TextView player2Score = null;
-	private TextView player3score = null;
-	//add textView for player4
+	private TextView player3Score = null;
+	private TextView player4Score = null;
 
 	private Button endGameButton = null;
 	private Button endTurnButton = null;
 	private Button rollDiceButton = null;
-	//add button for roll selected die
+	private Button rollSelectedButton = null;
+
+	private ImageView die1, die2, die3, die4, die5;
 	
 	// the most recent game state, as given to us by the CounterLocalGame
 	private CosmicWimpoutState state;
@@ -119,15 +122,24 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 		
 		player1Score = myActivity.findViewById(R.id.player1Score);
 		player2Score = myActivity.findViewById(R.id.player2Score);
-		player3score = myActivity.findViewById(R.id.player3Score);
+		player3Score = myActivity.findViewById(R.id.player3Score);
+		player4Score = myActivity.findViewById(R.id.player4Score);
 
 		endGameButton = myActivity.findViewById(R.id.endGameButton);
 		endTurnButton = myActivity.findViewById(R.id.endTurnButton);
 		rollDiceButton = myActivity.findViewById(R.id.rollDiceButton);
+		rollSelectedButton = myActivity.findViewById(R.id.rollSelectedDieButton);
 
+		die1 = myActivity.findViewById(R.id.die1);
+		die2 = myActivity.findViewById(R.id.die2);
+		die3 = myActivity.findViewById(R.id.die3);
+		die4 = myActivity.findViewById(R.id.die4);
+		die5 = myActivity.findViewById(R.id.die5);
+		
 		endGameButton.setOnClickListener(this);
 		endTurnButton.setOnClickListener(this);
 		rollDiceButton.setOnClickListener(this);
+		rollSelectedButton.setOnClickListener(this);
 
 		// if we have a game state, "simulate" that we have just received
 		// the state from the game so that the GUI values are updated
