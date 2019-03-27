@@ -19,6 +19,8 @@ public class CosmicWimpoutComputerPlayer extends GameComputerPlayer {
 	private int numRollsThisTurn;
 	private float odds;
 	private int intelligence;
+	private CosmicWimpoutState state;
+
     /**
      * Constructor for objects of class CosmicWimpoutComputerPlayer
      * 
@@ -28,10 +30,6 @@ public class CosmicWimpoutComputerPlayer extends GameComputerPlayer {
     public CosmicWimpoutComputerPlayer(String name) {
         // invoke superclass constructor
         super(name);
-        
-        // start the timer, ticking 20 times per second
-        //getTimer().setInterval(50);
-        //getTimer().start();
     }
     
     /**
@@ -42,8 +40,35 @@ public class CosmicWimpoutComputerPlayer extends GameComputerPlayer {
      */
 	@Override
 	protected void receiveInfo(GameInfo info) {
-		// Do nothing, as we ignore all state in deciding our next move. It
-		// depends totally on the timer and random numbers.
+		int currentTurn = -1;
+
+		if(info instanceof CosmicWimpoutState ){
+			this.state = (CosmicWimpoutState) info;
+			currentTurn = this.state.getWhoseTurn();
+		}
+
+		if(currentTurn != playerNum){
+
+		}
+		else {
+			CosmicWimpoutActionRollAllDice allDiceAction = new CosmicWimpoutActionRollAllDice(this);
+			game.sendAction(allDiceAction);
+
+			int randomNumber = (int)(Math.random() * 10);
+			while(randomNumber == 0){
+				randomNumber = (int)(Math.random() * 10);
+			}
+			if(randomNumber > 5){
+				CosmicWimpoutActionEndTurn endTurnAction = new CosmicWimpoutActionEndTurn(this);
+				game.sendAction(endTurnAction);
+			}
+			else{
+				int randomDice = (int)(Math.random() * 6 + 1);
+				CosmicWimpoutActionRollSelectedDie selectedAction =
+						new CosmicWimpoutActionRollSelectedDie(this, randomDice);
+				game.sendAction(selectedAction);
+			}
+		}
 	}
 
 }

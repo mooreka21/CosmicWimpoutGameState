@@ -28,7 +28,15 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 	/* instance variables */
 	
 	// The TextView the displays the current counter value
-	private TextView cosmicWimpoutValueTextView;
+	private TextView player1Score = null;
+	private TextView player2Score = null;
+	private TextView player3score = null;
+	//add textView for player4
+
+	private Button endGameButton = null;
+	private Button endTurnButton = null;
+	private Button rollDiceButton = null;
+	//add button for roll selected die
 	
 	// the most recent game state, as given to us by the CounterLocalGame
 	private CosmicWimpoutState state;
@@ -87,10 +95,11 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 	public void receiveInfo(GameInfo info) {
 		// ignore the message if it's not a CounterState message
 		if (!(info instanceof CosmicWimpoutState)) return;
-		
+
+
 		// update our state; then update the display
-		this.state = (CosmicWimpoutState) info;
-		updateDisplay();
+		//this.state = (CosmicWimpoutState) info;
+		//updateDisplay();
 	}
 	
 	/**
@@ -103,21 +112,23 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 	public void setAsGui(GameMainActivity activity) {
 		
 		// remember the activity
-		myActivity = activity;
+		this.myActivity = activity;
 		
 	    // Load the layout resource for our GUI
 		activity.setContentView(R.layout.cosmicwimpout_human_player);
 		
-		// make this object the listener for both the '+' and '-' 'buttons
-		/*Button plusButton = (Button) activity.findViewById(R.id.plusButton);
-		plusButton.setOnClickListener(this);
-		Button minusButton = (Button) activity.findViewById(R.id.minusButton);
-		minusButton.setOnClickListener(this);*/
+		player1Score = myActivity.findViewById(R.id.player1Score);
+		player2Score = myActivity.findViewById(R.id.player2Score);
+		player3score = myActivity.findViewById(R.id.player3Score);
 
-		// remember the field that we update to display the counter's value
-		/*this.cosmicWimpoutValueTextView =
-				(TextView) activity.findViewById(R.id.counterValueTextView);*/
-		
+		endGameButton = myActivity.findViewById(R.id.endGameButton);
+		endTurnButton = myActivity.findViewById(R.id.endTurnButton);
+		rollDiceButton = myActivity.findViewById(R.id.rollDiceButton);
+
+		endGameButton.setOnClickListener(this);
+		endTurnButton.setOnClickListener(this);
+		rollDiceButton.setOnClickListener(this);
+
 		// if we have a game state, "simulate" that we have just received
 		// the state from the game so that the GUI values are updated
 		if (state != null) {
