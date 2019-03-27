@@ -29,10 +29,10 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 	/* instance variables */
 	
 	// The TextView the displays the current counter value
-	private TextView player1Score = null;
-	private TextView player2Score = null;
-	private TextView player3Score = null;
-	private TextView player4Score = null;
+	private TextView player1Score;
+	private TextView player2Score;
+	private TextView player3Score;
+	private TextView player4Score;
 
 	private Button endGameButton = null;
 	private Button endTurnButton = null;
@@ -70,9 +70,10 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 	 * sets the counter value in the text view
 	 */
 	protected void updateDisplay() {
-		// set the text in the appropriate widget
-		//cosmicWimpoutValueTextView.setText("" + state.getDiceVal());
-		//cosmicWimpoutValueTextView.setText("" + state.getWhoseTurn());
+		this.player1Score.setText("Player1: " + state.getPlayer1Score());
+		this.player2Score.setText("Player2: " + state.getPlayer2Score());
+		this.player3Score.setText("Player3: " + state.getPlayer3Score());
+
 
 	}
 
@@ -121,8 +122,8 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 
 
 		// update our state; then update the display
-		//this.state = (CosmicWimpoutState) info;
-		//updateDisplay();
+		this.state = (CosmicWimpoutState) info;
+		updateDisplay();
 	}
 	
 	/**

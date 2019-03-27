@@ -202,4 +202,16 @@ public class CosmicWimpoutState extends GameState {
 		}
 		return -1;
 	}
+
+	public int getPlayer1Score(){
+		return this.playerArrayList.get(0).getPlayerScore();
+	}
+
+	public int getPlayer2Score(){
+		return this.playerArrayList.get(1).getPlayerScore();
+	}
+
+	public int getPlayer3Score(){
+		return this.playerArrayList.get(2).getPlayerScore();
+	}
 }
