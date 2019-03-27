@@ -84,8 +84,28 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 	 * 		the button that was clicked
 	 */
 	public void onClick(View button) {
-		GameAction action = null;
-		game.sendAction(action); // send action to the game
+		CosmicWimpoutActionEndTurn endTurnAct =
+				new CosmicWimpoutActionEndTurn(this);
+		CosmicWimpoutActionRollAllDice rollAct =
+				new CosmicWimpoutActionRollAllDice(this);
+		CosmicWimpoutActionEndGame endGameAct =
+				new CosmicWimpoutActionEndGame(this);
+		CosmicWimpoutActionRollSelectedDie rollSelectedAct =
+				new CosmicWimpoutActionRollSelectedDie(this);
+
+		if(button == endGameButton){
+			game.sendAction(endGameAct);
+		}
+		else if(button == endTurnButton){
+			game.sendAction(endTurnAct);
+		}
+		else if(button == rollDiceButton){
+			game.sendAction(rollAct);
+		}
+		else if(button == rollSelectedButton){
+			game.sendAction(rollSelectedAct);
+		}
+		 // send action to the game
 	}// onClick
 	
 	/**
@@ -120,22 +140,22 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 	    // Load the layout resource for our GUI
 		activity.setContentView(R.layout.cosmicwimpout_human_player);
 		
-		player1Score = myActivity.findViewById(R.id.player1Score);
-		player2Score = myActivity.findViewById(R.id.player2Score);
-		player3Score = myActivity.findViewById(R.id.player3Score);
-		player4Score = myActivity.findViewById(R.id.player4Score);
+		this.player1Score = myActivity.findViewById(R.id.player1Score);
+		this.player2Score = myActivity.findViewById(R.id.player2Score);
+		this.player3Score = myActivity.findViewById(R.id.player3Score);
+		this.player4Score = myActivity.findViewById(R.id.player4Score);
 
-		endGameButton = myActivity.findViewById(R.id.endGameButton);
-		endTurnButton = myActivity.findViewById(R.id.endTurnButton);
-		rollDiceButton = myActivity.findViewById(R.id.rollDiceButton);
-		rollSelectedButton = myActivity.findViewById(R.id.rollSelectedDieButton);
+		this.endGameButton = myActivity.findViewById(R.id.endGameButton);
+		this.endTurnButton = myActivity.findViewById(R.id.endTurnButton);
+		this.rollDiceButton = myActivity.findViewById(R.id.rollDiceButton);
+		this.rollSelectedButton = myActivity.findViewById(R.id.rollSelectedDieButton);
 
-		die1 = myActivity.findViewById(R.id.die1);
-		die2 = myActivity.findViewById(R.id.die2);
-		die3 = myActivity.findViewById(R.id.die3);
-		die4 = myActivity.findViewById(R.id.die4);
-		die5 = myActivity.findViewById(R.id.die5);
-		
+		this.die1 = myActivity.findViewById(R.id.die1);
+		this.die2 = myActivity.findViewById(R.id.die2);
+		this.die3 = myActivity.findViewById(R.id.die3);
+		this.die4 = myActivity.findViewById(R.id.die4);
+		this.die5 = myActivity.findViewById(R.id.die5);
+
 		endGameButton.setOnClickListener(this);
 		endTurnButton.setOnClickListener(this);
 		rollDiceButton.setOnClickListener(this);

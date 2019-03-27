@@ -7,9 +7,8 @@ public class CosmicWimpoutActionRollSelectedDie extends GameAction {
     private static final long serialVersionUID= 95598448L;
     private int selectedDieId;
 
-    public CosmicWimpoutActionRollSelectedDie(GamePlayer player, int selectedDieId){
+    public CosmicWimpoutActionRollSelectedDie(GamePlayer player){
         super(player);
-        this.selectedDieId = selectedDieId;
 
     }
 
