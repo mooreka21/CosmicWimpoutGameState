@@ -30,7 +30,7 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/player1Score"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -39,7 +39,7 @@
             android:textSize="20dp" />
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/player2Score"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -48,13 +48,23 @@
             android:textSize="20dp" />
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/player3Score"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
             android:text="Player3"
             android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/player4Score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Player4"
+            android:textSize="20dp" />
+
     </LinearLayout>
 
     <LinearLayout
@@ -73,7 +83,7 @@
             android:text="Select This Dice" />
 
         <ImageView
-            android:id="@+id/imageView4"
+            android:id="@+id/die1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -96,7 +106,7 @@
             android:text="Select This Dice" />
 
         <ImageView
-            android:id="@+id/imageView3"
+            android:id="@+id/die2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -119,7 +129,7 @@
             android:text="Select This Dice" />
 
         <ImageView
-            android:id="@+id/imageView5"
+            android:id="@+id/die3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -142,7 +152,7 @@
             android:text="Select This Dice" />
 
         <ImageView
-            android:id="@+id/imageView6"
+            android:id="@+id/die4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -165,7 +175,7 @@
             android:text="Select This Dice" />
 
         <ImageView
-            android:id="@+id/imageView7"
+            android:id="@+id/die5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -180,25 +190,32 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/button13"
+            android:id="@+id/rollDiceButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Roll Dice" />
 
         <Button
-            android:id="@+id/button14"
+            android:id="@+id/rollSelectedDieButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Roll Selected Die"/>
+
+        <Button
+            android:id="@+id/endTurnButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="End Turn" />
 
         <Button
-            android:id="@+id/button15"
+            android:id="@+id/endGameButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Quit" />
+            android:text="End Game" />
 
     </LinearLayout>
 
