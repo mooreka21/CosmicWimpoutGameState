@@ -390,6 +390,7 @@ public class CosmicWimpoutState extends GameState {
 	 */
 	public boolean endGame(int playerId){
 		if(playerId == whoseTurn) {
+			System.exit(0);
 			return true;
 		}
 		else{

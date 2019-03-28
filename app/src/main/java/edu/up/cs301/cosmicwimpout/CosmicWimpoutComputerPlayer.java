@@ -58,6 +58,9 @@ public class CosmicWimpoutComputerPlayer extends GameComputerPlayer {
 			while(randomNumber == 0){
 				randomNumber = (int)(Math.random() * 10);
 			}
+
+			sleep(1000);
+
 			if(randomNumber > 5){
 				CosmicWimpoutActionEndTurn endTurnAction = new CosmicWimpoutActionEndTurn(this);
 				game.sendAction(endTurnAction);
