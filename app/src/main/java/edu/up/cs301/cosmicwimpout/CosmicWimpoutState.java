@@ -459,6 +459,14 @@ public class CosmicWimpoutState extends GameState {
 		return -1;
 	}
 
+	public boolean rollSelectedDice
+			(int playerId, boolean dice1, boolean dice2, boolean dice3, boolean dice4, boolean dice5){
+		if(playerId == whoseTurn) {
+			
+		}
+		return false;
+	}
+
 	public int getPlayer1Score(){
 		return this.playerArrayList.get(0).getPlayerScore();
 	}
