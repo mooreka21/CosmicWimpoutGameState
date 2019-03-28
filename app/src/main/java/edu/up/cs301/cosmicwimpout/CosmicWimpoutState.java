@@ -415,6 +415,12 @@ public class CosmicWimpoutState extends GameState {
 			}
 			else{
 				turnScore = 0;
+				if(playerId == 0 ){
+					setWhoseTurn(1);
+				}
+				if(playerId == 1){
+					setWhoseTurn(0);
+				}
 			}
 			return true;
 		}
@@ -465,4 +471,7 @@ public class CosmicWimpoutState extends GameState {
 		return this.playerArrayList.get(2).getPlayerScore();
 	}
 
+	private void setWhoseTurn(int player){
+		this.whoseTurn = player;
+	}
 }

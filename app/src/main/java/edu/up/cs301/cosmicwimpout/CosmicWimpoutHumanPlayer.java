@@ -11,6 +11,7 @@ import edu.up.cs301.game.infoMsg.NotYourTurnInfo;
 import android.graphics.Color;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.view.View.OnClickListener;
@@ -44,6 +45,13 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 	private Button rollSelectedButton = null;
 
 	private ImageView die1, die2, die3, die4, die5;
+
+	private CheckBox check1, check2, check3, check4, check5;
+	private boolean isCheck1 = false;
+	private boolean isCheck2 = false;
+	private boolean isCheck3 = false;
+	private boolean isCheck4 = false;
+	private boolean isCheck5 = false;
 
 	// the most recent game state, as given to us by the CounterLocalGame
 	private CosmicWimpoutState state;
@@ -193,6 +201,32 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 		CosmicWimpoutActionRollSelectedDie rollSelectedAct =
 				new CosmicWimpoutActionRollSelectedDie(this);
 
+		if(button == check1 ){
+			if(check1.isChecked()){
+				isCheck1 = true;
+			}
+		}
+		if(button == check2 ){
+			if(check2.isChecked()){
+				isCheck2 = true;
+			}
+		}
+		if(button == check3){
+			if(check3.isChecked()){
+				isCheck3 = true;
+			}
+		}
+		if(button == check4){
+			if(check4.isChecked()){
+				isCheck4 = true;
+			}
+		}
+		if(button == check5){
+			if(check5.isChecked()){
+				isCheck5 = true;
+			}
+		}
+
 		if(button == endGameButton){
 			game.sendAction(endGameAct);
 		}
@@ -258,11 +292,22 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 		this.die4 = myActivity.findViewById(R.id.die4);
 		this.die5 = myActivity.findViewById(R.id.die5);
 
+		this.check1 = myActivity.findViewById(R.id.checkBox);
+		this.check2 = myActivity.findViewById(R.id.checkBox2);
+		this.check3 = myActivity.findViewById(R.id.checkBox3);
+		this.check4 = myActivity.findViewById(R.id.checkBox4);
+		this.check5 = myActivity.findViewById(R.id.checkBox5);
+
 
 		endGameButton.setOnClickListener(this);
 		endTurnButton.setOnClickListener(this);
 		rollDiceButton.setOnClickListener(this);
 		rollSelectedButton.setOnClickListener(this);
+		check1.setOnClickListener(this);
+		check2.setOnClickListener(this);
+		check3.setOnClickListener(this);
+		check4.setOnClickListener(this);
+		check5.setOnClickListener(this);
 
 		// if we have a game state, "simulate" that we have just received
 		// the state from the game so that the GUI values are updated
