@@ -68,7 +68,8 @@ public class CosmicWimpoutComputerPlayer extends GameComputerPlayer {
 			else{
 				int randomDice = (int)(Math.random() * 6 + 1);
 				CosmicWimpoutActionRollSelectedDie selectedAction =
-						new CosmicWimpoutActionRollSelectedDie(this);
+						new CosmicWimpoutActionRollSelectedDie(this, true, true,
+								true, true, false);
 				game.sendAction(selectedAction);
 			}
 		}

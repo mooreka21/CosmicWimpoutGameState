@@ -36,6 +36,8 @@ public class CosmicWimpoutState extends GameState {
 	private int starReRoll;
 	private int tenReRoll;
 
+	private int trueCounter =0;
+
 	private CosmicWimpoutState prevState;
 
 	/**
@@ -433,14 +435,6 @@ public class CosmicWimpoutState extends GameState {
 	public boolean rollSingleDie(int playerId, int id ){
 		if(playerId == whoseTurn) {
 			diceArray[id-1].rollMe();
-			if(totalDiceScore(diceArray,playerId) != -1) {
-				turnScore = turnScore + totalDiceScore(diceArray,playerId);
-			}
-			else{
-				turnScore = 0;
-				this.endTurn(playerId);
-
-			}
 			return true;
 		}
 		else{
@@ -462,7 +456,40 @@ public class CosmicWimpoutState extends GameState {
 	public boolean rollSelectedDice
 			(int playerId, boolean dice1, boolean dice2, boolean dice3, boolean dice4, boolean dice5){
 		if(playerId == whoseTurn) {
-			
+			if(dice1){
+				rollSingleDie(playerId, 1);
+				trueCounter++;
+			}
+			if(dice2){
+				rollSingleDie(playerId, 2);
+				trueCounter++;
+			}
+			if(dice3){
+				rollSingleDie(playerId, 3);
+				trueCounter++;
+			}
+			if(dice4){
+				rollSingleDie(playerId, 4);
+				trueCounter++;
+			}
+			if(dice5){
+				rollSingleDie(playerId, 5);
+				trueCounter++;
+			}
+
+			if(trueCounter == 1){
+				//call getScoreDie
+			}
+			if(trueCounter == 2){
+				//call getScore2Dice
+			}
+			if(trueCounter == 3){
+				//call getScore3Dice
+			}
+			if(trueCounter == 4){
+				//call getScore4Dice
+			}
+
 		}
 		return false;
 	}
