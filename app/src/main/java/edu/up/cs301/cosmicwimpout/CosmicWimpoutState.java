@@ -549,7 +549,23 @@ public class CosmicWimpoutState extends GameState {
 				}
 			}
 			if(trueCounter == 3){
-				//call getScore3Dice
+				int[] whichDice = whichDice3();
+				int first = whichDice[0];
+				int second = whichDice[1];
+				int third = whichDice[2];
+
+				int score = getScore3Dice(diceArray, first, second, third);
+				if(score != -1) {
+					turnScore = turnScore + score;
+					trueCounter=0;
+					return true;
+				}
+				else{
+					turnScore = 0;
+					trueCounter = 0;
+					endTurn(playerId);
+					return true;
+				}
 			}
 			if(trueCounter == 4){
 				//call getScore4Dice
@@ -567,6 +583,7 @@ public class CosmicWimpoutState extends GameState {
         if(one == 3 || two == 3){
             if(ourDice[3].dieState == 3){
                 tally = 10;
+				notWimp = true;
             }
         }
 		if(ourDice[one-1].dieState == 1){
@@ -663,4 +680,215 @@ public class CosmicWimpoutState extends GameState {
 		}
 		return (twoDice);
 	}
+
+	private int[] whichDice3() {
+		int[] threeDice = new int[3];
+		if(die1ReRoll){
+			threeDice[0] = 1;
+		}
+		if(die2ReRoll){
+			if(threeDice[0] == 0){
+				threeDice[0] = 2;
+			}
+			threeDice[1] = 2;
+		}
+		if(die3ReRoll){
+			if(threeDice[0] == 0){
+				threeDice[0] = 3;
+			}
+			else if(threeDice[1] == 0) {
+				threeDice[1] = 3;
+			}
+			threeDice[2] = 3;
+		}
+		if(die4ReRoll){
+			if(threeDice[0] == 0){
+				threeDice[0] = 4;
+			}
+			else if(threeDice[1] == 0) {
+				threeDice[1] = 4;
+			}
+			threeDice[2] = 4;
+		}
+		if(die5ReRoll){
+			if(threeDice[0] == 0){
+				threeDice[0] = 5;
+			}
+			else if(threeDice[1] == 0) {
+				threeDice[1] = 5;
+			}
+			threeDice[2] = 5;
+		}
+		return threeDice;
+	}
+
+	private int getScore3Dice(Die[] ourDice, int one, int two, int three){
+		int score = 0;
+		boolean notWimp = false;
+
+		//Flash Cases
+		if(ourDice[one - 1].dieState == 1 && ourDice[two-1].dieState == 1 &&
+			ourDice[three-1].dieState == 1){
+			score = 100;
+			notWimp = true;
+		}
+		else if(ourDice[one - 1].dieState == 2 && ourDice[two-1].dieState == 2 &&
+				ourDice[three-1].dieState == 2){
+			score = 20;
+			notWimp = true;
+		}
+		else if(ourDice[one - 1].dieState == 3 && ourDice[two-1].dieState == 3 &&
+				ourDice[three-1].dieState == 3){
+			score = 30;
+			notWimp = true;
+		}
+		else if(ourDice[one - 1].dieState == 4 && ourDice[two-1].dieState == 4 &&
+				ourDice[three-1].dieState == 4){
+			score = 40;
+			notWimp = true;
+		}
+		else if(ourDice[one - 1].dieState == 5 && ourDice[two-1].dieState == 5 &&
+				ourDice[three-1].dieState == 5){
+			score = 50;
+			notWimp = true;
+		}
+		else if(ourDice[one - 1].dieState == 6 && ourDice[two-1].dieState == 6 &&
+				ourDice[three-1].dieState == 6){
+			score = 60;
+			notWimp = true;
+		}
+		else if(flashWithSun(ourDice, one, two, three) != -1){
+			score = flashWithSun(ourDice, one, two, three);
+			notWimp = true;
+		}
+		else {
+			if (one == 3 || two == 3 || three == 3) {
+				if (ourDice[3].dieState == 3) {
+					score = 10;
+					notWimp = true;
+				}
+			}
+			if (ourDice[one - 1].dieState == 1) {
+				score = score + 10;
+				notWimp = true;
+			} else if (ourDice[one - 1].dieState == 5) {
+				score = score + 5;
+				notWimp = true;
+			}
+
+			if (ourDice[two - 1].dieState == 1) {
+				score = score + 10;
+				notWimp = true;
+			} else if (ourDice[two - 1].dieState == 5) {
+				score = score + 5;
+				notWimp = true;
+			}
+			if (ourDice[three - 1].dieState == 1) {
+				score = score + 10;
+				notWimp = true;
+			} else if (ourDice[three - 1].dieState == 5) {
+				score = score + 5;
+				notWimp = true;
+			}
+		}
+		if(notWimp){
+			return score;
+		}
+		else {
+			return -1;
+		}
+	}
+
+	private int flashWithSun(Die[] ourDice, int one, int two, int three){
+		int score = 0;
+		if(one == 3){
+			if(ourDice[one-1].dieState == 3){
+				if(ourDice[two-1].dieState == 1 && ourDice[three-1].dieState == 1){
+					score = 100;
+				}
+				else if(ourDice[two-1].dieState == 2 && ourDice[three-1].dieState == 2){
+					score = 20;
+				}
+				else if(ourDice[two-1].dieState == 3 && ourDice[three-1].dieState == 3){
+					score = 30;
+				}
+				else if(ourDice[two-1].dieState == 4 && ourDice[three-1].dieState == 4){
+					score = 40;
+				}
+				else if(ourDice[two-1].dieState == 5 && ourDice[three-1].dieState == 5){
+					score = 50;
+				}
+				else if(ourDice[two-1].dieState == 6 && ourDice[three-1].dieState == 6){
+					score = 60;
+				}
+				else{
+					score = -1;
+				}
+			}
+			else{
+				score = -1;
+			}
+		}
+		else if(two == 3){
+			if(ourDice[two-1].dieState == 3){
+				if(ourDice[one-1].dieState == 1 && ourDice[three-1].dieState == 1){
+					score = 100;
+				}
+				else if(ourDice[one-1].dieState == 2 && ourDice[three-1].dieState == 2){
+					score = 20;
+				}
+				else if(ourDice[one-1].dieState == 3 && ourDice[three-1].dieState == 3){
+					score = 30;
+				}
+				else if(ourDice[one-1].dieState == 4 && ourDice[three-1].dieState == 4){
+					score = 40;
+				}
+				else if(ourDice[one-1].dieState == 5 && ourDice[three-1].dieState == 5){
+					score = 50;
+				}
+				else if(ourDice[one-1].dieState == 6 && ourDice[three-1].dieState == 6){
+					score = 60;
+				}
+				else{
+					score = -1;
+				}
+			}
+			else{
+				score = -1;
+			}
+		}
+		else if(three == 3){
+			if(ourDice[three-1].dieState == 3){
+				if(ourDice[two-1].dieState == 1 && ourDice[one-1].dieState == 1){
+					score = 100;
+				}
+				else if(ourDice[two-1].dieState == 2 && ourDice[one-1].dieState == 2){
+					score = 20;
+				}
+				else if(ourDice[two-1].dieState == 3 && ourDice[one-1].dieState == 3){
+					score = 30;
+				}
+				else if(ourDice[two-1].dieState == 4 && ourDice[one-1].dieState == 4){
+					score = 40;
+				}
+				else if(ourDice[two-1].dieState == 5 && ourDice[one-1].dieState == 5){
+					score = 50;
+				}
+				else if(ourDice[two-1].dieState == 6 && ourDice[one-1].dieState == 6){
+					score = 60;
+				}
+				else{
+					score = -1;
+				}
+			}
+			else{
+				score = -1;
+			}
+		}
+		else{
+			score = -1;
+		}
+		return score;
+	}
 }
+
