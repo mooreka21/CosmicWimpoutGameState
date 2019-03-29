@@ -454,10 +454,13 @@ public class CosmicWimpoutState extends GameState {
 	}
 
 	public int diceScoreForOneDice(Die[] ourDice, int playerId, int diceID){
+		int diceState = ourDice[diceID-1].dieState;
 		if(ourDice[diceID-1].dieState == 1){
+
 			return 10;
 		}
 		else if(ourDice[diceID-1].dieState == 5){
+
 			return 5;
 		}
 		return -1;
@@ -472,26 +475,41 @@ public class CosmicWimpoutState extends GameState {
 				trueCounter++;
 				die1ReRoll = true;
 			}
+			else{
+				die1ReRoll =false;
+			}
 
 			if(dice2){
 				rollSingleDie(playerId, 2);
 				trueCounter++;
 				die2ReRoll = true;
 			}
+			else{
+				die2ReRoll =false;
+			}
 			if(dice3){
 				rollSingleDie(playerId, 3);
 				trueCounter++;
 				die3ReRoll = true;
+			}
+			else{
+				die3ReRoll =false;
 			}
 			if(dice4){
 				rollSingleDie(playerId, 4);
 				trueCounter++;
 				die4ReRoll = true;
 			}
+			else{
+				die4ReRoll =false;
+			}
 			if(dice5){
 				rollSingleDie(playerId, 5);
 				trueCounter++;
 				die5ReRoll = true;
+			}
+			else{
+				die5ReRoll =false;
 			}
 
 			if(trueCounter == 1){
