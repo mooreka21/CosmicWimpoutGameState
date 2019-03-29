@@ -207,25 +207,19 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 				isCheck1 = true;
 		}
 		if(button == check2 ){
-			if(check2.isChecked()){
 				isCheck2 = true;
-			}
-
 		}
 		if(button == check3){
-			if(check3.isChecked()){
 				isCheck3 = true;
-			}
+
 		}
 		if(button == check4){
-			if(check4.isChecked()){
 				isCheck4 = true;
-			}
+
 		}
 		if(button == check5){
-			if(check5.isChecked()){
 				isCheck5 = true;
-			}
+
 		}
 
 		CosmicWimpoutActionEndTurn endTurnAct =
@@ -250,17 +244,32 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 			if(!(check1.isChecked())){
 				isCheck1 = false;
 			}
+			else{
+				isCheck1 = true;
+			}
 			if(!(check2.isChecked())){
 				isCheck2 = false;
+			}
+			else{
+				isCheck2 = true;
 			}
 			if(!(check3.isChecked())){
 				isCheck3 = false;
 			}
+			else{
+				isCheck3 = true;
+			}
 			if(!(check4.isChecked())){
 				isCheck4 = false;
 			}
+			else{
+				isCheck4 = true;
+			}
 			if(!(check5.isChecked())){
 				isCheck5 = false;
+			}
+			else{
+				isCheck5 = true;
 			}
 			CosmicWimpoutActionRollSelectedDie rollSelectedAct =
 					new CosmicWimpoutActionRollSelectedDie(this, isCheck1, isCheck2, isCheck3, isCheck4,isCheck5);

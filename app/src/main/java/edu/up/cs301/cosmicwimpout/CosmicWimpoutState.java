@@ -453,11 +453,11 @@ public class CosmicWimpoutState extends GameState {
 		}
 	}
 
-	public int diceScoreForOneDice(int playerId, int diceID){
-		if(diceArray[diceID-1].dieState == 1){
+	public int diceScoreForOneDice(Die[] ourDice, int playerId, int diceID){
+		if(ourDice[diceID-1].dieState == 1){
 			return 10;
 		}
-		else if(diceArray[diceID-1].dieState == 5){
+		else if(ourDice[diceID-1].dieState == 5){
 			return 5;
 		}
 		return -1;
@@ -496,12 +496,15 @@ public class CosmicWimpoutState extends GameState {
 
 			if(trueCounter == 1){
 				int whichDie = whichDice();
-				if(diceScoreForOneDice(playerId, whichDie) != -1) {
-					turnScore = turnScore + diceScoreForOneDice(playerId, whichDie);
+				int score = diceScoreForOneDice(diceArray,playerId, whichDie);
+				if(score != -1) {
+					turnScore = turnScore + diceScoreForOneDice(diceArray,playerId, whichDie);
+					trueCounter=0;
 					return true;
 				}
 				else{
 					turnScore = 0;
+					trueCounter = 0;
 					endTurn(playerId);
 					return true;
 				}
@@ -517,6 +520,7 @@ public class CosmicWimpoutState extends GameState {
 			}
 
 		}
+		trueCounter = 0;
 		return false;
 	}
 
