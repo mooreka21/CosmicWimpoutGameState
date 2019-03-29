@@ -182,6 +182,16 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 			this.die5.setImageResource(R.drawable.stars);
 		}
 
+		int turn = this.state.getWhoseTurn();
+		if(turn == 0){
+			this.player1Score.setTextColor(0xFFFF0000);
+			this.player2Score.setTextColor(0xFF000000);
+		}
+		if(turn == 1){
+			this.player2Score.setTextColor(0xFFFF0000);
+			this.player1Score.setTextColor(0xFF000000);
+		}
+
 	}
 
 	/**
