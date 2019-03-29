@@ -17,7 +17,7 @@
         <TextView
             android:id="@+id/Title"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
             android:text="Cosmic Wimpout"
@@ -34,7 +34,7 @@
         <TextView
             android:id="@+id/player1Score"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
             android:text="Player1"
@@ -43,7 +43,7 @@
         <TextView
             android:id="@+id/player2Score"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
             android:text="Player2"
@@ -52,7 +52,7 @@
         <TextView
             android:id="@+id/player3Score"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
             android:text="Player3"
@@ -61,7 +61,7 @@
         <TextView
             android:id="@+id/player4Score"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
             android:text="Player4"
@@ -86,8 +86,8 @@
 
         <ImageView
             android:id="@+id/die1"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
             android:layout_weight="1"
             android:src="@drawable/bolts" />
 
@@ -109,8 +109,8 @@
 
         <ImageView
             android:id="@+id/die2"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
             android:layout_weight="1"
             android:src="@drawable/halfcircles" />
 
@@ -132,8 +132,8 @@
 
         <ImageView
             android:id="@+id/die3"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
             android:layout_weight="1"
             android:src="@drawable/five" />
 
@@ -155,8 +155,8 @@
 
         <ImageView
             android:id="@+id/die4"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
             android:layout_weight="1"
             android:src="@drawable/stars" />
 
@@ -178,8 +178,8 @@
 
         <ImageView
             android:id="@+id/die5"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
             android:layout_weight="1"
             android:src="@drawable/blackbolt" />
 
