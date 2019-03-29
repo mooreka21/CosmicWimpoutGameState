@@ -202,12 +202,6 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 	 * 		the button that was clicked
 	 */
 	public void onClick(View button) {
-		CosmicWimpoutActionEndTurn endTurnAct =
-				new CosmicWimpoutActionEndTurn(this);
-		CosmicWimpoutActionRollAllDice rollAct =
-				new CosmicWimpoutActionRollAllDice(this);
-		CosmicWimpoutActionEndGame endGameAct =
-				new CosmicWimpoutActionEndGame(this);
 
 		if(button == check1 ){
 			if(check1.isChecked()){
@@ -234,6 +228,13 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 				isCheck5 = true;
 			}
 		}
+
+		CosmicWimpoutActionEndTurn endTurnAct =
+				new CosmicWimpoutActionEndTurn(this);
+		CosmicWimpoutActionRollAllDice rollAct =
+				new CosmicWimpoutActionRollAllDice(this);
+		CosmicWimpoutActionEndGame endGameAct =
+				new CosmicWimpoutActionEndGame(this);
 		CosmicWimpoutActionRollSelectedDie rollSelectedAct =
 				new CosmicWimpoutActionRollSelectedDie(this, isCheck1, isCheck2, isCheck3, isCheck4,isCheck5);
 
@@ -260,8 +261,9 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 	 */
 	@Override
 	public void receiveInfo(GameInfo info) {
-		if(info instanceof IllegalMoveInfo || info instanceof NotYourTurnInfo){
+		if(info instanceof NotYourTurnInfo){
 			flash(Color.RED, 50);
+			//info instanceof IllegalMoveInfo ||
 		}
 		// ignore the message if it's not a CounterState message
 		if (!(info instanceof CosmicWimpoutState)) return;

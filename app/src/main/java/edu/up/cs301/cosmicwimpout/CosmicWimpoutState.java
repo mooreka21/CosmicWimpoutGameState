@@ -37,6 +37,11 @@ public class CosmicWimpoutState extends GameState {
 	private int tenReRoll;
 
 	private int trueCounter =0;
+	private boolean die1ReRoll = false;
+	private boolean die2ReRoll = false;
+	private boolean die3ReRoll = false;
+	private boolean die4ReRoll = false;
+	private boolean die5ReRoll = false;
 
 	private CosmicWimpoutState prevState;
 
@@ -422,6 +427,7 @@ public class CosmicWimpoutState extends GameState {
 			else{
 				turnScore = 0;
 				if(playerId == 0 ){
+
 					setWhoseTurn(1);
 				}
 				if(playerId == 1){
@@ -448,10 +454,10 @@ public class CosmicWimpoutState extends GameState {
 	}
 
 	public int diceScoreForOneDice(int playerId, int diceID){
-		if(diceID == 1){
+		if(diceArray[diceID-1].dieState == 1){
 			return 10;
 		}
-		if(diceID == 5){
+		else if(diceArray[diceID-1].dieState == 5){
 			return 5;
 		}
 		return -1;
@@ -460,29 +466,45 @@ public class CosmicWimpoutState extends GameState {
 	public boolean rollSelectedDice
 			(int playerId, boolean dice1, boolean dice2, boolean dice3, boolean dice4, boolean dice5){
 		if(playerId == whoseTurn) {
+			int currentScore = playerArrayList.get(playerId).getPlayerScore();
 			if(dice1){
 				rollSingleDie(playerId, 1);
 				trueCounter++;
+				die1ReRoll = true;
 			}
+			
 			if(dice2){
 				rollSingleDie(playerId, 2);
 				trueCounter++;
+				die2ReRoll = true;
 			}
 			if(dice3){
 				rollSingleDie(playerId, 3);
 				trueCounter++;
+				die3ReRoll = true;
 			}
 			if(dice4){
 				rollSingleDie(playerId, 4);
 				trueCounter++;
+				die4ReRoll = true;
 			}
 			if(dice5){
 				rollSingleDie(playerId, 5);
 				trueCounter++;
+				die5ReRoll = true;
 			}
 
 			if(trueCounter == 1){
-				//call getScoreDie
+				int whichDie = whichDice();
+				if(diceScoreForOneDice(playerId, whichDie) != -1) {
+					turnScore = turnScore + diceScoreForOneDice(playerId, whichDie);
+					return true;
+				}
+				else{
+					turnScore = 0;
+					endTurn(playerId);
+					return true;
+				}
 			}
 			if(trueCounter == 2){
 				//call getScore2Dice
@@ -512,5 +534,24 @@ public class CosmicWimpoutState extends GameState {
 
 	private void setWhoseTurn(int player){
 		this.whoseTurn = player;
+	}
+
+	private int whichDice(){
+		if(die1ReRoll){
+			return 1;
+		}
+		else if(die2ReRoll){
+			return 2;
+		}
+		else if(die3ReRoll){
+			return 3;
+		}
+		else if(die4ReRoll){
+			return 4;
+		}
+		else if(die5ReRoll){
+			return 5;
+		}
+		return 0;
 	}
 }
