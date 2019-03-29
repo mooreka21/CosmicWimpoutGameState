@@ -455,6 +455,10 @@ public class CosmicWimpoutState extends GameState {
 
 	public int diceScoreForOneDice(Die[] ourDice, int playerId, int diceID){
 		int diceState = ourDice[diceID-1].dieState;
+		if(diceID == 3){
+			diceState = 3;
+			return 10; //flashing sun
+		}
 		if(ourDice[diceID-1].dieState == 1){
 
 			return 10;
@@ -516,7 +520,7 @@ public class CosmicWimpoutState extends GameState {
 				int whichDie = whichDice();
 				int score = diceScoreForOneDice(diceArray,playerId, whichDie);
 				if(score != -1) {
-					turnScore = turnScore + diceScoreForOneDice(diceArray,playerId, whichDie);
+					turnScore = turnScore + score;
 					trueCounter=0;
 					return true;
 				}
@@ -528,7 +532,21 @@ public class CosmicWimpoutState extends GameState {
 				}
 			}
 			if(trueCounter == 2){
-				//call getScore2Dice
+				int[] whichDice = whichDice2();
+				int first = (int)whichDice[0];
+				int second = (int)whichDice[1];
+				int score = getDiceScore2(diceArray,first,second);
+				if(score != -1) {
+					turnScore = turnScore + score;
+					trueCounter=0;
+					return true;
+				}
+				else{
+					turnScore = 0;
+					trueCounter = 0;
+					endTurn(playerId);
+					return true;
+				}
 			}
 			if(trueCounter == 3){
 				//call getScore3Dice
@@ -542,6 +560,41 @@ public class CosmicWimpoutState extends GameState {
 		return false;
 	}
 
+	public int getDiceScore2(Die[] ourDice, int one, int two){
+		int tally = 0;
+		boolean notWimp = false;
+
+        if(one == 3 || two == 3){
+            if(ourDice[3].dieState == 3){
+                tally = 10;
+            }
+        }
+		if(ourDice[one-1].dieState == 1){
+			tally = tally + 10;
+			notWimp = true;
+		}
+		else if(ourDice[one-1].dieState == 5){
+			tally = tally + 5;
+			notWimp = true;
+		}
+
+		if(ourDice[two-1].dieState == 1){
+			tally = tally + 10;
+			notWimp = true;
+		}
+		else if(ourDice[two-1].dieState == 5){
+			tally = tally + 5;
+			notWimp = true;
+		}
+
+		if(notWimp){
+			return tally;
+		}
+		else {
+			return -1;
+		}
+
+	}
 	public int getPlayer1Score(){
 		return this.playerArrayList.get(0).getPlayerScore();
 	}
@@ -575,5 +628,39 @@ public class CosmicWimpoutState extends GameState {
 			return 5;
 		}
 		return 0;
+	}
+
+	private int[] whichDice2(){
+		int[] twoDice = new int[2];
+		if(die1ReRoll){
+			twoDice[0] = 1;
+		}
+		if(die2ReRoll){
+			if(twoDice[0] == 0){
+				twoDice[0] = 2;
+			}
+				twoDice[1] = 2;
+		}
+		if(die3ReRoll){
+			if(twoDice[0] == 0){
+				twoDice[0] = 3;
+			}
+				twoDice[1] = 3;
+
+		}
+		if(die4ReRoll){
+			if(twoDice[0] == 0){
+				twoDice[0] = 4;
+			}
+				twoDice[1] = 4;
+
+		}
+		if(die5ReRoll){
+			if(twoDice[0] == 0){
+				twoDice[0] = 5;
+			}
+				twoDice[1] = 5;
+		}
+		return (twoDice);
 	}
 }
