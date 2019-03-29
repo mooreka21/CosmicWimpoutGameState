@@ -31,14 +31,14 @@ public class CosmicWimpoutActionRollSelectedDie extends GameAction {
     }
 
     public boolean getDie3(){
-        return isDie2;
+        return isDie3;
     }
 
     public boolean getDie4(){
-        return isDie2;
+        return isDie4;
     }
 
     public boolean getDie5(){
-        return isDie2;
+        return isDie5;
     }
 }

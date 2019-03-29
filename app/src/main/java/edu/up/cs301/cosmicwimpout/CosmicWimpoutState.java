@@ -472,7 +472,7 @@ public class CosmicWimpoutState extends GameState {
 				trueCounter++;
 				die1ReRoll = true;
 			}
-			
+
 			if(dice2){
 				rollSingleDie(playerId, 2);
 				trueCounter++;

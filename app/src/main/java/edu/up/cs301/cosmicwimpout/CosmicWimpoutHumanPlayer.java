@@ -204,14 +204,13 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 	public void onClick(View button) {
 
 		if(button == check1 ){
-			if(check1.isChecked()){
 				isCheck1 = true;
-			}
 		}
 		if(button == check2 ){
 			if(check2.isChecked()){
 				isCheck2 = true;
 			}
+
 		}
 		if(button == check3){
 			if(check3.isChecked()){
@@ -235,8 +234,8 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 				new CosmicWimpoutActionRollAllDice(this);
 		CosmicWimpoutActionEndGame endGameAct =
 				new CosmicWimpoutActionEndGame(this);
-		CosmicWimpoutActionRollSelectedDie rollSelectedAct =
-				new CosmicWimpoutActionRollSelectedDie(this, isCheck1, isCheck2, isCheck3, isCheck4,isCheck5);
+		//CosmicWimpoutActionRollSelectedDie rollSelectedAct =
+			//	new CosmicWimpoutActionRollSelectedDie(this, isCheck1, isCheck2, isCheck3, isCheck4,isCheck5);
 
 		if(button == endGameButton){
 			game.sendAction(endGameAct);
@@ -248,6 +247,23 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 			game.sendAction(rollAct);
 		}
 		else if(button == rollSelectedButton){
+			if(!(check1.isChecked())){
+				isCheck1 = false;
+			}
+			if(!(check2.isChecked())){
+				isCheck2 = false;
+			}
+			if(!(check3.isChecked())){
+				isCheck3 = false;
+			}
+			if(!(check4.isChecked())){
+				isCheck4 = false;
+			}
+			if(!(check5.isChecked())){
+				isCheck5 = false;
+			}
+			CosmicWimpoutActionRollSelectedDie rollSelectedAct =
+					new CosmicWimpoutActionRollSelectedDie(this, isCheck1, isCheck2, isCheck3, isCheck4,isCheck5);
 			game.sendAction(rollSelectedAct);
 		}
 		// send action to the game
