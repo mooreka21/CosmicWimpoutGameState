@@ -70,19 +70,12 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/Dice1"
+        android:id="@+id/Die1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:orientation="horizontal">
 
-
-        <CheckBox
-            android:id="@+id/checkBox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.3"
-            android:text="Select This Dice" />
 
         <ImageView
             android:id="@+id/die1"
@@ -91,21 +84,22 @@
             android:layout_weight="1"
             android:src="@drawable/bolts" />
 
+        <CheckBox
+            android:id="@+id/checkBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.3"
+            android:text="Select This Dice" />
+
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/Die2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:orientation="horizontal">
 
-
-        <CheckBox
-            android:id="@+id/checkBox2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.3"
-            android:text="Select This Dice" />
 
         <ImageView
             android:id="@+id/die2"
@@ -114,21 +108,22 @@
             android:layout_weight="1"
             android:src="@drawable/halfcircles" />
 
+        <CheckBox
+            android:id="@+id/checkBox2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.3"
+            android:text="Select This Dice" />
+
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/Die3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:orientation="horizontal">
 
-
-        <CheckBox
-            android:id="@+id/checkBox3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.3"
-            android:text="Select This Dice" />
 
         <ImageView
             android:id="@+id/die3"
@@ -137,21 +132,22 @@
             android:layout_weight="1"
             android:src="@drawable/five" />
 
+        <CheckBox
+            android:id="@+id/checkBox3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.3"
+            android:text="Select This Dice" />
+
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/Die4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:orientation="horizontal">
 
-
-        <CheckBox
-            android:id="@+id/checkBox4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.3"
-            android:text="Select This Dice" />
 
         <ImageView
             android:id="@+id/die4"
@@ -160,21 +156,22 @@
             android:layout_weight="1"
             android:src="@drawable/stars" />
 
+        <CheckBox
+            android:id="@+id/checkBox4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.3"
+            android:text="Select This Dice" />
+
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/Die5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:orientation="horizontal">
 
-
-        <CheckBox
-            android:id="@+id/checkBox5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.3"
-            android:text="Select This Dice" />
 
         <ImageView
             android:id="@+id/die5"
@@ -182,6 +179,13 @@
             android:layout_height="80dp"
             android:layout_weight="1"
             android:src="@drawable/blackbolt" />
+
+        <CheckBox
+            android:id="@+id/checkBox5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.3"
+            android:text="Select This Dice" />
 
     </LinearLayout>
 
