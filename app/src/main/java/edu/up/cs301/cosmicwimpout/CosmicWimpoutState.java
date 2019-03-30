@@ -568,7 +568,39 @@ public class CosmicWimpoutState extends GameState {
 				}
 			}
 			if(trueCounter == 4){
-				//call getScore4Dice
+				int[]whichDice = whichDice4();
+				int first = whichDice[0];
+				int second = whichDice[1];
+				int third = whichDice[2];
+				int fourth = whichDice[3];
+
+				int score = getScore4Dice(diceArray, first, second, third, fourth);
+				if(score != -1) {
+					turnScore = turnScore + score;
+					trueCounter=0;
+					return true;
+				}
+				else{
+					turnScore = 0;
+					trueCounter = 0;
+					endTurn(playerId);
+					return true;
+				}
+			}
+			if(trueCounter == 5){
+				rollAllDice(playerId);
+				int score = totalDiceScore(diceArray, playerId);
+				if(score != -1) {
+					turnScore = turnScore + score;
+					trueCounter=0;
+					return true;
+				}
+				else{
+					turnScore = 0;
+					trueCounter = 0;
+					endTurn(playerId);
+					return true;
+				}
 			}
 
 		}
@@ -720,6 +752,170 @@ public class CosmicWimpoutState extends GameState {
 			threeDice[2] = 5;
 		}
 		return threeDice;
+	}
+
+	private int[] whichDice4(){
+		int[] fourDice = new int[4];
+		if(die1ReRoll){
+			fourDice[0] = 1;
+		}
+		if(die2ReRoll){
+			if(fourDice[0] == 0){
+				fourDice[0] = 2;
+			}
+			fourDice[1] = 2;
+		}
+		if(die3ReRoll){
+			if(fourDice[0] == 0){
+				fourDice[0] = 3;
+			}
+			else if(fourDice[1] ==0){
+				fourDice[1] = 3;
+			}
+			fourDice[2] = 3;
+		}
+		if(die4ReRoll){
+			if(fourDice[1] == 0){
+				fourDice[1] = 4;
+			}
+			else if(fourDice[2] ==0){
+				fourDice[2] = 4;
+			}
+			fourDice[3] = 4;
+		}
+		if(die5ReRoll){
+			if(fourDice[1] == 0){
+				fourDice[1] = 5;
+			}
+			else if(fourDice[2] ==0){
+				fourDice[2] = 5;
+			}
+			fourDice[3] = 5;
+		}
+		return fourDice;
+	}
+
+	private int getScore4Dice(Die[] ourDice, int one, int two, int three, int four){
+		int score = 0;
+		boolean notWimp = false;
+		int tenCount = 0;
+		int moonCount =0;
+		int triangleCount = 0;
+		int boltCount=0;
+		int fiveCount = 0;
+		int starCount =0;
+
+		for(int i = 0; i < ourDice.length; i++) {
+			if (ourDice[i].getDieState() == 1) {
+				tenCount++;
+			} else if (ourDice[i].getDieState() == 2) {
+				moonCount++;
+			} else if (ourDice[i].getDieState() == 3 && i != 2) {
+				triangleCount++;
+			} else if (ourDice[i].getDieState() == 4) {
+				boltCount++;
+			} else if (ourDice[i].getDieState() == 5) {
+				fiveCount++;
+			} else if (ourDice[i].getDieState() == 6) {
+				boltCount++;
+			}
+		}
+
+			//flash cases
+			if(tenCount >= 3) {
+				score = 100;
+				notWimp = true;
+			}
+			else if(moonCount >= 3){
+				score = 20;
+				notWimp = true;
+			}
+			else if(triangleCount >= 3){
+				score = 30;
+				notWimp = true;
+			}
+			else if(boltCount >= 3){
+				score = 40;
+				notWimp = true;
+			}
+			else if(fiveCount >= 3){
+				score = 50;
+				notWimp = true;
+			}
+			else if(starCount >= 3){
+				score =60;
+				notWimp = true;
+			}
+
+			if(tenCount == 2 && (one == 3 || two == 3 || three == 3 || four == 3)){
+				if(ourDice[3].dieState == 3) {
+					score = score + 100;
+					notWimp = true;
+				}
+			}
+			else if(tenCount == 2){
+				score = score + 20;
+				notWimp = true;
+			}
+
+			if(moonCount == 2 && (one == 3 || two == 3 || three == 3 || four == 3)){
+				if(ourDice[3].dieState == 3) {
+					score = score + 20;
+					notWimp = true;
+				}
+			}
+			if(triangleCount == 2 && (one == 3 || two == 3 || three == 3 || four == 3)){
+				if(ourDice[3].dieState == 3) {
+					score = score + 30;
+					notWimp = true;
+				}
+			}
+			if(boltCount == 2 && (one == 3 || two == 3 || three == 3 || four == 3)){
+				if(ourDice[3].dieState == 3) {
+					score = score + 40;
+					notWimp = true;
+				}
+			}
+			if(fiveCount == 2 && (one == 3 || two == 3 || three == 3 || four == 3)){
+				if(ourDice[3].dieState == 3) {
+					score = score + 50;
+					notWimp = true;
+				}
+			}
+			else if(fiveCount == 2){
+				score = score + 10;
+				notWimp = true;
+			}
+			if(starCount == 2 && (one == 3 || two == 3 || three == 3 || four == 3)){
+				if(ourDice[3].dieState == 3) {
+					score = score + 60;
+					notWimp = true;
+				}
+			}
+
+			if(tenCount == 1){
+				score = score + 10;
+				notWimp = true;
+			}
+
+			if(fiveCount == 1){
+				score = score + 5;
+				notWimp = true;
+			}
+
+			if(one == 3 || two == 3 || three == 3 || four == 3){
+				if(ourDice[3].dieState == 3){
+					score = score + 10;
+					notWimp = true;
+				}
+			}
+
+		if(notWimp){
+			return score;
+		}
+		else {
+			return -1;
+		}
 	}
 
 	private int getScore3Dice(Die[] ourDice, int one, int two, int three){
