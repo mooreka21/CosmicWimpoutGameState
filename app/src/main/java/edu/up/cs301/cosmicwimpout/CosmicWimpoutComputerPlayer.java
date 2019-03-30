@@ -61,15 +61,37 @@ public class CosmicWimpoutComputerPlayer extends GameComputerPlayer {
 
 			sleep(5000);
 
+			boolean one = false;
+			boolean two = false;
+			boolean three = false;
+			boolean four = false;
+			boolean five = false;
+
 			if(randomNumber > 5){
 				CosmicWimpoutActionEndTurn endTurnAction = new CosmicWimpoutActionEndTurn(this);
 				game.sendAction(endTurnAction);
 			}
 			else{
-				int randomDice = (int)(Math.random() * 6 + 1);
+				int randomDice = (int)(Math.random() * 5 + 1);
+				if(randomDice == 1){
+					one = true;
+				}
+				else if(randomDice == 2){
+					two = true;
+				}
+				else if(randomDice == 3){
+					three = true;
+				}
+				else if(randomDice == 4){
+					four = true;
+				}
+				else if(randomDice == 5){
+					five = true;
+				}
+				
 				CosmicWimpoutActionRollSelectedDie selectedAction =
-						new CosmicWimpoutActionRollSelectedDie(this, true, false,
-								false, false, false);
+						new CosmicWimpoutActionRollSelectedDie(this, one, two,
+								three, four, five);
 				game.sendAction(selectedAction);
 			}
 		}
