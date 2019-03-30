@@ -128,19 +128,19 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 		if(state.getDiceVal(2).equals("Tens")){
 			this.die3.setImageResource(R.drawable.blackten);
 		}
-		else if(state.getDiceVal(0).equals("Moons")){
+		else if(state.getDiceVal(2).equals("Moons")){
 			this.die3.setImageResource(R.drawable.blacktwocircles);
 		}
-		else if(state.getDiceVal(0).equals("Flaming Sun")){
+		else if(state.getDiceVal(2).equals("Flaming Sun")){
 			this.die3.setImageResource(R.drawable.flamingsun);
 		}
-		else if(state.getDiceVal(0).equals("Bolts")){
+		else if(state.getDiceVal(2).equals("Bolts")){
 			this.die3.setImageResource(R.drawable.blackbolt);
 		}
-		else if(state.getDiceVal(0).equals("Fives")){
+		else if(state.getDiceVal(2).equals("Fives")){
 			this.die3.setImageResource(R.drawable.blackfive);
 		}
-		else if(state.getDiceVal(0).equals("Stars")){
+		else if(state.getDiceVal(2).equals("Stars")){
 			this.die3.setImageResource(R.drawable.blackstar);
 		}
 
