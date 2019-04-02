@@ -19,12 +19,11 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:fontFamily="@font/font_res"
+            android:fontFamily="@font/dionisia_regular"
             android:fontFeatureSettings=""
             android:gravity="center"
             android:text="Cosmic Wimpout"
-            android:textSize="50dp"
-            tools:fontFamily="monospace" />
+            android:textSize="50dp" />
 
     </LinearLayout>
 
