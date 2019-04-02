@@ -39,6 +39,7 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 	private TextView player2Score;
 	private TextView player3Score;
 	private TextView player4Score;
+	private TextView turnScore;
 
 	private Button endGameButton = null;
 	private Button endTurnButton = null;
@@ -89,6 +90,7 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 		this.player1Score.setText("Player1: " + state.getPlayer1Score());
 		this.player2Score.setText("Player2: " + state.getPlayer2Score());
 		this.player3Score.setText("Player3: " + state.getPlayer3Score());
+		this.turnScore.setText("Turn Score: " + state.getTurnScore);
 
 		if(state.getDiceVal(0).equals("Tens")){
 			this.die1.setImageResource(R.drawable.ten);
@@ -333,6 +335,7 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 		this.player2Score = myActivity.findViewById(R.id.player2Score);
 		this.player3Score = myActivity.findViewById(R.id.player3Score);
 		this.player4Score = myActivity.findViewById(R.id.player4Score);
+		this.turnScore = myActivity.findViewById(R.id.turnscore);
 
 		this.endGameButton = myActivity.findViewById(R.id.endGameButton);
 		this.endTurnButton = myActivity.findViewById(R.id.endTurnButton);
