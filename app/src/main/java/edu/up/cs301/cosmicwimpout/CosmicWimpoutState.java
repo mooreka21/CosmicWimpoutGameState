@@ -46,6 +46,7 @@ public class CosmicWimpoutState extends GameState {
 	private CosmicWimpoutState prevState;
 
 	private boolean isSuperNova = false;
+	private boolean isInstantWinner = false;
 
 	/**
 	 * CosmicWimpoutState default constructor
@@ -146,8 +147,7 @@ public class CosmicWimpoutState extends GameState {
 				ourDice[2].dieState == 6 &&
 				ourDice[3].dieState == 6 &&
 				ourDice[4].dieState == 6){
-			//Instant Winner
-			//Some action leading to the game ending happens here
+			this.isInstantWinner = true;
 			return 0;
 		}
 		//END SUPERNOVA AND FREIGHT TRAIN CHECKING
@@ -1094,6 +1094,8 @@ public class CosmicWimpoutState extends GameState {
 	public int getTurnScore() {return this.turnScore; }
 
 	public boolean getIsSuperNova() { return this.isSuperNova; }
+
+	public boolean getIsInstantWinner() {return this.isInstantWinner; }
 }
 
 
