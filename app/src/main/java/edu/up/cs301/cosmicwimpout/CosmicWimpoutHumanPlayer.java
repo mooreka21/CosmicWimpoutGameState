@@ -90,7 +90,7 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 		this.player1Score.setText(allPlayerNames[0] + ": " + state.getPlayer1Score());
 		this.player2Score.setText(allPlayerNames[1] + ": " + state.getPlayer2Score());
 		this.player3Score.setText("Player 3: " + state.getPlayer3Score());
-		this.turnScore.setText("Turn Score: " + state.getTurnScore);
+		//this.turnScore.setText("Turn Score: " + state.getTurnScore);
 
 		if(state.getDiceVal(0).equals("Tens")){
 			this.die1.setImageResource(R.drawable.ten);
