@@ -15,6 +15,7 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.view.View.OnClickListener;
+import android.widget.Toast;
 
 /**
  * A GUI of a counter-player. The GUI displays the current value of the counter,
@@ -52,6 +53,8 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 	private boolean isCheck3 = false;
 	private boolean isCheck4 = false;
 	private boolean isCheck5 = false;
+
+	private int actionsPressed = 0;
 
 	// the most recent game state, as given to us by the CounterLocalGame
 	private CosmicWimpoutState state;
@@ -231,49 +234,62 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 		//CosmicWimpoutActionRollSelectedDie rollSelectedAct =
 			//	new CosmicWimpoutActionRollSelectedDie(this, isCheck1, isCheck2, isCheck3, isCheck4,isCheck5);
 
-		if(button == endGameButton){
-			game.sendAction(endGameAct);
+		if(actionsPressed == 0){
+			if(button == rollDiceButton ){
+				game.sendAction(rollAct);
+				actionsPressed++;
+			}
+			else {
+				Toast.makeText(this.myActivity, "Illegal Move! Must" +
+						" Roll All Dice First!", Toast.LENGTH_LONG).show();
+			}
 		}
-		else if(button == endTurnButton){
-			game.sendAction(endTurnAct);
-		}
-		else if(button == rollDiceButton){
-			game.sendAction(rollAct);
-		}
-		else if(button == rollSelectedButton){
-			if(!(check1.isChecked())){
-				isCheck1 = false;
+
+		else if (actionsPressed > 0){
+
+			if(button == endGameButton){
+				game.sendAction(endGameAct);
 			}
-			else{
-				isCheck1 = true;
+			else if(button == endTurnButton){
+				game.sendAction(endTurnAct);
+				actionsPressed = 0;
 			}
-			if(!(check2.isChecked())){
-				isCheck2 = false;
+			else if(button == rollDiceButton){
+				game.sendAction(rollAct);
 			}
-			else{
-				isCheck2 = true;
+			else if(button == rollSelectedButton) {
+				if (!(check1.isChecked())) {
+					isCheck1 = false;
+				}
+				else {
+					isCheck1 = true;
+				}
+				if (!(check2.isChecked())) {
+					isCheck2 = false;
+				}
+				else {
+					isCheck2 = true;
+				}
+				if (!(check3.isChecked())) {
+					isCheck3 = false;
+				}
+				else {
+					isCheck3 = true;
+				}
+				if (!(check4.isChecked())) {
+					isCheck4 = false;
+				} else {
+					isCheck4 = true;
+				}
+				if (!(check5.isChecked())) {
+					isCheck5 = false;
+				} else {
+					isCheck5 = true;
+				}
+				CosmicWimpoutActionRollSelectedDie rollSelectedAct =
+						new CosmicWimpoutActionRollSelectedDie(this, isCheck1, isCheck2, isCheck3, isCheck4, isCheck5);
+				game.sendAction(rollSelectedAct);
 			}
-			if(!(check3.isChecked())){
-				isCheck3 = false;
-			}
-			else{
-				isCheck3 = true;
-			}
-			if(!(check4.isChecked())){
-				isCheck4 = false;
-			}
-			else{
-				isCheck4 = true;
-			}
-			if(!(check5.isChecked())){
-				isCheck5 = false;
-			}
-			else{
-				isCheck5 = true;
-			}
-			CosmicWimpoutActionRollSelectedDie rollSelectedAct =
-					new CosmicWimpoutActionRollSelectedDie(this, isCheck1, isCheck2, isCheck3, isCheck4,isCheck5);
-			game.sendAction(rollSelectedAct);
 		}
 		// send action to the game
 	}// onClick
@@ -286,7 +302,7 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 	 */
 	@Override
 	public void receiveInfo(GameInfo info) {
-		if(info instanceof NotYourTurnInfo){
+		if(info instanceof IllegalMoveInfo || info instanceof NotYourTurnInfo){
 			flash(Color.RED, 50);
 			//info instanceof IllegalMoveInfo ||
 		}
