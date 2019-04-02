@@ -46,6 +46,7 @@ public class CosmicWimpoutState extends GameState {
 	private CosmicWimpoutState prevState;
 
 	private boolean isSuperNova = false;
+	private boolean isInstantWinner = false;
 
 	/**
 	 * CosmicWimpoutState default constructor
@@ -107,6 +108,7 @@ public class CosmicWimpoutState extends GameState {
 	 */
 	public int totalDiceScore(Die[] ourDice, int playerId){
 		//SUPERNOVA AND FREIGHT TRAIN CHECKING
+        int tally = 0;
 		if(     ourDice[0].dieState == 1 &&
 				ourDice[1].dieState == 1 &&
 				ourDice[2].dieState == 1 &&
@@ -121,7 +123,7 @@ public class CosmicWimpoutState extends GameState {
 				ourDice[3].dieState == 2 &&
 				ourDice[4].dieState == 2){
 			haveToReRoll = true;
-			return 200;
+			tally = tally + 200;
 		}
 		else if(ourDice[0].dieState == 4 &&
 				ourDice[1].dieState == 4 &&
@@ -130,8 +132,7 @@ public class CosmicWimpoutState extends GameState {
 				ourDice[4].dieState == 4){
 			//turnScore = turnScore + 400;
 			haveToReRoll = true;
-			return 400;
-		}
+            tally = tally + 400;		}
 		else if(ourDice[0].dieState == 5 &&
 				ourDice[1].dieState == 5 &&
 				ourDice[2].dieState == 5 &&
@@ -139,15 +140,13 @@ public class CosmicWimpoutState extends GameState {
 				ourDice[4].dieState == 5){
 			haveToReRoll = true;
 			// turnScore = turnScore + 500;
-			return 500;
-		}
+            tally = tally + 500;		}
 		else if(ourDice[0].dieState == 6 &&
 				ourDice[1].dieState == 6 &&
 				ourDice[2].dieState == 6 &&
 				ourDice[3].dieState == 6 &&
 				ourDice[4].dieState == 6){
-			//Instant Winner
-			//Some action leading to the game ending happens here
+			this.isInstantWinner = true;
 			return 0;
 		}
 		//END SUPERNOVA AND FREIGHT TRAIN CHECKING
@@ -222,22 +221,21 @@ public class CosmicWimpoutState extends GameState {
 
 		//BEGIN FLAMING SUN FLASH CASES
 		if(tenCount == 2 && ourDice[4].dieState == 3){
-			return 100;
-		}
+            tally = tally + 100;		}
 		else if(starCount == 2 && ourDice[4].dieState == 3){
-			return 60;
+            tally = tally + 60;
 		}
 		else if(fiveCount == 2 && ourDice[4].dieState == 3){
-			return 50;
+            tally = tally + 50;
 		}
 		else if(boltCount == 2 && ourDice[4].dieState == 3){
-			return 40;
+            tally = tally + 40;
 		}
 		else if(triangleCount == 2 && ourDice[4].dieState == 3){
-			return 30;
+            tally = tally + 30;
 		}
 		else if(halfMoonCount == 2 && ourDice[4].dieState == 3){
-			return 20;
+            tally = tally + 20;
 		}
 		//END FLAMING SUN FLASH CASE HANDLING
 
@@ -333,27 +331,27 @@ public class CosmicWimpoutState extends GameState {
 				return (fiveCount*5) + (tenCount*10);
 				//I don't know if we need to set haveToReroll to true here --SL
 			}
-			return tenCount*10;
+			tally = tally + (tenCount*10);
 		}
 		if(fiveCount != 0){
-			return fiveCount*5;
+            tally = tally + (fiveCount*10);
 			//I don't know if we need to set haveToReroll to true here --SL
 		}
 		//END 10 & 5 COUNTING CASES
 
 		//BEGIN ONLY FLAMING SUN CASE
-		if(tenCount == 0 && fiveCount == 0 && ourDice[4].dieState == 3){
-			return 10;
+		if(tenCount == 0 && fiveCount == 0 && ourDice[2].dieState == 3){
+			tally = tally + 10;
 		}
 		//END ONLY FLAMING SUN CASE
 
 		//BEGIN WIMPOUT CASE
-		if(fiveCount == 0 && tenCount == 0 && ourDice[4].dieState != 3) {
+		if(fiveCount == 0 && tenCount == 0 && ourDice[2].dieState != 3) {
 			return -1;
 		}
 		//END WIMPOUT CASE
 
-		return 0;
+		return tally;
 	}
 
 	public String getDiceVal(int dieId){
@@ -460,8 +458,10 @@ public class CosmicWimpoutState extends GameState {
 	public int diceScoreForOneDice(Die[] ourDice, int playerId, int diceID){
 		int diceState = ourDice[diceID-1].dieState;
 		if(diceID == 3){
-			diceState = 3;
-			return 10; //flashing sun
+			if(diceState == 3){
+				return 10;
+			}
+			 //flashing sun
 		}
 		if(ourDice[diceID-1].dieState == 1){
 
@@ -1094,6 +1094,8 @@ public class CosmicWimpoutState extends GameState {
 	public int getTurnScore() {return this.turnScore; }
 
 	public boolean getIsSuperNova() { return this.isSuperNova; }
+
+	public boolean getIsInstantWinner() {return this.isInstantWinner; }
 }
 
 

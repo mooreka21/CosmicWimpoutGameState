@@ -105,13 +105,17 @@ public class CosmicWimpoutLocalGame extends LocalGame {
 		int player1Score = this.gameState.getPlayer1Score();
 		int player2Score = this.gameState.getPlayer2Score();
 		boolean superNova = this.gameState.getIsSuperNova();
+		boolean instantWinner = this.gameState.getIsInstantWinner();
 
 		if(superNova){
 			int whoseTurn = this.gameState.getWhoseTurn();
 			return playerNames[whoseTurn] + " has rolled a supernova and lost";
 		}
-
-		if(player1Score >= TARGET_MAGNITUDE) {
+		else if(instantWinner){
+			int whoseTurn = this.gameState.getWhoseTurn();
+			return playerNames[whoseTurn] + " has rolled an instant winner and won!";
+		}
+		else if(player1Score >= TARGET_MAGNITUDE) {
 			return playerNames[0] + " has won.";
 		}
 		else if(player2Score >= TARGET_MAGNITUDE) {
