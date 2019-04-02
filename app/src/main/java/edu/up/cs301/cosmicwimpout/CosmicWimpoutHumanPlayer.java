@@ -234,20 +234,25 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 		//CosmicWimpoutActionRollSelectedDie rollSelectedAct =
 			//	new CosmicWimpoutActionRollSelectedDie(this, isCheck1, isCheck2, isCheck3, isCheck4,isCheck5);
 
-		if(button == rollDiceButton && actionsPressed == 0){
-			game.sendAction(rollAct);
+		if(actionsPressed == 0){
+			if(button == rollDiceButton ){
+				game.sendAction(rollAct);
+				actionsPressed++;
+			}
+			else {
+				Toast.makeText(this.myActivity, "Illegal Move! Must" +
+						" Roll All Dice First!", Toast.LENGTH_LONG).show();
+			}
 		}
-		else {
-			Toast.makeText(this.myActivity, "Illegal Move! Must" +
-					" Roll All Dice First!", Toast.LENGTH_LONG).show();
-		}
-		if (actionsPressed > 0){
+
+		else if (actionsPressed > 0){
 
 			if(button == endGameButton){
 				game.sendAction(endGameAct);
 			}
 			else if(button == endTurnButton){
 				game.sendAction(endTurnAct);
+				actionsPressed = 0;
 			}
 			else if(button == rollDiceButton){
 				game.sendAction(rollAct);
