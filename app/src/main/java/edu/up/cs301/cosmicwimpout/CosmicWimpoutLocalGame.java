@@ -102,30 +102,26 @@ public class CosmicWimpoutLocalGame extends LocalGame {
 	@Override
 	protected String checkIfGameOver() {
 
-		// get the value of the counter
-		//int counterVal = this.gameState.getCounter();
+		int player1Score = this.gameState.getPlayer1Score();
+		int player2Score = this.gameState.getPlayer2Score();
 
-		//if (counterVal >= TARGET_MAGNITUDE) {
-			// counter has reached target magnitude, so return message that
-			// player 0 has won.
-			//return playerNames[0]+" has won.";
-		//}
-		//else if (counterVal <= -TARGET_MAGNITUDE) {
-			// counter has reached negative of target magnitude; if there
-			// is a second player, return message that this player has won,
-			// otherwise that the first player has lost
-			//if (playerNames.length >= 2) {
-			//	return playerNames[1]+" has won.";
-		//	}
-			//else {
-			//	return playerNames[0]+" has lost.";
-			//}
-		//}
-		//else {
+		if(player1Score >= TARGET_MAGNITUDE) {
+			return playerNames[0] + " has won.";
+		}
+		else if(player2Score >= TARGET_MAGNITUDE) {
+			if (playerNames.length >= 2) {
+				return playerNames[1] + " has won";
+			}
+			else{
+				return playerNames[0] + " has lost";
+			}
+		}
+		else {
 			// game is still between the two limit: return null, as the game
 			// is not yet over
 			return null;
-		//}
+		}
+
 	}
 
 }// class CounterLocalGame
