@@ -21,7 +21,7 @@ public class CosmicWimpoutLocalGame extends LocalGame {
 	// if present, is trying to get the counter to -TARGET_MAGNITUDE. The
 	// remaining players are neither winners nor losers, but can interfere by
 	// modifying the counter.
-	public static final int TARGET_MAGNITUDE = 10;
+	public static final int TARGET_MAGNITUDE = 500;
 
 	// the game's state
 	private CosmicWimpoutState gameState;
