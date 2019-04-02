@@ -90,7 +90,6 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 		this.player1Score.setText("Player1: " + state.getPlayer1Score());
 		this.player2Score.setText("Player2: " + state.getPlayer2Score());
 		this.player3Score.setText("Player3: " + state.getPlayer3Score());
-		this.turnScore.setText("Turn Score: " + state.getTurnScore);
 
 		if(state.getDiceVal(0).equals("Tens")){
 			this.die1.setImageResource(R.drawable.ten);
@@ -196,6 +195,8 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 			this.player2Score.setTextColor(0xFFFF0000);
 			this.player1Score.setTextColor(0xFF000000);
 		}
+
+		this.turnScore.setText("Turn Score: " + state.getTurnScore());
 
 	}
 

@@ -81,6 +81,7 @@ public class CosmicWimpoutState extends GameState {
 
 		whoseTurn = orig.whoseTurn;
 		this.prevState = orig.prevState;
+		this.turnScore = orig.turnScore;
 
 		for(int i =0; i < diceArray.length; i++){
 			this.diceArray[i] = new Die(i+1);
@@ -361,6 +362,7 @@ public class CosmicWimpoutState extends GameState {
 		return this.whoseTurn;
 	}
 
+
 	/**
 	 * endTurn - if player chooses to end turn, add up their turn score to their
 	 * overall game score, switch to next player
@@ -422,7 +424,7 @@ public class CosmicWimpoutState extends GameState {
 				this.diceArray[i].dieState = (int) (Math.random() * 6 + 1);
 			}
 			if(totalDiceScore(diceArray,playerId) != -1) {
-				turnScore = turnScore + totalDiceScore(diceArray,playerId);
+				this.turnScore = this.turnScore + totalDiceScore(diceArray,playerId);
 			}
 			else{
 				turnScore = 0;
@@ -1086,7 +1088,10 @@ public class CosmicWimpoutState extends GameState {
 		}
 		return score;
 	}
+
+	public int getTurnScore() {return this.turnScore; }
 }
+
 
 /** External Citation
  *  Date: April 1, 2019
