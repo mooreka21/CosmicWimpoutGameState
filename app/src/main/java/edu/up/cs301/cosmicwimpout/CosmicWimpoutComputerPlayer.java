@@ -51,6 +51,7 @@ public class CosmicWimpoutComputerPlayer extends GameComputerPlayer {
 
 		}
 		else {
+			sleep(5000);
 			CosmicWimpoutActionRollAllDice allDiceAction = new CosmicWimpoutActionRollAllDice(this);
 			game.sendAction(allDiceAction);
 
@@ -59,7 +60,6 @@ public class CosmicWimpoutComputerPlayer extends GameComputerPlayer {
 				randomNumber = (int)(Math.random() * 10);
 			}
 
-			sleep(5000);
 
 			boolean one = false;
 			boolean two = false;
@@ -88,7 +88,7 @@ public class CosmicWimpoutComputerPlayer extends GameComputerPlayer {
 				else if(randomDice == 5){
 					five = true;
 				}
-				
+
 				CosmicWimpoutActionRollSelectedDie selectedAction =
 						new CosmicWimpoutActionRollSelectedDie(this, one, two,
 								three, four, five);

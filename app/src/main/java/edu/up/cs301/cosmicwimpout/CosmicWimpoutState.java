@@ -1088,3 +1088,13 @@ public class CosmicWimpoutState extends GameState {
 	}
 }
 
+/** External Citation
+ *  Date: April 1, 2019
+ *  Problem: Could not check if the int array was null
+ *  and kept getting an error
+ *  Resource: https://stackoverflow.com/questions/286161/
+ *  how-can-i-see-if-an-element-in-an-int-array-is-empty
+ *  Solution: I got the idea to check if it was 0 from
+ *  this post.
+ */
+
