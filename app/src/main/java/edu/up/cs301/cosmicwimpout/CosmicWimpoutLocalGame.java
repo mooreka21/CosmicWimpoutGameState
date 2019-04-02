@@ -55,7 +55,7 @@ public class CosmicWimpoutLocalGame extends LocalGame {
 	@Override
 	protected boolean makeMove(GameAction action) {
 		Log.i("action", action.getClass().toString());
-		
+
 		if(action instanceof CosmicWimpoutActionEndTurn) {
 			CosmicWimpoutActionEndTurn endTurnAction = (CosmicWimpoutActionEndTurn) action;
 			int whoseTurn = this.gameState.getWhoseTurn();
@@ -104,6 +104,12 @@ public class CosmicWimpoutLocalGame extends LocalGame {
 
 		int player1Score = this.gameState.getPlayer1Score();
 		int player2Score = this.gameState.getPlayer2Score();
+		boolean superNova = this.gameState.getIsSuperNova();
+
+		if(superNova){
+			int whoseTurn = this.gameState.getWhoseTurn();
+			return playerNames[whoseTurn] + " has rolled a supernova and lost";
+		}
 
 		if(player1Score >= TARGET_MAGNITUDE) {
 			return playerNames[0] + " has won.";
