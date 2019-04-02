@@ -342,13 +342,13 @@ public class CosmicWimpoutState extends GameState {
 		//END 10 & 5 COUNTING CASES
 
 		//BEGIN ONLY FLAMING SUN CASE
-		if(tenCount == 0 && fiveCount == 0 && ourDice[4].dieState == 3){
+		if(tenCount == 0 && fiveCount == 0 && ourDice[2].dieState == 3){
 			return 10;
 		}
 		//END ONLY FLAMING SUN CASE
 
 		//BEGIN WIMPOUT CASE
-		if(fiveCount == 0 && tenCount == 0 && ourDice[4].dieState != 3) {
+		if(fiveCount == 0 && tenCount == 0 && ourDice[2].dieState != 3) {
 			return -1;
 		}
 		//END WIMPOUT CASE
@@ -460,8 +460,10 @@ public class CosmicWimpoutState extends GameState {
 	public int diceScoreForOneDice(Die[] ourDice, int playerId, int diceID){
 		int diceState = ourDice[diceID-1].dieState;
 		if(diceID == 3){
-			diceState = 3;
-			return 10; //flashing sun
+			if(diceState == 3){
+				return 10;
+			}
+			 //flashing sun
 		}
 		if(ourDice[diceID-1].dieState == 1){
 
