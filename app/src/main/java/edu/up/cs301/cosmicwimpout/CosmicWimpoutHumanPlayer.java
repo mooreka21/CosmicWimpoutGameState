@@ -257,7 +257,9 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 				actionsPressed = 0;
 			}
 			else if(button == rollDiceButton){
-				game.sendAction(rollAct);
+				Toast.makeText(this.myActivity, "Cannot Roll All Dice",
+						Toast.LENGTH_SHORT).show();
+				//game.sendAction(rollAct);
 			}
 			else if(button == rollSelectedButton) {
 				if (!(check1.isChecked())) {
@@ -292,6 +294,7 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 						new CosmicWimpoutActionRollSelectedDie(this, isCheck1, isCheck2, isCheck3, isCheck4, isCheck5);
 				game.sendAction(rollSelectedAct);
 			}
+
 		}
 		// send action to the game
 	}// onClick
