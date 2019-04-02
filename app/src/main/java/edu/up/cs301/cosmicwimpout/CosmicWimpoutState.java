@@ -45,6 +45,8 @@ public class CosmicWimpoutState extends GameState {
 
 	private CosmicWimpoutState prevState;
 
+	private boolean isSuperNova = false;
+
 	/**
 	 * CosmicWimpoutState default constructor
 	 * In the test iteration, this initializes three players
@@ -110,7 +112,7 @@ public class CosmicWimpoutState extends GameState {
 				ourDice[2].dieState == 1 &&
 				ourDice[3].dieState == 1 &&
 				ourDice[4].dieState == 1){
-			//Some action leading to the game ending happens here
+			isSuperNova = true;
 			return -1;
 		}
 		else if(ourDice[0].dieState == 2 &&
@@ -1090,6 +1092,8 @@ public class CosmicWimpoutState extends GameState {
 	}
 
 	public int getTurnScore() {return this.turnScore; }
+
+	public boolean getIsSuperNova() { return this.isSuperNova; }
 }
 
 
