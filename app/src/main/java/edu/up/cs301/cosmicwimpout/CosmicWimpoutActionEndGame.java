@@ -14,7 +14,7 @@ import edu.up.cs301.game.actionMsg.GameAction;
  */
 public class CosmicWimpoutActionEndGame extends GameAction {
 
-    //invokes super constructor 
+    //invokes super constructor
     public CosmicWimpoutActionEndGame(GamePlayer player){
         super(player);
     }

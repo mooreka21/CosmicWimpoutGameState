@@ -254,7 +254,7 @@ public class CosmicWimpoutState extends GameState {
 				}
 				haveToReRoll = true;
 			}
-			return 20;
+			return tally + 20;
 		}
 		if(triangleCount >= 3 && triangleCount < 5){
 			if(triangleCount == 4) {
@@ -265,7 +265,7 @@ public class CosmicWimpoutState extends GameState {
 					rollSingleDie(playerId, (triangleReRoll + 1));
 				}
 			}
-			return 30;
+			return tally + 30;
 		}
 		if(boltCount >= 3 && boltCount < 5){
 			if(boltCount == 4){
@@ -278,7 +278,7 @@ public class CosmicWimpoutState extends GameState {
 				}
 				haveToReRoll = true;
 			}
-			return 40;
+			return tally + 40;
 		}
 		if(fiveCount >= 3 && fiveCount < 5){
 			//  turnScore = turnScore + 50;
@@ -292,7 +292,7 @@ public class CosmicWimpoutState extends GameState {
 				}
 				haveToReRoll = true;
 			}
-			return 50;
+			return tally + 50;
 		}
 		if(starCount >= 3 && starCount < 5){
 			//  turnScore = turnScore + 60;
@@ -306,7 +306,7 @@ public class CosmicWimpoutState extends GameState {
 				}
 				haveToReRoll = true;
 			}
-			return 60;
+			return tally + 60;
 		}
 		if(tenCount >= 3 && tenCount < 5){
 			// turnScore = turnScore + 100;
@@ -320,7 +320,7 @@ public class CosmicWimpoutState extends GameState {
 				}
 				haveToReRoll = true;
 			}
-			return 100;
+			return tally + 100;
 		}
 		//END NORMAL FLASH HANDLING
 
