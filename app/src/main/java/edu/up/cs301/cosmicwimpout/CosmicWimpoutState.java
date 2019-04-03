@@ -5,11 +5,10 @@ import java.util.ArrayList;
 import edu.up.cs301.cosmicwimpout.Die;
 
 /**
- * This contains the state for the Counter game. The state consist of simply
- * the value of the counter.
+ * This contains the state for the Cosmic Wimpout game.
  *
- * @author Steven R. Vegdahl
- * @version July 2013
+ * @author Olivia Dendinger, Sam Lemly, Kayla Moore, David Campbell
+ * @version March 2019
  */
 public class CosmicWimpoutState extends GameState {
 
@@ -21,7 +20,7 @@ public class CosmicWimpoutState extends GameState {
 
 	//initializing game variables
 	private int whoseTurn;
-	private int numPlayers;
+	//private int numPlayers;
 	private int turnScore = 0;
 	private boolean canReRoll = true;
 	private boolean haveToReRoll = false;
@@ -36,6 +35,7 @@ public class CosmicWimpoutState extends GameState {
 	private int starReRoll;
 	private int tenReRoll;
 
+	//initializing variables for rollSelectedDice
 	private int trueCounter =0;
 	private boolean die1ReRoll = false;
 	private boolean die2ReRoll = false;
@@ -43,18 +43,20 @@ public class CosmicWimpoutState extends GameState {
 	private boolean die4ReRoll = false;
 	private boolean die5ReRoll = false;
 
+	//instance of previous state
 	private CosmicWimpoutState prevState;
 
+	//to determine instant winner and losers
 	private boolean isSuperNova = false;
 	private boolean isInstantWinner = false;
 
 	/**
 	 * CosmicWimpoutState default constructor
-	 * In the test iteration, this initializes three players
+	 * In the test iteration, this initializes two players
 	 */
 	public CosmicWimpoutState(){
 		whoseTurn = 0;
-		numPlayers = 3;
+		//numPlayers = 3;
 		this.prevState = null;
 		//for loop creates dice in all diceArray indices.
 		for(int i = 0; i < 5; i++){
@@ -354,10 +356,19 @@ public class CosmicWimpoutState extends GameState {
 		return tally;
 	}
 
+	/**
+	 * Getter for any die's current dice state
+	 * @param dieId - the die to recieve its state
+	 * @return - the String value of the dice state
+	 */
 	public String getDiceVal(int dieId){
 		return this.diceArray[dieId].getValAsString();
 	}
 
+	/**
+	 * getter for whose turn it currently is in the state
+	 * @return whose turn
+	 */
 	public int getWhoseTurn(){
 		return this.whoseTurn;
 	}
@@ -380,7 +391,7 @@ public class CosmicWimpoutState extends GameState {
 			else if(playerId == 1){
 				playerArrayList.get(playerId).setPlayerScore(currentScore + turnScore);
 				whoseTurn = 0;
-				turnScore = 0;
+				turnScore = 0;// reset turn score to 0
 			}
 			else if(playerId == 3){
 				playerArrayList.get(playerId - 1).setPlayerScore(currentScore + turnScore);
@@ -424,9 +435,12 @@ public class CosmicWimpoutState extends GameState {
 				this.diceArray[i].dieState = (int) (Math.random() * 6 + 1);
 			}
 			if(totalDiceScore(diceArray,playerId) != -1) {
+				//not a wimpout add score to current turn score
 				this.turnScore = this.turnScore + totalDiceScore(diceArray,playerId);
 			}
 			else{
+				//wimpout set turn score to 0 and
+				//and change players
 				turnScore = 0;
 				if(playerId == 0 ){
 
@@ -444,6 +458,12 @@ public class CosmicWimpoutState extends GameState {
 		}
 	}
 
+	/**
+	 * Rolls a single die
+	 * @param playerId - which player wants to roll
+	 * @param id - the dice id they want to roll
+	 * @return - if it was a legal move or not
+	 */
 	public boolean rollSingleDie(int playerId, int id ){
 		if(playerId == whoseTurn) {
 			diceArray[id-1].rollMe();
@@ -455,6 +475,14 @@ public class CosmicWimpoutState extends GameState {
 		}
 	}
 
+	/**
+	 * diceScoreForOneDice - calculates score if
+	 * player only selects one die to roll
+	 * @param ourDice - dice array
+	 * @param playerId - which player
+	 * @param diceID - which die they want to roll
+	 * @return
+	 */
 	public int diceScoreForOneDice(Die[] ourDice, int playerId, int diceID){
 		int diceState = ourDice[diceID-1].dieState;
 		if(diceID == 3){
@@ -464,26 +492,39 @@ public class CosmicWimpoutState extends GameState {
 			 //flashing sun
 		}
 		if(ourDice[diceID-1].dieState == 1){
-
+			//die state is 10
 			return 10;
 		}
 		else if(ourDice[diceID-1].dieState == 5){
-
+			//die state is 5
 			return 5;
 		}
 		return -1;
 	}
 
+	/**
+	 * rollSelectedDice - action method for when the player
+	 * sends an action of roll selected dice
+	 * @param playerId
+	 * @param dice1 - true if they select
+	 * @param dice2 - true if they select
+	 * @param dice3
+	 * @param dice4
+	 * @param dice5
+	 * @return
+	 */
 	public boolean rollSelectedDice
 			(int playerId, boolean dice1, boolean dice2, boolean dice3, boolean dice4, boolean dice5){
 		if(playerId == whoseTurn) {
 			int currentScore = playerArrayList.get(playerId).getPlayerScore();
 			if(dice1){
+				//roll it and get the state
 				rollSingleDie(playerId, 1);
-				trueCounter++;
+				trueCounter++;// to decide how to score the dice
 				die1ReRoll = true;
 			}
 			else{
+				//player didnt select this die
 				die1ReRoll =false;
 			}
 
@@ -493,6 +534,7 @@ public class CosmicWimpoutState extends GameState {
 				die2ReRoll = true;
 			}
 			else{
+				//player didnt select this die
 				die2ReRoll =false;
 			}
 			if(dice3){
@@ -501,6 +543,7 @@ public class CosmicWimpoutState extends GameState {
 				die3ReRoll = true;
 			}
 			else{
+				//player didnt select this die
 				die3ReRoll =false;
 			}
 			if(dice4){
@@ -509,6 +552,7 @@ public class CosmicWimpoutState extends GameState {
 				die4ReRoll = true;
 			}
 			else{
+				//player didnt select this die
 				die4ReRoll =false;
 			}
 			if(dice5){
@@ -517,11 +561,15 @@ public class CosmicWimpoutState extends GameState {
 				die5ReRoll = true;
 			}
 			else{
+				//player didnt select this die
 				die5ReRoll =false;
 			}
 
+			//only selected one die
 			if(trueCounter == 1){
+				//get which dice they rolled
 				int whichDie = whichDice();
+				//score that dice
 				int score = diceScoreForOneDice(diceArray,playerId, whichDie);
 				if(score != -1) {
 					turnScore = turnScore + score;
@@ -529,6 +577,7 @@ public class CosmicWimpoutState extends GameState {
 					return true;
 				}
 				else{
+					//wimpout end turn
 					turnScore = 0;
 					trueCounter = 0;
 					endTurn(playerId);
@@ -612,6 +661,14 @@ public class CosmicWimpoutState extends GameState {
 		return false;
 	}
 
+	/**
+	 * calculates score for when they select
+	 * two die
+	 * @param ourDice - dice array
+	 * @param one - die one they select
+	 * @param two - die two they select
+	 * @return
+	 */
 	public int getDiceScore2(Die[] ourDice, int one, int two){
 		int tally = 0;
 		boolean notWimp = false;
@@ -648,10 +705,19 @@ public class CosmicWimpoutState extends GameState {
 		}
 
 	}
+
+	/**
+	 * get player ones current score
+	 * @return
+	 */
 	public int getPlayer1Score(){
 		return this.playerArrayList.get(0).getPlayerScore();
 	}
 
+	/**
+	 * get player twos current score
+	 * @return
+	 */
 	public int getPlayer2Score(){
 		return this.playerArrayList.get(1).getPlayerScore();
 	}
@@ -660,10 +726,18 @@ public class CosmicWimpoutState extends GameState {
 		return this.playerArrayList.get(2).getPlayerScore();
 	}
 
+	/**
+	 * set whose turn it is
+	 * @param player
+	 */
 	private void setWhoseTurn(int player){
 		this.whoseTurn = player;
 	}
 
+	/**
+	 * finds which dice they selected
+	 * @return - die id they select
+	 */
 	private int whichDice(){
 		if(die1ReRoll){
 			return 1;
@@ -682,7 +756,10 @@ public class CosmicWimpoutState extends GameState {
 		}
 		return 0;
 	}
-
+	/**
+	 * finds which dice they selected
+	 * @return - dice id they select in an array
+	 */
 	private int[] whichDice2(){
 		int[] twoDice = new int[2];
 		if(die1ReRoll){
@@ -716,7 +793,10 @@ public class CosmicWimpoutState extends GameState {
 		}
 		return (twoDice);
 	}
-
+	/**
+	 * finds which dice they selected
+	 * @return - die id they select in an array
+	 */
 	private int[] whichDice3() {
 		int[] threeDice = new int[3];
 		if(die1ReRoll){
@@ -798,7 +878,10 @@ public class CosmicWimpoutState extends GameState {
 		}
 		return fourDice;
 	}
-
+	/**
+	 * finds which dice they selected
+	 * @return - die id they select in an array
+	 */
 	private int getScore4Dice(Die[] ourDice, int one, int two, int three, int four){
 		int score = 0;
 		boolean notWimp = false;
@@ -922,6 +1005,15 @@ public class CosmicWimpoutState extends GameState {
 		}
 	}
 
+	/**
+	 * calculates the score when they select
+	 *  3 dice
+	 * @param ourDice
+	 * @param one - first dice id
+	 * @param two - second dice id
+	 * @param three - third dice id
+	 * @return
+	 */
 	private int getScore3Dice(Die[] ourDice, int one, int two, int three){
 		int score = 0;
 		boolean notWimp = false;
@@ -958,6 +1050,7 @@ public class CosmicWimpoutState extends GameState {
 			notWimp = true;
 		}
 		else if(flashWithSun(ourDice, one, two, three) != -1){
+			//gets score if there is a flash with flaming sun
 			score = flashWithSun(ourDice, one, two, three);
 			notWimp = true;
 		}
@@ -999,6 +1092,14 @@ public class CosmicWimpoutState extends GameState {
 		}
 	}
 
+	/**
+	 * helper method to score flashes with flaming suns
+	 * @param ourDice
+	 * @param one
+	 * @param two
+	 * @param three
+	 * @return
+	 */
 	private int flashWithSun(Die[] ourDice, int one, int two, int three){
 		int score = 0;
 		if(one == 3){
@@ -1091,10 +1192,22 @@ public class CosmicWimpoutState extends GameState {
 		return score;
 	}
 
+	/**
+	 * get turn score
+	 * @return
+	 */
 	public int getTurnScore() {return this.turnScore; }
 
+	/**
+	 * get isSuperNova boolean
+	 * @return
+	 */
 	public boolean getIsSuperNova() { return this.isSuperNova; }
 
+	/**
+	 * get isInstantWinner boolean
+	 * @return
+	 */
 	public boolean getIsInstantWinner() {return this.isInstantWinner; }
 }
 
