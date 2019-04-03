@@ -18,17 +18,16 @@ import android.view.View.OnClickListener;
 import android.widget.Toast;
 
 /**
- * A GUI of a counter-player. The GUI displays the current value of the counter,
- * and allows the human player to press the '+' and '-' buttons in order to
- * send moves to the game.
+ * A GUI of a cosmic wimpout-player. The GUI displays the current value of the
+ * current scores of all the players, the state of the dice, the current
+ * turn score, and allows the human player to press the action buttons
+ * in order to send moves to the game,
  *
- * Just for fun, the GUI is implemented so that if the player presses either button
- * when the counter-value is zero, the screen flashes briefly, with the flash-color
- * being dependent on whether the player is player 0 or player 1.
- *
- * @author Steven R. Vegdahl
- * @author Andrew M. Nuxoll
- * @version July 2013
+ * @author Sam Lemly
+ * @author Olivia Dendinger
+ * @author David Campbell
+ * @author Kayla Moore
+ *  @version March 2019
  */
 public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClickListener {
 
@@ -41,20 +40,25 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 	private TextView player4Score;
 	private TextView turnScore;
 
+	//variables for buutons
 	private Button endGameButton = null;
 	private Button endTurnButton = null;
 	private Button rollDiceButton = null;
 	private Button rollSelectedButton = null;
 
+	//variables for image views
 	private ImageView die1, die2, die3, die4, die5;
 
+	//variables for checks
 	private CheckBox check1, check2, check3, check4, check5;
+	//variables to check if they are checked or not
 	private boolean isCheck1 = false;
 	private boolean isCheck2 = false;
 	private boolean isCheck3 = false;
 	private boolean isCheck4 = false;
 	private boolean isCheck5 = false;
 
+	//to make sure they press roll all dice first
 	private int actionsPressed = 0;
 
 	// the most recent game state, as given to us by the CounterLocalGame
@@ -87,11 +91,13 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 	 */
 	protected void updateDisplay() {
 
+		//set the text to current game state varibales
 		this.player1Score.setText(allPlayerNames[0] + ": " + state.getPlayer1Score());
 		this.player2Score.setText(allPlayerNames[1] + ": " + state.getPlayer2Score());
 		this.player3Score.setText("Player 3: " + state.getPlayer3Score());
 		this.turnScore.setText("Turn Score: " + state.getTurnScore());
 
+		//setting die 1 face to whatever the current die state is
 		if(state.getDiceVal(0).equals("Tens")){
 			this.die1.setImageResource(R.drawable.ten);
 		}
@@ -111,6 +117,7 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 			this.die1.setImageResource(R.drawable.stars);
 		}
 
+		//setting die to face
 		if(state.getDiceVal(1).equals("Tens")){
 			this.die2.setImageResource(R.drawable.ten);
 		}
@@ -130,6 +137,7 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 			this.die2.setImageResource(R.drawable.stars);
 		}
 
+		//setting die 3 face
 		if(state.getDiceVal(2).equals("Tens")){
 			this.die3.setImageResource(R.drawable.blackten);
 		}
@@ -149,6 +157,7 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 			this.die3.setImageResource(R.drawable.blackstar);
 		}
 
+		//setting die 4 face
 		if(state.getDiceVal(3).equals("Tens")){
 			this.die4.setImageResource(R.drawable.ten);
 		}
@@ -168,6 +177,7 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 			this.die4.setImageResource(R.drawable.stars);
 		}
 
+		//setting die 5 face
 		if(state.getDiceVal(4).equals("Tens")){
 			this.die5.setImageResource(R.drawable.ten);
 		}
@@ -187,6 +197,7 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 			this.die5.setImageResource(R.drawable.stars);
 		}
 
+		//highlighting whose turn it is with red font
 		int turn = this.state.getWhoseTurn();
 		if(turn == 0){
 			this.player1Score.setTextColor(0xFFFF0000);
@@ -200,14 +211,17 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 	}
 
 	/**
-	 * this method gets called when the user clicks the '+' or '-' button. It
-	 * creates a new CounterMoveAction to return to the parent activity.
+	 * this method gets called when the user clicks any of the buttons. It
+	 * creates a new action depending on the button to return to the
+	 * parent activity.
 	 *
 	 * @param button
 	 * 		the button that was clicked
 	 */
 	public void onClick(View button) {
 
+		//if the button is any of the checkboxes, update
+		//variable to true
 		if(button == check1 ){
 				isCheck1 = true;
 		}
@@ -227,6 +241,7 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 
 		}
 
+		//if end turn button, end trun action
 		CosmicWimpoutActionEndTurn endTurnAct =
 				new CosmicWimpoutActionEndTurn(this);
 		CosmicWimpoutActionRollAllDice rollAct =
@@ -236,12 +251,14 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 		//CosmicWimpoutActionRollSelectedDie rollSelectedAct =
 			//	new CosmicWimpoutActionRollSelectedDie(this, isCheck1, isCheck2, isCheck3, isCheck4,isCheck5);
 
+		//making sure that they press the roll all dice button first
 		if(actionsPressed == 0){
 			if(button == rollDiceButton ){
 				game.sendAction(rollAct);
 				actionsPressed++;
 			}
 			else {
+				//illegal move
 				Toast.makeText(this.myActivity, "Illegal Move! Must" +
 						" Roll All Dice First!", Toast.LENGTH_LONG).show();
 			}
@@ -257,11 +274,13 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 				actionsPressed = 0;
 			}
 			else if(button == rollDiceButton){
+				//illegal move, must select all 5
 				Toast.makeText(this.myActivity, "Cannot Roll All Dice",
 						Toast.LENGTH_SHORT).show();
 				//game.sendAction(rollAct);
 			}
 			else if(button == rollSelectedButton) {
+				//checking to see which ones are true to send in the action
 				if (!(check1.isChecked())) {
 					isCheck1 = false;
 				}

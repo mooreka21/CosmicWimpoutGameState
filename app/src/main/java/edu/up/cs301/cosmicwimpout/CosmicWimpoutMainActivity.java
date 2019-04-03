@@ -14,11 +14,13 @@ import edu.up.cs301.game.config.GameConfig;
 import edu.up.cs301.game.config.GamePlayerType;
 
 /**
- * this is the primary activity for Counter game
+ * this is the primary activity for Cosmic Wimpout game
  * 
- * @author Andrew M. Nuxoll
- * @author Steven R. Vegdahl
- * @version July 2013
+ * @author Sam Lemly
+ *  * @author Olivia Dendinger
+ *  * @author David Campbell
+ *  * @author Kayla Moore
+ * @version March 2019
  */
 public class CosmicWimpoutMainActivity extends GameMainActivity {
 	
@@ -85,7 +87,7 @@ public class CosmicWimpoutMainActivity extends GameMainActivity {
 	 * create a local game
 	 * 
 	 * @return
-	 * 		the local game, a counter game
+	 * 		the local game, a cosmic wimpout game
 	 */
 	@Override
 	public LocalGame createLocalGame() {
