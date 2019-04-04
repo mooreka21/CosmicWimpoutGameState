@@ -181,7 +181,7 @@ public class CosmicWimpoutState extends GameState {
 					halfMoonReRoll = i+1;
 				}
 			}
-			if(ourDice[i].getDieState() == 3 && ourDice[i].dieID != 5){
+			if(ourDice[i].getDieState() == 3 && ourDice[i].dieID != 3){
 				triangleCount++;
 				if(triangleCount == 4){
 					triangleReRoll=i;
@@ -222,23 +222,40 @@ public class CosmicWimpoutState extends GameState {
 
 
 		//BEGIN FLAMING SUN FLASH CASES
-		if(tenCount == 2 && ourDice[4].dieState == 3){
+		if(tenCount == 2 && ourDice[2].dieState == 3){
             tally = tally + 100;		}
-		else if(starCount == 2 && ourDice[4].dieState == 3){
+		else if(starCount == 2 && ourDice[2].dieState == 3){
             tally = tally + 60;
 		}
-		else if(fiveCount == 2 && ourDice[4].dieState == 3){
+		else if(fiveCount == 2 && ourDice[2].dieState == 3){
             tally = tally + 50;
 		}
-		else if(boltCount == 2 && ourDice[4].dieState == 3){
+		else if(boltCount == 2 && ourDice[2].dieState == 3){
             tally = tally + 40;
 		}
-		else if(triangleCount == 2 && ourDice[4].dieState == 3){
+		else if(triangleCount == 2 && ourDice[2].dieState == 3){
             tally = tally + 30;
 		}
-		else if(halfMoonCount == 2 && ourDice[4].dieState == 3){
+		else if(halfMoonCount == 2 && ourDice[2].dieState == 3){
             tally = tally + 20;
 		}
+		else if(tenCount < 2 && fiveCount < 2 && triangleCount < 2 &&
+				boltCount < 2 && halfMoonCount < 2 && starCount <2 &&
+				ourDice[2].dieState == 3){
+			tally = tally + 10;
+		}
+		else if(tenCount != 0){
+				if(fiveCount != 0){
+					return (fiveCount*5) + (tenCount*10);
+					//I don't know if we need to set haveToReroll to true here --SL
+				}
+				tally = tally + (tenCount*10);
+			}
+		else if(fiveCount != 0 && tenCount == 0){
+			tally = tally + (fiveCount*5);
+			//I don't know if we need to set haveToReroll to true here --SL
+		}
+		//END 10 & 5 COUNTING CASES
 		//END FLAMING SUN FLASH CASE HANDLING
 
 
@@ -325,26 +342,10 @@ public class CosmicWimpoutState extends GameState {
 		//END NORMAL FLASH HANDLING
 
 
-
-
-		//BEGIN 10 & 5 COUNTING CASES
-		if(tenCount != 0){
-			if(fiveCount != 0){
-				return (fiveCount*5) + (tenCount*10);
-				//I don't know if we need to set haveToReroll to true here --SL
-			}
-			tally = tally + (tenCount*10);
-		}
-		if(fiveCount != 0){
-            tally = tally + (fiveCount*10);
-			//I don't know if we need to set haveToReroll to true here --SL
-		}
-		//END 10 & 5 COUNTING CASES
-
 		//BEGIN ONLY FLAMING SUN CASE
-		if(tenCount == 0 && fiveCount == 0 && ourDice[2].dieState == 3){
-			tally = tally + 10;
-		}
+		//if(tenCount == 0 && fiveCount == 0 && ourDice[2].dieState == 3){
+		//	tally = tally + 10;
+		//}
 		//END ONLY FLAMING SUN CASE
 
 		//BEGIN WIMPOUT CASE
@@ -642,8 +643,13 @@ public class CosmicWimpoutState extends GameState {
 			}
 			if(trueCounter == 5){
 				rollAllDice(playerId);
+				this.turnScore = this.turnScore;
+				trueCounter = 0;
+				return true;
+				/**
 				int score = totalDiceScore(diceArray, playerId);
 				if(score != -1) {
+					this.turnScore = this.turnScore;
 					turnScore = turnScore + score;
 					trueCounter=0;
 					return true;
@@ -654,6 +660,7 @@ public class CosmicWimpoutState extends GameState {
 					endTurn(playerId);
 					return true;
 				}
+				 */
 			}
 
 		}
