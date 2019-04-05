@@ -967,21 +967,58 @@ public class CosmicWimpoutState extends GameState {
 		int fiveCount = 0;
 		int starCount =0;
 
-		// re do this to get only the counts of the four dice!
-		for(int i = 0; i < ourDice.length; i++) {
-			if (ourDice[i].getDieState() == 1) {
-				tenCount++;
-			} else if (ourDice[i].getDieState() == 2) {
-				moonCount++;
-			} else if (ourDice[i].getDieState() == 3 && i != 2) {
-				triangleCount++;
-			} else if (ourDice[i].getDieState() == 4) {
-				boltCount++;
-			} else if (ourDice[i].getDieState() == 5) {
-				fiveCount++;
-			} else if (ourDice[i].getDieState() == 6) {
-				starCount++;
-			}
+		if(ourDice[one-1].getDieState() == 1){
+			tenCount++;
+		} else if (ourDice[one-1].getDieState() == 2) {
+		moonCount++;
+		} else if (ourDice[one-1].getDieState() == 3 && (one-1) != 2) {
+		triangleCount++;
+		} else if (ourDice[one-1].getDieState() == 4) {
+		boltCount++;
+		} else if (ourDice[one-1].getDieState() == 5) {
+		fiveCount++;
+		} else if (ourDice[one-1].getDieState() == 6) {
+		starCount++;
+		}
+		if(ourDice[two-1].getDieState() == 1){
+			tenCount++;
+		} else if (ourDice[two-1].getDieState() == 2) {
+			moonCount++;
+		} else if (ourDice[two-1].getDieState() == 3 && (two-1) != 2) {
+			triangleCount++;
+		} else if (ourDice[two-1].getDieState() == 4) {
+			boltCount++;
+		} else if (ourDice[two-1].getDieState() == 5) {
+			fiveCount++;
+		} else if (ourDice[two-1].getDieState() == 6) {
+			starCount++;
+		}
+		if(ourDice[three-1].getDieState() == 1){
+			tenCount++;
+		} else if (ourDice[three-1].getDieState() == 2) {
+			moonCount++;
+		} else if (ourDice[three-1].getDieState() == 3 && (three-1) != 2) {
+			triangleCount++;
+		} else if (ourDice[three-1].getDieState() == 4) {
+			boltCount++;
+		} else if (ourDice[three-1].getDieState() == 5) {
+			fiveCount++;
+		} else if (ourDice[three-1].getDieState() == 6) {
+			starCount++;
+		}
+
+		if(ourDice[four-1].getDieState() == 1){
+			tenCount++;
+		} else if (ourDice[four-1].getDieState() == 2) {
+			moonCount++;
+		} else if (ourDice[four-1].getDieState() == 3 && (four-1) != 2) {
+			triangleCount++;
+		} else if (ourDice[four-1].getDieState() == 4) {
+			boltCount++;
+		} else if (ourDice[four-1].getDieState() == 5) {
+			fiveCount++;
+		} else if (ourDice[four-1].getDieState() == 6) {
+			starCount++;
 		}
 
 			//flash cases
