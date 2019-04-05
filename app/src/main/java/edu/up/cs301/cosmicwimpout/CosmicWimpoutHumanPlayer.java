@@ -257,6 +257,9 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 				game.sendAction(rollAct);
 				actionsPressed++;
 			}
+            else if(button == endGameButton){
+                game.sendAction(endGameAct);
+            }
 			else {
 				//illegal move
 				Toast.makeText(this.myActivity, "Illegal Move! Must" +
@@ -265,10 +268,9 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 		}
 
 		else if (actionsPressed > 0){
-
-			if(button == endGameButton){
-				game.sendAction(endGameAct);
-			}
+            if(button == endGameButton){
+                game.sendAction(endGameAct);
+            }
 			else if(button == endTurnButton){
 				game.sendAction(endTurnAct);
 				actionsPressed = 0;
@@ -312,6 +314,7 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 				CosmicWimpoutActionRollSelectedDie rollSelectedAct =
 						new CosmicWimpoutActionRollSelectedDie(this, isCheck1, isCheck2, isCheck3, isCheck4, isCheck5);
 				game.sendAction(rollSelectedAct);
+				actionsPressed = 0;
 			}
 
 		}
