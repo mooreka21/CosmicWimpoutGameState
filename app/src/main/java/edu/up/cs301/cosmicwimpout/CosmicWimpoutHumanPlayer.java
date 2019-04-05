@@ -311,10 +311,16 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 				} else {
 					isCheck5 = true;
 				}
-				CosmicWimpoutActionRollSelectedDie rollSelectedAct =
-						new CosmicWimpoutActionRollSelectedDie(this, isCheck1, isCheck2, isCheck3, isCheck4, isCheck5);
-				game.sendAction(rollSelectedAct);
-				actionsPressed = 0;
+				if(legalMoveAllChecked5()) {
+					CosmicWimpoutActionRollSelectedDie rollSelectedAct =
+							new CosmicWimpoutActionRollSelectedDie(this, isCheck1, isCheck2, isCheck3, isCheck4, isCheck5);
+					game.sendAction(rollSelectedAct);
+					actionsPressed = 0;
+				}
+				else{
+					Toast.makeText(this.myActivity, "Cannot roll all dice",
+							Toast.LENGTH_SHORT).show();
+				}
 			}
 
 		}
@@ -397,5 +403,44 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 		}
 	}
 
+	public boolean legalMoveAllChecked5(){
+		if(isCheck1 && isCheck2 && isCheck3 && isCheck4 &&isCheck5)
+		{
+			if(state.getDiceVal(0).equals("Moons") && state.getDiceVal(1).equals("Moons")
+				&& state.getDiceVal(2).equals("Moons") &&state.getDiceVal(3).equals("Moons")
+				&& state.getDiceVal(4).equals("Moons")) {
+
+				return true;
+			}
+			else if(state.getDiceVal(0).equals("Triangles") && state.getDiceVal(1).equals("Triangles")
+				&& state.getDiceVal(2).equals("Triangles")&& state.getDiceVal(3).equals("Triangles")
+				&& state.getDiceVal(4).equals("Triangles")){
+
+				return true;
+			}
+			else if( state.getDiceVal(0).equals("Bolts") && state.getDiceVal(1).equals("Bolts")
+				&& state.getDiceVal(2).equals("Bolts") && state.getDiceVal(3).equals("Bolts")
+				&& state.getDiceVal(4).equals("Bolts")){
+
+				return true;
+			}
+			else if(state.getDiceVal(0).equals("Fives") && state.getDiceVal(1).equals("Fives")
+				&& state.getDiceVal(2).equals("Fives") && state.getDiceVal(3).equals("Fives")
+				&& state.getDiceVal(4).equals("Fives")){
+				return true;
+			}
+			else if(state.getDiceVal(0).equals("Stars") && state.getDiceVal(1).equals("Stars")
+				&& state.getDiceVal(2).equals("Stars") && state.getDiceVal(3).equals("Stars")
+				&& state.getDiceVal(4).equals("Stars")){
+
+				return true;
+			}
+			else{
+				return false;
+			}
+		}
+
+		return true;
+	}
 }// class CounterHumanPlayer
 

@@ -899,6 +899,7 @@ public class CosmicWimpoutState extends GameState {
 		int fiveCount = 0;
 		int starCount =0;
 
+		// re do this to get only the counts of the four dice!
 		for(int i = 0; i < ourDice.length; i++) {
 			if (ourDice[i].getDieState() == 1) {
 				tenCount++;
@@ -911,7 +912,7 @@ public class CosmicWimpoutState extends GameState {
 			} else if (ourDice[i].getDieState() == 5) {
 				fiveCount++;
 			} else if (ourDice[i].getDieState() == 6) {
-				boltCount++;
+				starCount++;
 			}
 		}
 
@@ -952,25 +953,25 @@ public class CosmicWimpoutState extends GameState {
 				notWimp = true;
 			}
 
-			if(moonCount == 2 && (one == 3 || two == 3 || three == 3 || four == 3)){
+			else if(moonCount == 2 && (one == 3 || two == 3 || three == 3 || four == 3)){
 				if(ourDice[3].dieState == 3) {
 					score = score + 20;
 					notWimp = true;
 				}
 			}
-			if(triangleCount == 2 && (one == 3 || two == 3 || three == 3 || four == 3)){
+			else if(triangleCount == 2 && (one == 3 || two == 3 || three == 3 || four == 3)){
 				if(ourDice[3].dieState == 3) {
 					score = score + 30;
 					notWimp = true;
 				}
 			}
-			if(boltCount == 2 && (one == 3 || two == 3 || three == 3 || four == 3)){
+			else if(boltCount == 2 && (one == 3 || two == 3 || three == 3 || four == 3)){
 				if(ourDice[3].dieState == 3) {
 					score = score + 40;
 					notWimp = true;
 				}
 			}
-			if(fiveCount == 2 && (one == 3 || two == 3 || three == 3 || four == 3)){
+			else if(fiveCount == 2 && (one == 3 || two == 3 || three == 3 || four == 3)){
 				if(ourDice[3].dieState == 3) {
 					score = score + 50;
 					notWimp = true;
@@ -986,23 +987,22 @@ public class CosmicWimpoutState extends GameState {
 					notWimp = true;
 				}
 			}
-
-			if(tenCount == 1){
-				score = score + 10;
-				notWimp = true;
-			}
-
-			if(fiveCount == 1){
-				score = score + 5;
-				notWimp = true;
-			}
-
-			if(one == 3 || two == 3 || three == 3 || four == 3){
+			else if(one == 3 || two == 3 || three == 3 || four == 3){
 				if(ourDice[3].dieState == 3){
 					score = score + 10;
 					notWimp = true;
 				}
 			}
+			else if(tenCount == 1){
+				score = score + 10;
+				notWimp = true;
+			}
+
+			else if(fiveCount == 1){
+				score = score + 5;
+				notWimp = true;
+			}
+
 
 		if(notWimp){
 			return score;

@@ -140,4 +140,4 @@ public class CosmicWimpoutLocalGame extends LocalGame {
 
 	}
 
-}// class CounterLocalGame
+}// class CosmicWimpoutLocalGame
