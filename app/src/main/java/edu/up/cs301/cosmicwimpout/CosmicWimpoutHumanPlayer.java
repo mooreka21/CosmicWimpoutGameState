@@ -263,7 +263,7 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 			else {
 				//illegal move
 				Toast.makeText(this.myActivity, "Illegal Move! Must" +
-						" Roll All Dice First!", Toast.LENGTH_LONG).show();
+						" Roll All Dice First!", Toast.LENGTH_SHORT).show();
 			}
 		}
 
@@ -311,17 +311,79 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 				} else {
 					isCheck5 = true;
 				}
-				if(legalMoveAllChecked5()) {
+				if(isCheck1 && !isCheck5 && !isCheck4 && !isCheck3 && !isCheck2){
+					if(legalOneChecked()){
+						CosmicWimpoutActionRollSelectedDie rollSelectedAct =
+								new CosmicWimpoutActionRollSelectedDie(this, isCheck1, isCheck2, isCheck3, isCheck4, isCheck5);
+						game.sendAction(rollSelectedAct);
+
+					}
+					else{
+						Toast.makeText(this.myActivity, "Cannot roll that die",
+								Toast.LENGTH_SHORT).show();
+					}
+				}
+				else if(!isCheck1 && isCheck5 && !isCheck4 && !isCheck3 && !isCheck2){
+					if(legalOneChecked()){
+						CosmicWimpoutActionRollSelectedDie rollSelectedAct =
+								new CosmicWimpoutActionRollSelectedDie(this, isCheck1, isCheck2, isCheck3, isCheck4, isCheck5);
+						game.sendAction(rollSelectedAct);
+
+					}
+					else{
+						Toast.makeText(this.myActivity, "Cannot roll that die",
+								Toast.LENGTH_SHORT).show();
+					}
+				}
+				else if(!isCheck1 && !isCheck5 && isCheck4 && !isCheck3 && !isCheck2){
+					if(legalOneChecked()){
+						CosmicWimpoutActionRollSelectedDie rollSelectedAct =
+								new CosmicWimpoutActionRollSelectedDie(this, isCheck1, isCheck2, isCheck3, isCheck4, isCheck5);
+						game.sendAction(rollSelectedAct);
+
+					}
+					else{
+						Toast.makeText(this.myActivity, "Cannot roll that die",
+								Toast.LENGTH_SHORT).show();
+					}
+				}
+				else if(!isCheck1 && !isCheck5 && !isCheck4 && isCheck3 && !isCheck2){
+					if(legalOneChecked()){
+						CosmicWimpoutActionRollSelectedDie rollSelectedAct =
+								new CosmicWimpoutActionRollSelectedDie(this, isCheck1, isCheck2, isCheck3, isCheck4, isCheck5);
+						game.sendAction(rollSelectedAct);
+
+					}
+					else{
+						Toast.makeText(this.myActivity, "Cannot roll that die",
+								Toast.LENGTH_SHORT).show();
+					}
+				}
+				else if(!isCheck1 && isCheck5 && !isCheck4 && !isCheck3 && isCheck2){
+					if(legalOneChecked()){
+						CosmicWimpoutActionRollSelectedDie rollSelectedAct =
+								new CosmicWimpoutActionRollSelectedDie(this, isCheck1, isCheck2, isCheck3, isCheck4, isCheck5);
+						game.sendAction(rollSelectedAct);
+					}
+					else{
+						Toast.makeText(this.myActivity, "Cannot roll that die",
+								Toast.LENGTH_SHORT).show();
+
+					}
+				}
+
+				else if(legalMoveAllChecked5()) {
 					CosmicWimpoutActionRollSelectedDie rollSelectedAct =
 							new CosmicWimpoutActionRollSelectedDie(this, isCheck1, isCheck2, isCheck3, isCheck4, isCheck5);
 					game.sendAction(rollSelectedAct);
-					actionsPressed = 0;
 				}
 				else{
 					Toast.makeText(this.myActivity, "Cannot roll all dice",
 							Toast.LENGTH_SHORT).show();
 				}
+
 			}
+
 
 		}
 		// send action to the game
@@ -440,6 +502,40 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 			}
 		}
 
+		return true;
+	}
+
+	private boolean legalOneChecked(){
+		if(isCheck1){
+			if(state.getDiceVal(0).equals("Tens")
+				|| state.getDiceVal(0).equals("Fives")){
+				return false;
+			}
+		}
+		else if(isCheck2){
+			if(state.getDiceVal(1).equals("Tens")
+					|| state.getDiceVal(1).equals("Fives")){
+				return false;
+			}
+		}
+		else if(isCheck3){
+			if(state.getDiceVal(2).equals("Tens")
+					|| state.getDiceVal(2).equals("Fives")){
+				return false;
+			}
+		}
+		else if(isCheck4){
+			if(state.getDiceVal(3).equals("Tens")
+					|| state.getDiceVal(3).equals("Fives")){
+				return false;
+			}
+		}
+		else if(isCheck5){
+			if(state.getDiceVal(4).equals("Tens")
+					|| state.getDiceVal(4).equals("Fives")){
+				return false;
+			}
+		}
 		return true;
 	}
 }// class CounterHumanPlayer
