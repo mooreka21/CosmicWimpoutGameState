@@ -311,6 +311,8 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 				} else {
 					isCheck5 = true;
 				}
+
+				//checking for legal move if one is checked
 				if(isCheck1 && !isCheck5 && !isCheck4 && !isCheck3 && !isCheck2){
 					if(legalOneChecked()){
 						CosmicWimpoutActionRollSelectedDie rollSelectedAct =
@@ -538,6 +540,7 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 		}
 		return true;
 	}
+
 
 }// class CounterHumanPlayer
 
