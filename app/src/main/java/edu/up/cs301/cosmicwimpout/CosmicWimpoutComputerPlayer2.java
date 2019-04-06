@@ -28,7 +28,7 @@ public class CosmicWimpoutComputerPlayer2 extends CosmicWimpoutComputerPlayer {
 	/*
 	 * instance variables
 	 */
-	
+	//private static final long serialVersionUID= 478598448L;
 	// the most recent game state, as given to us by the CounterLocalGame
 	private CosmicWimpoutState currentGameState = null;
 	

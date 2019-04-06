@@ -32,7 +32,7 @@ import android.widget.Toast;
 public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClickListener {
 
 	/* instance variables */
-
+    private static final long serialVersionUID= 9876483921L;
 	// The TextView the displays the current counter value
 	private TextView player1Score;
 	private TextView player2Score;

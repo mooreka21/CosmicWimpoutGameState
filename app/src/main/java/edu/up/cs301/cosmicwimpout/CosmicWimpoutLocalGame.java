@@ -19,7 +19,7 @@ public class CosmicWimpoutLocalGame extends LocalGame {
 	// When a cosmic wimpout game is played, any number of players.
 	// both players are trying to get to the TARGET_MAGNITUDE.
 	public static final int TARGET_MAGNITUDE = 500;
-
+	private static final long serialVersionUID= 109876254625L;
 	// the game's state
 	private CosmicWimpoutState gameState;
 	

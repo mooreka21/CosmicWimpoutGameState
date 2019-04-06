@@ -23,10 +23,10 @@ import edu.up.cs301.game.config.GamePlayerType;
  * @version March 2019
  */
 public class CosmicWimpoutMainActivity extends GameMainActivity {
-	
+
 	// the port number that this game will use when playing over the network
 	private static final int PORT_NUMBER = 2234;
-
+	//private static final long serialVersionUID= 5006874389L;
 
 	/**
 	 * Create the default configuration for this game:

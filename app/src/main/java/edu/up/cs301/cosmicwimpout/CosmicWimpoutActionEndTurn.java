@@ -13,7 +13,7 @@ import edu.up.cs301.game.actionMsg.GameAction;
  * @version March 2019
  */
 public class CosmicWimpoutActionEndTurn extends GameAction {
-
+    private static final long serialVersionUID= 100598448L;
     //invokes super constructor
     public CosmicWimpoutActionEndTurn(GamePlayer player){
         super(player);

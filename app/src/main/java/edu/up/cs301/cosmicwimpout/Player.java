@@ -10,7 +10,7 @@ package edu.up.cs301.cosmicwimpout;
  */
 
 public class Player {
-
+    private static final long serialVersionUID= 38527183904L;
     //initializing variables
     private int playerID;
     private int score;

@@ -16,7 +16,7 @@ import edu.up.cs301.game.infoMsg.GameInfo;
   * @version March 2019
  */
 public class CosmicWimpoutComputerPlayer extends GameComputerPlayer {
-
+	//private static final long serialVersionUID= 390598448L;
 	//instance variables
 	private int ScoresFromCopy[] = new int[10];
 	private int numRollsThisTurn;

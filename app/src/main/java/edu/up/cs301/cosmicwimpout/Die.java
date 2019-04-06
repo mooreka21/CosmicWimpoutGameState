@@ -10,7 +10,7 @@ package edu.up.cs301.cosmicwimpout;
  */
 
 public class Die {
-
+    private static final long serialVersionUID= 382491574830L;
     //initializing variables
     protected int dieState;
     protected int dieID;
