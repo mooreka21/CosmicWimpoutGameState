@@ -252,7 +252,7 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 			//	new CosmicWimpoutActionRollSelectedDie(this, isCheck1, isCheck2, isCheck3, isCheck4,isCheck5);
 
 		//making sure that they press the roll all dice button first
-		if(actionsPressed == 0){
+		if(this.actionsPressed == 0){
 			if(button == rollDiceButton ){
 				game.sendAction(rollAct);
 				actionsPressed++;
@@ -267,13 +267,13 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 			}
 		}
 
-		else if (actionsPressed > 0){
+		else if (this.actionsPressed > 0){
             if(button == endGameButton){
                 game.sendAction(endGameAct);
             }
 			else if(button == endTurnButton){
+				this.actionsPressed = 0;
 				game.sendAction(endTurnAct);
-				actionsPressed = 0;
 			}
 			else if(button == rollDiceButton){
 				//illegal move, must select all 5
@@ -538,5 +538,6 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 		}
 		return true;
 	}
+
 }// class CounterHumanPlayer
 

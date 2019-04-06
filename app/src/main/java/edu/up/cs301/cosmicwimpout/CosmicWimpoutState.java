@@ -50,6 +50,7 @@ public class CosmicWimpoutState extends GameState {
 	private boolean isSuperNova = false;
 	private boolean isInstantWinner = false;
 
+
 	/**
 	 * CosmicWimpoutState default constructor
 	 * In the test iteration, this initializes two players
@@ -306,24 +307,28 @@ public class CosmicWimpoutState extends GameState {
 		if(halfMoonCount >= 3 && halfMoonCount < 5){
 			if(halfMoonCount == 4) {
 				//rollSingleDie(playerId, (halfMoonReRoll + 1));
+				/**
 				if(halfMoonReRoll == 4){
 					rollSingleDie(playerId, 5);
 				}
 				else{
 					rollSingleDie(playerId, halfMoonReRoll +1);
 				}
+				 */
 				haveToReRoll = true;
 			}
 			tally = tally + 20;
 		}
 		else if(triangleCount >= 3 && triangleCount < 5){
 			if(triangleCount == 4) {
+				/**
 				if(triangleReRoll == 4){
 					rollSingleDie(playerId, 5);
 				}
 				else{
 					rollSingleDie(playerId, (triangleReRoll + 1));
 				}
+				 */
 			}
 			tally = tally + 30;
 
@@ -331,12 +336,14 @@ public class CosmicWimpoutState extends GameState {
 		else if(boltCount >= 3 && boltCount < 5){
 			if(boltCount == 4){
 				//rollSingleDie(playerId, (boltReRoll + 1));
+				/**
 				if(boltReRoll == 4){
 					rollSingleDie(playerId, 5);
 				}
 				else{
 					rollSingleDie(playerId, boltReRoll +1);
 				}
+				 */
 				haveToReRoll = true;
 			}
 			tally = tally + 40;
@@ -346,12 +353,14 @@ public class CosmicWimpoutState extends GameState {
 			//  turnScore = turnScore + 50;
 			if(fiveCount == 4){
 				//rollSingleDie(playerId, (fiveReRoll + 1));
+				/**
 				if(fiveReRoll == 4){
 					rollSingleDie(playerId, 5);
 				}
 				else{
 					rollSingleDie(playerId, fiveReRoll + 1);
 				}
+				 */
 				haveToReRoll = true;
 			}
 			tally = tally + 50;
@@ -364,27 +373,30 @@ public class CosmicWimpoutState extends GameState {
 			//  turnScore = turnScore + 60;
 			if(starCount == 4){
 				//rollSingleDie(playerId, (starReRoll + 1));
+				/**
 				if(starReRoll == 4){
 					rollSingleDie(playerId, 5);
 				}
 				else{
 					rollSingleDie(playerId, starReRoll + 1);
 				}
+				 */
 				haveToReRoll = true;
 			}
 			tally =  tally + 60;
-
 		}
 		else if(tenCount >= 3 && tenCount < 5){
 			// turnScore = turnScore + 100;
 			if(tenCount == 4){
 				//rollSingleDie(playerId, (tenReRoll + 1));
+				/**
 				if(tenReRoll == 4){
 					rollSingleDie(playerId, 5);
 				}
 				else{
 					rollSingleDie(playerId, tenReRoll + 1);
 				}
+				 */
 				haveToReRoll = true;
 			}
 			tally = tally + 100;
@@ -500,6 +512,7 @@ public class CosmicWimpoutState extends GameState {
 	public boolean rollAllDice(int playerId){
 		if(playerId == whoseTurn) {
 			//rolls all dice giving each a value 1-6
+
 			for(int i = 0; i < 5; i++) {
 				this.diceArray[i].dieState = (int) (Math.random() * 6 + 1);
 			}
@@ -1048,7 +1061,7 @@ public class CosmicWimpoutState extends GameState {
 			}
 
 			if(tenCount == 2 && (one == 3 || two == 3 || three == 3 || four == 3)){
-				if(ourDice[3].dieState == 3) {
+				if(ourDice[2].dieState == 3) {
 					score = score + 100;
 					notWimp = true;
 				}
@@ -1058,26 +1071,26 @@ public class CosmicWimpoutState extends GameState {
 				notWimp = true;
 			}
 
-			else if(moonCount == 2 && (one == 3 || two == 3 || three == 3 || four == 3)){
-				if(ourDice[3].dieState == 3) {
+			if(moonCount == 2 && (one == 3 || two == 3 || three == 3 || four == 3)){
+				if(ourDice[2].dieState == 3) {
 					score = score + 20;
 					notWimp = true;
 				}
 			}
-			else if(triangleCount == 2 && (one == 3 || two == 3 || three == 3 || four == 3)){
-				if(ourDice[3].dieState == 3) {
+			 if(triangleCount == 2 && (one == 3 || two == 3 || three == 3 || four == 3)){
+				if(ourDice[2].dieState == 3) {
 					score = score + 30;
 					notWimp = true;
 				}
 			}
-			else if(boltCount == 2 && (one == 3 || two == 3 || three == 3 || four == 3)){
-				if(ourDice[3].dieState == 3) {
+			if(boltCount == 2 && (one == 3 || two == 3 || three == 3 || four == 3)){
+				if(ourDice[2].dieState == 3) {
 					score = score + 40;
 					notWimp = true;
 				}
 			}
-			else if(fiveCount == 2 && (one == 3 || two == 3 || three == 3 || four == 3)){
-				if(ourDice[3].dieState == 3) {
+			if(fiveCount == 2 && (one == 3 || two == 3 || three == 3 || four == 3)){
+				if(ourDice[2].dieState == 3) {
 					score = score + 50;
 					notWimp = true;
 				}
@@ -1086,27 +1099,29 @@ public class CosmicWimpoutState extends GameState {
 				score = score + 10;
 				notWimp = true;
 			}
+
 			if(starCount == 2 && (one == 3 || two == 3 || three == 3 || four == 3)){
-				if(ourDice[3].dieState == 3) {
+				if(ourDice[2].dieState == 3) {
 					score = score + 60;
 					notWimp = true;
 				}
 			}
-			else if(one == 3 || two == 3 || three == 3 || four == 3){
-				if(ourDice[3].dieState == 3){
-					score = score + 10;
-					notWimp = true;
-				}
-			}
-			else if(tenCount == 1){
+			if(tenCount == 1){
 				score = score + 10;
 				notWimp = true;
 			}
 
-			else if(fiveCount == 1){
+			if(fiveCount == 1){
 				score = score + 5;
 				notWimp = true;
 			}
+			if(one == 3 || two == 3 || three == 3 || four == 3 && tenCount== 0
+			&& fiveCount == 0){
+                if(ourDice[2].dieState == 3){
+                    score = score + 10;
+                    notWimp = true;
+                }
+            }
 
 
 		if(notWimp){
@@ -1321,8 +1336,9 @@ public class CosmicWimpoutState extends GameState {
 	 * @return
 	 */
 	public boolean getIsInstantWinner() {return this.isInstantWinner; }
-}
 
+
+}
 
 /** External Citation
  *  Date: April 1, 2019
