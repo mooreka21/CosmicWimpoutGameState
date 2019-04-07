@@ -304,7 +304,7 @@ public class CosmicWimpoutState extends GameState {
 
 
 		//BEGIN NORMAL FLASH HANDLING
-		if(halfMoonCount >= 3 && halfMoonCount < 5){
+		else if(halfMoonCount >= 3 && halfMoonCount < 5){
 			if(halfMoonCount == 4) {
 				//rollSingleDie(playerId, (halfMoonReRoll + 1));
 				/**
@@ -1106,6 +1106,7 @@ public class CosmicWimpoutState extends GameState {
 					notWimp = true;
 				}
 			}
+
 			if(tenCount == 1){
 				score = score + 10;
 				notWimp = true;
@@ -1115,6 +1116,7 @@ public class CosmicWimpoutState extends GameState {
 				score = score + 5;
 				notWimp = true;
 			}
+
 			if(one == 3 || two == 3 || three == 3 || four == 3 && tenCount== 0
 			&& fiveCount == 0){
                 if(ourDice[2].dieState == 3){
@@ -1184,10 +1186,11 @@ public class CosmicWimpoutState extends GameState {
 		else {
 			if (one == 3 || two == 3 || three == 3) {
 				if (ourDice[3].dieState == 3) {
-					score = 10;
+					score = score + 10;
 					notWimp = true;
 				}
 			}
+
 			if (ourDice[one - 1].dieState == 1) {
 				score = score + 10;
 				notWimp = true;
@@ -1203,6 +1206,7 @@ public class CosmicWimpoutState extends GameState {
 				score = score + 5;
 				notWimp = true;
 			}
+
 			if (ourDice[three - 1].dieState == 1) {
 				score = score + 10;
 				notWimp = true;
