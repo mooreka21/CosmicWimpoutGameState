@@ -4,16 +4,19 @@ import edu.up.cs301.game.GameComputerPlayer;
 import edu.up.cs301.game.infoMsg.GameInfo;
 
 /**
- * A computer-version of a counter-player.  Since this is such a simple game,
- * it just sends "+" and "-" commands with equal probability, at an average
- * rate of one per second.
+ * A computer-version of a cosmic wimpout -player. this is the dumb AI
+ * first rolls all the dice first - rules of the game
+ * then with equal probabilty either ends the turn
+ * or randomly selects one dice to re-roll
  *
- * @author Steven R. Vegdahl
- * @author Andrew M. Nuxoll
- * @version September 2013
+ @author Sam Lemly
+  *  @author Olivia Dendinger
+  * @author David Campbell
+  *@author Kayla Moore
+  * @version March 2019
  */
 public class CosmicWimpoutComputerPlayer extends GameComputerPlayer {
-
+	//private static final long serialVersionUID= 390598448L;
 	//instance variables
 	private int ScoresFromCopy[] = new int[10];
 	private int numRollsThisTurn;
@@ -51,10 +54,13 @@ public class CosmicWimpoutComputerPlayer extends GameComputerPlayer {
 
 		}
 		else {
+			//delay to make it seem like they are thinking
 			sleep(5000);
-			CosmicWimpoutActionRollAllDice allDiceAction = new CosmicWimpoutActionRollAllDice(this);
+			CosmicWimpoutActionRollAllDice allDiceAction =
+					new CosmicWimpoutActionRollAllDice(this);
 			game.sendAction(allDiceAction);
 
+			//random probability
 			int randomNumber = (int)(Math.random() * 10);
 			while(randomNumber == 0){
 				randomNumber = (int)(Math.random() * 10);
@@ -72,6 +78,7 @@ public class CosmicWimpoutComputerPlayer extends GameComputerPlayer {
 				game.sendAction(endTurnAction);
 			}
 			else{
+				//select random die to re roll
 				int randomDice = (int)(Math.random() * 5 + 1);
 				if(randomDice == 1){
 					one = true;

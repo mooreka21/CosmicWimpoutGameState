@@ -18,16 +18,17 @@ import android.widget.TextView;
 * device, this player will display a GUI that shows the value of the counter
 * as the game is being played.
 * 
-* @author Steven R. Vegdahl
-* @author Andrew M. Nuxoll
-* @version September 2013
+*@author Sam Lemly
+* @author Olivia Dendinger* @author David Campbell
+ * @author Kayla Moore
+ * @version March 2019
 */
 public class CosmicWimpoutComputerPlayer2 extends CosmicWimpoutComputerPlayer {
 	
 	/*
 	 * instance variables
 	 */
-	
+	//private static final long serialVersionUID= 478598448L;
 	// the most recent game state, as given to us by the CounterLocalGame
 	private CosmicWimpoutState currentGameState = null;
 	
