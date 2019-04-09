@@ -147,6 +147,7 @@ public class CosmicWimpoutComputerPlayer2 extends CosmicWimpoutComputerPlayer {
 
 	//SMART AI METHODS
 	public boolean runSmartAi(GameInfo info){
+		//TODO: Rework for instances in which the bot needs to reroll a select number of dice
 	    int currentTurn = -1;
         if(info instanceof CosmicWimpoutState){
 
@@ -160,22 +161,44 @@ public class CosmicWimpoutComputerPlayer2 extends CosmicWimpoutComputerPlayer {
 						new CosmicWimpoutActionRollAllDice(this);
 				game.sendAction(allDiceAction);
 
+				//if(){// something to check for a flash here
 
+				//}
 			}
-
         }
 	    return false;
     }
+    //these three methods come into play mostly when the bot has rolled a flash on its a first roll.
+	//If the bot scores at all, it'll reroll non-scoring dice only.
+	//Those dice will have to remain static in the copy and not be rerolled.
     private void getScoresFromCopy(GameInfo info){
+
 		if(info instanceof CosmicWimpoutState){
+			//this boolean array helps determine which die are to be kept static in the copy reroll
+			boolean[] diceStatic = new boolean[5];
+			//copy of the dice from the game state
+			Die[] ourDice = ((CosmicWimpoutState) info).getDiceArray();
+			for(int i = 0; i < diceStatic.length; i++){
+				/*iterates through the dice in the current game state and finds which ones need to
+				remain static for rerolls*/
+				if(ourDice[i].dieState == 5 || ourDice[i].dieState == 1) {
+					diceStatic[i] = true;
+				}
+				//flaming sun check
+				else if(ourDice[i].dieID == 3 && (ourDice[i].dieState == 1 ||ourDice[i].dieState == 5)){
+					diceStatic[i] = true;
+				}
+			}
 			/*
 			this generates a number of copies equal to the bot's intelligence
-			and then puts those scores into the bot's scores from copy array.
-			TODO: Rework for instances in which the bot needs to reroll a select number of dice
+			and then puts those scores into the bot's scoresFromCopy array.
+			This method needs to be reworked for instances in which the bot doesn't have to
+			reroll all its dice - this means only a few die will be copied and have to be rerolled.
 			*/
 			for (int i = 0; i < intelligence; i++) {
 				CosmicWimpoutState newCopy = new CosmicWimpoutState((CosmicWimpoutState) info);
-				((CosmicWimpoutState) newCopy).rollAllDice(this.playerNum);
+				newCopy.rollSelectedDice(this.playerNum,diceStatic[0], diceStatic[1],diceStatic[2],
+						diceStatic[3],diceStatic[4]);
 				this.scoresFromCopy[i] = ((CosmicWimpoutState) newCopy).getTurnScore();
 			}
 		}

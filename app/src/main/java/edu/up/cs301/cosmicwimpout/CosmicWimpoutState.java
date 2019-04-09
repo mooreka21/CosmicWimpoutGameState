@@ -1341,7 +1341,9 @@ public class CosmicWimpoutState extends GameState {
 	 */
 	public boolean getIsInstantWinner() {return this.isInstantWinner; }
 
-
+	public Die[] getDiceArray() {
+		return diceArray;
+	}
 }
 
 /** External Citation
