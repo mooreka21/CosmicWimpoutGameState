@@ -95,7 +95,10 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 		this.player1Score.setText(allPlayerNames[0] + ": " + state.getPlayer1Score());
 		this.player2Score.setText(allPlayerNames[1] + ": " + state.getPlayer2Score());
 		this.player3Score.setText("Player 3: " + state.getPlayer3Score());
-		this.turnScore.setText("Turn Score: " + state.getTurnScore());
+		this.turnScore.setText("Turn Score: " + state.getTurnScore() + "pts");
+
+		//need to start a thread that rotates through die faces while rolling
+		Thread th1 = new Thread();
 
 		//setting die 1 face to whatever the current die state is
 		if(state.getDiceVal(0).equals("Tens")){
@@ -197,17 +200,16 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 			this.die5.setImageResource(R.drawable.stars);
 		}
 
-		//highlighting whose turn it is with red font
+		//highlighting whose turn it is with red background
 		int turn = this.state.getWhoseTurn();
 		if(turn == 0){
-			this.player1Score.setTextColor(0xFFFF0000);
-			this.player2Score.setTextColor(0xFF000000);
+			this.player1Score.setBackgroundColor(0xFFFF0000);
+			this.player2Score.setBackgroundColor(0xFFCECECE);
 		}
 		if(turn == 1){
-			this.player2Score.setTextColor(0xFFFF0000);
-			this.player1Score.setTextColor(0xFF000000);
+			this.player2Score.setBackgroundColor(0xFFFF0000);
+			this.player1Score.setBackgroundColor(0xFFCECECE);
 		}
-
 	}
 
 	/**

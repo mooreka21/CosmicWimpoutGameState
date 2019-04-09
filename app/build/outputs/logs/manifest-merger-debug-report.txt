@@ -1,97 +1,97 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/samuellemly/Documents/College/2Sophomore/spring/CS301/CosmicWimpoutGameState/app/src/main/AndroidManifest.xml:1:1-23:12
-INJECTED from /Users/samuellemly/Documents/College/2Sophomore/spring/CS301/CosmicWimpoutGameState/app/src/main/AndroidManifest.xml:1:1-23:12
-INJECTED from /Users/samuellemly/Documents/College/2Sophomore/spring/CS301/CosmicWimpoutGameState/app/src/main/AndroidManifest.xml:1:1-23:12
-INJECTED from /Users/samuellemly/Documents/College/2Sophomore/spring/CS301/CosmicWimpoutGameState/app/src/main/AndroidManifest.xml:1:1-23:12
-MERGED from [com.android.support:support-v4:27.1.1] /Users/samuellemly/.gradle/caches/transforms-1/files-1.1/support-v4-27.1.1.aar/a7caee28521ae3953af71183d0e44683/AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:support-media-compat:27.1.1] /Users/samuellemly/.gradle/caches/transforms-1/files-1.1/support-media-compat-27.1.1.aar/6fe4eadfae907842cb94810997f68ee6/AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:support-fragment:27.1.1] /Users/samuellemly/.gradle/caches/transforms-1/files-1.1/support-fragment-27.1.1.aar/0855bc856963c21551a2721116584699/AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:support-core-ui:27.1.1] /Users/samuellemly/.gradle/caches/transforms-1/files-1.1/support-core-ui-27.1.1.aar/2e1bb6fe5156bdda8e128f7f3a767b32/AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:support-core-utils:27.1.1] /Users/samuellemly/.gradle/caches/transforms-1/files-1.1/support-core-utils-27.1.1.aar/0b33d0467edd0f6732abc61c29d84220/AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:support-compat:27.1.1] /Users/samuellemly/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/88dfe14779a66272665d7bda1129ed28/AndroidManifest.xml:17:1-22:12
-MERGED from [android.arch.lifecycle:runtime:1.1.0] /Users/samuellemly/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/cd83e762cf91109cab1c78ac85774120/AndroidManifest.xml:17:1-22:12
-MERGED from [android.arch.lifecycle:livedata-core:1.1.0] /Users/samuellemly/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.0.aar/e4654947f40dd2a3f224bd871927b5da/AndroidManifest.xml:17:1-22:12
-MERGED from [android.arch.lifecycle:viewmodel:1.1.0] /Users/samuellemly/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.0.aar/cf1f5d8072782d3c4da671fbf6348a8f/AndroidManifest.xml:17:1-22:12
-MERGED from [android.arch.core:runtime:1.1.0] /Users/samuellemly/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/9fc5ab179174dd9bfd0aa3b4401ad320/AndroidManifest.xml:17:1-22:12
-INJECTED from /Users/samuellemly/Documents/College/2Sophomore/spring/CS301/CosmicWimpoutGameState/app/src/main/AndroidManifest.xml:1:1-23:12
-INJECTED from /Users/samuellemly/Documents/College/2Sophomore/spring/CS301/CosmicWimpoutGameState/app/src/main/AndroidManifest.xml:1:1-23:12
-INJECTED from /Users/samuellemly/Documents/College/2Sophomore/spring/CS301/CosmicWimpoutGameState/app/src/main/AndroidManifest.xml:1:1-23:12
+ADDED from /Users/kaylamoore/Documents/School/UP 2018-2019/UP Spring 19/CS 301A (OO)/CosmicWimpout/app/src/main/AndroidManifest.xml:1:1-23:12
+INJECTED from /Users/kaylamoore/Documents/School/UP 2018-2019/UP Spring 19/CS 301A (OO)/CosmicWimpout/app/src/main/AndroidManifest.xml:1:1-23:12
+INJECTED from /Users/kaylamoore/Documents/School/UP 2018-2019/UP Spring 19/CS 301A (OO)/CosmicWimpout/app/src/main/AndroidManifest.xml:1:1-23:12
+INJECTED from /Users/kaylamoore/Documents/School/UP 2018-2019/UP Spring 19/CS 301A (OO)/CosmicWimpout/app/src/main/AndroidManifest.xml:1:1-23:12
+MERGED from [com.android.support:support-v4:27.1.1] /Users/kaylamoore/.gradle/caches/transforms-1/files-1.1/support-v4-27.1.1.aar/e2e8e68958daf82785d4a6a69e1f5d86/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-media-compat:27.1.1] /Users/kaylamoore/.gradle/caches/transforms-1/files-1.1/support-media-compat-27.1.1.aar/dc57f4714a827697d8e0a551645a253b/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-fragment:27.1.1] /Users/kaylamoore/.gradle/caches/transforms-1/files-1.1/support-fragment-27.1.1.aar/a9a2d27325f827b312e6370714717d7d/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-ui:27.1.1] /Users/kaylamoore/.gradle/caches/transforms-1/files-1.1/support-core-ui-27.1.1.aar/ee6526b856ebeebdb5a71eb85cfdb3a6/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-utils:27.1.1] /Users/kaylamoore/.gradle/caches/transforms-1/files-1.1/support-core-utils-27.1.1.aar/79e0df8fdc1b41bc6eab2978e4aa158e/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-compat:27.1.1] /Users/kaylamoore/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/8282206716c53fc49d7523216e83afc9/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:runtime:1.1.0] /Users/kaylamoore/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/683f323b680e36f9c8d45fffa252e303/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:livedata-core:1.1.0] /Users/kaylamoore/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.0.aar/4675ce40ac5b6632115b8f19874689f0/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:viewmodel:1.1.0] /Users/kaylamoore/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.0.aar/4d2c2112114cdc3fc44d3800ea3b3114/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.core:runtime:1.1.0] /Users/kaylamoore/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/33ae0fe337540eb711b3fc4926bd4169/AndroidManifest.xml:17:1-22:12
+INJECTED from /Users/kaylamoore/Documents/School/UP 2018-2019/UP Spring 19/CS 301A (OO)/CosmicWimpout/app/src/main/AndroidManifest.xml:1:1-23:12
+INJECTED from /Users/kaylamoore/Documents/School/UP 2018-2019/UP Spring 19/CS 301A (OO)/CosmicWimpout/app/src/main/AndroidManifest.xml:1:1-23:12
+INJECTED from /Users/kaylamoore/Documents/School/UP 2018-2019/UP Spring 19/CS 301A (OO)/CosmicWimpout/app/src/main/AndroidManifest.xml:1:1-23:12
 	package
-		ADDED from /Users/samuellemly/Documents/College/2Sophomore/spring/CS301/CosmicWimpoutGameState/app/src/main/AndroidManifest.xml:2:5-32
-		INJECTED from /Users/samuellemly/Documents/College/2Sophomore/spring/CS301/CosmicWimpoutGameState/app/src/main/AndroidManifest.xml
-		INJECTED from /Users/samuellemly/Documents/College/2Sophomore/spring/CS301/CosmicWimpoutGameState/app/src/main/AndroidManifest.xml
+		ADDED from /Users/kaylamoore/Documents/School/UP 2018-2019/UP Spring 19/CS 301A (OO)/CosmicWimpout/app/src/main/AndroidManifest.xml:2:5-32
+		INJECTED from /Users/kaylamoore/Documents/School/UP 2018-2019/UP Spring 19/CS 301A (OO)/CosmicWimpout/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/kaylamoore/Documents/School/UP 2018-2019/UP Spring 19/CS 301A (OO)/CosmicWimpout/app/src/main/AndroidManifest.xml
 	android:versionName
-		ADDED from /Users/samuellemly/Documents/College/2Sophomore/spring/CS301/CosmicWimpoutGameState/app/src/main/AndroidManifest.xml:4:5-30
-		INJECTED from /Users/samuellemly/Documents/College/2Sophomore/spring/CS301/CosmicWimpoutGameState/app/src/main/AndroidManifest.xml
-		INJECTED from /Users/samuellemly/Documents/College/2Sophomore/spring/CS301/CosmicWimpoutGameState/app/src/main/AndroidManifest.xml
+		ADDED from /Users/kaylamoore/Documents/School/UP 2018-2019/UP Spring 19/CS 301A (OO)/CosmicWimpout/app/src/main/AndroidManifest.xml:4:5-30
+		INJECTED from /Users/kaylamoore/Documents/School/UP 2018-2019/UP Spring 19/CS 301A (OO)/CosmicWimpout/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/kaylamoore/Documents/School/UP 2018-2019/UP Spring 19/CS 301A (OO)/CosmicWimpout/app/src/main/AndroidManifest.xml
 	xmlns:android
-		ADDED from /Users/samuellemly/Documents/College/2Sophomore/spring/CS301/CosmicWimpoutGameState/app/src/main/AndroidManifest.xml:1:11-69
+		ADDED from /Users/kaylamoore/Documents/School/UP 2018-2019/UP Spring 19/CS 301A (OO)/CosmicWimpout/app/src/main/AndroidManifest.xml:1:11-69
 	android:versionCode
-		ADDED from /Users/samuellemly/Documents/College/2Sophomore/spring/CS301/CosmicWimpoutGameState/app/src/main/AndroidManifest.xml:3:5-28
-		INJECTED from /Users/samuellemly/Documents/College/2Sophomore/spring/CS301/CosmicWimpoutGameState/app/src/main/AndroidManifest.xml
-		INJECTED from /Users/samuellemly/Documents/College/2Sophomore/spring/CS301/CosmicWimpoutGameState/app/src/main/AndroidManifest.xml
+		ADDED from /Users/kaylamoore/Documents/School/UP 2018-2019/UP Spring 19/CS 301A (OO)/CosmicWimpout/app/src/main/AndroidManifest.xml:3:5-28
+		INJECTED from /Users/kaylamoore/Documents/School/UP 2018-2019/UP Spring 19/CS 301A (OO)/CosmicWimpout/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/kaylamoore/Documents/School/UP 2018-2019/UP Spring 19/CS 301A (OO)/CosmicWimpout/app/src/main/AndroidManifest.xml
 uses-permission#android.permission.INTERNET
-ADDED from /Users/samuellemly/Documents/College/2Sophomore/spring/CS301/CosmicWimpoutGameState/app/src/main/AndroidManifest.xml:6:5-67
+ADDED from /Users/kaylamoore/Documents/School/UP 2018-2019/UP Spring 19/CS 301A (OO)/CosmicWimpout/app/src/main/AndroidManifest.xml:6:5-67
 	android:name
-		ADDED from /Users/samuellemly/Documents/College/2Sophomore/spring/CS301/CosmicWimpoutGameState/app/src/main/AndroidManifest.xml:6:22-64
+		ADDED from /Users/kaylamoore/Documents/School/UP 2018-2019/UP Spring 19/CS 301A (OO)/CosmicWimpout/app/src/main/AndroidManifest.xml:6:22-64
 uses-permission#android.permission.ACCESS_NETWORK_STATE
-ADDED from /Users/samuellemly/Documents/College/2Sophomore/spring/CS301/CosmicWimpoutGameState/app/src/main/AndroidManifest.xml:7:5-79
+ADDED from /Users/kaylamoore/Documents/School/UP 2018-2019/UP Spring 19/CS 301A (OO)/CosmicWimpout/app/src/main/AndroidManifest.xml:7:5-79
 	android:name
-		ADDED from /Users/samuellemly/Documents/College/2Sophomore/spring/CS301/CosmicWimpoutGameState/app/src/main/AndroidManifest.xml:7:22-76
+		ADDED from /Users/kaylamoore/Documents/School/UP 2018-2019/UP Spring 19/CS 301A (OO)/CosmicWimpout/app/src/main/AndroidManifest.xml:7:22-76
 application
-ADDED from /Users/samuellemly/Documents/College/2Sophomore/spring/CS301/CosmicWimpoutGameState/app/src/main/AndroidManifest.xml:9:5-21:19
+ADDED from /Users/kaylamoore/Documents/School/UP 2018-2019/UP Spring 19/CS 301A (OO)/CosmicWimpout/app/src/main/AndroidManifest.xml:9:5-21:19
 	android:label
-		ADDED from /Users/samuellemly/Documents/College/2Sophomore/spring/CS301/CosmicWimpoutGameState/app/src/main/AndroidManifest.xml:10:9-39
+		ADDED from /Users/kaylamoore/Documents/School/UP 2018-2019/UP Spring 19/CS 301A (OO)/CosmicWimpout/app/src/main/AndroidManifest.xml:10:9-39
 	android:theme
-		ADDED from /Users/samuellemly/Documents/College/2Sophomore/spring/CS301/CosmicWimpoutGameState/app/src/main/AndroidManifest.xml:11:9-40
+		ADDED from /Users/kaylamoore/Documents/School/UP 2018-2019/UP Spring 19/CS 301A (OO)/CosmicWimpout/app/src/main/AndroidManifest.xml:11:9-40
 activity#edu.up.cs301.cosmicwimpout.CosmicWimpoutMainActivity
-ADDED from /Users/samuellemly/Documents/College/2Sophomore/spring/CS301/CosmicWimpoutGameState/app/src/main/AndroidManifest.xml:13:9-19:20
+ADDED from /Users/kaylamoore/Documents/School/UP 2018-2019/UP Spring 19/CS 301A (OO)/CosmicWimpout/app/src/main/AndroidManifest.xml:13:9-19:20
 	android:configChanges
-		ADDED from /Users/samuellemly/Documents/College/2Sophomore/spring/CS301/CosmicWimpoutGameState/app/src/main/AndroidManifest.xml:14:13-83
+		ADDED from /Users/kaylamoore/Documents/School/UP 2018-2019/UP Spring 19/CS 301A (OO)/CosmicWimpout/app/src/main/AndroidManifest.xml:14:13-83
 	android:name
-		ADDED from /Users/samuellemly/Documents/College/2Sophomore/spring/CS301/CosmicWimpoutGameState/app/src/main/AndroidManifest.xml:13:19-86
+		ADDED from /Users/kaylamoore/Documents/School/UP 2018-2019/UP Spring 19/CS 301A (OO)/CosmicWimpout/app/src/main/AndroidManifest.xml:13:19-86
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from /Users/samuellemly/Documents/College/2Sophomore/spring/CS301/CosmicWimpoutGameState/app/src/main/AndroidManifest.xml:15:13-18:29
+ADDED from /Users/kaylamoore/Documents/School/UP 2018-2019/UP Spring 19/CS 301A (OO)/CosmicWimpout/app/src/main/AndroidManifest.xml:15:13-18:29
 action#android.intent.action.MAIN
-ADDED from /Users/samuellemly/Documents/College/2Sophomore/spring/CS301/CosmicWimpoutGameState/app/src/main/AndroidManifest.xml:16:17-69
+ADDED from /Users/kaylamoore/Documents/School/UP 2018-2019/UP Spring 19/CS 301A (OO)/CosmicWimpout/app/src/main/AndroidManifest.xml:16:17-69
 	android:name
-		ADDED from /Users/samuellemly/Documents/College/2Sophomore/spring/CS301/CosmicWimpoutGameState/app/src/main/AndroidManifest.xml:16:25-66
+		ADDED from /Users/kaylamoore/Documents/School/UP 2018-2019/UP Spring 19/CS 301A (OO)/CosmicWimpout/app/src/main/AndroidManifest.xml:16:25-66
 category#android.intent.category.LAUNCHER
-ADDED from /Users/samuellemly/Documents/College/2Sophomore/spring/CS301/CosmicWimpoutGameState/app/src/main/AndroidManifest.xml:17:17-77
+ADDED from /Users/kaylamoore/Documents/School/UP 2018-2019/UP Spring 19/CS 301A (OO)/CosmicWimpout/app/src/main/AndroidManifest.xml:17:17-77
 	android:name
-		ADDED from /Users/samuellemly/Documents/College/2Sophomore/spring/CS301/CosmicWimpoutGameState/app/src/main/AndroidManifest.xml:17:27-74
+		ADDED from /Users/kaylamoore/Documents/School/UP 2018-2019/UP Spring 19/CS 301A (OO)/CosmicWimpout/app/src/main/AndroidManifest.xml:17:27-74
 uses-sdk
-INJECTED from /Users/samuellemly/Documents/College/2Sophomore/spring/CS301/CosmicWimpoutGameState/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
-INJECTED from /Users/samuellemly/Documents/College/2Sophomore/spring/CS301/CosmicWimpoutGameState/app/src/main/AndroidManifest.xml
-INJECTED from /Users/samuellemly/Documents/College/2Sophomore/spring/CS301/CosmicWimpoutGameState/app/src/main/AndroidManifest.xml
-MERGED from [com.android.support:support-v4:27.1.1] /Users/samuellemly/.gradle/caches/transforms-1/files-1.1/support-v4-27.1.1.aar/a7caee28521ae3953af71183d0e44683/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-v4:27.1.1] /Users/samuellemly/.gradle/caches/transforms-1/files-1.1/support-v4-27.1.1.aar/a7caee28521ae3953af71183d0e44683/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-media-compat:27.1.1] /Users/samuellemly/.gradle/caches/transforms-1/files-1.1/support-media-compat-27.1.1.aar/6fe4eadfae907842cb94810997f68ee6/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-media-compat:27.1.1] /Users/samuellemly/.gradle/caches/transforms-1/files-1.1/support-media-compat-27.1.1.aar/6fe4eadfae907842cb94810997f68ee6/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-fragment:27.1.1] /Users/samuellemly/.gradle/caches/transforms-1/files-1.1/support-fragment-27.1.1.aar/0855bc856963c21551a2721116584699/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-fragment:27.1.1] /Users/samuellemly/.gradle/caches/transforms-1/files-1.1/support-fragment-27.1.1.aar/0855bc856963c21551a2721116584699/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-core-ui:27.1.1] /Users/samuellemly/.gradle/caches/transforms-1/files-1.1/support-core-ui-27.1.1.aar/2e1bb6fe5156bdda8e128f7f3a767b32/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-core-ui:27.1.1] /Users/samuellemly/.gradle/caches/transforms-1/files-1.1/support-core-ui-27.1.1.aar/2e1bb6fe5156bdda8e128f7f3a767b32/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-core-utils:27.1.1] /Users/samuellemly/.gradle/caches/transforms-1/files-1.1/support-core-utils-27.1.1.aar/0b33d0467edd0f6732abc61c29d84220/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-core-utils:27.1.1] /Users/samuellemly/.gradle/caches/transforms-1/files-1.1/support-core-utils-27.1.1.aar/0b33d0467edd0f6732abc61c29d84220/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-compat:27.1.1] /Users/samuellemly/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/88dfe14779a66272665d7bda1129ed28/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-compat:27.1.1] /Users/samuellemly/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/88dfe14779a66272665d7bda1129ed28/AndroidManifest.xml:20:5-44
-MERGED from [android.arch.lifecycle:runtime:1.1.0] /Users/samuellemly/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/cd83e762cf91109cab1c78ac85774120/AndroidManifest.xml:20:5-44
-MERGED from [android.arch.lifecycle:runtime:1.1.0] /Users/samuellemly/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/cd83e762cf91109cab1c78ac85774120/AndroidManifest.xml:20:5-44
-MERGED from [android.arch.lifecycle:livedata-core:1.1.0] /Users/samuellemly/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.0.aar/e4654947f40dd2a3f224bd871927b5da/AndroidManifest.xml:20:5-44
-MERGED from [android.arch.lifecycle:livedata-core:1.1.0] /Users/samuellemly/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.0.aar/e4654947f40dd2a3f224bd871927b5da/AndroidManifest.xml:20:5-44
-MERGED from [android.arch.lifecycle:viewmodel:1.1.0] /Users/samuellemly/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.0.aar/cf1f5d8072782d3c4da671fbf6348a8f/AndroidManifest.xml:20:5-44
-MERGED from [android.arch.lifecycle:viewmodel:1.1.0] /Users/samuellemly/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.0.aar/cf1f5d8072782d3c4da671fbf6348a8f/AndroidManifest.xml:20:5-44
-MERGED from [android.arch.core:runtime:1.1.0] /Users/samuellemly/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/9fc5ab179174dd9bfd0aa3b4401ad320/AndroidManifest.xml:20:5-44
-MERGED from [android.arch.core:runtime:1.1.0] /Users/samuellemly/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/9fc5ab179174dd9bfd0aa3b4401ad320/AndroidManifest.xml:20:5-44
-INJECTED from /Users/samuellemly/Documents/College/2Sophomore/spring/CS301/CosmicWimpoutGameState/app/src/main/AndroidManifest.xml
-INJECTED from /Users/samuellemly/Documents/College/2Sophomore/spring/CS301/CosmicWimpoutGameState/app/src/main/AndroidManifest.xml
+INJECTED from /Users/kaylamoore/Documents/School/UP 2018-2019/UP Spring 19/CS 301A (OO)/CosmicWimpout/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Users/kaylamoore/Documents/School/UP 2018-2019/UP Spring 19/CS 301A (OO)/CosmicWimpout/app/src/main/AndroidManifest.xml
+INJECTED from /Users/kaylamoore/Documents/School/UP 2018-2019/UP Spring 19/CS 301A (OO)/CosmicWimpout/app/src/main/AndroidManifest.xml
+MERGED from [com.android.support:support-v4:27.1.1] /Users/kaylamoore/.gradle/caches/transforms-1/files-1.1/support-v4-27.1.1.aar/e2e8e68958daf82785d4a6a69e1f5d86/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v4:27.1.1] /Users/kaylamoore/.gradle/caches/transforms-1/files-1.1/support-v4-27.1.1.aar/e2e8e68958daf82785d4a6a69e1f5d86/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-media-compat:27.1.1] /Users/kaylamoore/.gradle/caches/transforms-1/files-1.1/support-media-compat-27.1.1.aar/dc57f4714a827697d8e0a551645a253b/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-media-compat:27.1.1] /Users/kaylamoore/.gradle/caches/transforms-1/files-1.1/support-media-compat-27.1.1.aar/dc57f4714a827697d8e0a551645a253b/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:27.1.1] /Users/kaylamoore/.gradle/caches/transforms-1/files-1.1/support-fragment-27.1.1.aar/a9a2d27325f827b312e6370714717d7d/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:27.1.1] /Users/kaylamoore/.gradle/caches/transforms-1/files-1.1/support-fragment-27.1.1.aar/a9a2d27325f827b312e6370714717d7d/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:27.1.1] /Users/kaylamoore/.gradle/caches/transforms-1/files-1.1/support-core-ui-27.1.1.aar/ee6526b856ebeebdb5a71eb85cfdb3a6/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:27.1.1] /Users/kaylamoore/.gradle/caches/transforms-1/files-1.1/support-core-ui-27.1.1.aar/ee6526b856ebeebdb5a71eb85cfdb3a6/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:27.1.1] /Users/kaylamoore/.gradle/caches/transforms-1/files-1.1/support-core-utils-27.1.1.aar/79e0df8fdc1b41bc6eab2978e4aa158e/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:27.1.1] /Users/kaylamoore/.gradle/caches/transforms-1/files-1.1/support-core-utils-27.1.1.aar/79e0df8fdc1b41bc6eab2978e4aa158e/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:27.1.1] /Users/kaylamoore/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/8282206716c53fc49d7523216e83afc9/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:27.1.1] /Users/kaylamoore/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/8282206716c53fc49d7523216e83afc9/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.0] /Users/kaylamoore/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/683f323b680e36f9c8d45fffa252e303/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.0] /Users/kaylamoore/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/683f323b680e36f9c8d45fffa252e303/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.0] /Users/kaylamoore/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.0.aar/4675ce40ac5b6632115b8f19874689f0/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.0] /Users/kaylamoore/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.0.aar/4675ce40ac5b6632115b8f19874689f0/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.0] /Users/kaylamoore/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.0.aar/4d2c2112114cdc3fc44d3800ea3b3114/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.0] /Users/kaylamoore/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.0.aar/4d2c2112114cdc3fc44d3800ea3b3114/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.0] /Users/kaylamoore/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/33ae0fe337540eb711b3fc4926bd4169/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.0] /Users/kaylamoore/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/33ae0fe337540eb711b3fc4926bd4169/AndroidManifest.xml:20:5-44
+INJECTED from /Users/kaylamoore/Documents/School/UP 2018-2019/UP Spring 19/CS 301A (OO)/CosmicWimpout/app/src/main/AndroidManifest.xml
+INJECTED from /Users/kaylamoore/Documents/School/UP 2018-2019/UP Spring 19/CS 301A (OO)/CosmicWimpout/app/src/main/AndroidManifest.xml
 	android:targetSdkVersion
-		INJECTED from /Users/samuellemly/Documents/College/2Sophomore/spring/CS301/CosmicWimpoutGameState/app/src/main/AndroidManifest.xml
-		ADDED from /Users/samuellemly/Documents/College/2Sophomore/spring/CS301/CosmicWimpoutGameState/app/src/main/AndroidManifest.xml
-		INJECTED from /Users/samuellemly/Documents/College/2Sophomore/spring/CS301/CosmicWimpoutGameState/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/kaylamoore/Documents/School/UP 2018-2019/UP Spring 19/CS 301A (OO)/CosmicWimpout/app/src/main/AndroidManifest.xml
+		ADDED from /Users/kaylamoore/Documents/School/UP 2018-2019/UP Spring 19/CS 301A (OO)/CosmicWimpout/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/kaylamoore/Documents/School/UP 2018-2019/UP Spring 19/CS 301A (OO)/CosmicWimpout/app/src/main/AndroidManifest.xml
 	android:minSdkVersion
-		INJECTED from /Users/samuellemly/Documents/College/2Sophomore/spring/CS301/CosmicWimpoutGameState/app/src/main/AndroidManifest.xml
-		ADDED from /Users/samuellemly/Documents/College/2Sophomore/spring/CS301/CosmicWimpoutGameState/app/src/main/AndroidManifest.xml
-		INJECTED from /Users/samuellemly/Documents/College/2Sophomore/spring/CS301/CosmicWimpoutGameState/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/kaylamoore/Documents/School/UP 2018-2019/UP Spring 19/CS 301A (OO)/CosmicWimpout/app/src/main/AndroidManifest.xml
+		ADDED from /Users/kaylamoore/Documents/School/UP 2018-2019/UP Spring 19/CS 301A (OO)/CosmicWimpout/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/kaylamoore/Documents/School/UP 2018-2019/UP Spring 19/CS 301A (OO)/CosmicWimpout/app/src/main/AndroidManifest.xml
