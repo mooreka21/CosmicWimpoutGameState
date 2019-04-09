@@ -9,6 +9,7 @@ import edu.up.cs301.game.infoMsg.IllegalMoveInfo;
 import edu.up.cs301.game.infoMsg.NotYourTurnInfo;
 
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -16,6 +17,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.view.View.OnClickListener;
 import android.widget.Toast;
+
+import java.util.ArrayList;
 
 /**
  * A GUI of a cosmic wimpout-player. The GUI displays the current value of the
@@ -29,7 +32,7 @@ import android.widget.Toast;
  * @author Kayla Moore
  *  @version March 2019
  */
-public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClickListener/*, Runnable*/ {
+public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClickListener, Runnable {
 
 	/* instance variables */
     private static final long serialVersionUID= 9876483921L;
@@ -40,7 +43,7 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 	private TextView player4Score;
 	private TextView turnScore;
 
-	//variables for buutons
+	//variables for buttons
 	private Button endGameButton = null;
 	private Button endTurnButton = null;
 	private Button rollDiceButton = null;
@@ -57,6 +60,12 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 	private boolean isCheck3 = false;
 	private boolean isCheck4 = false;
 	private boolean isCheck5 = false;
+
+	//arrays that hold the die faces
+	private int redDieFaces[] = {R.drawable.ten, R.drawable.halfcircles, R.drawable.triangle,
+			R.drawable.bolts, R.drawable.five, R.drawable.stars};
+	private int blackDieFaces[] = {R.drawable.blackten, R.drawable.blacktwocircles, R.drawable.flamingsun,
+			R.drawable.blackbolt, R.drawable.blackfive, R.drawable.blackstar};
 
 	//to make sure they press roll all dice first
 	private int actionsPressed = 0;
@@ -99,107 +108,107 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 		this.turnScore.setText("Turn Score: " + state.getTurnScore() + "pts");
 
 		//TODO: start a thread that rotates through die faces while rolling
-		//Thread th1 = new Thread();
-		//th1.start();
+		Thread th1 = new Thread();
+		th1.start();
 
 		//setting die 1 face to whatever the current die state is
 		if(state.getDiceVal(0).equals("Tens")){
-			this.die1.setImageResource(R.drawable.ten);
+			this.die1.setImageResource(redDieFaces[0]);
 		}
 		else if(state.getDiceVal(0).equals("Moons")){
-			this.die1.setImageResource(R.drawable.halfcircles);
+			this.die1.setImageResource(redDieFaces[1]);
 		}
 		else if(state.getDiceVal(0).equals("Triangles")){
-			this.die1.setImageResource(R.drawable.triangle);
+			this.die1.setImageResource(redDieFaces[2]);
 		}
 		else if(state.getDiceVal(0).equals("Bolts")){
-			this.die1.setImageResource(R.drawable.bolts);
+			this.die1.setImageResource(redDieFaces[3]);
 		}
 		else if(state.getDiceVal(0).equals("Fives")){
-			this.die1.setImageResource(R.drawable.five);
+			this.die1.setImageResource(redDieFaces[4]);
 		}
 		else if(state.getDiceVal(0).equals("Stars")){
-			this.die1.setImageResource(R.drawable.stars);
+			this.die1.setImageResource(redDieFaces[5]);
 		}
 
 		//setting die to face
 		if(state.getDiceVal(1).equals("Tens")){
-			this.die2.setImageResource(R.drawable.ten);
+			this.die2.setImageResource(redDieFaces[0]);
 		}
 		else if(state.getDiceVal(1).equals("Moons")){
-			this.die2.setImageResource(R.drawable.halfcircles);
+			this.die2.setImageResource(redDieFaces[1]);
 		}
 		else if(state.getDiceVal(1).equals("Triangles")){
-			this.die2.setImageResource(R.drawable.triangle);
+			this.die2.setImageResource(redDieFaces[2]);
 		}
 		else if(state.getDiceVal(1).equals("Bolts")){
-			this.die2.setImageResource(R.drawable.bolts);
+			this.die2.setImageResource(redDieFaces[3]);
 		}
 		else if(state.getDiceVal(1).equals("Fives")){
-			this.die2.setImageResource(R.drawable.five);
+			this.die2.setImageResource(redDieFaces[4]);
 		}
 		else if(state.getDiceVal(1).equals("Stars")){
-			this.die2.setImageResource(R.drawable.stars);
+			this.die2.setImageResource(redDieFaces[5]);
 		}
 
 		//setting die 3 face
 		if(state.getDiceVal(2).equals("Tens")){
-			this.die3.setImageResource(R.drawable.blackten);
+			this.die3.setImageResource(blackDieFaces[0]);
 		}
 		else if(state.getDiceVal(2).equals("Moons")){
-			this.die3.setImageResource(R.drawable.blacktwocircles);
+			this.die3.setImageResource(blackDieFaces[1]);
 		}
 		else if(state.getDiceVal(2).equals("Flaming Sun")){
-			this.die3.setImageResource(R.drawable.flamingsun);
+			this.die3.setImageResource(blackDieFaces[2]);
 		}
 		else if(state.getDiceVal(2).equals("Bolts")){
-			this.die3.setImageResource(R.drawable.blackbolt);
+			this.die3.setImageResource(blackDieFaces[3]);
 		}
 		else if(state.getDiceVal(2).equals("Fives")){
-			this.die3.setImageResource(R.drawable.blackfive);
+			this.die3.setImageResource(blackDieFaces[4]);
 		}
 		else if(state.getDiceVal(2).equals("Stars")){
-			this.die3.setImageResource(R.drawable.blackstar);
+			this.die3.setImageResource(blackDieFaces[5]);
 		}
 
 		//setting die 4 face
 		if(state.getDiceVal(3).equals("Tens")){
-			this.die4.setImageResource(R.drawable.ten);
+			this.die4.setImageResource(redDieFaces[0]);
 		}
 		else if(state.getDiceVal(3).equals("Moons")){
-			this.die4.setImageResource(R.drawable.halfcircles);
+			this.die4.setImageResource(redDieFaces[1]);
 		}
 		else if(state.getDiceVal(3).equals("Triangles")){
-			this.die4.setImageResource(R.drawable.triangle);
+			this.die4.setImageResource(redDieFaces[2]);
 		}
 		else if(state.getDiceVal(3).equals("Bolts")){
-			this.die4.setImageResource(R.drawable.bolts);
+			this.die4.setImageResource(redDieFaces[3]);
 		}
 		else if(state.getDiceVal(3).equals("Fives")){
-			this.die4.setImageResource(R.drawable.five);
+			this.die4.setImageResource(redDieFaces[4]);
 		}
 		else if(state.getDiceVal(3).equals("Stars")){
-			this.die4.setImageResource(R.drawable.stars);
+			this.die4.setImageResource(redDieFaces[5]);
 		}
 
 		//setting die 5 face
 		if(state.getDiceVal(4).equals("Tens")){
-			this.die5.setImageResource(R.drawable.ten);
+			this.die5.setImageResource(redDieFaces[0]);
 		}
 		else if(state.getDiceVal(4).equals("Moons")){
-			this.die5.setImageResource(R.drawable.halfcircles);
+			this.die5.setImageResource(redDieFaces[1]);
 		}
 		else if(state.getDiceVal(4).equals("Triangles")){
-			this.die5.setImageResource(R.drawable.triangle);
+			this.die5.setImageResource(redDieFaces[2]);
 		}
 		else if(state.getDiceVal(4).equals("Bolts")){
-			this.die5.setImageResource(R.drawable.bolts);
+			this.die5.setImageResource(redDieFaces[3]);
 		}
 		else if(state.getDiceVal(4).equals("Fives")){
-			this.die5.setImageResource(R.drawable.five);
+			this.die5.setImageResource(redDieFaces[4]);
 		}
 		else if(state.getDiceVal(4).equals("Stars")){
-			this.die5.setImageResource(R.drawable.stars);
+			this.die5.setImageResource(redDieFaces[5]);
 		}
 
 		//highlighting whose turn it is with red background
@@ -545,16 +554,23 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 		return true;
 	}
 
-	//run method for the thread that will rotate through each face of the die
-	/*@Override
+	//run method for the thread that will rotate through each face of the die once then land on the correct face
+	@Override
 	public void run(){
-		for(int i = 0; i < 6; i++) {
+		for(int i = 0; i < redDieFaces.length; i++) {
 			try {
 				Thread.sleep(20);
-				this.updateDisplay();
-			} catch (Exception e) {*//*do nothing*//* }
+				if(rollDiceButton.isPressed() || rollSelectedButton.isPressed()){
+                    //this.updateDisplay();
+					this.die1.setImageResource(redDieFaces[i]);
+					this.die2.setImageResource(redDieFaces[i]);
+					this.die3.setImageResource(blackDieFaces[i]);
+					this.die4.setImageResource(redDieFaces[i]);
+					this.die5.setImageResource(redDieFaces[i]);
+                }
+			} catch (Exception e) {/*do nothing*/ }
 		}
-	}*/
+	}
 
 
 }// class CounterHumanPlayer
