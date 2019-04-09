@@ -172,7 +172,6 @@ public class CosmicWimpoutComputerPlayer2 extends CosmicWimpoutComputerPlayer {
 	//If the bot scores at all, it'll reroll non-scoring dice only.
 	//Those dice will have to remain static in the copy and not be rerolled.
     private void getScoresFromCopy(GameInfo info){
-
 		if(info instanceof CosmicWimpoutState){
 			//this boolean array helps determine which die are to be kept static in the copy reroll
 			boolean[] diceStatic = new boolean[5];
@@ -184,13 +183,16 @@ public class CosmicWimpoutComputerPlayer2 extends CosmicWimpoutComputerPlayer {
 				if(ourDice[i].dieState == 5 || ourDice[i].dieState == 1) {
 					diceStatic[i] = true;
 				}
-				//flaming sun check
-				else if(ourDice[i].dieID == 3 && (ourDice[i].dieState == 1 ||ourDice[i].dieState == 5)){
+				//flaming sun check, keeps the flaming sun die if it's on a scoring face
+				else if(ourDice[i].dieID == 3 &&
+                        (ourDice[i].dieState == 1
+                        ||ourDice[i].dieState == 3
+                        ||ourDice[i].dieState == 5)){
 					diceStatic[i] = true;
 				}
 			}
 			/*
-			this generates a number of copies equal to the bot's intelligence
+			this generates a number of copies equal to the bot's intelligence,
 			and then puts those scores into the bot's scoresFromCopy array.
 			This method needs to be reworked for instances in which the bot doesn't have to
 			reroll all its dice - this means only a few die will be copied and have to be rerolled.
