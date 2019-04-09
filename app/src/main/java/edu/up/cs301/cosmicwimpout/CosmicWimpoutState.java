@@ -66,6 +66,7 @@ public class CosmicWimpoutState extends GameState {
 		this.playerArrayList.add(new Player(1));
 		this.playerArrayList.add(new Player(2));
 		this.playerArrayList.add(new Player(3));
+		this.playerArrayList.add(new Player(4));
 
 		for(int i = 0; i < diceArray.length; i++){
 			//initialize all dice
@@ -812,6 +813,10 @@ public class CosmicWimpoutState extends GameState {
 
 	public int getPlayer3Score(){
 		return this.playerArrayList.get(2).getPlayerScore();
+	}
+
+	public int getPlayer4Score(){
+		return this.playerArrayList.get(3).getPlayerScore();
 	}
 
 	/**

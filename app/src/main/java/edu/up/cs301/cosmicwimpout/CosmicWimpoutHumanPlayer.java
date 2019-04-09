@@ -29,7 +29,7 @@ import android.widget.Toast;
  * @author Kayla Moore
  *  @version March 2019
  */
-public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClickListener {
+public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClickListener/*, Runnable*/ {
 
 	/* instance variables */
     private static final long serialVersionUID= 9876483921L;
@@ -95,10 +95,12 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 		this.player1Score.setText(allPlayerNames[0] + ": " + state.getPlayer1Score());
 		this.player2Score.setText(allPlayerNames[1] + ": " + state.getPlayer2Score());
 		this.player3Score.setText("Player 3: " + state.getPlayer3Score());
+		//this.player4Score.setText(allPlayerNames[3] + ": " + state.getPlayer4Score());
 		this.turnScore.setText("Turn Score: " + state.getTurnScore() + "pts");
 
-		//need to start a thread that rotates through die faces while rolling
-		Thread th1 = new Thread();
+		//TODO: start a thread that rotates through die faces while rolling
+		//Thread th1 = new Thread();
+		//th1.start();
 
 		//setting die 1 face to whatever the current die state is
 		if(state.getDiceVal(0).equals("Tens")){
@@ -542,6 +544,17 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 		}
 		return true;
 	}
+
+	//run method for the thread that will rotate through each face of the die
+	/*@Override
+	public void run(){
+		for(int i = 0; i < 6; i++) {
+			try {
+				Thread.sleep(20);
+				this.updateDisplay();
+			} catch (Exception e) {*//*do nothing*//* }
+		}
+	}*/
 
 
 }// class CounterHumanPlayer
