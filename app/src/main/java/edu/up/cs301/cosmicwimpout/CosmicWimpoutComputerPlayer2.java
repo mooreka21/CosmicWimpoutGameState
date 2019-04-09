@@ -24,13 +24,16 @@ import android.widget.TextView;
  * @version March 2019
 */
 public class CosmicWimpoutComputerPlayer2 extends CosmicWimpoutComputerPlayer {
-	
+    private int scoresFromCopy[];
+    private int numRollsThisTurn;
+    private float odds;
+    private int intelligence;
 	/*
 	 * instance variables
 	 */
 	//private static final long serialVersionUID= 478598448L;
 	// the most recent game state, as given to us by the CounterLocalGame
-	private CosmicWimpoutState currentGameState = null;
+	private CosmicWimpoutState state = null;
 	
 	// If this player is running the GUI, the activity (null if the player is
 	// not running a GUI).
@@ -73,7 +76,7 @@ public class CosmicWimpoutComputerPlayer2 extends CosmicWimpoutComputerPlayer {
 		}
 		else if (info instanceof CosmicWimpoutState) {
 			// if we indeed have a counter-state, update the GUI
-			currentGameState = (CosmicWimpoutState)info;
+			state = (CosmicWimpoutState)info;
 			updateDisplay();
 		}
 	}
@@ -90,7 +93,7 @@ public class CosmicWimpoutComputerPlayer2 extends CosmicWimpoutComputerPlayer {
 			guiHandler.post(
 					new Runnable() {
 						public void run() {
-						if (cosmicWimpoutValueTextView != null && currentGameState != null) {
+						if (cosmicWimpoutValueTextView != null && state != null) {
 							//cosmicWimpoutValueTextView.setText("" + currentGameState.getCounter());
 						}
 					}});
@@ -137,9 +140,67 @@ public class CosmicWimpoutComputerPlayer2 extends CosmicWimpoutComputerPlayer {
 		//minusButton.setEnabled(false);
 		
 		// if the state is non=null, update the display
-		if (currentGameState != null) {
+		if (state != null) {
 			updateDisplay();
 		}
+	}
+
+	//SMART AI METHODS
+	public boolean runSmartAi(GameInfo info){
+	    int currentTurn = -1;
+        if(info instanceof CosmicWimpoutState){
+
+            this.state = (CosmicWimpoutState) info;
+            currentTurn = this.state.getWhoseTurn();
+            if(currentTurn != playerNum){}
+            else {
+				//roll all dice to start the turn. Similar setup to dumb ai.
+            	sleep(2500);
+				CosmicWimpoutActionRollAllDice allDiceAction =
+						new CosmicWimpoutActionRollAllDice(this);
+				game.sendAction(allDiceAction);
+
+
+			}
+
+        }
+	    return false;
+    }
+    private void getScoresFromCopy(GameInfo info){
+		if(info instanceof CosmicWimpoutState){
+			/*
+			this generates a number of copies equal to the bot's intelligence
+			and then puts those scores into the bot's scores from copy array.
+			TODO: Rework for instances in which the bot needs to reroll a select number of dice
+			*/
+			for (int i = 0; i < intelligence; i++) {
+				CosmicWimpoutState newCopy = new CosmicWimpoutState((CosmicWimpoutState) info);
+				((CosmicWimpoutState) newCopy).rollAllDice(this.playerNum);
+				this.scoresFromCopy[i] = ((CosmicWimpoutState) newCopy).getTurnScore();
+			}
+		}
+	}
+	private float failureOdds(int[] scores){
+		float toReturn;
+		int numFailed = 0;
+		for(int i =0; i<scores.length;i++){
+			if(scores[i] == 0){
+				numFailed++;
+			}
+		}
+		toReturn = numFailed / scores.length;
+		return toReturn;
+	}
+	private float successOdds(int[] scores){
+		float toReturn;
+		int numSuccess = 0;
+		for(int i =0; i<scores.length;i++){
+			if(scores[i] != 0){
+				numSuccess++;
+			}
+		}
+		toReturn = numSuccess / scores.length;
+		return toReturn;
 	}
 
 }
