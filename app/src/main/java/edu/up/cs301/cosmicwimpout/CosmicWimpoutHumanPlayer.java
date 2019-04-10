@@ -103,8 +103,8 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 		//set the text to current game state varibales
 		this.player1Score.setText(allPlayerNames[0] + ": " + state.getPlayer1Score());
 		this.player2Score.setText(allPlayerNames[1] + ": " + state.getPlayer2Score());
-		this.player3Score.setText("Player 3: " + state.getPlayer3Score());
-		//this.player4Score.setText(allPlayerNames[3] + ": " + state.getPlayer4Score());
+		this.player3Score.setText(allPlayerNames[2] + ": " + state.getPlayer3Score());
+		this.player4Score.setText(allPlayerNames[3] + ": " + state.getPlayer4Score());
 		this.turnScore.setText("Turn Score: " + state.getTurnScore() + "pts");
 
 		//TODO: start a thread that rotates through die faces while rolling

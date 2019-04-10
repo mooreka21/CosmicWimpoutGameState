@@ -495,12 +495,17 @@ public class CosmicWimpoutState extends GameState {
 			}
 			else if(playerId == 1){
 				playerArrayList.get(playerId).setPlayerScore(currentScore + turnScore);
-				whoseTurn = 0;
+				whoseTurn = 2;
 				turnScore = 0;// reset turn score to 0
 			}
-			else if(playerId == 3){
+			else if(playerId == 2){
 				playerArrayList.get(playerId - 1).setPlayerScore(currentScore + turnScore);
-				whoseTurn = 1;
+				whoseTurn = 3;
+				turnScore = 0; //reset turnScore to 0
+			}
+			else if(playerId == 3) {
+				playerArrayList.get(playerId - 1).setPlayerScore(currentScore + turnScore);
+				whoseTurn = 0;
 				turnScore = 0; //reset turnScore to 0
 			}
 			this.prevState = new CosmicWimpoutState(this);
