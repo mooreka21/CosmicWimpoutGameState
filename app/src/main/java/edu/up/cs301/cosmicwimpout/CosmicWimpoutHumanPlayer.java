@@ -108,7 +108,7 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 		this.turnScore.setText("Turn Score: " + state.getTurnScore() + "pts");
 
 		//TODO: start a thread that rotates through die faces while rolling
-		Thread th1 = new Thread();
+		Thread th1 = new Thread(this);
 		th1.start();
 
 		//setting die 1 face to whatever the current die state is
@@ -559,7 +559,7 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 	public void run(){
 		for(int i = 0; i < redDieFaces.length; i++) {
 			try {
-				Thread.sleep(20);
+				//Thread.sleep(20);
 				if(rollDiceButton.isPressed() || rollSelectedButton.isPressed()){
                     //this.updateDisplay();
 					this.die1.setImageResource(redDieFaces[i]);
