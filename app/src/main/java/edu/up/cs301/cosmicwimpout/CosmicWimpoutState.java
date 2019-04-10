@@ -554,10 +554,15 @@ public class CosmicWimpoutState extends GameState {
 				//and change players
 				turnScore = 0;
 				if(playerId == 0 ){
-
 					setWhoseTurn(1);
 				}
 				if(playerId == 1){
+					setWhoseTurn(2);
+				}
+				if(playerId == 2){
+					setWhoseTurn(3);
+				}
+				if(playerId == 3){
 					setWhoseTurn(0);
 				}
 			}
