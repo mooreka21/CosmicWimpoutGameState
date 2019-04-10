@@ -32,7 +32,7 @@ import java.util.ArrayList;
  * @author Kayla Moore
  *  @version March 2019
  */
-public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClickListener, Runnable {
+public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClickListener/*, Runnable*/ {
 
 	/* instance variables */
     private static final long serialVersionUID= 9876483921L;
@@ -108,8 +108,8 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 		this.turnScore.setText("Turn Score: " + state.getTurnScore() + "pts");
 
 		//TODO: start a thread that rotates through die faces while rolling
-		Thread th1 = new Thread(this);
-		th1.start();
+		//Thread th1 = new Thread(this);
+		//th1.start();
 
 		//setting die 1 face to whatever the current die state is
 		if(state.getDiceVal(0).equals("Tens")){
@@ -305,6 +305,12 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 			else if(button == endTurnButton){
 				this.actionsPressed = 0;
 				game.sendAction(endTurnAct);
+				//clears checkboxes when player ends their turn
+				check1.setChecked(false);
+				check2.setChecked(false);
+				check3.setChecked(false);
+				check4.setChecked(false);
+				check5.setChecked(false);
 			}
 			else if(button == rollDiceButton){
 				//illegal move, must select all 5
@@ -587,7 +593,7 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 	}
 
 	//run method for the thread that will rotate through each face of the die once then land on the correct face
-	@Override
+	/*@Override
 	public void run(){
 		for(int i = 0; i < redDieFaces.length; i++) {
 			try {
@@ -600,10 +606,10 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 					this.die4.setImageResource(redDieFaces[i]);
 					this.die5.setImageResource(redDieFaces[i]);
                 }
-			} catch (Exception e) {/*do nothing*/ }
+			} catch (Exception e) {*//*do nothing*//* }
 		}
 	}
-
+*/
 
 }// class CounterHumanPlayer
 
