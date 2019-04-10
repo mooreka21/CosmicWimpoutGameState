@@ -1241,7 +1241,7 @@ public class CosmicWimpoutState extends GameState {
 		}
 		else {
 			if (one == 3 || two == 3 || three == 3) {
-				if (ourDice[3].dieState == 3) {
+				if (ourDice[2].dieState == 3) {
 					score = score + 10;
 					notWimp = true;
 				}
@@ -1462,6 +1462,16 @@ public class CosmicWimpoutState extends GameState {
 		}
 
 		return false;
+	}
+
+	public boolean check1Die(int diceId){
+		if(this.diceArray[diceId].getDieState() == 1 ||
+				this.diceArray[diceId].getDieState() == 5 ){
+			return false;
+		}
+		else {
+			return true;
+		}
 	}
 
 	/*
