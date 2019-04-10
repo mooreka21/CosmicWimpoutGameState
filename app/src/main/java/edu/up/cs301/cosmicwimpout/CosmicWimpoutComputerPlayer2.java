@@ -151,7 +151,7 @@ public class CosmicWimpoutComputerPlayer2 extends CosmicWimpoutComputerPlayer {
 	    int currentTurn = -1;
         if(info instanceof CosmicWimpoutState){
 
-            this.state = (CosmicWimpoutState) info;
+            this.state = (CosmicWimpoutState)info;
             currentTurn = this.state.getWhoseTurn();
             if(currentTurn != playerNum){}
             else {
@@ -161,9 +161,7 @@ public class CosmicWimpoutComputerPlayer2 extends CosmicWimpoutComputerPlayer {
 						new CosmicWimpoutActionRollAllDice(this);
 				game.sendAction(allDiceAction);
 
-				//if(){// something to check for a flash here
 
-				//}
 			}
         }
 	    return false;

@@ -43,6 +43,10 @@ public class CosmicWimpoutState extends GameState {
 	private boolean die4ReRoll = false;
 	private boolean die5ReRoll = false;
 
+
+	private boolean isFlash = false;
+	private boolean isFiveOf = false;
+
 	//instance of previous state
 	private CosmicWimpoutState prevState;
 
@@ -126,6 +130,7 @@ public class CosmicWimpoutState extends GameState {
 				ourDice[2].dieState == 2 &&
 				ourDice[3].dieState == 2 &&
 				ourDice[4].dieState == 2){
+			isFiveOf = true;
 			haveToReRoll = true;
 			tally = tally + 200;
 		}
@@ -135,6 +140,7 @@ public class CosmicWimpoutState extends GameState {
 				ourDice[3].dieState == 4 &&
 				ourDice[4].dieState == 4){
 			//turnScore = turnScore + 400;
+			isFiveOf = true;
 			haveToReRoll = true;
             tally = tally + 400;		}
 		else if(ourDice[0].dieState == 5 &&
@@ -142,6 +148,7 @@ public class CosmicWimpoutState extends GameState {
 				ourDice[2].dieState == 5 &&
 				ourDice[3].dieState == 5 &&
 				ourDice[4].dieState == 5){
+			isFiveOf = true;
 			haveToReRoll = true;
 			// turnScore = turnScore + 500;
             tally = tally + 500;		}
@@ -225,6 +232,7 @@ public class CosmicWimpoutState extends GameState {
 
 		//BEGIN FLAMING SUN FLASH CASES
 		if(tenCount == 2 && ourDice[2].dieState == 3){
+			isFlash = true;
             tally = tally + 100;
             if(fiveCount != 0){
 				tally = tally + (fiveCount*5);
@@ -232,6 +240,7 @@ public class CosmicWimpoutState extends GameState {
 			}
 		}
 		else if(starCount == 2 && ourDice[2].dieState == 3){
+			isFlash = true;
             tally = tally + 60;
 			if(tenCount != 0){
 				if(fiveCount != 0){
@@ -246,6 +255,7 @@ public class CosmicWimpoutState extends GameState {
 			}
 		}
 		else if(fiveCount == 2 && ourDice[2].dieState == 3){
+			isFlash = true;
             tally = tally + 50;
 			if(tenCount != 0){
 				tally = tally + (tenCount*10);
@@ -253,6 +263,7 @@ public class CosmicWimpoutState extends GameState {
 			}
 		}
 		else if(boltCount == 2 && ourDice[2].dieState == 3){
+			isFlash = true;
             tally = tally + 40;
 			if(tenCount != 0){
 				if(fiveCount != 0){
@@ -267,6 +278,7 @@ public class CosmicWimpoutState extends GameState {
 			}
 		}
 		else if(triangleCount == 2 && ourDice[2].dieState == 3){
+			isFlash = true;
             tally = tally + 30;
 			if(tenCount != 0){
 				if(fiveCount != 0){
@@ -281,6 +293,7 @@ public class CosmicWimpoutState extends GameState {
 			}
 		}
 		else if(halfMoonCount == 2 && ourDice[2].dieState == 3){
+			isFlash = true;
             tally = tally + 20;
 			if(tenCount != 0){
 				if(fiveCount != 0){
@@ -306,6 +319,7 @@ public class CosmicWimpoutState extends GameState {
 
 		//BEGIN NORMAL FLASH HANDLING
 		else if(halfMoonCount >= 3 && halfMoonCount < 5){
+			isFlash = true;
 			if(halfMoonCount == 4) {
 				//rollSingleDie(playerId, (halfMoonReRoll + 1));
 				/**
@@ -321,6 +335,7 @@ public class CosmicWimpoutState extends GameState {
 			tally = tally + 20;
 		}
 		else if(triangleCount >= 3 && triangleCount < 5){
+			isFlash = true;
 			if(triangleCount == 4) {
 				/**
 				if(triangleReRoll == 4){
@@ -335,6 +350,7 @@ public class CosmicWimpoutState extends GameState {
 
 		}
 		else if(boltCount >= 3 && boltCount < 5){
+			isFlash = true;
 			if(boltCount == 4){
 				//rollSingleDie(playerId, (boltReRoll + 1));
 				/**
@@ -351,6 +367,7 @@ public class CosmicWimpoutState extends GameState {
 
 		}
 		else if(fiveCount >= 3 && fiveCount < 5){
+			isFlash = true;
 			//  turnScore = turnScore + 50;
 			if(fiveCount == 4){
 				//rollSingleDie(playerId, (fiveReRoll + 1));
@@ -371,6 +388,7 @@ public class CosmicWimpoutState extends GameState {
 			}
 		}
 		else if(starCount >= 3 && starCount < 5){
+			isFlash = true;
 			//  turnScore = turnScore + 60;
 			if(starCount == 4){
 				//rollSingleDie(playerId, (starReRoll + 1));
@@ -387,6 +405,7 @@ public class CosmicWimpoutState extends GameState {
 			tally =  tally + 60;
 		}
 		else if(tenCount >= 3 && tenCount < 5){
+			isFlash = true;
 			// turnScore = turnScore + 100;
 			if(tenCount == 4){
 				//rollSingleDie(playerId, (tenReRoll + 1));
@@ -1349,6 +1368,9 @@ public class CosmicWimpoutState extends GameState {
 	public Die[] getDiceArray() {
 		return diceArray;
 	}
+
+	public boolean getIsFlash(){return isFlash;}
+	public boolean getIsFiveOf(){return isFiveOf;}
 }
 
 /** External Citation
