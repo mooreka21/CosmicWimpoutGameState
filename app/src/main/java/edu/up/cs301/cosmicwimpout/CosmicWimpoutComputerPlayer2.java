@@ -6,7 +6,6 @@ import edu.up.cs301.game.infoMsg.GameInfo;
 import android.app.Activity;
 import android.os.Handler;
 import android.util.Log;
-import android.widget.Button;
 import android.widget.TextView;
 
 
@@ -28,6 +27,9 @@ public class CosmicWimpoutComputerPlayer2 extends CosmicWimpoutComputerPlayer {
     private int numRollsThisTurn;
     private float odds;
     private int intelligence;
+    private int fails;
+    //this boolean array helps determine which die are to be kept static in the copy reroll
+    private boolean[] needReroll = new boolean[5];
 	/*
 	 * instance variables
 	 */
@@ -160,7 +162,33 @@ public class CosmicWimpoutComputerPlayer2 extends CosmicWimpoutComputerPlayer {
 				CosmicWimpoutActionRollAllDice allDiceAction =
 						new CosmicWimpoutActionRollAllDice(this);
 				game.sendAction(allDiceAction);
+				sleep(1500);
 
+
+				//This determines the dice that need to be rerolled and puts them in the
+                Die[] ourDice = ((CosmicWimpoutState) info).getDiceArray();
+                for(int i = 0; i < this.needReroll.length; i++){
+				/*iterates through the dice in the current game state and finds which ones need to
+				remain static for rerolls*/
+                    if(ourDice[i].dieState == 5 || ourDice[i].dieState == 1) {
+                        this.needReroll[i] = true;
+                    }
+                    //flaming sun check, keeps the flaming sun die if it's on a scoring face
+                    else if(ourDice[i].dieID == 3 &&
+                            (ourDice[i].dieState == 1
+                                    ||ourDice[i].dieState == 3
+                                    ||ourDice[i].dieState == 5)){
+                        needReroll[i] = true;
+                    }
+                }
+
+				getScoresFromCopy((CosmicWimpoutState)info);
+
+				int failures = getFailed(this.scoresFromCopy);
+                int rerollCount = scoresFromCopy.length;
+				while(calcOdds(fails,rerollCount) > 0.5){
+
+                }
 
 			}
         }
@@ -171,24 +199,6 @@ public class CosmicWimpoutComputerPlayer2 extends CosmicWimpoutComputerPlayer {
 	//Those dice will have to remain static in the copy and not be rerolled.
     private void getScoresFromCopy(GameInfo info){
 		if(info instanceof CosmicWimpoutState){
-			//this boolean array helps determine which die are to be kept static in the copy reroll
-			boolean[] needReroll = new boolean[5];
-			//copy of the dice from the game state
-			Die[] ourDice = ((CosmicWimpoutState) info).getDiceArray();
-			for(int i = 0; i < needReroll.length; i++){
-				/*iterates through the dice in the current game state and finds which ones need to
-				remain static for rerolls*/
-				if(ourDice[i].dieState == 5 || ourDice[i].dieState == 1) {
-					needReroll[i] = true;
-				}
-				//flaming sun check, keeps the flaming sun die if it's on a scoring face
-				else if(ourDice[i].dieID == 3 &&
-                        (ourDice[i].dieState == 1
-                        ||ourDice[i].dieState == 3
-                        ||ourDice[i].dieState == 5)){
-					needReroll[i] = true;
-				}
-			}
 			/*
 			this generates a number of copies equal to the bot's intelligence,
 			and then puts those scores into the bot's scoresFromCopy array.
@@ -197,33 +207,32 @@ public class CosmicWimpoutComputerPlayer2 extends CosmicWimpoutComputerPlayer {
 			*/
 			for (int i = 0; i < intelligence; i++) {
 				CosmicWimpoutState newCopy = new CosmicWimpoutState((CosmicWimpoutState) info);
-				newCopy.rollSelectedDice(this.playerNum,needReroll[0], needReroll[1],needReroll[2],
-						needReroll[3],needReroll[4]);
+				newCopy.rollSelectedDice(this.playerNum,this.needReroll[0], this.needReroll[1],this.needReroll[2],
+						this.needReroll[3],this.needReroll[4]);
 				this.scoresFromCopy[i] = ((CosmicWimpoutState) newCopy).getTurnScore();
 			}
 		}
 	}
-	private float failureOdds(int[] scores){
-		float toReturn;
+	private int getFailed(int[] scores){
 		int numFailed = 0;
 		for(int i =0; i<scores.length;i++){
 			if(scores[i] == 0){
 				numFailed++;
 			}
 		}
-		toReturn = numFailed / scores.length;
-		return toReturn;
+		return numFailed;
 	}
-	private float successOdds(int[] scores){
-		float toReturn;
+	private int getSuccess(int[] scores){
 		int numSuccess = 0;
 		for(int i =0; i<scores.length;i++){
 			if(scores[i] != 0){
 				numSuccess++;
 			}
 		}
-		toReturn = numSuccess / scores.length;
-		return toReturn;
+		return numSuccess;
 	}
+	private float calcOdds(int fails, int total){
+	    return (float)(fails/total);
+    }
 
 }
