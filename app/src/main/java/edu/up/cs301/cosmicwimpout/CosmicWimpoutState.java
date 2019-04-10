@@ -499,12 +499,12 @@ public class CosmicWimpoutState extends GameState {
 				turnScore = 0;// reset turn score to 0
 			}
 			else if(playerId == 2){
-				playerArrayList.get(playerId - 1).setPlayerScore(currentScore + turnScore);
+				playerArrayList.get(playerId).setPlayerScore(currentScore + turnScore);
 				whoseTurn = 3;
 				turnScore = 0; //reset turnScore to 0
 			}
 			else if(playerId == 3) {
-				playerArrayList.get(playerId - 1).setPlayerScore(currentScore + turnScore);
+				playerArrayList.get(playerId).setPlayerScore(currentScore + turnScore);
 				whoseTurn = 0;
 				turnScore = 0; //reset turnScore to 0
 			}
@@ -1287,27 +1287,27 @@ public class CosmicWimpoutState extends GameState {
 		if(one == 3){
 			if(ourDice[one-1].dieState == 3){
 				if(ourDice[two-1].dieState == 1 && ourDice[three-1].dieState == 1){
-					isFlash = true;
+					//isFlash = true;
 					score = 100;
 				}
 				else if(ourDice[two-1].dieState == 2 && ourDice[three-1].dieState == 2){
-					isFlash = true;
+					//isFlash = true;
 					score = 20;
 				}
 				else if(ourDice[two-1].dieState == 3 && ourDice[three-1].dieState == 3){
-					isFlash = true;
+					//isFlash = true;
 					score = 30;
 				}
 				else if(ourDice[two-1].dieState == 4 && ourDice[three-1].dieState == 4){
-					isFlash = true;
+					//isFlash = true;
 					score = 40;
 				}
 				else if(ourDice[two-1].dieState == 5 && ourDice[three-1].dieState == 5){
-					isFlash = true;
+					//isFlash = true;
 					score = 50;
 				}
 				else if(ourDice[two-1].dieState == 6 && ourDice[three-1].dieState == 6){
-					isFlash = true;
+					//isFlash = true;
 					score = 60;
 				}
 				else{
@@ -1321,27 +1321,27 @@ public class CosmicWimpoutState extends GameState {
 		else if(two == 3){
 			if(ourDice[two-1].dieState == 3){
 				if(ourDice[one-1].dieState == 1 && ourDice[three-1].dieState == 1){
-					isFlash = true;
+					//isFlash = true;
 					score = 100;
 				}
 				else if(ourDice[one-1].dieState == 2 && ourDice[three-1].dieState == 2){
-					isFlash = true;
+					//isFlash = true;
 					score = 20;
 				}
 				else if(ourDice[one-1].dieState == 3 && ourDice[three-1].dieState == 3){
-					isFlash = true;
+					//isFlash = true;
 					score = 30;
 				}
 				else if(ourDice[one-1].dieState == 4 && ourDice[three-1].dieState == 4){
-					isFlash = true;
+					//isFlash = true;
 					score = 40;
 				}
 				else if(ourDice[one-1].dieState == 5 && ourDice[three-1].dieState == 5){
-					isFlash = true;
+					//isFlash = true;
 					score = 50;
 				}
 				else if(ourDice[one-1].dieState == 6 && ourDice[three-1].dieState == 6){
-					isFlash = true;
+					//isFlash = true;
 					score = 60;
 				}
 				else{
@@ -1416,6 +1416,15 @@ public class CosmicWimpoutState extends GameState {
 
 	public boolean getIsFlash(){return isFlash;}
 	public boolean getIsFiveOf(){return isFiveOf;}
+
+	/*
+	public boolean check
+	public int[] reRollFlash(){
+		if(isFlash){
+
+		}
+	}
+	*/
 }
 
 /** External Citation
