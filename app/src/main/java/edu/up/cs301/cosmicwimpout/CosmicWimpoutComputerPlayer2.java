@@ -46,7 +46,7 @@ public class CosmicWimpoutComputerPlayer2 extends CosmicWimpoutComputerPlayer {
 	// If this player is running the GUI, the handler for the GUI thread (otherwise
 	// null)
 	private Handler guiHandler = null;
-	
+
 	/**
 	 * constructor
 	 * 
@@ -172,21 +172,21 @@ public class CosmicWimpoutComputerPlayer2 extends CosmicWimpoutComputerPlayer {
     private void getScoresFromCopy(GameInfo info){
 		if(info instanceof CosmicWimpoutState){
 			//this boolean array helps determine which die are to be kept static in the copy reroll
-			boolean[] diceStatic = new boolean[5];
+			boolean[] needReroll = new boolean[5];
 			//copy of the dice from the game state
 			Die[] ourDice = ((CosmicWimpoutState) info).getDiceArray();
-			for(int i = 0; i < diceStatic.length; i++){
+			for(int i = 0; i < needReroll.length; i++){
 				/*iterates through the dice in the current game state and finds which ones need to
 				remain static for rerolls*/
 				if(ourDice[i].dieState == 5 || ourDice[i].dieState == 1) {
-					diceStatic[i] = true;
+					needReroll[i] = true;
 				}
 				//flaming sun check, keeps the flaming sun die if it's on a scoring face
 				else if(ourDice[i].dieID == 3 &&
                         (ourDice[i].dieState == 1
                         ||ourDice[i].dieState == 3
                         ||ourDice[i].dieState == 5)){
-					diceStatic[i] = true;
+					needReroll[i] = true;
 				}
 			}
 			/*
@@ -197,8 +197,8 @@ public class CosmicWimpoutComputerPlayer2 extends CosmicWimpoutComputerPlayer {
 			*/
 			for (int i = 0; i < intelligence; i++) {
 				CosmicWimpoutState newCopy = new CosmicWimpoutState((CosmicWimpoutState) info);
-				newCopy.rollSelectedDice(this.playerNum,diceStatic[0], diceStatic[1],diceStatic[2],
-						diceStatic[3],diceStatic[4]);
+				newCopy.rollSelectedDice(this.playerNum,needReroll[0], needReroll[1],needReroll[2],
+						needReroll[3],needReroll[4]);
 				this.scoresFromCopy[i] = ((CosmicWimpoutState) newCopy).getTurnScore();
 			}
 		}
