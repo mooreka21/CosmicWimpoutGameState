@@ -28,6 +28,7 @@ public class CosmicWimpoutComputerPlayer2 extends CosmicWimpoutComputerPlayer {
     private float odds;
     private int intelligence;
     private int fails;
+    private int threshold = 100;
     //this boolean array helps determine which die are to be kept static in the copy reroll
     private boolean[] needReroll = new boolean[5];
 	/*
@@ -66,22 +67,60 @@ public class CosmicWimpoutComputerPlayer2 extends CosmicWimpoutComputerPlayer {
      * 		the information (presumably containing the game's state)
      */
 	@Override
-	protected void receiveInfo(GameInfo info) {
-		// perform superclass behavior
-		super.receiveInfo(info);
-		
-		Log.i("computer player", "receiving");
-		
-		// if there is no game, ignore
-		if (game == null) {
-			return;
-		}
-		else if (info instanceof CosmicWimpoutState) {
-			// if we indeed have a counter-state, update the GUI
-			state = (CosmicWimpoutState)info;
-			updateDisplay();
-		}
-	}
+    protected void receiveInfo(GameInfo info) {
+        int currentTurn = -1;
+
+        if (info instanceof CosmicWimpoutState) {
+            this.state = (CosmicWimpoutState) info;
+            currentTurn = this.state.getWhoseTurn();
+        }
+
+        if (currentTurn != playerNum) {}
+        else {
+            //delay to make it seem like they are thinking
+            sleep(5000);
+            CosmicWimpoutActionRollAllDice allDiceAction =
+                    new CosmicWimpoutActionRollAllDice(this);
+            game.sendAction(allDiceAction);
+
+            do{
+                //random probability
+                int randomNumber = (int) (Math.random() * 10);
+                while (randomNumber == 0) {
+                    randomNumber = (int) (Math.random() * 10);
+                }
+                boolean one = false;
+                boolean two = false;
+                boolean three = false;
+                boolean four = false;
+                boolean five = false;
+
+                if (randomNumber > 5) {
+                    CosmicWimpoutActionEndTurn endTurnAction = new CosmicWimpoutActionEndTurn(this);
+                    game.sendAction(endTurnAction);
+                } else {
+                    //select random die to re roll
+                    int randomDice = (int) (Math.random() * 5 + 1);
+                    if (randomDice == 1) {
+                        one = true;
+                    } else if (randomDice == 2) {
+                        two = true;
+                    } else if (randomDice == 3) {
+                        three = true;
+                    } else if (randomDice == 4) {
+                        four = true;
+                    } else if (randomDice == 5) {
+                        five = true;
+                    }
+
+                    CosmicWimpoutActionRollSelectedDie selectedAction =
+                            new CosmicWimpoutActionRollSelectedDie(this, one, two,
+                                    three, four, five);
+                    game.sendAction(selectedAction);
+                }
+            }while(this.state.getTurnScore() < threshold);
+        }
+    }
 	
 	
 	/** 
@@ -146,7 +185,7 @@ public class CosmicWimpoutComputerPlayer2 extends CosmicWimpoutComputerPlayer {
 			updateDisplay();
 		}
 	}
-
+    /*
 	//SMART AI METHODS
 	public boolean runSmartAi(GameInfo info){
 		//TODO: Rework for instances in which the bot needs to reroll a select number of dice
@@ -165,11 +204,11 @@ public class CosmicWimpoutComputerPlayer2 extends CosmicWimpoutComputerPlayer {
 				sleep(1500);
 
 
-				//This determines the dice that need to be rerolled and puts them in the
+
                 Die[] ourDice = ((CosmicWimpoutState) info).getDiceArray();
                 for(int i = 0; i < this.needReroll.length; i++){
-				/*iterates through the dice in the current game state and finds which ones need to
-				remain static for rerolls*/
+				iterates through the dice in the current game state and finds which ones need to
+				remain static for rerolls
                     if(ourDice[i].dieState == 5 || ourDice[i].dieState == 1) {
                         this.needReroll[i] = true;
                     }
@@ -186,8 +225,11 @@ public class CosmicWimpoutComputerPlayer2 extends CosmicWimpoutComputerPlayer {
 
 				int failures = getFailed(this.scoresFromCopy);
                 int rerollCount = scoresFromCopy.length;
-				while(calcOdds(fails,rerollCount) > 0.5){
 
+
+				while(calcOdds(fails,rerollCount) < 0.5){
+
+				    rerollCount--;
                 }
 
 			}
@@ -199,12 +241,12 @@ public class CosmicWimpoutComputerPlayer2 extends CosmicWimpoutComputerPlayer {
 	//Those dice will have to remain static in the copy and not be rerolled.
     private void getScoresFromCopy(GameInfo info){
 		if(info instanceof CosmicWimpoutState){
-			/*
+
 			this generates a number of copies equal to the bot's intelligence,
 			and then puts those scores into the bot's scoresFromCopy array.
 			This method needs to be reworked for instances in which the bot doesn't have to
 			reroll all its dice - this means only a few die will be copied and have to be rerolled.
-			*/
+
 			for (int i = 0; i < intelligence; i++) {
 				CosmicWimpoutState newCopy = new CosmicWimpoutState((CosmicWimpoutState) info);
 				newCopy.rollSelectedDice(this.playerNum,this.needReroll[0], this.needReroll[1],this.needReroll[2],
@@ -234,5 +276,6 @@ public class CosmicWimpoutComputerPlayer2 extends CosmicWimpoutComputerPlayer {
 	private float calcOdds(int fails, int total){
 	    return (float)(fails/total);
     }
+    */
 
 }
