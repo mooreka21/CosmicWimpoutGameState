@@ -280,7 +280,7 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 		CosmicWimpoutActionEndGame endGameAct =
 				new CosmicWimpoutActionEndGame(this);
 		//CosmicWimpoutActionRollSelectedDie rollSelectedAct =
-			//	new CosmicWimpoutActionRollSelectedDie(this, isCheck1, isCheck2, isCheck3, isCheck4,isCheck5);
+			//new CosmicWimpoutActionRollSelectedDie(this, isCheck1, isCheck2, isCheck3, isCheck4,isCheck5);
 
 		//making sure that they press the roll all dice button first
 		if(this.actionsPressed == 0){
@@ -343,6 +343,7 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 					isCheck5 = true;
 				}
 
+				/*
 				//checking for legal move if one is checked
 				if(isCheck1 && !isCheck5 && !isCheck4 && !isCheck3 && !isCheck2){
 					if(legalOneChecked()){
@@ -404,16 +405,23 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 
 					}
 				}
-
-				else if(legalMoveAllChecked5()) {
+				*/
+				if(isCheck1 && isCheck2 && isCheck3 && isCheck4 && isCheck5) {
+					if (legalMoveAllChecked5()) {
+						CosmicWimpoutActionRollSelectedDie rollSelectedAct =
+								new CosmicWimpoutActionRollSelectedDie(this, isCheck1, isCheck2, isCheck3, isCheck4, isCheck5);
+						game.sendAction(rollSelectedAct);
+					} else if (!legalMoveAllChecked5()) {
+						Toast.makeText(this.myActivity, "Cannot roll all dice",
+								Toast.LENGTH_SHORT).show();
+					}
+				}
+				else{
 					CosmicWimpoutActionRollSelectedDie rollSelectedAct =
 							new CosmicWimpoutActionRollSelectedDie(this, isCheck1, isCheck2, isCheck3, isCheck4, isCheck5);
 					game.sendAction(rollSelectedAct);
 				}
-				else{
-					Toast.makeText(this.myActivity, "Cannot roll all dice",
-							Toast.LENGTH_SHORT).show();
-				}
+
 
 			}
 
@@ -499,6 +507,13 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 	}
 
 	public boolean legalMoveAllChecked5(){
+		if(state.checkAllFiveReRoll()){
+			return true;
+		}
+		else{
+			return false;
+		}
+		/*
 		if(isCheck1 && isCheck2 && isCheck3 && isCheck4 &&isCheck5)
 		{
 			if(state.getDiceVal(0).equals("Moons") && state.getDiceVal(1).equals("Moons")
@@ -534,8 +549,7 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 				return false;
 			}
 		}
-
-		return true;
+		*/
 	}
 
 	private boolean legalOneChecked(){
