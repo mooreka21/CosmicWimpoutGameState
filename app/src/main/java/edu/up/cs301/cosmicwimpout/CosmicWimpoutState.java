@@ -235,17 +235,45 @@ public class CosmicWimpoutState extends GameState {
 
 
 		//BEGIN FLAMING SUN FLASH CASES
-		if(tenCount == 2 && ourDice[2].dieState == 3){
-			isFlash = true;
-            tally = tally + 100;
+		if(tenCount == 2 ){
+			if(ourDice[2].dieState == 3) {
+				isFlash = true;
+				tally = tally + 100;
+			}
+			else{
+				tally = tally + 20;
+			}
+			/*
             if(fiveCount != 0){
 				tally = tally + (fiveCount*5);
 				//I don't know if we need to set haveToReroll to true here --SL
 			}
+			*/
 		}
-		else if(starCount == 2 && ourDice[2].dieState == 3){
+		else if(tenCount == 1){
+			tally = tally + 10;
+		}
+		if(fiveCount == 2){
+			if(ourDice[2].dieState == 3) {
+				isFlash = true;
+				tally = tally + 50;
+			}
+			else{
+				tally = tally + 20;
+			}
+
+			if(tenCount != 0){
+				tally = tally + (tenCount*10);
+				//I don't know if we need to set haveToReroll to true here --SL
+			}
+		}
+		else if(fiveCount == 1){
+			tally = tally + 5;
+		}
+		if(starCount == 2 && ourDice[2].dieState == 3){
 			isFlash = true;
             tally = tally + 60;
+            /*
 			if(tenCount != 0){
 				if(fiveCount != 0){
 					tally = tally + (fiveCount*5) + (tenCount*10);
@@ -257,18 +285,13 @@ public class CosmicWimpoutState extends GameState {
 				tally = tally + (fiveCount*5);
 				//I don't know if we need to set haveToReroll to true here --SL
 			}
+			*/
 		}
-		else if(fiveCount == 2 && ourDice[2].dieState == 3){
-			isFlash = true;
-            tally = tally + 50;
-			if(tenCount != 0){
-				tally = tally + (tenCount*10);
-				//I don't know if we need to set haveToReroll to true here --SL
-			}
-		}
+
 		else if(boltCount == 2 && ourDice[2].dieState == 3){
 			isFlash = true;
             tally = tally + 40;
+            /*
 			if(tenCount != 0){
 				if(fiveCount != 0){
 					tally = tally + (fiveCount*5) + (tenCount*10);
@@ -280,10 +303,12 @@ public class CosmicWimpoutState extends GameState {
 				tally = tally + (fiveCount*5);
 				//I don't know if we need to set haveToReroll to true here --SL
 			}
+			*/
 		}
 		else if(triangleCount == 2 && ourDice[2].dieState == 3){
 			isFlash = true;
             tally = tally + 30;
+            /*
 			if(tenCount != 0){
 				if(fiveCount != 0){
 					tally = tally + (fiveCount*5) + (tenCount*10);
@@ -295,10 +320,12 @@ public class CosmicWimpoutState extends GameState {
 				tally = tally + (fiveCount*5);
 				//I don't know if we need to set haveToReroll to true here --SL
 			}
+			*/
 		}
 		else if(halfMoonCount == 2 && ourDice[2].dieState == 3){
 			isFlash = true;
             tally = tally + 20;
+            /*
 			if(tenCount != 0){
 				if(fiveCount != 0){
 					tally = tally + (fiveCount*5) + (tenCount*10);
@@ -310,6 +337,7 @@ public class CosmicWimpoutState extends GameState {
 				tally = tally + (fiveCount*5);
 				//I don't know if we need to set haveToReroll to true here --SL
 			}
+			*/
 		}
 		else if(tenCount < 2 && fiveCount < 2 && triangleCount < 2 &&
 				boltCount < 2 && halfMoonCount < 2 && starCount <2 &&
@@ -337,6 +365,19 @@ public class CosmicWimpoutState extends GameState {
 				haveToReRoll = true;
 			}
 			tally = tally + 20;
+			/*
+			if(tenCount != 0){
+				if(fiveCount != 0){
+					tally = tally + (fiveCount*5) + (tenCount*10);
+					//I don't know if we need to set haveToReroll to true here --SL
+				}
+				tally = tally + (tenCount*10);
+			}
+			if(fiveCount != 0 && tenCount == 0){
+				tally = tally + (fiveCount*5);
+				//I don't know if we need to set haveToReroll to true here --SL
+			}
+			*/
 		}
 		else if(triangleCount >= 3 && triangleCount < 5){
 			isFlash = true;
@@ -351,6 +392,19 @@ public class CosmicWimpoutState extends GameState {
 				 */
 			}
 			tally = tally + 30;
+			/*
+			if(tenCount != 0){
+				if(fiveCount != 0){
+					tally = tally + (fiveCount*5) + (tenCount*10);
+					//I don't know if we need to set haveToReroll to true here --SL
+				}
+				tally = tally + (tenCount*10);
+			}
+			if(fiveCount != 0 && tenCount == 0){
+				tally = tally + (fiveCount*5);
+				//I don't know if we need to set haveToReroll to true here --SL
+			}
+			*/
 
 		}
 		else if(boltCount >= 3 && boltCount < 5){
@@ -368,6 +422,19 @@ public class CosmicWimpoutState extends GameState {
 				haveToReRoll = true;
 			}
 			tally = tally + 40;
+			/*
+			if(tenCount != 0){
+				if(fiveCount != 0){
+					tally = tally + (fiveCount*5) + (tenCount*10);
+					//I don't know if we need to set haveToReroll to true here --SL
+				}
+				tally = tally + (tenCount*10);
+			}
+			if(fiveCount != 0 && tenCount == 0){
+				tally = tally + (fiveCount*5);
+				//I don't know if we need to set haveToReroll to true here --SL
+			}
+			*/
 
 		}
 		else if(fiveCount >= 3 && fiveCount < 5){
@@ -384,12 +451,15 @@ public class CosmicWimpoutState extends GameState {
 				}
 				 */
 				haveToReRoll = true;
+				tally = tally + 5;
 			}
 			tally = tally + 50;
+			/*
 			if(tenCount != 0){
 				tally = tally + (tenCount*10);
 				//I don't know if we need to set haveToReroll to true here --SL
 			}
+			*/
 		}
 		else if(starCount >= 3 && starCount < 5){
 			isFlash = true;
@@ -407,6 +477,19 @@ public class CosmicWimpoutState extends GameState {
 				haveToReRoll = true;
 			}
 			tally =  tally + 60;
+			/*
+			if(tenCount != 0){
+				if(fiveCount != 0){
+					tally = tally + (fiveCount*5) + (tenCount*10);
+					//I don't know if we need to set haveToReroll to true here --SL
+				}
+				tally = tally + (tenCount*10);
+			}
+			if(fiveCount != 0 && tenCount == 0){
+				tally = tally + (fiveCount*5);
+				//I don't know if we need to set haveToReroll to true here --SL
+			}
+			*/
 		}
 		else if(tenCount >= 3 && tenCount < 5){
 			isFlash = true;
@@ -422,27 +505,18 @@ public class CosmicWimpoutState extends GameState {
 				}
 				 */
 				haveToReRoll = true;
+				tally = tally + 10;
 			}
 			tally = tally + 100;
 
+			/*
 			if(fiveCount != 0){
 				tally = tally + (fiveCount*5);
 				//I don't know if we need to set haveToReroll to true here --SL
 			}
+			*/
 		}
-		else if(tenCount != 0){
-			if(fiveCount != 0){
-				tally = tally + (fiveCount*5) + (tenCount*10);
-				//I don't know if we need to set haveToReroll to true here --SL
-			}
-			else{
-				tally = tally + (tenCount*10);
-			}
-		}
-		else if(fiveCount != 0 && tenCount == 0){
-			tally = tally + (fiveCount*5);
-			//I don't know if we need to set haveToReroll to true here --SL
-		}
+
 		//END NORMAL FLASH HANDLING
 
 
@@ -1075,32 +1149,32 @@ public class CosmicWimpoutState extends GameState {
 			//flash cases
 			if(tenCount >= 3) {
 				isFlash = true;
-				score = 100;
+				score = score + 100;
 				notWimp = true;
 			}
 			else if(moonCount >= 3){
 				isFlash = true;
-				score = 20;
+				score =  score + 20;
 				notWimp = true;
 			}
 			else if(triangleCount >= 3){
 				isFlash = true;
-				score = 30;
+				score = score + 30;
 				notWimp = true;
 			}
 			else if(boltCount >= 3){
 				isFlash = true;
-				score = 40;
+				score = score + 40;
 				notWimp = true;
 			}
 			else if(fiveCount >= 3){
 				isFlash = true;
-				score = 50;
+				score = score + 50;
 				notWimp = true;
 			}
 			else if(starCount >= 3){
 				isFlash = true;
-				score =60;
+				score = score + 60;
 				notWimp = true;
 			}
 
@@ -1110,10 +1184,10 @@ public class CosmicWimpoutState extends GameState {
 					score = score + 100;
 					notWimp = true;
 				}
-			}
-			else if(tenCount == 2){
-				score = score + 20;
-				notWimp = true;
+				else if(tenCount == 2){
+					score = score + 20;
+					notWimp = true;
+				}
 			}
 
 			if(moonCount == 2 && (one == 3 || two == 3 || three == 3 || four == 3)){
@@ -1143,10 +1217,10 @@ public class CosmicWimpoutState extends GameState {
 					score = score + 50;
 					notWimp = true;
 				}
-			}
-			else if(fiveCount == 2){
-				score = score + 10;
-				notWimp = true;
+				else{
+					score = score + 10;
+					notWimp = true;
+				}
 			}
 
 			if(starCount == 2 && (one == 3 || two == 3 || three == 3 || four == 3)){
@@ -1465,15 +1539,82 @@ public class CosmicWimpoutState extends GameState {
 	}
 
 	public boolean check1Die(int diceId){
-		if(this.diceArray[diceId].getDieState() == 1 ||
+		if(isFlash){
+			int tenCount = 0;
+			int fiveCount = 0;
+			int moonCount = 0;
+			int triangleCount = 0;
+			int starCount = 0;
+			int boltCount = 0;
+
+			for(int i = 0; i < this.diceArray.length; i++){
+				if(this.diceArray[i].getDieState() == 1){
+					tenCount ++;
+				}
+				else if(this.diceArray[i].getDieState() == 5){
+					fiveCount++;
+				}
+				else if(this.diceArray[i].getDieState() == 2){
+					moonCount++;
+				}
+				else if(this.diceArray[i].getDieState() == 3){
+					if(i != 3){
+						triangleCount++;
+					}
+				}
+				else if(this.diceArray[i].getDieState() == 4){
+					boltCount++;
+				}
+				else if(this.diceArray[i].getDieState() == 6){
+					starCount++;
+				}
+			}
+
+			if(moonCount == 3 || (moonCount == 2 && this.diceArray[2].getDieState() == 3)) {
+				if(this.diceArray[diceId].getDieState() == 2){
+					return false;
+				}
+			}
+			else if (triangleCount == 3 || (triangleCount == 2 && this.diceArray[2].getDieState() == 3)){
+				if(this.diceArray[diceId].getDieState() == 3){
+					return false;
+				}
+			}
+			else if (boltCount == 3 || (boltCount == 2 && this.diceArray[2].getDieState() == 3)){
+				if(this.diceArray[diceId].getDieState() == 4){
+					return false;
+				}
+			}
+			else if (starCount == 3 || (starCount == 2 && this.diceArray[2].getDieState() == 3)){
+				if(this.diceArray[diceId].getDieState() == 6){
+					return false;
+				}
+			}
+			else if(this.diceArray[diceId].getDieState() == 1 ||
+					this.diceArray[diceId].getDieState() == 5 ){
+				return false;
+			}
+		}
+		else if(this.diceArray[diceId].getDieState() == 1 ||
 				this.diceArray[diceId].getDieState() == 5 ){
 			return false;
 		}
 		else {
 			return true;
 		}
+		return false;
 	}
 
+	public boolean check2Dice(){
+		return false;
+	}
+	public boolean check3Dice(){
+		return false;
+	}
+
+	public boolean check4Dice(){
+		return false;
+	}
 	/*
 	public int[] reRollFlash(){
 		if(isFlash){
