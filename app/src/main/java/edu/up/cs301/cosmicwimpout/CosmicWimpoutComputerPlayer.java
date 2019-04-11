@@ -78,28 +78,72 @@ public class CosmicWimpoutComputerPlayer extends GameComputerPlayer {
 				game.sendAction(endTurnAction);
 			}
 			else{
+				CosmicWimpoutActionEndTurn endTurnAction = new CosmicWimpoutActionEndTurn(this);
+
 				//select random die to re roll
 				int randomDice = (int)(Math.random() * 5 + 1);
 				if(randomDice == 1){
 					one = true;
+					if(state.check1Die(0)){
+						CosmicWimpoutActionRollSelectedDie selectedAction =
+								new CosmicWimpoutActionRollSelectedDie(this, one, two,
+										three, four, five);
+						game.sendAction(selectedAction);
+					}
+					else{
+						game.sendAction(endTurnAction);
+					}
 				}
 				else if(randomDice == 2){
 					two = true;
+					if(state.check1Die(1)){
+						CosmicWimpoutActionRollSelectedDie selectedAction =
+								new CosmicWimpoutActionRollSelectedDie(this, one, two,
+										three, four, five);
+						game.sendAction(selectedAction);
+					}
+					else{
+						game.sendAction(endTurnAction);
+					}
 				}
 				else if(randomDice == 3){
 					three = true;
+					if(state.check1Die(2)){
+						CosmicWimpoutActionRollSelectedDie selectedAction =
+								new CosmicWimpoutActionRollSelectedDie(this, one, two,
+										three, four, five);
+						game.sendAction(selectedAction);
+					}
+					else{
+						game.sendAction(endTurnAction);
+					}
 				}
 				else if(randomDice == 4){
 					four = true;
+					if(state.check1Die(3)){
+						CosmicWimpoutActionRollSelectedDie selectedAction =
+								new CosmicWimpoutActionRollSelectedDie(this, one, two,
+										three, four, five);
+						game.sendAction(selectedAction);
+					}
+					else{
+						game.sendAction(endTurnAction);
+					}
 				}
 				else if(randomDice == 5){
 					five = true;
+					if(state.check1Die(4)){
+						CosmicWimpoutActionRollSelectedDie selectedAction =
+								new CosmicWimpoutActionRollSelectedDie(this, one, two,
+										three, four, five);
+						game.sendAction(selectedAction);
+					}
+					else{
+						game.sendAction(endTurnAction);
+					}
 				}
 
-				CosmicWimpoutActionRollSelectedDie selectedAction =
-						new CosmicWimpoutActionRollSelectedDie(this, one, two,
-								three, four, five);
-				game.sendAction(selectedAction);
+
 			}
 		}
 	}

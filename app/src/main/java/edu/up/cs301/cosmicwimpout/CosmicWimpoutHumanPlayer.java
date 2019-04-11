@@ -32,7 +32,7 @@ import java.util.ArrayList;
  * @author Kayla Moore
  *  @version March 2019
  */
-public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClickListener/*, Runnable*/ {
+public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClickListener {
 
 	/* instance variables */
     private static final long serialVersionUID= 9876483921L;
@@ -60,6 +60,8 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 	private boolean isCheck3 = false;
 	private boolean isCheck4 = false;
 	private boolean isCheck5 = false;
+	private boolean rollDiceClicked = false;
+	private boolean rollSelectedClicked = false;
 
 	//arrays that hold the die faces
 	private int redDieFaces[] = {R.drawable.ten, R.drawable.halfcircles, R.drawable.triangle,
@@ -106,10 +108,6 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 		this.player3Score.setText(allPlayerNames[2] + ": " + state.getPlayer3Score());
 		this.player4Score.setText(allPlayerNames[3] + ": " + state.getPlayer4Score());
 		this.turnScore.setText("Turn Score: " + state.getTurnScore() + "pts");
-
-		//TODO: start a thread that rotates through die faces while rolling
-		//Thread th1 = new Thread(this);
-		//th1.start();
 
 		//setting die 1 face to whatever the current die state is
 		if(state.getDiceVal(0).equals("Tens")){
@@ -250,6 +248,9 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 	 * 		the button that was clicked
 	 */
 	public void onClick(View button) {
+		//starts a thread that rotates through die faces while rolling
+		//Thread th1 = new Thread(this);
+		//th1.start();
 
 		//if the button is any of the checkboxes, update
 		//variable to true
@@ -285,6 +286,7 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 		//making sure that they press the roll all dice button first
 		if(this.actionsPressed == 0){
 			if(button == rollDiceButton ){
+				rollDiceClicked = true;
 				game.sendAction(rollAct);
 				actionsPressed++;
 			}
@@ -319,6 +321,7 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 				//game.sendAction(rollAct);
 			}
 			else if(button == rollSelectedButton) {
+				rollSelectedClicked = true;
 				//checking to see which ones are true to send in the action
 				if (!(check1.isChecked())) {
 					isCheck1 = false;
@@ -349,7 +352,28 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 					isCheck5 = true;
 				}
 
-				/*
+				if(legalMoveAllChecked5()){
+					if(isCheck1 && isCheck2 && isCheck3 && isCheck4 && isCheck5){
+						CosmicWimpoutActionRollSelectedDie rollSelectedAct =
+								new CosmicWimpoutActionRollSelectedDie(this, isCheck1, isCheck2, isCheck3, isCheck4, isCheck5);
+						game.sendAction(rollSelectedAct);
+					}
+					else{
+						Toast.makeText(this.myActivity, "Must roll all dice",
+								Toast.LENGTH_SHORT).show();
+					}
+				}
+				//checking for legal move if all 5 are checked
+				else if(isCheck1 && isCheck2 && isCheck3 && isCheck4 && isCheck5) {
+					if (legalMoveAllChecked5()) {
+						CosmicWimpoutActionRollSelectedDie rollSelectedAct =
+								new CosmicWimpoutActionRollSelectedDie(this, isCheck1, isCheck2, isCheck3, isCheck4, isCheck5);
+						game.sendAction(rollSelectedAct);
+					} else if (!legalMoveAllChecked5()) {
+						Toast.makeText(this.myActivity, "Cannot roll all dice",
+								Toast.LENGTH_SHORT).show();
+					}
+				}
 				//checking for legal move if one is checked
 				if(isCheck1 && !isCheck5 && !isCheck4 && !isCheck3 && !isCheck2){
 					if(legalOneChecked()){
@@ -399,7 +423,7 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 								Toast.LENGTH_SHORT).show();
 					}
 				}
-				else if(!isCheck1 && isCheck5 && !isCheck4 && !isCheck3 && isCheck2){
+				else if(!isCheck1 &&  !isCheck5 && !isCheck4 && !isCheck3 && isCheck2){
 					if(legalOneChecked()){
 						CosmicWimpoutActionRollSelectedDie rollSelectedAct =
 								new CosmicWimpoutActionRollSelectedDie(this, isCheck1, isCheck2, isCheck3, isCheck4, isCheck5);
@@ -411,17 +435,7 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 
 					}
 				}
-				*/
-				if(isCheck1 && isCheck2 && isCheck3 && isCheck4 && isCheck5) {
-					if (legalMoveAllChecked5()) {
-						CosmicWimpoutActionRollSelectedDie rollSelectedAct =
-								new CosmicWimpoutActionRollSelectedDie(this, isCheck1, isCheck2, isCheck3, isCheck4, isCheck5);
-						game.sendAction(rollSelectedAct);
-					} else if (!legalMoveAllChecked5()) {
-						Toast.makeText(this.myActivity, "Cannot roll all dice",
-								Toast.LENGTH_SHORT).show();
-					}
-				}
+
 				else{
 					CosmicWimpoutActionRollSelectedDie rollSelectedAct =
 							new CosmicWimpoutActionRollSelectedDie(this, isCheck1, isCheck2, isCheck3, isCheck4, isCheck5);
@@ -560,56 +574,95 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 
 	private boolean legalOneChecked(){
 		if(isCheck1){
-			if(state.getDiceVal(0).equals("Tens")
-				|| state.getDiceVal(0).equals("Fives")){
-				return false;
-			}
+			boolean check = state.check1Die(0);
+				if (check) {
+					return true;
+				}
+				else {
+                    return false;
+                }
+
 		}
 		else if(isCheck2){
-			if(state.getDiceVal(1).equals("Tens")
-					|| state.getDiceVal(1).equals("Fives")){
-				return false;
-			}
+			boolean check = state.check1Die(1);
+				if (check) {
+					return true;
+				}
+				else {
+                    return false;
+                }
+
 		}
 		else if(isCheck3){
-			if(state.getDiceVal(2).equals("Tens")
-					|| state.getDiceVal(2).equals("Fives")){
-				return false;
-			}
+			boolean check = state.check1Die(2);
+				if (check) {
+					return true;
+				}
+                else {
+                    return false;
+                }
 		}
 		else if(isCheck4){
-			if(state.getDiceVal(3).equals("Tens")
-					|| state.getDiceVal(3).equals("Fives")){
-				return false;
-			}
+			boolean check = state.check1Die(3);
+				if(check) {
+					return true;
+				}
+                else {
+                    return false;
+                }
 		}
 		else if(isCheck5){
-			if(state.getDiceVal(4).equals("Tens")
-					|| state.getDiceVal(4).equals("Fives")){
-				return false;
+			boolean check = state.check1Die(4);
+			if(check) {
+				return true;
 			}
+            else {
+                return false;
+            }
 		}
-		return true;
+		return false;
 	}
 
 	//run method for the thread that will rotate through each face of the die once then land on the correct face
-	/*@Override
+	//@Override
+	/*
 	public void run(){
-		for(int i = 0; i < redDieFaces.length; i++) {
+		//for(int i = 0; i < redDieFaces.length; i++) {
 			try {
-				//Thread.sleep(20);
-				if(rollDiceButton.isPressed() || rollSelectedButton.isPressed()){
-                    //this.updateDisplay();
-					this.die1.setImageResource(redDieFaces[i]);
-					this.die2.setImageResource(redDieFaces[i]);
-					this.die3.setImageResource(blackDieFaces[i]);
-					this.die4.setImageResource(redDieFaces[i]);
-					this.die5.setImageResource(redDieFaces[i]);
-                }
-			} catch (Exception e) {*//*do nothing*//* }
-		}
-	}
-*/
+				for(int i = 0; i < redDieFaces.length; i++) {
+					Thread.sleep(20);
+					if (rollDiceClicked) {
+						this.die1.setImageResource(redDieFaces[i]);
+						this.die2.setImageResource(redDieFaces[i]);
+						this.die3.setImageResource(blackDieFaces[i]);
+						this.die4.setImageResource(redDieFaces[i]);
+						this.die5.setImageResource(redDieFaces[i]);
+						//this.updateDisplay();
+					}
+					else if(rollSelectedClicked) {
+						if (isCheck1) {
+							this.die1.setImageResource(redDieFaces[i]);
+						}
+						if (isCheck2) {
+							this.die2.setImageResource(redDieFaces[i]);
+						}
+						if (isCheck3) {
+							this.die3.setImageResource(blackDieFaces[i]);
+						}
+						if (isCheck4) {
+							this.die4.setImageResource(redDieFaces[i]);
+						}
+						if (isCheck5) {
+							this.die5.setImageResource(redDieFaces[i]);
+						}
+					}
+				}
+				this.updateDisplay();
+			} catch (Exception e) {/*do nothing*/
+		//}
+	//}
+
+
 
 }// class CounterHumanPlayer
 
