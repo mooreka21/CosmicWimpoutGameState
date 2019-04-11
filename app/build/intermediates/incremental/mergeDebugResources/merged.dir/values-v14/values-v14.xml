@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="AppTheme" parent="android:Theme.Holo.Light.DarkActionBar"/>
+    <style name="dionisia_regular" parent="@android:style/TextAppearance.Small">
+        <item name="android:fontFamily">@font/dionisia_regular</item>
+    </style>
+</resources>
