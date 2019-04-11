@@ -32,7 +32,7 @@ import java.util.ArrayList;
  * @author Kayla Moore
  *  @version March 2019
  */
-public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClickListener/*, Runnable*/ {
+public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClickListener, Runnable {
 
 	/* instance variables */
     private static final long serialVersionUID= 9876483921L;
@@ -60,6 +60,8 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 	private boolean isCheck3 = false;
 	private boolean isCheck4 = false;
 	private boolean isCheck5 = false;
+	private boolean rollDiceClicked = false;
+	private boolean rollSelectedClicked = false;
 
 	//arrays that hold the die faces
 	private int redDieFaces[] = {R.drawable.ten, R.drawable.halfcircles, R.drawable.triangle,
@@ -106,10 +108,6 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 		this.player3Score.setText(allPlayerNames[2] + ": " + state.getPlayer3Score());
 		this.player4Score.setText(allPlayerNames[3] + ": " + state.getPlayer4Score());
 		this.turnScore.setText("Turn Score: " + state.getTurnScore() + "pts");
-
-		//TODO: start a thread that rotates through die faces while rolling
-		//Thread th1 = new Thread(this);
-		//th1.start();
 
 		//setting die 1 face to whatever the current die state is
 		if(state.getDiceVal(0).equals("Tens")){
@@ -250,6 +248,9 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 	 * 		the button that was clicked
 	 */
 	public void onClick(View button) {
+		//starts a thread that rotates through die faces while rolling
+		Thread th1 = new Thread(this);
+		th1.start();
 
 		//if the button is any of the checkboxes, update
 		//variable to true
@@ -285,6 +286,7 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 		//making sure that they press the roll all dice button first
 		if(this.actionsPressed == 0){
 			if(button == rollDiceButton ){
+				rollDiceClicked = true;
 				game.sendAction(rollAct);
 				actionsPressed++;
 			}
@@ -319,6 +321,7 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 				//game.sendAction(rollAct);
 			}
 			else if(button == rollSelectedButton) {
+				rollSelectedClicked = true;
 				//checking to see which ones are true to send in the action
 				if (!(check1.isChecked())) {
 					isCheck1 = false;
@@ -610,23 +613,43 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 	}
 
 	//run method for the thread that will rotate through each face of the die once then land on the correct face
-	/*@Override
+	@Override
 	public void run(){
-		for(int i = 0; i < redDieFaces.length; i++) {
+		//for(int i = 0; i < redDieFaces.length; i++) {
 			try {
-				//Thread.sleep(20);
-				if(rollDiceButton.isPressed() || rollSelectedButton.isPressed()){
-                    //this.updateDisplay();
-					this.die1.setImageResource(redDieFaces[i]);
-					this.die2.setImageResource(redDieFaces[i]);
-					this.die3.setImageResource(blackDieFaces[i]);
-					this.die4.setImageResource(redDieFaces[i]);
-					this.die5.setImageResource(redDieFaces[i]);
-                }
-			} catch (Exception e) {*//*do nothing*//* }
-		}
+				for(int i = 0; i < redDieFaces.length; i++) {
+					Thread.sleep(20);
+					if (rollDiceClicked) {
+						this.die1.setImageResource(redDieFaces[i]);
+						this.die2.setImageResource(redDieFaces[i]);
+						this.die3.setImageResource(blackDieFaces[i]);
+						this.die4.setImageResource(redDieFaces[i]);
+						this.die5.setImageResource(redDieFaces[i]);
+						//this.updateDisplay();
+					}
+					else if(rollSelectedClicked) {
+						if (isCheck1) {
+							this.die1.setImageResource(redDieFaces[i]);
+						}
+						if (isCheck2) {
+							this.die2.setImageResource(redDieFaces[i]);
+						}
+						if (isCheck3) {
+							this.die3.setImageResource(blackDieFaces[i]);
+						}
+						if (isCheck4) {
+							this.die4.setImageResource(redDieFaces[i]);
+						}
+						if (isCheck5) {
+							this.die5.setImageResource(redDieFaces[i]);
+						}
+					}
+				}
+				this.updateDisplay();
+			} catch (Exception e) {/*do nothing*/ }
+		//}
 	}
-*/
+
 
 }// class CounterHumanPlayer
 
