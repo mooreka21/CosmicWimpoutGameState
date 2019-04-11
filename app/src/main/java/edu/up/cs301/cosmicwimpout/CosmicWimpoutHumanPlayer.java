@@ -63,6 +63,7 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 	private boolean rollDiceClicked = false;
 	private boolean rollSelectedClicked = false;
 
+
 	//arrays that hold the die faces
 	private int redDieFaces[] = {R.drawable.ten, R.drawable.halfcircles, R.drawable.triangle,
 			R.drawable.bolts, R.drawable.five, R.drawable.stars};
@@ -321,6 +322,7 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 				//game.sendAction(rollAct);
 			}
 			else if(button == rollSelectedButton) {
+				int checkCount = 0;
 				rollSelectedClicked = true;
 				//checking to see which ones are true to send in the action
 				if (!(check1.isChecked())) {
@@ -328,34 +330,40 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 				}
 				else {
 					isCheck1 = true;
+					checkCount++;
 				}
 				if (!(check2.isChecked())) {
 					isCheck2 = false;
 				}
 				else {
 					isCheck2 = true;
+					checkCount++;
 				}
 				if (!(check3.isChecked())) {
 					isCheck3 = false;
 				}
 				else {
 					isCheck3 = true;
+					checkCount++;
 				}
 				if (!(check4.isChecked())) {
 					isCheck4 = false;
 				} else {
 					isCheck4 = true;
+					checkCount++;
 				}
 				if (!(check5.isChecked())) {
 					isCheck5 = false;
 				} else {
 					isCheck5 = true;
+					checkCount++;
 				}
 
 				if(legalMoveAllChecked5()){
 					if(isCheck1 && isCheck2 && isCheck3 && isCheck4 && isCheck5){
 						CosmicWimpoutActionRollSelectedDie rollSelectedAct =
-								new CosmicWimpoutActionRollSelectedDie(this, isCheck1, isCheck2, isCheck3, isCheck4, isCheck5);
+								new CosmicWimpoutActionRollSelectedDie(this, isCheck1,
+										isCheck2, isCheck3, isCheck4, isCheck5);
 						game.sendAction(rollSelectedAct);
 					}
 					else{
@@ -367,18 +375,33 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 				else if(isCheck1 && isCheck2 && isCheck3 && isCheck4 && isCheck5) {
 					if (legalMoveAllChecked5()) {
 						CosmicWimpoutActionRollSelectedDie rollSelectedAct =
-								new CosmicWimpoutActionRollSelectedDie(this, isCheck1, isCheck2, isCheck3, isCheck4, isCheck5);
+								new CosmicWimpoutActionRollSelectedDie(this, isCheck1,
+										isCheck2, isCheck3, isCheck4, isCheck5);
 						game.sendAction(rollSelectedAct);
 					} else if (!legalMoveAllChecked5()) {
 						Toast.makeText(this.myActivity, "Cannot roll all dice",
 								Toast.LENGTH_SHORT).show();
 					}
 				}
+				//checking legal move if 2 is checked
+				else if(checkCount == 2){
+					if(legal2Die()){
+						CosmicWimpoutActionRollSelectedDie rollSelectedDie =
+								new CosmicWimpoutActionRollSelectedDie(this, isCheck1,
+										isCheck2, isCheck3, isCheck4, isCheck5);
+						game.sendAction(rollSelectedDie);
+					}
+					else{
+						Toast.makeText(this.myActivity, "Cannot roll those 2 Die!",
+								Toast.LENGTH_SHORT).show();
+					}
+				}
 				//checking for legal move if one is checked
-				if(isCheck1 && !isCheck5 && !isCheck4 && !isCheck3 && !isCheck2){
+				else if(isCheck1 && !isCheck5 && !isCheck4 && !isCheck3 && !isCheck2){
 					if(legalOneChecked()){
 						CosmicWimpoutActionRollSelectedDie rollSelectedAct =
-								new CosmicWimpoutActionRollSelectedDie(this, isCheck1, isCheck2, isCheck3, isCheck4, isCheck5);
+								new CosmicWimpoutActionRollSelectedDie(this, isCheck1,
+										isCheck2, isCheck3, isCheck4, isCheck5);
 						game.sendAction(rollSelectedAct);
 
 					}
@@ -662,7 +685,76 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 		//}
 	//}
 
+public boolean legal2Die(){
+	if(isCheck1 && isCheck2){
+		if(this.state.check2Dice(0,1)){
+			return true;
+		}
+		return false;
+	}
+	else if (isCheck1 && isCheck3){
+		if(this.state.check2Dice(0,2)){
+			return true;
+		}
+		return false;
+	}
+	else if(isCheck1 && isCheck3){
+		if(this.state.check2Dice(0,2)){
+			return true;
+		}
+		return false;
+	}
+	else if(isCheck1 && isCheck4){
+		if(this.state.check2Dice(0,3)){
+			return true;
+		}
+		return false;
+	}
+	else if(isCheck1 && isCheck5){
+		if(this.state.check2Dice(0,4)){
+			return true;
+		}
+		return false;
+	}
+	else if(isCheck2 && isCheck3){
+		if(this.state.check2Dice(1,2)){
+			return true;
+		}
+		return false;
+	}
+	else if(isCheck2 && isCheck4){
+		if(this.state.check2Dice(1,3)){
+			return true;
+		}
+		return false;
+	}
+	else if(isCheck2 && isCheck5){
+		if(this.state.check2Dice(1,4)){
+			return true;
+		}
+		return false;
+	}
+	else if(isCheck3 && isCheck4){
+		if(this.state.check2Dice(2,3)){
+			return true;
+		}
+		return false;
+	}
+	else if(isCheck3 && isCheck5){
+		if(this.state.check2Dice(2,4)){
+			return true;
+		}
+		return false;
+	}
+	else if(isCheck4 && isCheck5){
+		if(this.state.check2Dice(3,4)){
+			return true;
+		}
+		return false;
+	}
 
+	return false;
+}
 
 }// class CounterHumanPlayer
 
