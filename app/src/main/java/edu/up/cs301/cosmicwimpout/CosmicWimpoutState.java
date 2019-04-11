@@ -1612,10 +1612,145 @@ public class CosmicWimpoutState extends GameState {
 		return false;
 	}
 
-	public boolean check2Dice(){
+	public boolean check2Dice(int die1, int die2) {
+		if (isFlash) {
+			int tenCount = 0;
+			int fiveCount = 0;
+			int moonCount = 0;
+			int triangleCount = 0;
+			int starCount = 0;
+			int boltCount = 0;
+
+			for (int i = 0; i < this.diceArray.length; i++) {
+				if (this.diceArray[i].getDieState() == 1) {
+					tenCount++;
+				} else if (this.diceArray[i].getDieState() == 5) {
+					fiveCount++;
+				} else if (this.diceArray[i].getDieState() == 2) {
+					moonCount++;
+				} else if (this.diceArray[i].getDieState() == 3) {
+					if (i != 3) {
+						triangleCount++;
+					}
+				} else if (this.diceArray[i].getDieState() == 4) {
+					boltCount++;
+				} else if (this.diceArray[i].getDieState() == 6) {
+					starCount++;
+				}
+			}
+			if (moonCount == 3 || (moonCount == 2 && this.diceArray[2].getDieState() == 3)) {
+				if (this.diceArray[die1].getDieState() == 2 ||
+						this.diceArray[die2].getDieState() == 2 ) {
+					return false;
+				}
+			} else if (triangleCount == 3 || (triangleCount == 2 && this.diceArray[2].getDieState() == 3)) {
+				if (this.diceArray[die1].getDieState() == 3 ||
+						this.diceArray[die2].getDieState() == 3) {
+					return false;
+				}
+			} else if (boltCount == 3 || (boltCount == 2 && this.diceArray[2].getDieState() == 3)) {
+				if (this.diceArray[die1].getDieState() == 4 ||
+						this.diceArray[die2].getDieState() == 4) {
+					return false;
+				}
+			} else if (starCount == 3 || (starCount == 2 && this.diceArray[2].getDieState() == 3)) {
+				if (this.diceArray[die1].getDieState() == 6 ||
+						this.diceArray[die2].getDieState() == 6) {
+					return false;
+				}
+			} else if (this.diceArray[die1].getDieState() == 1 ||
+					this.diceArray[die1].getDieState() == 5 ||
+					this.diceArray[die2].getDieState() == 1 ||
+					this.diceArray[die2].getDieState() == 5) {
+				return false;
+			} else {
+				return true;
+			}
+		}
+		else if (this.diceArray[die1].getDieState() == 1 ||
+				this.diceArray[die1].getDieState() == 5 ||
+				this.diceArray[die2].getDieState() == 1 ||
+				this.diceArray[die2].getDieState() == 5) {
+			return false;
+		}
+		else {
+			return true;
+		}
 		return false;
 	}
-	public boolean check3Dice(){
+	public boolean check3Dice(int die1, int die2, int die3){
+		if (isFlash) {
+			int tenCount = 0;
+			int fiveCount = 0;
+			int moonCount = 0;
+			int triangleCount = 0;
+			int starCount = 0;
+			int boltCount = 0;
+
+			for (int i = 0; i < this.diceArray.length; i++) {
+				if (this.diceArray[i].getDieState() == 1) {
+					tenCount++;
+				} else if (this.diceArray[i].getDieState() == 5) {
+					fiveCount++;
+				} else if (this.diceArray[i].getDieState() == 2) {
+					moonCount++;
+				} else if (this.diceArray[i].getDieState() == 3) {
+					if (i != 3) {
+						triangleCount++;
+					}
+				} else if (this.diceArray[i].getDieState() == 4) {
+					boltCount++;
+				} else if (this.diceArray[i].getDieState() == 6) {
+					starCount++;
+				}
+			}
+			if (moonCount == 3 || (moonCount == 2 && this.diceArray[2].getDieState() == 3)) {
+				if (this.diceArray[die1].getDieState() == 2 ||
+						this.diceArray[die2].getDieState() == 2 ||
+						this.diceArray[die3].getDieState() == 2) {
+					return false;
+				}
+			} else if (triangleCount == 3 || (triangleCount == 2 && this.diceArray[2].getDieState() == 3)) {
+				if (this.diceArray[die1].getDieState() == 3 ||
+						this.diceArray[die2].getDieState() == 3 ||
+						this.diceArray[die3].getDieState() == 3) {
+					return false;
+				}
+			} else if (boltCount == 3 || (boltCount == 2 && this.diceArray[2].getDieState() == 3)) {
+				if (this.diceArray[die1].getDieState() == 4 ||
+						this.diceArray[die2].getDieState() == 4 ||
+						this.diceArray[die3].getDieState() == 4) {
+					return false;
+				}
+			} else if (starCount == 3 || (starCount == 2 && this.diceArray[2].getDieState() == 3)) {
+				if (this.diceArray[die1].getDieState() == 6 ||
+						this.diceArray[die2].getDieState() == 6 ||
+					this.diceArray[die3].getDieState() == 6) {
+					return false;
+				}
+			} else if (this.diceArray[die1].getDieState() == 1 ||
+					this.diceArray[die1].getDieState() == 5 ||
+					this.diceArray[die2].getDieState() == 1 ||
+					this.diceArray[die2].getDieState() == 5 ||
+					this.diceArray[die3].getDieState() == 1 ||
+					this.diceArray[die3].getDieState() == 5) {
+				return false;
+			} else {
+				return true;
+			}
+		}
+		else if (this.diceArray[die1].getDieState() == 1 ||
+				this.diceArray[die1].getDieState() == 5 ||
+				this.diceArray[die2].getDieState() == 1 ||
+				this.diceArray[die2].getDieState() == 5 ||
+				this.diceArray[die3].getDieState() == 1 ||
+				this.diceArray[die3].getDieState() == 5) {
+			return false;
+		}
+		else {
+			return true;
+		}
+
 		return false;
 	}
 
