@@ -383,6 +383,19 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 								Toast.LENGTH_SHORT).show();
 					}
 				}
+				//checking legal move if 3 are checked
+				else if(checkCount == 3){
+					if(legal3Die()){
+						CosmicWimpoutActionRollSelectedDie rollSelectedDie =
+								new CosmicWimpoutActionRollSelectedDie(this, isCheck1,
+										isCheck2, isCheck3, isCheck4, isCheck5);
+						game.sendAction(rollSelectedDie);
+					}
+					else{
+						Toast.makeText(this.myActivity, "Cannot roll those 3 Die!",
+								Toast.LENGTH_SHORT).show();
+					}
+				}
 				//checking legal move if 2 is checked
 				else if(checkCount == 2){
 					if(legal2Die()){
@@ -685,76 +698,139 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 		//}
 	//}
 
-public boolean legal2Die(){
-	if(isCheck1 && isCheck2){
-		if(this.state.check2Dice(0,1)){
-			return true;
+	public boolean legal2Die(){
+		if(isCheck1 && isCheck2){
+			if(this.state.check2Dice(0,1)){
+				return true;
+			}
+			return false;
 		}
-		return false;
-	}
-	else if (isCheck1 && isCheck3){
-		if(this.state.check2Dice(0,2)){
-			return true;
+		else if (isCheck1 && isCheck3){
+			if(this.state.check2Dice(0,2)){
+				return true;
+			}
+			return false;
 		}
-		return false;
-	}
-	else if(isCheck1 && isCheck3){
-		if(this.state.check2Dice(0,2)){
-			return true;
+		else if(isCheck1 && isCheck3){
+			if(this.state.check2Dice(0,2)){
+				return true;
+			}
+			return false;
 		}
-		return false;
-	}
-	else if(isCheck1 && isCheck4){
-		if(this.state.check2Dice(0,3)){
-			return true;
+		else if(isCheck1 && isCheck4){
+			if(this.state.check2Dice(0,3)){
+				return true;
+			}
+			return false;
 		}
-		return false;
-	}
-	else if(isCheck1 && isCheck5){
-		if(this.state.check2Dice(0,4)){
-			return true;
+		else if(isCheck1 && isCheck5){
+			if(this.state.check2Dice(0,4)){
+				return true;
+			}
+			return false;
 		}
-		return false;
-	}
-	else if(isCheck2 && isCheck3){
-		if(this.state.check2Dice(1,2)){
-			return true;
+		else if(isCheck2 && isCheck3){
+			if(this.state.check2Dice(1,2)){
+				return true;
+			}
+			return false;
 		}
-		return false;
-	}
-	else if(isCheck2 && isCheck4){
-		if(this.state.check2Dice(1,3)){
-			return true;
+		else if(isCheck2 && isCheck4){
+			if(this.state.check2Dice(1,3)){
+				return true;
+			}
+			return false;
 		}
-		return false;
-	}
-	else if(isCheck2 && isCheck5){
-		if(this.state.check2Dice(1,4)){
-			return true;
+		else if(isCheck2 && isCheck5){
+			if(this.state.check2Dice(1,4)){
+				return true;
+			}
+			return false;
 		}
-		return false;
-	}
-	else if(isCheck3 && isCheck4){
-		if(this.state.check2Dice(2,3)){
-			return true;
+		else if(isCheck3 && isCheck4){
+			if(this.state.check2Dice(2,3)){
+				return true;
+			}
+			return false;
 		}
-		return false;
-	}
-	else if(isCheck3 && isCheck5){
-		if(this.state.check2Dice(2,4)){
-			return true;
+		else if(isCheck3 && isCheck5){
+			if(this.state.check2Dice(2,4)){
+				return true;
+			}
+			return false;
 		}
-		return false;
-	}
-	else if(isCheck4 && isCheck5){
-		if(this.state.check2Dice(3,4)){
-			return true;
+		else if(isCheck4 && isCheck5){
+			if(this.state.check2Dice(3,4)){
+				return true;
+			}
+			return false;
 		}
+
 		return false;
 	}
 
-	return false;
-}
-
+	private boolean legal3Die(){
+		if(isCheck1 && isCheck2 && isCheck3){
+			if(this.state.check3Dice(0,1,2)){
+				return true;
+			}
+			return false;
+		}
+		else if(isCheck1 && isCheck2 && isCheck4){
+			if(this.state.check3Dice(0,1,3)){
+				return true;
+			}
+			return false;
+		}
+		else if(isCheck1 && isCheck2 && isCheck5){
+			if(this.state.check3Dice(0,1,4)){
+				return true;
+			}
+			return false;
+		}
+		else if(isCheck1 && isCheck3 && isCheck4){
+			if(this.state.check3Dice(0,2,3)){
+				return true;
+			}
+			return false;
+		}
+		else if(isCheck1 && isCheck3 && isCheck5){
+			if(this.state.check3Dice(0,2,4)){
+				return true;
+			}
+			return false;
+		}
+		else if(isCheck1 && isCheck4 && isCheck5){
+			if(this.state.check3Dice(0,3,4)){
+				return true;
+			}
+			return false;
+		}
+		else if(isCheck2 && isCheck3 && isCheck4){
+			if(this.state.check3Dice(1,2,3)){
+				return true;
+			}
+			return false;
+		}
+		else if(isCheck2 && isCheck3 && isCheck5){
+			if(this.state.check3Dice(1,2,4)){
+				return true;
+			}
+			return false;
+		}
+		else if(isCheck2 && isCheck4 && isCheck5){
+			if(this.state.check3Dice(1,3,4)){
+				return true;
+			}
+			return false;
+		}
+		else if(isCheck3 && isCheck4 && isCheck5){
+			if(this.state.check3Dice(2,3,4)){
+				return true;
+			}
+			return false;
+		}
+		return false;
+	}
 }// class CounterHumanPlayer
 

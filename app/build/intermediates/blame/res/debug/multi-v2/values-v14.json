@@ -1,0 +1,28 @@
+{
+    "logs": [
+        {
+            "outputFile": "/Users/oliviadendinger/AndroidStudioProjects/CosmicWimpoutGameState/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v14/values-v14.xml",
+            "map": [
+                {
+                    "source": "/Users/oliviadendinger/AndroidStudioProjects/CosmicWimpoutGameState/app/src/main/res/values-v14/styles.xml",
+                    "from": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "17,95",
+                        "endLines": "2,5",
+                        "endColumns": "77,12",
+                        "endOffsets": "90,255"
+                    },
+                    "to": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,132",
+                        "endLines": "2,5",
+                        "endColumns": "76,12",
+                        "endOffsets": "127,291"
+                    }
+                }
+            ]
+        }
+    ]
+}
