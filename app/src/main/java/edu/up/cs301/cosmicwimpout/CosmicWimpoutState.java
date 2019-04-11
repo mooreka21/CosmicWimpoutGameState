@@ -1731,7 +1731,9 @@ public class CosmicWimpoutState extends GameState {
 			} else if (this.diceArray[die1].getDieState() == 1 ||
 					this.diceArray[die1].getDieState() == 5 ||
 					this.diceArray[die2].getDieState() == 1 ||
-					this.diceArray[die2].getDieState() == 5) {
+					this.diceArray[die2].getDieState() == 5 ||
+					this.diceArray[die3].getDieState() == 1 ||
+					this.diceArray[die3].getDieState() == 5) {
 				return false;
 			} else {
 				return true;
@@ -1740,7 +1742,9 @@ public class CosmicWimpoutState extends GameState {
 		else if (this.diceArray[die1].getDieState() == 1 ||
 				this.diceArray[die1].getDieState() == 5 ||
 				this.diceArray[die2].getDieState() == 1 ||
-				this.diceArray[die2].getDieState() == 5) {
+				this.diceArray[die2].getDieState() == 5 ||
+				this.diceArray[die3].getDieState() == 1 ||
+				this.diceArray[die3].getDieState() == 5) {
 			return false;
 		}
 		else {
