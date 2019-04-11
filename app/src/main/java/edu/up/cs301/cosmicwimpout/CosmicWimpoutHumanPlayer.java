@@ -420,7 +420,7 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 								Toast.LENGTH_SHORT).show();
 					}
 				}
-				else if(!isCheck1 && isCheck5 && !isCheck4 && !isCheck3 && isCheck2){
+				else if(!isCheck1 &&  !isCheck5 && !isCheck4 && !isCheck3 && isCheck2){
 					if(legalOneChecked()){
 						CosmicWimpoutActionRollSelectedDie rollSelectedAct =
 								new CosmicWimpoutActionRollSelectedDie(this, isCheck1, isCheck2, isCheck3, isCheck4, isCheck5);
