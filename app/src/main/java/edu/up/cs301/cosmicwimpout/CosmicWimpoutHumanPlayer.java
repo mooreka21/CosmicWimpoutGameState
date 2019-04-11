@@ -349,8 +349,19 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 					isCheck5 = true;
 				}
 
+				if(legalMoveAllChecked5()){
+					if(isCheck1 && isCheck2 && isCheck3 && isCheck4 && isCheck5){
+						CosmicWimpoutActionRollSelectedDie rollSelectedAct =
+								new CosmicWimpoutActionRollSelectedDie(this, isCheck1, isCheck2, isCheck3, isCheck4, isCheck5);
+						game.sendAction(rollSelectedAct);
+					}
+					else{
+						Toast.makeText(this.myActivity, "Must roll all dice",
+								Toast.LENGTH_SHORT).show();
+					}
+				}
 				//checking for legal move if all 5 are checked
-				if(isCheck1 && isCheck2 && isCheck3 && isCheck4 && isCheck5) {
+				else if(isCheck1 && isCheck2 && isCheck3 && isCheck4 && isCheck5) {
 					if (legalMoveAllChecked5()) {
 						CosmicWimpoutActionRollSelectedDie rollSelectedAct =
 								new CosmicWimpoutActionRollSelectedDie(this, isCheck1, isCheck2, isCheck3, isCheck4, isCheck5);
