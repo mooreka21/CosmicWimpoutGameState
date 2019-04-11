@@ -1605,6 +1605,16 @@ public class CosmicWimpoutState extends GameState {
 		return false;
 	}
 
+	public boolean check2Dice(){
+		return false;
+	}
+	public boolean check3Dice(){
+		return false;
+	}
+
+	public boolean check4Dice(){
+		return false;
+	}
 	/*
 	public int[] reRollFlash(){
 		if(isFlash){
