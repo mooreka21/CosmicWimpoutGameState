@@ -270,6 +270,7 @@ public class CosmicWimpoutState extends GameState {
 		else if(fiveCount == 1){
 			tally = tally + 5;
 		}
+
 		if(starCount == 2 && ourDice[2].dieState == 3){
 			isFlash = true;
             tally = tally + 60;
@@ -1178,16 +1179,17 @@ public class CosmicWimpoutState extends GameState {
 				notWimp = true;
 			}
 
-			if(tenCount == 2 && (one == 3 || two == 3 || three == 3 || four == 3)){
+			if(tenCount == 2 && (one == 3 || two == 3 || three == 3 || four == 3) &&
+					ourDice[2].dieState == 3){
 				if(ourDice[2].dieState == 3) {
 					isFlash = true;
 					score = score + 100;
 					notWimp = true;
 				}
-				else if(tenCount == 2){
-					score = score + 20;
-					notWimp = true;
-				}
+			}
+			else if(tenCount == 2){
+				score = score + 20;
+				notWimp = true;
 			}
 
 			if(moonCount == 2 && (one == 3 || two == 3 || three == 3 || four == 3)){
@@ -1211,16 +1213,14 @@ public class CosmicWimpoutState extends GameState {
 					notWimp = true;
 				}
 			}
-			if(fiveCount == 2 && (one == 3 || two == 3 || three == 3 || four == 3)){
-				if(ourDice[2].dieState == 3) {
+			if(fiveCount == 2 && (one == 3 || two == 3 || three == 3 || four == 3) && ourDice[2].dieState == 3){
 					isFlash = true;
 					score = score + 50;
 					notWimp = true;
-				}
-				else{
+			}
+			else if(fiveCount == 2){
 					score = score + 10;
 					notWimp = true;
-				}
 			}
 
 			if(starCount == 2 && (one == 3 || two == 3 || three == 3 || four == 3)){
@@ -1533,6 +1533,9 @@ public class CosmicWimpoutState extends GameState {
 
 				return true;
 			}
+			else{
+				return false;
+			}
 		}
 
 		return false;
@@ -1590,9 +1593,13 @@ public class CosmicWimpoutState extends GameState {
 					return false;
 				}
 			}
+
 			else if(this.diceArray[diceId].getDieState() == 1 ||
 					this.diceArray[diceId].getDieState() == 5 ){
 				return false;
+			}
+			else{
+				return true;
 			}
 		}
 		else if(this.diceArray[diceId].getDieState() == 1 ||

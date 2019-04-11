@@ -32,7 +32,7 @@ import java.util.ArrayList;
  * @author Kayla Moore
  *  @version March 2019
  */
-public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClickListener, Runnable {
+public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClickListener {
 
 	/* instance variables */
     private static final long serialVersionUID= 9876483921L;
@@ -249,8 +249,8 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 	 */
 	public void onClick(View button) {
 		//starts a thread that rotates through die faces while rolling
-		Thread th1 = new Thread(this);
-		th1.start();
+		//Thread th1 = new Thread(this);
+		//th1.start();
 
 		//if the button is any of the checkboxes, update
 		//variable to true
@@ -624,7 +624,8 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 	}
 
 	//run method for the thread that will rotate through each face of the die once then land on the correct face
-	@Override
+	//@Override
+	/*
 	public void run(){
 		//for(int i = 0; i < redDieFaces.length; i++) {
 			try {
@@ -657,9 +658,10 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 					}
 				}
 				this.updateDisplay();
-			} catch (Exception e) {/*do nothing*/ }
+			} catch (Exception e) {/*do nothing*/
 		//}
-	}
+	//}
+
 
 
 }// class CounterHumanPlayer
