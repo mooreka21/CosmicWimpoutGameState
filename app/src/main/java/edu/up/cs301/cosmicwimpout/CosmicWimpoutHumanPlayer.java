@@ -285,7 +285,7 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 			//new CosmicWimpoutActionRollSelectedDie(this, isCheck1, isCheck2, isCheck3, isCheck4,isCheck5);
 
 		//making sure that they press the roll all dice button first
-		if(this.actionsPressed == 0){
+		if(this.actionsPressed == 0 || this.state.getTurnScore() == 0){
 			if(button == rollDiceButton ){
 				rollDiceClicked = true;
 				game.sendAction(rollAct);

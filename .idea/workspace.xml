@@ -17,18 +17,21 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/build-info/debug/build-info.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/build-info/debug/build-info.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/edu/up/cs301/cosmicwimpout/CosmicWimpoutHumanPlayer.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/edu/up/cs301/cosmicwimpout/CosmicWimpoutHumanPlayer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/edu/up/cs301/cosmicwimpout/CosmicWimpoutLocalGame.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/edu/up/cs301/cosmicwimpout/CosmicWimpoutLocalGame.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/edu/up/cs301/cosmicwimpout/CosmicWimpoutState.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/edu/up/cs301/cosmicwimpout/CosmicWimpoutState.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/ir_slices/debug/package_slice_3/dex-renamer-state.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/ir_slices/debug/package_slice_3/dex-renamer-state.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/edu/up/cs301/cosmicwimpout/CosmicWimpoutHumanPlayer.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/edu/up/cs301/cosmicwimpout/CosmicWimpoutHumanPlayer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/edu/up/cs301/cosmicwimpout/CosmicWimpoutLocalGame.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/edu/up/cs301/cosmicwimpout/CosmicWimpoutLocalGame.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/edu/up/cs301/cosmicwimpout/CosmicWimpoutState.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/edu/up/cs301/cosmicwimpout/CosmicWimpoutState.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/split-apk/debug/slices/slice_3.apk" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/split-apk/debug/slices/slice_3.apk" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/16/edu/up/cs301/cosmicwimpout/CosmicWimpoutHumanPlayer.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/16/edu/up/cs301/cosmicwimpout/CosmicWimpoutHumanPlayer.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/16/edu/up/cs301/cosmicwimpout/CosmicWimpoutLocalGame.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/16/edu/up/cs301/cosmicwimpout/CosmicWimpoutLocalGame.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/16/edu/up/cs301/cosmicwimpout/CosmicWimpoutState.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/16/edu/up/cs301/cosmicwimpout/CosmicWimpoutState.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexMerger/debug/3/classes.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/dexMerger/debug/3/classes.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/0/edu/up/cs301/cosmicwimpout/CosmicWimpoutHumanPlayer.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/0/edu/up/cs301/cosmicwimpout/CosmicWimpoutHumanPlayer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/0/edu/up/cs301/cosmicwimpout/CosmicWimpoutLocalGame.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/0/edu/up/cs301/cosmicwimpout/CosmicWimpoutLocalGame.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/0/edu/up/cs301/cosmicwimpout/CosmicWimpoutState.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/0/edu/up/cs301/cosmicwimpout/CosmicWimpoutState.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/edu/up/cs301/cosmicwimpout/CosmicWimpoutHumanPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/edu/up/cs301/cosmicwimpout/CosmicWimpoutHumanPlayer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/edu/up/cs301/cosmicwimpout/CosmicWimpoutLocalGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/edu/up/cs301/cosmicwimpout/CosmicWimpoutLocalGame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/edu/up/cs301/cosmicwimpout/CosmicWimpoutState.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/edu/up/cs301/cosmicwimpout/CosmicWimpoutState.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -100,25 +103,25 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="957" />
-          <entry key="txt" value="14" />
+          <entry key="java" value="1599" />
+          <entry key="txt" value="21" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="957" />
-          <entry key="PLAIN_TEXT" value="14" />
+          <entry key="JAVA" value="1599" />
+          <entry key="PLAIN_TEXT" value="21" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/up/cs301/cosmicwimpout/CosmicWimpoutLocalGame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="752">
-              <caret line="147" column="8" selection-start-line="147" selection-start-column="8" selection-end-line="147" selection-end-column="8" />
+            <state relative-caret-position="2114">
+              <caret line="147" selection-start-line="147" selection-end-line="147" />
             </state>
           </provider>
         </entry>
@@ -147,11 +150,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/up/cs301/cosmicwimpout/CosmicWimpoutHumanPlayer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="314">
-              <caret line="394" column="80" selection-start-line="394" selection-start-column="80" selection-end-line="394" selection-end-column="80" />
+            <state relative-caret-position="64">
+              <caret line="288" column="69" selection-start-line="288" selection-start-column="69" selection-end-line="288" selection-end-column="69" />
             </state>
           </provider>
         </entry>
@@ -202,8 +205,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/up/cs301/cosmicwimpout/CosmicWimpoutState.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="177">
-              <caret line="1371" selection-start-line="1371" selection-end-line="1371" />
+            <state relative-caret-position="735">
+              <caret line="498" column="14" selection-start-line="498" selection-start-column="14" selection-end-line="498" selection-end-column="14" />
               <folding>
                 <element signature="e#13562#13563#0" expanded="true" />
                 <element signature="e#13614#13615#0" expanded="true" />
@@ -221,6 +224,8 @@
                 <element signature="e#22355#22356#0" expanded="true" />
                 <element signature="e#34644#34645#0" expanded="true" />
                 <element signature="e#34667#34668#0" expanded="true" />
+                <element signature="e#45468#45469#0" expanded="true" />
+                <element signature="e#45495#45496#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -249,14 +254,14 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/java/edu/up/cs301/cosmicwimpout/CosmicWimpoutHumanPlayer.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/edu/up/cs301/cosmicwimpout/CosmicWimpoutState.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/edu/up/cs301/cosmicwimpout/CosmicWimpoutLocalGame.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/edu/up/cs301/cosmicwimpout/CosmicWimpoutState.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/edu/up/cs301/cosmicwimpout/CosmicWimpoutHumanPlayer.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-29" />
+    <option name="x" value="199" />
     <option name="y" value="23" />
     <option name="width" value="1068" />
     <option name="height" value="822" />
@@ -693,13 +698,6 @@
       <option name="presentableId" value="Default" />
       <updated>1553378870414</updated>
     </task>
-    <task id="LOCAL-00026" summary="Color changing text based on turn">
-      <created>1553819416494</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1553819416494</updated>
-    </task>
     <task id="LOCAL-00027" summary="Works for one die">
       <created>1553822154647</created>
       <option name="number" value="00027" />
@@ -1036,12 +1034,18 @@
       <option name="project" value="LOCAL" />
       <updated>1555027295209</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="updates">
+      <created>1555039428824</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1555039428824</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-29" y="23" width="1068" height="822" extended-state="0" />
-    <editor active="true" />
+    <frame x="199" y="23" width="1068" height="822" extended-state="0" />
     <layout>
       <window_info id="Capture Tool" />
       <window_info active="true" content_ui="combo" id="Project" visible="true" weight="0.1754386" />
@@ -1054,11 +1058,11 @@
       <window_info anchor="bottom" id="Run" />
       <window_info anchor="bottom" id="Logcat" />
       <window_info anchor="bottom" id="TODO" />
-      <window_info anchor="bottom" id="Debug" sideWeight="0.49928468" visible="true" weight="0.32739726" />
+      <window_info anchor="bottom" id="Debug" sideWeight="0.49928468" weight="0.32739726" />
       <window_info anchor="bottom" id="Terminal" />
       <window_info anchor="bottom" id="Event Log" sideWeight="0.5007153" side_tool="true" weight="0.28915662" />
       <window_info anchor="bottom" id="Version Control" />
-      <window_info anchor="bottom" id="Build" sideWeight="0.49902534" weight="0.3178082" />
+      <window_info anchor="bottom" id="Build" sideWeight="0.49902534" visible="true" weight="0.3178082" />
       <window_info anchor="bottom" id="Android Profiler" />
       <window_info anchor="right" id="Device File Explorer" side_tool="true" />
       <window_info anchor="right" id="Capture Analysis" />
@@ -1071,7 +1075,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="supernova" />
     <MESSAGE value="Instant winner" />
     <MESSAGE value="only flaming sun" />
     <MESSAGE value="commenting" />
@@ -1096,16 +1099,23 @@
     <MESSAGE value="legal move for when they select two die to re roll" />
     <MESSAGE value="legal move for when they select three die to re roll" />
     <MESSAGE value="scoring bug" />
-    <option name="LAST_COMMIT_MESSAGE" value="scoring bug" />
+    <MESSAGE value="updates" />
+    <option name="LAST_COMMIT_MESSAGE" value="updates" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/app/src/main/java/edu/up/cs301/cosmicwimpout/CosmicWimpoutState.java</url>
-          <line>1287</line>
+          <line>1305</line>
           <properties class="edu.up.cs301.cosmicwimpout.CosmicWimpoutState" method="getScore3Dice" />
           <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/app/src/main/java/edu/up/cs301/cosmicwimpout/CosmicWimpoutState.java</url>
+          <line>1652</line>
+          <properties class="edu.up.cs301.cosmicwimpout.CosmicWimpoutState" method="check2Dice" />
+          <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -1329,17 +1339,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/up/cs301/cosmicwimpout/CosmicWimpoutHumanPlayer.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/up/cs301/cosmicwimpout/CosmicWimpoutLocalGame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="314">
-          <caret line="394" column="80" selection-start-line="394" selection-start-column="80" selection-end-line="394" selection-end-column="80" />
+        <state relative-caret-position="2114">
+          <caret line="147" selection-start-line="147" selection-end-line="147" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/up/cs301/cosmicwimpout/CosmicWimpoutState.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="177">
-          <caret line="1371" selection-start-line="1371" selection-end-line="1371" />
+        <state relative-caret-position="735">
+          <caret line="498" column="14" selection-start-line="498" selection-start-column="14" selection-end-line="498" selection-end-column="14" />
           <folding>
             <element signature="e#13562#13563#0" expanded="true" />
             <element signature="e#13614#13615#0" expanded="true" />
@@ -1357,14 +1367,16 @@
             <element signature="e#22355#22356#0" expanded="true" />
             <element signature="e#34644#34645#0" expanded="true" />
             <element signature="e#34667#34668#0" expanded="true" />
+            <element signature="e#45468#45469#0" expanded="true" />
+            <element signature="e#45495#45496#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/up/cs301/cosmicwimpout/CosmicWimpoutLocalGame.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/up/cs301/cosmicwimpout/CosmicWimpoutHumanPlayer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="752">
-          <caret line="147" column="8" selection-start-line="147" selection-start-column="8" selection-end-line="147" selection-end-column="8" />
+        <state relative-caret-position="64">
+          <caret line="288" column="69" selection-start-line="288" selection-start-column="69" selection-end-line="288" selection-end-column="69" />
         </state>
       </provider>
     </entry>

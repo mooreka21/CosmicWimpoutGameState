@@ -46,6 +46,7 @@ public class CosmicWimpoutState extends GameState {
 
 	private boolean isFlash = false;
 	private boolean isFiveOf = false;
+	private boolean isWimpout = false;
 
 	//instance of previous state
 	private CosmicWimpoutState prevState;
@@ -441,7 +442,7 @@ public class CosmicWimpoutState extends GameState {
 
 		}
 		else if(fiveCount >= 3 && fiveCount < 5){
-			isFlash = true;
+			//isFlash = true;
 			//  turnScore = turnScore + 50;
 			if(fiveCount == 4){
 				//rollSingleDie(playerId, (fiveReRoll + 1));
@@ -495,7 +496,7 @@ public class CosmicWimpoutState extends GameState {
 			*/
 		}
 		else if(tenCount >= 3 && tenCount < 5){
-			isFlash = true;
+			//isFlash = true;
 			// turnScore = turnScore + 100;
 			if(tenCount == 4){
 				//rollSingleDie(playerId, (tenReRoll + 1));
@@ -530,9 +531,10 @@ public class CosmicWimpoutState extends GameState {
 		//END ONLY FLAMING SUN CASE
 
 		//BEGIN WIMPOUT CASE
-		if(fiveCount == 0 && tenCount == 0 && ourDice[2].dieState != 3 && !isFlash) {
+		if(fiveCount == 0 && tenCount == 0 && ourDice[2].dieState != 3 && !isFlash && !isFiveOf) {
 			this.isFlash = false;
 			this.isFiveOf = false;
+			this.isWimpout = true;
 			return -1;
 		}
 		//END WIMPOUT CASE
@@ -573,6 +575,7 @@ public class CosmicWimpoutState extends GameState {
 				turnScore = 0; //reset turn score to 0 for next player
 				this.isFiveOf = false;
 				this.isFlash = false;
+				//this.isWimpout = false;
 			}
 			else if(playerId == 1){
 				playerArrayList.get(playerId).setPlayerScore(currentScore + turnScore);
@@ -580,6 +583,7 @@ public class CosmicWimpoutState extends GameState {
 				turnScore = 0;// reset turn score to 0
 				this.isFiveOf = false;
 				this.isFlash = false;
+				//this.isWimpout = false;
 			}
 			else if(playerId == 2){
 				playerArrayList.get(playerId).setPlayerScore(currentScore + turnScore);
@@ -587,6 +591,7 @@ public class CosmicWimpoutState extends GameState {
 				turnScore = 0; //reset turnScore to 0
 				this.isFiveOf = false;
 				this.isFlash = false;
+				//this.isWimpout = false;
 			}
 			else if(playerId == 3) {
 				playerArrayList.get(playerId).setPlayerScore(currentScore + turnScore);
@@ -594,6 +599,7 @@ public class CosmicWimpoutState extends GameState {
 				turnScore = 0; //reset turnScore to 0
 				this.isFiveOf = false;
 				this.isFlash = false;
+				//this.isWimpout = false;
 			}
 			this.prevState = new CosmicWimpoutState(this);
 			return true;
@@ -635,11 +641,13 @@ public class CosmicWimpoutState extends GameState {
 			if(totalDiceScore(diceArray,playerId) != -1) {
 				//not a wimpout add score to current turn score
 				this.turnScore = this.turnScore + totalDiceScore(diceArray,playerId);
+				this.isWimpout = false;
 			}
 			else{
 				//wimpout set turn score to 0 and
 				//and change players
 				turnScore = 0;
+				this.isWimpout = true;
 				if(playerId == 0 ){
 					setWhoseTurn(1);
 				}
@@ -704,6 +712,7 @@ public class CosmicWimpoutState extends GameState {
 		}
 		this.isFiveOf = false;
 		this.isFlash = false;
+		this.isWimpout = true;
 		return -1;
 	}
 
@@ -779,12 +788,14 @@ public class CosmicWimpoutState extends GameState {
 				if(score != -1) {
 					turnScore = turnScore + score;
 					trueCounter=0;
+					this.isWimpout = false;
 					return true;
 				}
 				else{
 					//wimpout end turn
 					turnScore = 0;
 					trueCounter = 0;
+					this.isWimpout = true;
 					endTurn(playerId);
 					return true;
 				}
@@ -797,11 +808,13 @@ public class CosmicWimpoutState extends GameState {
 				if(score != -1) {
 					turnScore = turnScore + score;
 					trueCounter=0;
+					this.isWimpout = false;
 					return true;
 				}
 				else{
 					turnScore = 0;
 					trueCounter = 0;
+					this.isWimpout = true;
 					endTurn(playerId);
 					return true;
 				}
@@ -816,11 +829,13 @@ public class CosmicWimpoutState extends GameState {
 				if(score != -1) {
 					turnScore = turnScore + score;
 					trueCounter=0;
+					this.isWimpout = false;
 					return true;
 				}
 				else{
 					turnScore = 0;
 					trueCounter = 0;
+					this.isWimpout = true;
 					endTurn(playerId);
 					return true;
 				}
@@ -836,11 +851,13 @@ public class CosmicWimpoutState extends GameState {
 				if(score != -1) {
 					turnScore = turnScore + score;
 					trueCounter=0;
+					this.isWimpout = false;
 					return true;
 				}
 				else{
 					turnScore = 0;
 					trueCounter = 0;
+					this.isWimpout = true;
 					endTurn(playerId);
 					return true;
 				}
@@ -849,6 +866,7 @@ public class CosmicWimpoutState extends GameState {
 				rollAllDice(playerId);
 				this.turnScore = this.turnScore;
 				trueCounter = 0;
+				this.isWimpout = false;
 				return true;
 				/**
 				int score = totalDiceScore(diceArray, playerId);
@@ -1292,7 +1310,7 @@ public class CosmicWimpoutState extends GameState {
 		//Flash Cases
 		if(ourDice[one - 1].dieState == 1 && ourDice[two-1].dieState == 1 &&
 			ourDice[three-1].dieState == 1){
-			isFlash = true;
+			//isFlash = true;
 			score = 100;
 			notWimp = true;
 		}
@@ -1316,7 +1334,7 @@ public class CosmicWimpoutState extends GameState {
 		}
 		else if(ourDice[one - 1].dieState == 5 && ourDice[two-1].dieState == 5 &&
 				ourDice[three-1].dieState == 5){
-			isFlash = true;
+			//isFlash = true;
 			score = 50;
 			notWimp = true;
 		}
@@ -1532,7 +1550,10 @@ public class CosmicWimpoutState extends GameState {
 					fiveCount++;
 				}
 			}
-			if(tenCount == 2 || fiveCount == 2 || (fiveCount == 1 && tenCount == 1)){
+			if(tenCount == 2 || fiveCount == 2){
+				return true;
+			}
+			else if(fiveCount == 1 && tenCount == 1){
 				return true;
 			}
 		}
@@ -1854,6 +1875,7 @@ public class CosmicWimpoutState extends GameState {
 
 		return false;
 	}
+	
 	/*
 	public int[] reRollFlash(){
 		if(isFlash){
