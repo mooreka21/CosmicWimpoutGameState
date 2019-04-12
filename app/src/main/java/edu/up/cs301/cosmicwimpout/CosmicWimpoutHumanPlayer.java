@@ -383,6 +383,19 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 								Toast.LENGTH_SHORT).show();
 					}
 				}
+				//checking legal move if 4 are checked
+				else if(checkCount == 4){
+					if(legal4Die()){
+						CosmicWimpoutActionRollSelectedDie rollSelectedDie =
+								new CosmicWimpoutActionRollSelectedDie(this, isCheck1,
+										isCheck2, isCheck3, isCheck4, isCheck5);
+						game.sendAction(rollSelectedDie);
+					}
+					else{
+						Toast.makeText(this.myActivity, "Cannot roll those 4 Dice!",
+								Toast.LENGTH_SHORT).show();
+					}
+				}
 				//checking legal move if 3 are checked
 				else if(checkCount == 3){
 					if(legal3Die()){
@@ -826,6 +839,40 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 		}
 		else if(isCheck3 && isCheck4 && isCheck5){
 			if(this.state.check3Dice(2,3,4)){
+				return true;
+			}
+			return false;
+		}
+		return false;
+	}
+
+	private boolean legal4Die(){
+		if(isCheck1 && isCheck2 && isCheck3 && isCheck4){
+			if(this.state.check4Dice(0,1,2,3)){
+				return true;
+			}
+			return false;
+		}
+		else if(isCheck1 && isCheck2 && isCheck3 && isCheck5) {
+			if(this.state.check4Dice(0,1,2,4)){
+				return true;
+			}
+			return false;
+		}
+		else if(isCheck1 && isCheck2 && isCheck4 && isCheck5) {
+			if(this.state.check4Dice(0,1,3,4)){
+				return true;
+			}
+			return false;
+		}
+		else if(isCheck1 && isCheck3 && isCheck4 && isCheck5) {
+			if(this.state.check4Dice(0,2,3,4)){
+				return true;
+			}
+			return false;
+		}
+		else if(isCheck2 && isCheck3 && isCheck4 && isCheck5) {
+			if(this.state.check4Dice(1,2,3,4)){
 				return true;
 			}
 			return false;

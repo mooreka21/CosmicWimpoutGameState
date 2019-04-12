@@ -106,6 +106,9 @@ public class CosmicWimpoutLocalGame extends LocalGame {
 
 		int player1Score = this.gameState.getPlayer1Score();
 		int player2Score = this.gameState.getPlayer2Score();
+		int player3Score = this.gameState.getPlayer3Score();
+		int player4Score = this.gameState.getPlayer4Score();
+
 		boolean superNova = this.gameState.getIsSuperNova();
 		boolean instantWinner = this.gameState.getIsInstantWinner();
 
@@ -132,11 +135,20 @@ public class CosmicWimpoutLocalGame extends LocalGame {
 				return playerNames[0] + " has lost";
 			}
 		}
-		else {
+		else if(player3Score >= TARGET_MAGNITUDE){
+			if (playerNames.length >= 3) {
+				return playerNames[2] + " has won";
+			}
+		}
+		else if(player4Score >= TARGET_MAGNITUDE){
+			if (playerNames.length >= 4) {
+				return playerNames[3] + " has won";
+			}
+		}
+
 			// game is still between the two limit: return null, as the game
 			// is not yet over
 			return null;
-		}
 
 	}
 
