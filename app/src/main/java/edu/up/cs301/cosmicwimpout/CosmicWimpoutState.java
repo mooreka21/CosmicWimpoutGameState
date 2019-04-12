@@ -1701,9 +1701,8 @@ public class CosmicWimpoutState extends GameState {
 					this.diceArray[die2].getDieState() == 1 ||
 					this.diceArray[die2].getDieState() == 5) {
 				return false;
-			} else {
-				return true;
 			}
+				return true;
 		}
 		else if (this.diceArray[die1].getDieState() == 1 ||
 				this.diceArray[die1].getDieState() == 5 ||
@@ -1714,7 +1713,6 @@ public class CosmicWimpoutState extends GameState {
 		else {
 			return true;
 		}
-		return false;
 	}
 	public boolean check3Dice(int die1, int die2, int die3){
 		if (isFlash) {
@@ -1875,7 +1873,7 @@ public class CosmicWimpoutState extends GameState {
 
 		return false;
 	}
-	
+
 	/*
 	public int[] reRollFlash(){
 		if(isFlash){

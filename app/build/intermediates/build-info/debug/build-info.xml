@@ -5,32 +5,27 @@
     build-mode="COLD"
     density="xhdpi"
     format="10"
-    ir-eligibility="COMPATIBLE"
     plugin-version="3.3.2"
-    timestamp="1555084223815"
+    timestamp="1555085687063"
     token="217555842458653572"
     verifier="COLD_SWAP_REQUESTED" >
 
     <task
         name="javac"
-        duration="147" />
+        duration="0" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="10" />
+        duration="0" />
     <task
         name="verifier"
-        duration="9" />
-
-    <artifact
-        location="/Users/oliviadendinger/AndroidStudioProjects/CosmicWimpoutGameState/app/build/intermediates/split-apk/debug/slices/slice_3.apk"
-        type="SPLIT" />
+        duration="0" />
 
     <build
         build-mode="FULL"
-        timestamp="1555083515462"
+        timestamp="1555084462577"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
             location="/Users/oliviadendinger/AndroidStudioProjects/CosmicWimpoutGameState/app/build/intermediates/split-apk/debug/slices/slice_3.apk"
@@ -72,11 +67,15 @@
     <build
         build-mode="COLD"
         ir-eligibility="COMPATIBLE"
-        timestamp="1555084223815"
+        timestamp="1555085508767"
         verifier="COLD_SWAP_REQUESTED" >
         <artifact
             location="/Users/oliviadendinger/AndroidStudioProjects/CosmicWimpoutGameState/app/build/intermediates/split-apk/debug/slices/slice_3.apk"
             type="SPLIT" />
     </build>
+    <build
+        build-mode="COLD"
+        timestamp="1555085687063"
+        verifier="COLD_SWAP_REQUESTED" />
 
 </instant-run>

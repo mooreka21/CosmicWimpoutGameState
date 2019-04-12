@@ -21,7 +21,7 @@ public class Die {
      */
     public Die(int ID){
         this.dieID = ID;
-        dieState = 1;
+       // dieState = 1;
     }
 
     /**
