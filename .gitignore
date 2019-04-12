@@ -17,9 +17,9 @@ Thumbs.db
 
 .iml
 
-.idea
-.gradle
-build/
+.idea/
+.gradle/
+/build/
 .navigation
 captures/
 output.json
@@ -27,3 +27,8 @@ output.json
 obj/
 .externalNativeBuild
 
+.idea/workspace.xml
+.idea/libraries
+.idea/tasks.xml
+.idea/datasources.xml
+.iead/dataSources.ids
