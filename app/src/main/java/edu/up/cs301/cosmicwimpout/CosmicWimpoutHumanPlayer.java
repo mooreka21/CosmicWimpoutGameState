@@ -236,6 +236,15 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 			this.player2Score.setBackgroundColor(0xFFCECECE);
 			this.player3Score.setBackgroundColor(0xFFCECECE);
 		}
+		
+		if(state.getTurnScore() == 0) {
+			check1.setChecked(false);
+			check2.setChecked(false);
+			check3.setChecked(false);
+			check4.setChecked(false);
+			check5.setChecked(false);
+
+		}
 
 
 	}
