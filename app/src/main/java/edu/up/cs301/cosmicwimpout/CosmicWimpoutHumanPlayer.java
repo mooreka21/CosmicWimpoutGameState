@@ -236,7 +236,8 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 			this.player2Score.setBackgroundColor(0xFFCECECE);
 			this.player3Score.setBackgroundColor(0xFFCECECE);
 		}
-		
+
+		//when the player wimps out, any checkboxes will be cleared
 		if(state.getTurnScore() == 0) {
 			check1.setChecked(false);
 			check2.setChecked(false);
