@@ -208,6 +208,14 @@ layout notification_template_media_custom
 layout notification_template_part_chronometer
 layout notification_template_part_time
 menu game_main
+raw bensound_theelevatorbossanova
+raw five_dice
+raw four_dice
+raw lose_sound
+raw one_die
+raw three_dice
+raw two_dice
+raw win_sound
 string add_player
 string app_name
 string begin_game

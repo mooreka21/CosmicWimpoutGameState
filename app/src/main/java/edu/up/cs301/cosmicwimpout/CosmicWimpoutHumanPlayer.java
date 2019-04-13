@@ -64,7 +64,7 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 	//variables for thread
 	private boolean rollDiceClicked = false;
 	private boolean rollSelectedClicked = false;
-
+	int flash = 0;
 	//variable for sound effects
 	private CosmicWimpoutSoundPlayer sound;
 
@@ -630,43 +630,6 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 		else{
 			return false;
 		}
-		/*
-		if(isCheck1 && isCheck2 && isCheck3 && isCheck4 &&isCheck5)
-		{
-			if(state.getDiceVal(0).equals("Moons") && state.getDiceVal(1).equals("Moons")
-				&& state.getDiceVal(2).equals("Moons") &&state.getDiceVal(3).equals("Moons")
-				&& state.getDiceVal(4).equals("Moons")) {
-
-				return true;
-			}
-			else if(state.getDiceVal(0).equals("Triangles") && state.getDiceVal(1).equals("Triangles")
-				&& state.getDiceVal(2).equals("Triangles")&& state.getDiceVal(3).equals("Triangles")
-				&& state.getDiceVal(4).equals("Triangles")){
-
-				return true;
-			}
-			else if( state.getDiceVal(0).equals("Bolts") && state.getDiceVal(1).equals("Bolts")
-				&& state.getDiceVal(2).equals("Bolts") && state.getDiceVal(3).equals("Bolts")
-				&& state.getDiceVal(4).equals("Bolts")){
-
-				return true;
-			}
-			else if(state.getDiceVal(0).equals("Fives") && state.getDiceVal(1).equals("Fives")
-				&& state.getDiceVal(2).equals("Fives") && state.getDiceVal(3).equals("Fives")
-				&& state.getDiceVal(4).equals("Fives")){
-				return true;
-			}
-			else if(state.getDiceVal(0).equals("Stars") && state.getDiceVal(1).equals("Stars")
-				&& state.getDiceVal(2).equals("Stars") && state.getDiceVal(3).equals("Stars")
-				&& state.getDiceVal(4).equals("Stars")){
-
-				return true;
-			}
-			else{
-				return false;
-			}
-		}
-		*/
 	}
 
 	private boolean legalOneChecked(){

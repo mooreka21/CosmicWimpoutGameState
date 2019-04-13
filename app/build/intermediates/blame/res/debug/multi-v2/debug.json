@@ -31,21 +31,6 @@
             ]
         },
         {
-            "outputFile": "/Users/oliviadendinger/AndroidStudioProjects/CosmicWimpoutGameState/app/build/intermediates/res/merged/debug/values-b+sr+Latn_values-b+sr+Latn.arsc.flat",
-            "map": [
-                {
-                    "source": "/Users/oliviadendinger/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/29eac7088f0d223940b8a7ead247397e/res/values-b+sr+Latn/values-b+sr+Latn.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "100",
-                        "endOffsets": "151"
-                    }
-                }
-            ]
-        },
-        {
             "outputFile": "/Users/oliviadendinger/AndroidStudioProjects/CosmicWimpoutGameState/app/build/intermediates/res/merged/debug/values-si_values-si.arsc.flat",
             "map": [
                 {
@@ -61,10 +46,10 @@
             ]
         },
         {
-            "outputFile": "/Users/oliviadendinger/AndroidStudioProjects/CosmicWimpoutGameState/app/build/intermediates/res/merged/debug/values-fr-rCA_values-fr-rCA.arsc.flat",
+            "outputFile": "/Users/oliviadendinger/AndroidStudioProjects/CosmicWimpoutGameState/app/build/intermediates/res/merged/debug/values-b+sr+Latn_values-b+sr+Latn.arsc.flat",
             "map": [
                 {
-                    "source": "/Users/oliviadendinger/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/29eac7088f0d223940b8a7ead247397e/res/values-fr-rCA/values-fr-rCA.xml",
+                    "source": "/Users/oliviadendinger/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/29eac7088f0d223940b8a7ead247397e/res/values-b+sr+Latn/values-b+sr+Latn.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -76,10 +61,10 @@
             ]
         },
         {
-            "outputFile": "/Users/oliviadendinger/AndroidStudioProjects/CosmicWimpoutGameState/app/build/intermediates/res/merged/debug/values-ky_values-ky.arsc.flat",
+            "outputFile": "/Users/oliviadendinger/AndroidStudioProjects/CosmicWimpoutGameState/app/build/intermediates/res/merged/debug/values-en-rAU_values-en-rAU.arsc.flat",
             "map": [
                 {
-                    "source": "/Users/oliviadendinger/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/29eac7088f0d223940b8a7ead247397e/res/values-ky/values-ky.xml",
+                    "source": "/Users/oliviadendinger/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/29eac7088f0d223940b8a7ead247397e/res/values-en-rAU/values-en-rAU.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -106,10 +91,25 @@
             ]
         },
         {
-            "outputFile": "/Users/oliviadendinger/AndroidStudioProjects/CosmicWimpoutGameState/app/build/intermediates/res/merged/debug/values-en-rAU_values-en-rAU.arsc.flat",
+            "outputFile": "/Users/oliviadendinger/AndroidStudioProjects/CosmicWimpoutGameState/app/build/intermediates/res/merged/debug/values-ky_values-ky.arsc.flat",
             "map": [
                 {
-                    "source": "/Users/oliviadendinger/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/29eac7088f0d223940b8a7ead247397e/res/values-en-rAU/values-en-rAU.xml",
+                    "source": "/Users/oliviadendinger/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/29eac7088f0d223940b8a7ead247397e/res/values-ky/values-ky.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "/Users/oliviadendinger/AndroidStudioProjects/CosmicWimpoutGameState/app/build/intermediates/res/merged/debug/values-fr-rCA_values-fr-rCA.arsc.flat",
+            "map": [
+                {
+                    "source": "/Users/oliviadendinger/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/29eac7088f0d223940b8a7ead247397e/res/values-fr-rCA/values-fr-rCA.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
