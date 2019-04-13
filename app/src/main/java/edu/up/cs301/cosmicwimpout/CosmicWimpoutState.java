@@ -41,7 +41,27 @@ public class CosmicWimpoutState extends GameState {
 	private boolean die2ReRoll = false;
 	private boolean die3ReRoll = false;
 	private boolean die4ReRoll = false;
-	private boolean die5ReRoll = false;
+
+    public boolean isDie1ReRoll() {
+        return die1ReRoll;
+    }
+    public boolean isDie2ReRoll() {
+        return die2ReRoll;
+    }
+    public boolean isDie3ReRoll() {
+        return die3ReRoll;
+    }
+    public boolean isDie4ReRoll() {
+        return die4ReRoll;
+    }
+    public boolean isDie5ReRoll() {
+        return die5ReRoll;
+    }
+
+
+
+    private boolean die5ReRoll = false;
+
 
 
 	private boolean isFlash = false;
@@ -1608,17 +1628,20 @@ public class CosmicWimpoutState extends GameState {
 						this.diceArray[die2].getDieState() == 2) {
 					return false;
 				}
-			} else if (triangleCount == 3 || (triangleCount == 2 && this.diceArray[2].getDieState() == 3)) {
+			} else if (triangleCount == 3 || (triangleCount == 2 &&
+                    this.diceArray[2].getDieState() == 3)) {
 				if (this.diceArray[die1].getDieState() == 3 ||
 						this.diceArray[die2].getDieState() == 3) {
 					return false;
 				}
-			} else if (boltCount == 3 || (boltCount == 2 && this.diceArray[2].getDieState() == 3)) {
+			} else if (boltCount == 3 || (boltCount == 2 &&
+                    this.diceArray[2].getDieState() == 3)) {
 				if (this.diceArray[die1].getDieState() == 4 ||
 						this.diceArray[die2].getDieState() == 4) {
 					return false;
 				}
-			} else if (starCount == 3 || (starCount == 2 && this.diceArray[2].getDieState() == 3)) {
+			} else if (starCount == 3 || (starCount == 2 &&
+                    this.diceArray[2].getDieState() == 3)) {
 				if (this.diceArray[die1].getDieState() == 6 ||
 						this.diceArray[die2].getDieState() == 6) {
 					return false;
