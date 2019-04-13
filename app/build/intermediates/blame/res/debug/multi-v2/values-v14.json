@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/oliviadendinger/AndroidStudioProjects/CosmicWimpoutGameState/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v14/values-v14.xml",
+            "outputFile": "/Users/samuellemly/Documents/College/2Sophomore/spring/CS301/CosmicWimpoutGameState/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v14/values-v14.xml",
             "map": [
                 {
-                    "source": "/Users/oliviadendinger/AndroidStudioProjects/CosmicWimpoutGameState/app/src/main/res/values-v14/styles.xml",
+                    "source": "/Users/samuellemly/Documents/College/2Sophomore/spring/CS301/CosmicWimpoutGameState/app/src/main/res/values-v14/styles.xml",
                     "from": {
                         "startLines": "2,3",
                         "startColumns": "4,4",

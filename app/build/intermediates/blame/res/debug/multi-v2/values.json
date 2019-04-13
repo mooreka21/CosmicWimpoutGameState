@@ -1,10 +1,27 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/oliviadendinger/AndroidStudioProjects/CosmicWimpoutGameState/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values/values.xml",
+            "outputFile": "/Users/samuellemly/Documents/College/2Sophomore/spring/CS301/CosmicWimpoutGameState/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values/values.xml",
             "map": [
                 {
-                    "source": "/Users/oliviadendinger/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/29eac7088f0d223940b8a7ead247397e/res/values/values.xml",
+                    "source": "/Users/samuellemly/.gradle/caches/transforms-1/files-1.1/support-media-compat-27.1.1.aar/6fe4eadfae907842cb94810997f68ee6/res/values/values.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10",
+                        "startColumns": "4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,144,215,288,348,414,536,597,663",
+                        "endColumns": "88,70,72,59,65,121,60,65,66",
+                        "endOffsets": "139,210,283,343,409,531,592,658,725"
+                    },
+                    "to": {
+                        "startLines": "8,9,12,48,76,78,79,84,86",
+                        "startColumns": "4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "361,450,617,2758,4433,4609,4731,4993,5188",
+                        "endColumns": "88,70,72,59,65,121,60,65,66",
+                        "endOffsets": "445,516,685,2813,4494,4726,4787,5054,5250"
+                    }
+                },
+                {
+                    "source": "/Users/samuellemly/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/88dfe14779a66272665d7bda1129ed28/res/values/values.xml",
                     "from": {
                         "startLines": "2,3,4,5,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,54,55,59,60,61,6,15",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -23,75 +40,7 @@
                     }
                 },
                 {
-                    "source": "/Users/oliviadendinger/AndroidStudioProjects/CosmicWimpoutGameState/app/src/main/res/values/styles.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "17",
-                        "endColumns": "58",
-                        "endOffsets": "71"
-                    },
-                    "to": {
-                        "startLines": "70",
-                        "startColumns": "4",
-                        "startOffsets": "4057",
-                        "endColumns": "57",
-                        "endOffsets": "4110"
-                    }
-                },
-                {
-                    "source": "/Users/oliviadendinger/.gradle/caches/transforms-1/files-1.1/support-media-compat-27.1.1.aar/6e9e6356c62b41cfdf6d0e0189d37cf3/res/values/values.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8,9,10",
-                        "startColumns": "4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,144,215,288,348,414,536,597,663",
-                        "endColumns": "88,70,72,59,65,121,60,65,66",
-                        "endOffsets": "139,210,283,343,409,531,592,658,725"
-                    },
-                    "to": {
-                        "startLines": "8,9,12,48,76,78,79,84,86",
-                        "startColumns": "4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "361,450,617,2758,4433,4609,4731,4993,5188",
-                        "endColumns": "88,70,72,59,65,121,60,65,66",
-                        "endOffsets": "445,516,685,2813,4494,4726,4787,5054,5250"
-                    }
-                },
-                {
-                    "source": "/Users/oliviadendinger/AndroidStudioProjects/CosmicWimpoutGameState/app/src/main/res/values/strings.xml",
-                    "from": {
-                        "startLines": "10,2,6,16,17,18,13,19,3,7,11,12,20,9,5,14,8,14,4",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,89,4",
-                        "startOffsets": "476,17,263,815,887,938,630,1015,67,313,526,578,1064,420,193,670,358,755,118",
-                        "endColumns": "49,49,49,71,50,76,39,48,50,44,51,51,50,55,69,89,61,139,74",
-                        "endOffsets": "521,62,308,882,933,1010,665,1059,113,353,573,625,1110,471,258,755,415,805,188"
-                    },
-                    "to": {
-                        "startLines": "50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,69",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "2888,2938,2988,3038,3110,3161,3238,3278,3327,3378,3423,3475,3527,3578,3634,3704,3794,3856,3982",
-                        "endColumns": "49,49,49,71,50,76,39,48,50,44,51,51,50,55,69,89,61,54,74",
-                        "endOffsets": "2933,2983,3033,3105,3156,3233,3273,3322,3373,3418,3470,3522,3573,3629,3699,3789,3851,3906,4052"
-                    }
-                },
-                {
-                    "source": "/Users/oliviadendinger/AndroidStudioProjects/CosmicWimpoutGameState/app/src/main/res/values/dimen.xml",
-                    "from": {
-                        "startLines": "7,2,4,3,6,5",
-                        "startColumns": "4,4,4,4,4,4",
-                        "startOffsets": "307,55,164,109,256,206",
-                        "endColumns": "50,53,41,54,50,49",
-                        "endOffsets": "353,104,201,159,302,251"
-                    },
-                    "to": {
-                        "startLines": "19,20,36,37,38,39",
-                        "startColumns": "4,4,4,4,4,4",
-                        "startOffsets": "1105,1156,2188,2230,2285,2336",
-                        "endColumns": "50,53,41,54,50,49",
-                        "endOffsets": "1151,1205,2225,2280,2331,2381"
-                    }
-                },
-                {
-                    "source": "/Users/oliviadendinger/.gradle/caches/transforms-1/files-1.1/support-core-ui-27.1.1.aar/da4bcff93474d7ce4cd51f7b9180bf29/res/values/values.xml",
+                    "source": "/Users/samuellemly/.gradle/caches/transforms-1/files-1.1/support-core-ui-27.1.1.aar/2e1bb6fe5156bdda8e128f7f3a767b32/res/values/values.xml",
                     "from": {
                         "startLines": "2,66,3,4",
                         "startColumns": "4,4,4,4",
@@ -110,7 +59,7 @@
                     }
                 },
                 {
-                    "source": "/Users/oliviadendinger/AndroidStudioProjects/CosmicWimpoutGameState/app/src/main/res/values/color.xml",
+                    "source": "/Users/samuellemly/Documents/College/2Sophomore/spring/CS301/CosmicWimpoutGameState/app/src/main/res/values/color.xml",
                     "from": {
                         "startLines": "2,5,3,4",
                         "startColumns": "4,4,4,4",
@@ -124,6 +73,57 @@
                         "startOffsets": "116,153,192,521",
                         "endColumns": "36,38,36,37",
                         "endOffsets": "148,187,224,554"
+                    }
+                },
+                {
+                    "source": "/Users/samuellemly/Documents/College/2Sophomore/spring/CS301/CosmicWimpoutGameState/app/src/main/res/values/dimen.xml",
+                    "from": {
+                        "startLines": "7,2,4,3,6,5",
+                        "startColumns": "4,4,4,4,4,4",
+                        "startOffsets": "307,55,164,109,256,206",
+                        "endColumns": "50,53,41,54,50,49",
+                        "endOffsets": "353,104,201,159,302,251"
+                    },
+                    "to": {
+                        "startLines": "19,20,36,37,38,39",
+                        "startColumns": "4,4,4,4,4,4",
+                        "startOffsets": "1105,1156,2188,2230,2285,2336",
+                        "endColumns": "50,53,41,54,50,49",
+                        "endOffsets": "1151,1205,2225,2280,2331,2381"
+                    }
+                },
+                {
+                    "source": "/Users/samuellemly/Documents/College/2Sophomore/spring/CS301/CosmicWimpoutGameState/app/src/main/res/values/styles.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "17",
+                        "endColumns": "58",
+                        "endOffsets": "71"
+                    },
+                    "to": {
+                        "startLines": "70",
+                        "startColumns": "4",
+                        "startOffsets": "4057",
+                        "endColumns": "57",
+                        "endOffsets": "4110"
+                    }
+                },
+                {
+                    "source": "/Users/samuellemly/Documents/College/2Sophomore/spring/CS301/CosmicWimpoutGameState/app/src/main/res/values/strings.xml",
+                    "from": {
+                        "startLines": "10,2,6,16,17,18,13,19,3,7,11,12,20,9,5,14,8,14,4",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,89,4",
+                        "startOffsets": "476,17,263,815,887,938,630,1015,67,313,526,578,1064,420,193,670,358,755,118",
+                        "endColumns": "49,49,49,71,50,76,39,48,50,44,51,51,50,55,69,89,61,139,74",
+                        "endOffsets": "521,62,308,882,933,1010,665,1059,113,353,573,625,1110,471,258,755,415,805,188"
+                    },
+                    "to": {
+                        "startLines": "50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,69",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "2888,2938,2988,3038,3110,3161,3238,3278,3327,3378,3423,3475,3527,3578,3634,3704,3794,3856,3982",
+                        "endColumns": "49,49,49,71,50,76,39,48,50,44,51,51,50,55,69,89,61,54,74",
+                        "endOffsets": "2933,2983,3033,3105,3156,3233,3273,3322,3373,3418,3470,3522,3573,3629,3699,3789,3851,3906,4052"
                     }
                 }
             ]

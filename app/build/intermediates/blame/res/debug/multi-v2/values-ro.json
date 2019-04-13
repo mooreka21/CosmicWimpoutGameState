@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/oliviadendinger/AndroidStudioProjects/CosmicWimpoutGameState/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-ro/values-ro.xml",
+            "outputFile": "/Users/samuellemly/Documents/College/2Sophomore/spring/CS301/CosmicWimpoutGameState/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-ro/values-ro.xml",
             "map": [
                 {
-                    "source": "/Users/oliviadendinger/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/29eac7088f0d223940b8a7ead247397e/res/values-ro/values-ro.xml",
+                    "source": "/Users/samuellemly/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/88dfe14779a66272665d7bda1129ed28/res/values-ro/values-ro.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

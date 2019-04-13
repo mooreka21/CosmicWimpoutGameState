@@ -18,7 +18,8 @@ import android.widget.TextView;
 * as the game is being played.
 * 
 *@author Sam Lemly
-* @author Olivia Dendinger* @author David Campbell
+* @author Olivia Dendinger
+ * @author David Campbell
  * @author Kayla Moore
  * @version March 2019
 */
