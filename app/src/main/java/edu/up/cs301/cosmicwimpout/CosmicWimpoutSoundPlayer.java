@@ -8,7 +8,7 @@ import edu.up.cs301.game.R;
 
 /**
  * CosmicWimpoutSoundPlayer is a class that uses a SoundPool object to import sounds
- * that will be used as sound effects in our game.
+ * that will be used as sound effects in our game. (citations listed below code)
  *
  * @author Kayla Moore, Olivia Dendinger, Sam Lemly, David Campbell
  *  @version April 2019
@@ -22,6 +22,7 @@ public class CosmicWimpoutSoundPlayer {
     private int threeDice;
     private int fourDice;
     private int fiveDice;
+    private int background;
 
     public CosmicWimpoutSoundPlayer(Context context){
         //initialize soundPool player
@@ -33,7 +34,11 @@ public class CosmicWimpoutSoundPlayer {
         threeDice = soundPool.load(context, R.raw.three_dice, 1);
         fourDice = soundPool.load(context, R.raw.four_dice, 1);
         fiveDice = soundPool.load(context, R.raw.five_dice, 1);
+        background = soundPool.load(context, R.raw.bensound_theelevatorbossanova,1);
 
+    }
+    public void playBackground(){
+        soundPool.play(background, 1.0f, 1.0f, 1, -1,1.0f);
     }
 
     public void playOneDie(){
@@ -55,4 +60,13 @@ public class CosmicWimpoutSoundPlayer {
     public void playFiveDice(){
         soundPool.play(fiveDice, 1.0f, 1.0f, 1, 0,1.0f);
     }
+
+    /**
+     * Citations:
+     * all dice rolling sounds were recorded by Kayla
+     * background music was found here: https://www.bensound.com/royalty-free-music/jazz
+     *
+     * tutorial on adding sounds using SoundPool: https://www.youtube.com/watch?v=r2Oz_bV5trU
+     * further info on SoundPool: https://developer.android.com/reference/android/media/SoundPool.html
+     */
 }

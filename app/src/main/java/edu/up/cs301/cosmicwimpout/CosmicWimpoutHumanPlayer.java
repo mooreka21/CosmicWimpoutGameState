@@ -117,6 +117,7 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 
 		//initializing sound player
 		sound = new CosmicWimpoutSoundPlayer(myActivity);
+		this.sound.playBackground();
 
 		//setting die 1 face to whatever the current die state is
 		if(state.getDiceVal(0).equals("Tens")){
