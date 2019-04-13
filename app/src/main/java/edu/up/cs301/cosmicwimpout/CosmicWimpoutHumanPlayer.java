@@ -60,8 +60,13 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 	private boolean isCheck3 = false;
 	private boolean isCheck4 = false;
 	private boolean isCheck5 = false;
+
+	//variables for thread
 	private boolean rollDiceClicked = false;
 	private boolean rollSelectedClicked = false;
+
+	//variable for sound effects
+	private CosmicWimpoutSoundPlayer sound;
 
 
 	//arrays that hold the die faces
@@ -109,6 +114,9 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 		this.player3Score.setText(allPlayerNames[2] + ": " + state.getPlayer3Score());
 		this.player4Score.setText(allPlayerNames[3] + ": " + state.getPlayer4Score());
 		this.turnScore.setText("Turn Score: " + state.getTurnScore() + "pts");
+
+		//initializing sound player
+		sound = new CosmicWimpoutSoundPlayer(myActivity);
 
 		//setting die 1 face to whatever the current die state is
 		if(state.getDiceVal(0).equals("Tens")){
@@ -244,7 +252,6 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 			check3.setChecked(false);
 			check4.setChecked(false);
 			check5.setChecked(false);
-
 		}
 
 
@@ -300,6 +307,7 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 				rollDiceClicked = true;
 				game.sendAction(rollAct);
 				actionsPressed++;
+				sound.playFiveDice();
 			}
             else if(button == endGameButton){
                 game.sendAction(endGameAct);
@@ -367,6 +375,23 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 				} else {
 					isCheck5 = true;
 					checkCount++;
+				}
+
+				//determining what sound to play
+				if(checkCount == 1){
+					sound.playOneDie();
+				}
+				else if(checkCount == 2){
+					sound.playTwoDice();
+				}
+				else if(checkCount == 3){
+					sound.playThreeDice();
+				}
+				else if(checkCount == 4){
+					sound.playFourDice();
+				}
+				else if(checkCount == 5){
+					sound.playFiveDice();
 				}
 
 				if(legalMoveAllChecked5()){
@@ -500,11 +525,7 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 							new CosmicWimpoutActionRollSelectedDie(this, isCheck1, isCheck2, isCheck3, isCheck4, isCheck5);
 					game.sendAction(rollSelectedAct);
 				}
-
-
 			}
-
-
 		}
 		// send action to the game
 	}// onClick

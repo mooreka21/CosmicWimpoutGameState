@@ -17,9 +17,9 @@ import edu.up.cs301.game.config.GamePlayerType;
  * this is the primary activity for Cosmic Wimpout game
  * 
  * @author Sam Lemly
- *  * @author Olivia Dendinger
- *  * @author David Campbell
- *  * @author Kayla Moore
+ * @author Olivia Dendinger
+ * @author David Campbell
+ * @author Kayla Moore
  * @version March 2019
  */
 public class CosmicWimpoutMainActivity extends GameMainActivity {

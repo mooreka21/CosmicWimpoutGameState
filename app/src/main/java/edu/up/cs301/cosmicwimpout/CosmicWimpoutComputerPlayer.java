@@ -9,10 +9,10 @@ import edu.up.cs301.game.infoMsg.GameInfo;
  * then with equal probabilty either ends the turn
  * or randomly selects one dice to re-roll
  *
- @author Sam Lemly
-  *  @author Olivia Dendinger
-  * @author David Campbell
-  *@author Kayla Moore
+ * @author Sam Lemly
+ * @author Olivia Dendinger
+ * @author David Campbell
+ * @author Kayla Moore
   * @version March 2019
  */
 public class CosmicWimpoutComputerPlayer extends GameComputerPlayer {
