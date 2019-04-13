@@ -411,7 +411,14 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 					sound.playFiveDice();
 				}
 
-				if(legalMoveAllChecked5()){
+				if(this.state.getIsFlash()){
+
+				}
+
+				if(this.state.getIsFlash() && !legalMoveAllChecked5()){
+					this.flashReRoll();
+				}
+				else if(legalMoveAllChecked5()){
 					if(isCheck1 && isCheck2 && isCheck3 && isCheck4 && isCheck5){
 						CosmicWimpoutActionRollSelectedDie rollSelectedAct =
 								new CosmicWimpoutActionRollSelectedDie(this, isCheck1,
@@ -890,5 +897,77 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 		}
 		return false;
 	}
+
+
+	private void flashReRoll(){
+		boolean[] reRolls = this.state.flashReRoll();
+		boolean die1 = reRolls[0];
+		boolean die2 = reRolls[1];
+		boolean die3 = reRolls[2];
+		boolean die4 = reRolls[3];
+		boolean die5 = reRolls[4];
+
+		if(die1 && die2){
+			Toast.makeText(this.myActivity, "Must Reroll dice 1 and 2",
+					Toast.LENGTH_SHORT).show();
+		}
+		else if (die1 && die3){
+			Toast.makeText(this.myActivity, "Must Reroll dice 1 and 3",
+					Toast.LENGTH_SHORT).show();
+		}
+		else if(die1 && die4){
+			Toast.makeText(this.myActivity, "Must Reroll dice 1 and 4",
+					Toast.LENGTH_SHORT).show();
+		}
+		else if(die1 && die5){
+			Toast.makeText(this.myActivity, "Must Reroll dice 1 and 5",
+					Toast.LENGTH_SHORT).show();
+		}
+		else if(die2 && die3){
+			Toast.makeText(this.myActivity, "Must Reroll dice 2 and 3",
+					Toast.LENGTH_SHORT).show();
+		}
+		else if(die2 && die4){
+			Toast.makeText(this.myActivity, "Must Reroll dice 2 and 4",
+					Toast.LENGTH_SHORT).show();
+		}
+		else if(die2 && die5){
+			Toast.makeText(this.myActivity, "Must Reroll dice 2 and 5",
+					Toast.LENGTH_SHORT).show();
+		}
+		else if(die3 && die4){
+			Toast.makeText(this.myActivity, "Must Reroll dice 3 and 4",
+					Toast.LENGTH_SHORT).show();
+		}
+		else if(die3 && die5){
+			Toast.makeText(this.myActivity, "Must Reroll dice 3 and 5",
+					Toast.LENGTH_SHORT).show();
+		}
+		else if(die4 && die5){
+			Toast.makeText(this.myActivity, "Must Reroll dice 4 and 5",
+					Toast.LENGTH_SHORT).show();
+		}
+		else if(die1){
+			Toast.makeText(this.myActivity, "Must Reroll die 1",
+					Toast.LENGTH_SHORT).show();
+		}
+		else if(die2){
+			Toast.makeText(this.myActivity, "Must Reroll die 2",
+					Toast.LENGTH_SHORT).show();
+		}
+		else if(die3){
+			Toast.makeText(this.myActivity, "Must Reroll die 3",
+					Toast.LENGTH_SHORT).show();
+		}
+		else if(die4){
+			Toast.makeText(this.myActivity, "Must Reroll die 4",
+					Toast.LENGTH_SHORT).show();
+		}
+		else if(die5){
+			Toast.makeText(this.myActivity, "Must Reroll die 5",
+					Toast.LENGTH_SHORT).show();
+		}
+	}
+
 }// class CounterHumanPlayer
 

@@ -425,7 +425,7 @@ public class CosmicWimpoutState extends GameState {
 			*/
 
 		} else if (fiveCount >= 3 && fiveCount < 5) {
-			//isFlash = true;
+			isFlash = true;
 			//  turnScore = turnScore + 50;
 			if (fiveCount == 4) {
 				//rollSingleDie(playerId, (fiveReRoll + 1));
@@ -477,7 +477,7 @@ public class CosmicWimpoutState extends GameState {
 			}
 			*/
 		} else if (tenCount >= 3 && tenCount < 5) {
-			//isFlash = true;
+			isFlash = true;
 			// turnScore = turnScore + 100;
 			if (tenCount == 4) {
 				//rollSingleDie(playerId, (tenReRoll + 1));
@@ -1832,6 +1832,7 @@ public class CosmicWimpoutState extends GameState {
 						} else {
 							reRolls[i] = false;
 						}
+						fourMoon++;
 					} else {
 						if (this.diceArray[i].getDieState() == 1 ||
 								this.diceArray[i].getDieState() == 5) {
@@ -1857,6 +1858,7 @@ public class CosmicWimpoutState extends GameState {
 						} else {
 							reRolls[i] = false;
 						}
+						triangleCount++;
 					} else {
 						if (this.diceArray[i].getDieState() == 1 ||
 								this.diceArray[i].getDieState() == 5) {
@@ -1883,6 +1885,7 @@ public class CosmicWimpoutState extends GameState {
 						} else {
 							reRolls[i] = false;
 						}
+						boltCount++;
 					} else {
 						if (this.diceArray[i].getDieState() == 1 ||
 								this.diceArray[i].getDieState() == 5) {
@@ -1909,6 +1912,7 @@ public class CosmicWimpoutState extends GameState {
 						} else {
 							reRolls[i] = false;
 						}
+						fourStar++;
 					} else {
 						if (this.diceArray[i].getDieState() == 1 ||
 								this.diceArray[i].getDieState() == 5) {
@@ -1929,7 +1933,7 @@ public class CosmicWimpoutState extends GameState {
 			if (tenCount >= 3 || (tenCount == 2 && this.diceArray[2].getDieState() == 3)) {
 				for (int i = 0; i < this.diceArray.length; i++) {
 					if (i == 2) {
-						if (this.diceArray[i].getDieState() == 3) {
+						if (this.diceArray[i].getDieState() == 1) {
 							reRolls[i] = false;
 						} else {
 							reRolls[i] = true;
@@ -1946,7 +1950,7 @@ public class CosmicWimpoutState extends GameState {
 			if (fiveCount >= 3 || (fiveCount == 2 && this.diceArray[2].getDieState() == 3)) {
 				for (int i = 0; i < this.diceArray.length; i++) {
 					if (i == 2) {
-						if (this.diceArray[i].getDieState() == 3) {
+						if (this.diceArray[i].getDieState() == 5) {
 							reRolls[i] = false;
 						} else {
 							reRolls[i] = true;
