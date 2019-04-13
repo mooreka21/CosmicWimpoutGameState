@@ -187,7 +187,7 @@ public class CosmicWimpoutComputerPlayer2 extends CosmicWimpoutComputerPlayer {
 		}
 	}
 
-        /*
+
 	//SMART AI METHODS
 	public boolean runSmartAi(GameInfo info){
 		//TODO: Rework for instances in which the bot needs to reroll a select number of dice
@@ -209,8 +209,8 @@ public class CosmicWimpoutComputerPlayer2 extends CosmicWimpoutComputerPlayer {
 
                 Die[] ourDice = ((CosmicWimpoutState) info).getDiceArray();
                 for(int i = 0; i < this.needReroll.length; i++){
-				iterates through the dice in the current game state and finds which ones need to
-				remain static for rerolls
+				/*iterates through the dice in the current game state and finds which ones need to
+				remain static for rerolls*/
                     if(ourDice[i].dieState == 5 || ourDice[i].dieState == 1) {
                         this.needReroll[i] = true;
                     }
@@ -243,12 +243,12 @@ public class CosmicWimpoutComputerPlayer2 extends CosmicWimpoutComputerPlayer {
 	//Those dice will have to remain static in the copy and not be rerolled.
     private void getScoresFromCopy(GameInfo info){
 		if(info instanceof CosmicWimpoutState){
-
+            /*
 			this generates a number of copies equal to the bot's intelligence,
 			and then puts those scores into the bot's scoresFromCopy array.
 			This method needs to be reworked for instances in which the bot doesn't have to
 			reroll all its dice - this means only a few die will be copied and have to be rerolled.
-
+            */
 			for (int i = 0; i < intelligence; i++) {
 				CosmicWimpoutState newCopy = new CosmicWimpoutState((CosmicWimpoutState) info);
 				newCopy.rollSelectedDice(this.playerNum,this.needReroll[0], this.needReroll[1],this.needReroll[2],
@@ -278,5 +278,5 @@ public class CosmicWimpoutComputerPlayer2 extends CosmicWimpoutComputerPlayer {
 	private float calcOdds(int fails, int total){
 	    return (float)(fails/total);
     }
-    */
+
 }
