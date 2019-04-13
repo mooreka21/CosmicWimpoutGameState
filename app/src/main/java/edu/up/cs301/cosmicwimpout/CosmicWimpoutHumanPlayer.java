@@ -70,9 +70,9 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 
 
 	//arrays that hold the die faces
-	private int redDieFaces[] = {R.drawable.ten, R.drawable.halfcircles, R.drawable.triangle,
+	private int redDiceFaces[] = {R.drawable.ten, R.drawable.halfcircles, R.drawable.triangle,
 			R.drawable.bolts, R.drawable.five, R.drawable.stars};
-	private int blackDieFaces[] = {R.drawable.blackten, R.drawable.blacktwocircles, R.drawable.flamingsun,
+	private int blackDiceFaces[] = {R.drawable.blackten, R.drawable.blacktwocircles, R.drawable.flamingsun,
 			R.drawable.blackbolt, R.drawable.blackfive, R.drawable.blackstar};
 
 	//to make sure they press roll all dice first
@@ -121,102 +121,102 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 
 		//setting die 1 face to whatever the current die state is
 		if(state.getDiceVal(0).equals("Tens")){
-			this.die1.setImageResource(redDieFaces[0]);
+			this.die1.setImageResource(redDiceFaces[0]);
 		}
 		else if(state.getDiceVal(0).equals("Moons")){
-			this.die1.setImageResource(redDieFaces[1]);
+			this.die1.setImageResource(redDiceFaces[1]);
 		}
 		else if(state.getDiceVal(0).equals("Triangles")){
-			this.die1.setImageResource(redDieFaces[2]);
+			this.die1.setImageResource(redDiceFaces[2]);
 		}
 		else if(state.getDiceVal(0).equals("Bolts")){
-			this.die1.setImageResource(redDieFaces[3]);
+			this.die1.setImageResource(redDiceFaces[3]);
 		}
 		else if(state.getDiceVal(0).equals("Fives")){
-			this.die1.setImageResource(redDieFaces[4]);
+			this.die1.setImageResource(redDiceFaces[4]);
 		}
 		else if(state.getDiceVal(0).equals("Stars")){
-			this.die1.setImageResource(redDieFaces[5]);
+			this.die1.setImageResource(redDiceFaces[5]);
 		}
 
 		//setting die to face
 		if(state.getDiceVal(1).equals("Tens")){
-			this.die2.setImageResource(redDieFaces[0]);
+			this.die2.setImageResource(redDiceFaces[0]);
 		}
 		else if(state.getDiceVal(1).equals("Moons")){
-			this.die2.setImageResource(redDieFaces[1]);
+			this.die2.setImageResource(redDiceFaces[1]);
 		}
 		else if(state.getDiceVal(1).equals("Triangles")){
-			this.die2.setImageResource(redDieFaces[2]);
+			this.die2.setImageResource(redDiceFaces[2]);
 		}
 		else if(state.getDiceVal(1).equals("Bolts")){
-			this.die2.setImageResource(redDieFaces[3]);
+			this.die2.setImageResource(redDiceFaces[3]);
 		}
 		else if(state.getDiceVal(1).equals("Fives")){
-			this.die2.setImageResource(redDieFaces[4]);
+			this.die2.setImageResource(redDiceFaces[4]);
 		}
 		else if(state.getDiceVal(1).equals("Stars")){
-			this.die2.setImageResource(redDieFaces[5]);
+			this.die2.setImageResource(redDiceFaces[5]);
 		}
 
 		//setting die 3 face
 		if(state.getDiceVal(2).equals("Tens")){
-			this.die3.setImageResource(blackDieFaces[0]);
+			this.die3.setImageResource(blackDiceFaces[0]);
 		}
 		else if(state.getDiceVal(2).equals("Moons")){
-			this.die3.setImageResource(blackDieFaces[1]);
+			this.die3.setImageResource(blackDiceFaces[1]);
 		}
 		else if(state.getDiceVal(2).equals("Flaming Sun")){
-			this.die3.setImageResource(blackDieFaces[2]);
+			this.die3.setImageResource(blackDiceFaces[2]);
 		}
 		else if(state.getDiceVal(2).equals("Bolts")){
-			this.die3.setImageResource(blackDieFaces[3]);
+			this.die3.setImageResource(blackDiceFaces[3]);
 		}
 		else if(state.getDiceVal(2).equals("Fives")){
-			this.die3.setImageResource(blackDieFaces[4]);
+			this.die3.setImageResource(blackDiceFaces[4]);
 		}
 		else if(state.getDiceVal(2).equals("Stars")){
-			this.die3.setImageResource(blackDieFaces[5]);
+			this.die3.setImageResource(blackDiceFaces[5]);
 		}
 
 		//setting die 4 face
 		if(state.getDiceVal(3).equals("Tens")){
-			this.die4.setImageResource(redDieFaces[0]);
+			this.die4.setImageResource(redDiceFaces[0]);
 		}
 		else if(state.getDiceVal(3).equals("Moons")){
-			this.die4.setImageResource(redDieFaces[1]);
+			this.die4.setImageResource(redDiceFaces[1]);
 		}
 		else if(state.getDiceVal(3).equals("Triangles")){
-			this.die4.setImageResource(redDieFaces[2]);
+			this.die4.setImageResource(redDiceFaces[2]);
 		}
 		else if(state.getDiceVal(3).equals("Bolts")){
-			this.die4.setImageResource(redDieFaces[3]);
+			this.die4.setImageResource(redDiceFaces[3]);
 		}
 		else if(state.getDiceVal(3).equals("Fives")){
-			this.die4.setImageResource(redDieFaces[4]);
+			this.die4.setImageResource(redDiceFaces[4]);
 		}
 		else if(state.getDiceVal(3).equals("Stars")){
-			this.die4.setImageResource(redDieFaces[5]);
+			this.die4.setImageResource(redDiceFaces[5]);
 		}
 
 		//setting die 5 face
 		if(state.getDiceVal(4).equals("Tens")){
-			this.die5.setImageResource(redDieFaces[0]);
+			this.die5.setImageResource(redDiceFaces[0]);
 		}
 		else if(state.getDiceVal(4).equals("Moons")){
-			this.die5.setImageResource(redDieFaces[1]);
+			this.die5.setImageResource(redDiceFaces[1]);
 		}
 		else if(state.getDiceVal(4).equals("Triangles")){
-			this.die5.setImageResource(redDieFaces[2]);
+			this.die5.setImageResource(redDiceFaces[2]);
 		}
 		else if(state.getDiceVal(4).equals("Bolts")){
-			this.die5.setImageResource(redDieFaces[3]);
+			this.die5.setImageResource(redDiceFaces[3]);
 		}
 		else if(state.getDiceVal(4).equals("Fives")){
-			this.die5.setImageResource(redDieFaces[4]);
+			this.die5.setImageResource(redDiceFaces[4]);
 		}
 		else if(state.getDiceVal(4).equals("Stars")){
-			this.die5.setImageResource(redDieFaces[5]);
+			this.die5.setImageResource(redDiceFaces[5]);
 		}
 
 		//highlighting whose turn it is with red background
@@ -253,6 +253,22 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 			check3.setChecked(false);
 			check4.setChecked(false);
 			check5.setChecked(false);
+		}
+
+		//plays win/loss sound effects (isn't working yet)
+		if(state.getIsInstantWinner()){
+			sound.playWinner();
+		}
+		else if(state.getIsSuperNova()){
+			sound.playLoser();
+		}
+		else if(state.getWhoseTurn() >= 500){
+			sound.playWinner();
+		}
+		else if(state.getWhoseTurn() < 500 && (state.getPlayer1Score()>= 500 ||
+				state.getPlayer2Score() >= 500 || state.getPlayer3Score() >= 500 ||
+				state.getPlayer4Score() >= 500)){
+			sound.playLoser();
 		}
 
 
@@ -708,33 +724,33 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 	//@Override
 	/*
 	public void run(){
-		//for(int i = 0; i < redDieFaces.length; i++) {
+		//for(int i = 0; i < redDiceFaces.length; i++) {
 			try {
-				for(int i = 0; i < redDieFaces.length; i++) {
+				for(int i = 0; i < redDiceFaces.length; i++) {
 					Thread.sleep(20);
 					if (rollDiceClicked) {
-						this.die1.setImageResource(redDieFaces[i]);
-						this.die2.setImageResource(redDieFaces[i]);
-						this.die3.setImageResource(blackDieFaces[i]);
-						this.die4.setImageResource(redDieFaces[i]);
-						this.die5.setImageResource(redDieFaces[i]);
+						this.die1.setImageResource(redDiceFaces[i]);
+						this.die2.setImageResource(redDiceFaces[i]);
+						this.die3.setImageResource(blackDiceFaces[i]);
+						this.die4.setImageResource(redDiceFaces[i]);
+						this.die5.setImageResource(redDiceFaces[i]);
 						//this.updateDisplay();
 					}
 					else if(rollSelectedClicked) {
 						if (isCheck1) {
-							this.die1.setImageResource(redDieFaces[i]);
+							this.die1.setImageResource(redDiceFaces[i]);
 						}
 						if (isCheck2) {
-							this.die2.setImageResource(redDieFaces[i]);
+							this.die2.setImageResource(redDiceFaces[i]);
 						}
 						if (isCheck3) {
-							this.die3.setImageResource(blackDieFaces[i]);
+							this.die3.setImageResource(blackDiceFaces[i]);
 						}
 						if (isCheck4) {
-							this.die4.setImageResource(redDieFaces[i]);
+							this.die4.setImageResource(redDiceFaces[i]);
 						}
 						if (isCheck5) {
-							this.die5.setImageResource(redDieFaces[i]);
+							this.die5.setImageResource(redDiceFaces[i]);
 						}
 					}
 				}

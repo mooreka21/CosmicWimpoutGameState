@@ -23,8 +23,10 @@ public class CosmicWimpoutSoundPlayer {
     private int fourDice;
     private int fiveDice;
     private int background;
+    private int winner;
+    private int loser;
 
-    public CosmicWimpoutSoundPlayer(Context context){
+    public CosmicWimpoutSoundPlayer(Context context) {
         //initialize soundPool player
         soundPool = new SoundPool(5, AudioManager.STREAM_MUSIC, 0);
 
@@ -34,11 +36,9 @@ public class CosmicWimpoutSoundPlayer {
         threeDice = soundPool.load(context, R.raw.three_dice, 1);
         fourDice = soundPool.load(context, R.raw.four_dice, 1);
         fiveDice = soundPool.load(context, R.raw.five_dice, 1);
-        background = soundPool.load(context, R.raw.bensound_theelevatorbossanova,1);
-
-    }
-    public void playBackground(){
-        soundPool.play(background, 1.0f, 1.0f, 1, -1,1.0f);
+        background = soundPool.load(context, R.raw.bensound_theelevatorbossanova, 1);
+        winner = soundPool.load(context, R.raw.win_sound, 1);
+        loser = soundPool.load(context, R.raw.lose_sound, 1);
     }
 
     public void playOneDie(){
@@ -61,10 +61,26 @@ public class CosmicWimpoutSoundPlayer {
         soundPool.play(fiveDice, 1.0f, 1.0f, 1, 0,1.0f);
     }
 
+    public void playBackground(){
+        soundPool.play(background, 1.0f, 1.0f, 1, -1,1.0f);
+    }
+
+    public void playWinner(){
+        soundPool.play(winner, 1.0f, 1.0f, 1, 0,1.0f);
+    }
+
+    public void playLoser(){
+        soundPool.play(loser, 1.0f, 1.0f, 1, 0,1.0f);
+    }
+
+
+
     /**
      * Citations:
      * all dice rolling sounds were recorded by Kayla
      * background music was found here: https://www.bensound.com/royalty-free-music/jazz
+     * winner sound was found here: http://soundbible.com/1003-Ta-Da.html
+     * loser sound was found here: http://soundbible.com/1830-Sad-Trombone.html
      *
      * tutorial on adding sounds using SoundPool: https://www.youtube.com/watch?v=r2Oz_bV5trU
      * further info on SoundPool: https://developer.android.com/reference/android/media/SoundPool.html
