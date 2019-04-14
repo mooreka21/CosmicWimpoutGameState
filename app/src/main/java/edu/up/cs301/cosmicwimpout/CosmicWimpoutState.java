@@ -41,25 +41,6 @@ public class CosmicWimpoutState extends GameState {
 	private boolean die2ReRoll = false;
 	private boolean die3ReRoll = false;
 	private boolean die4ReRoll = false;
-
-    public boolean isDie1ReRoll() {
-        return die1ReRoll;
-    }
-    public boolean isDie2ReRoll() {
-        return die2ReRoll;
-    }
-    public boolean isDie3ReRoll() {
-        return die3ReRoll;
-    }
-    public boolean isDie4ReRoll() {
-        return die4ReRoll;
-    }
-    public boolean isDie5ReRoll() {
-        return die5ReRoll;
-    }
-
-
-
     private boolean die5ReRoll = false;
 
 
@@ -1736,7 +1717,6 @@ public class CosmicWimpoutState extends GameState {
 
 		return false;
 	}
-
 	public boolean check4Dice(int die1, int die2, int die3, int die4) {
 		if (isFlash) {
 			int tenCount = 0;
@@ -1818,7 +1798,21 @@ public class CosmicWimpoutState extends GameState {
 
 		return false;
 	}
-
+    public boolean isDie1ReRoll() {
+        return die1ReRoll;
+    }
+    public boolean isDie2ReRoll() {
+        return die2ReRoll;
+    }
+    public boolean isDie3ReRoll() {
+        return die3ReRoll;
+    }
+    public boolean isDie4ReRoll() {
+        return die4ReRoll;
+    }
+    public boolean isDie5ReRoll() {
+        return die5ReRoll;
+    }
 	public boolean[] flashReRoll() {
 		boolean[] reRolls = new boolean[5];
 		if (isFlash) {

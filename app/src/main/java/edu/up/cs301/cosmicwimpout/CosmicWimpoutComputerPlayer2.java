@@ -218,36 +218,33 @@ public class CosmicWimpoutComputerPlayer2 extends CosmicWimpoutComputerPlayer {
                             needReroll[i] = this.state.isDie5ReRoll();
                     }
                 }
-
 				getScoresFromCopy((CosmicWimpoutState)info);
 				int successes = getSuccess(this.scoresFromCopy);
                 int rerollCount = scoresFromCopy.length;
                 int turnScoreBefore = this.state.getTurnScore();
                 float odds = calcOdds(successes, rerollCount);
-                while(odds < 0.5){
+				while(odds < 0.5){
 
-                    CosmicWimpoutActionRollSelectedDie rollSomeDice =
+                    CosmicWimpoutActionRollSelectedDie botRollsSomeDice =
                             new CosmicWimpoutActionRollSelectedDie(this,
                                     needReroll[0],
                                     needReroll[1],
                                     needReroll[2],
                                     needReroll[3],
                                     needReroll[4]);
-                    game.sendAction(rollSomeDice);
-                    int newscore = state.getTurnScore();
-                    if(newscore > turnScoreBefore){
+                    game.sendAction(botRollsSomeDice);
+                    int newScore = state.getTurnScore();
+                    if(newScore > turnScoreBefore){
                         successes --;
                         odds = calcOdds(successes,rerollCount);
-                    }else if(state.getTurnScore() == 0){
-                        //WIMPOUT OR Supernova here
-
+                    }else if(state.getTurnScore() == 0) {
+                        break;
                     }
-
                 }
-
-
-
-
+                CosmicWimpoutActionEndTurn endTurn =
+                        new CosmicWimpoutActionEndTurn(this);
+                game.sendAction(endTurn);
+                return true;
 			}
         }
 	    return false;
