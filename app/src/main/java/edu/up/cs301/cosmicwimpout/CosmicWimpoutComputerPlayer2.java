@@ -8,6 +8,8 @@ import android.os.Handler;
 import android.util.Log;
 import android.widget.TextView;
 
+import java.io.Console;
+
 
 /**
 * A computer-version of a counter-player.  Since this is such a simple game,
@@ -142,7 +144,7 @@ public class CosmicWimpoutComputerPlayer2 extends CosmicWimpoutComputerPlayer {
         if (currentTurn != playerNum) {}
         else {
             //delay to make it seem like they are thinking
-            sleep(5000);
+            sleep(1000);
             CosmicWimpoutActionRollAllDice allDiceAction =
                     new CosmicWimpoutActionRollAllDice(this);
             game.sendAction(allDiceAction);
@@ -216,63 +218,59 @@ public class CosmicWimpoutComputerPlayer2 extends CosmicWimpoutComputerPlayer {
 
 
 	//SMART AI METHODS
-	public boolean runSmartAi(GameInfo info){
+	public void runSmartAi(GameInfo info){
 	    int currentTurn = -1;
-        if(info instanceof CosmicWimpoutState){
-            this.state = (CosmicWimpoutState)info;
-            currentTurn = this.state.getWhoseTurn();
-            if(currentTurn != playerNum){}
-            else {
-				//roll all dice to start the turn. Similar setup to dumb ai.
-            	sleep(2500);
-				CosmicWimpoutActionRollAllDice allDiceAction =
-						new CosmicWimpoutActionRollAllDice(this);
-				game.sendAction(allDiceAction);
-				sleep(1500);
-                Die[] ourDice = ((CosmicWimpoutState) info).getDiceArray();
-                for(int i = 0; i < 5;i++){
-                    switch(i){
-                        case 0:
-                            needReroll[i] = this.state.isDie1ReRoll();
-                        case 1:
-                            needReroll[i] = this.state.isDie2ReRoll();
-                        case 2:
-                            needReroll[i] = this.state.isDie3ReRoll();
-                        case 3:
-                            needReroll[i] = this.state.isDie4ReRoll();
-                        case 4:
-                            needReroll[i] = this.state.isDie5ReRoll();
-                    }
-                }
-				getScoresFromCopy(info);
-				int successes = getSuccess(this.scoresFromCopy);
-                int rerollCount = scoresFromCopy.length;
-                int turnScoreBefore = this.state.getTurnScore();
-                float odds = calcOdds(successes, rerollCount);
-				while(odds < 0.5){
-                    CosmicWimpoutActionRollSelectedDie botRollsSomeDice =
-                            new CosmicWimpoutActionRollSelectedDie(this,
-                                    needReroll[0],
-                                    needReroll[1],
-                                    needReroll[2],
-                                    needReroll[3],
-                                    needReroll[4]);
-                    game.sendAction(botRollsSomeDice);
-                    int newScore = state.getTurnScore();
-                    if(newScore > turnScoreBefore){
-                        successes --;
-                        odds = calcOdds(successes,rerollCount);
-                    }else if(state.getTurnScore() == 0) {
-                        break;
-                    }
-                }
-                CosmicWimpoutActionEndTurn endTurn =
-                        new CosmicWimpoutActionEndTurn(this);
-                game.sendAction(endTurn);
-                return true;
+	    this.intelligence = 100;
+	    try {
+			sleep(2500);
+			Die[] ourDice = ((CosmicWimpoutState) info).getDiceArray();
+			for (int i = 0; i < 5; i++) {
+				switch (i) {
+					case 0:
+						needReroll[i] = this.state.isDie1ReRoll();
+					case 1:
+						needReroll[i] = this.state.isDie2ReRoll();
+					case 2:
+						needReroll[i] = this.state.isDie3ReRoll();
+					case 3:
+						needReroll[i] = this.state.isDie4ReRoll();
+					case 4:
+						needReroll[i] = this.state.isDie5ReRoll();
+				}
 			}
-        }
-	    return false;
+			try {
+				getScoresFromCopy((CosmicWimpoutState) info);
+			} catch (Exception e) {
+				Log.e("Error", ("caught exception " + e + " at inner try/catch"));
+			}
+			int successes = getSuccess(this.scoresFromCopy);
+			int rerollCount = scoresFromCopy.length;
+			int turnScoreBefore = this.state.getTurnScore();
+			float odds = calcOdds(successes, rerollCount);
+			while (odds < 0.5) {
+				CosmicWimpoutActionRollSelectedDie botRollsSomeDice =
+						new CosmicWimpoutActionRollSelectedDie(this,
+								needReroll[0],
+								needReroll[1],
+								needReroll[2],
+								needReroll[3],
+								needReroll[4]);
+				game.sendAction(botRollsSomeDice);
+				int newScore = state.getTurnScore();
+				if (newScore > turnScoreBefore) {
+					successes--;
+					odds = calcOdds(successes, rerollCount);
+				} else if (state.getTurnScore() == 0) {
+					break;
+				}
+			}
+			CosmicWimpoutActionEndTurn endTurn =
+					new CosmicWimpoutActionEndTurn(this);
+			game.sendAction(endTurn);
+		}
+		catch(Exception e){
+	    	Log.e("Error", "Found Exception " + e + " in outer try/catch" );
+		}
     }
 	//If the bot scores at all, it'll reroll non-scoring dice only.
 	//Those dice will have to remain static in the copy and not be rerolled.

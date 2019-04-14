@@ -54,15 +54,15 @@ public class CosmicWimpoutMainActivity extends GameMainActivity {
 				return new CosmicWimpoutComputerPlayer(name);
 			}});
 		// a computer player type (player type 1)
-		playerTypes.add(new GamePlayerType("Smart Computer Player") {
+		playerTypes.add(new GamePlayerType("Computer Player") {
 			public GamePlayer createPlayer(String name) {
 				return new CosmicWimpoutComputerPlayer(name);
 			}});
 
 		// a computer player type (player type 1)
-		playerTypes.add(new GamePlayerType("Computer Player") {
+		playerTypes.add(new GamePlayerType("Smart Computer Player") {
 			public GamePlayer createPlayer(String name) {
-				return new CosmicWimpoutComputerPlayer(name);
+				return new CosmicWimpoutComputerPlayer2(name);
 			}});
 		
 		// a computer player type (player type 2)
