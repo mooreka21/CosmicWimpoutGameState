@@ -568,6 +568,7 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 						CosmicWimpoutActionRollSelectedDie rollSelectedDie =
 								new CosmicWimpoutActionRollSelectedDie(this, isCheck1,
 										isCheck2, isCheck3, isCheck4, isCheck5);
+						/*
 						//rolling animation for each possibility of 4 checks
 						if(isCheck1 && isCheck2 && isCheck3 && isCheck4 && !isCheck5) {
 							for(int i = 0; i < redDiceFaces.length; i++) {
@@ -609,6 +610,7 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 								this.die5.setImageResource(redDiceFaces[i]);
 							}
 						}
+						*/
 						game.sendAction(rollSelectedDie);
 					}
 					else{

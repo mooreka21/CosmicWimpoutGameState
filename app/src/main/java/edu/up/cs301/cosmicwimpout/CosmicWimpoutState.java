@@ -1185,7 +1185,12 @@ public class CosmicWimpoutState extends GameState {
 				score = score + 100;
 				notWimp = true;
 			}
-		} else if (tenCount == 2) {
+			else {
+				score = score + 20;
+				notWimp = true;
+			}
+		}
+		else if (tenCount == 2) {
 			score = score + 20;
 			notWimp = true;
 		}
@@ -1495,8 +1500,10 @@ public class CosmicWimpoutState extends GameState {
 				}
 			}
 			if (tenCount == 2 || fiveCount == 2) {
+				//isFlash = false;
 				return true;
 			} else if (fiveCount == 1 && tenCount == 1) {
+				//isFlash = false;
 				return true;
 			}
 		} else {
