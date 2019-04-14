@@ -13,6 +13,7 @@ import edu.up.cs301.game.actionMsg.GameAction;
  */
 public class CosmicWimpoutActionRollAllDice extends GameAction {
     private static final long serialVersionUID = 18893337L;
+
     //invokes super constructor
     public CosmicWimpoutActionRollAllDice(GamePlayer player){
         super(player);

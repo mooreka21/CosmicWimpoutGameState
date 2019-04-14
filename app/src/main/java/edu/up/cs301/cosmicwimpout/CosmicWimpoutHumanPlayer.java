@@ -4,6 +4,7 @@ import edu.up.cs301.game.GameHumanPlayer;
 import edu.up.cs301.game.GameMainActivity;
 import edu.up.cs301.game.R;
 import edu.up.cs301.game.actionMsg.GameAction;
+import edu.up.cs301.game.config.GamePlayerType;
 import edu.up.cs301.game.infoMsg.GameInfo;
 import edu.up.cs301.game.infoMsg.IllegalMoveInfo;
 import edu.up.cs301.game.infoMsg.NotYourTurnInfo;
@@ -19,6 +20,8 @@ import android.view.View.OnClickListener;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+
+import static java.lang.Thread.sleep;
 
 /**
  * A GUI of a cosmic wimpout-player. The GUI displays the current value of the
@@ -67,6 +70,7 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 	int flash = 0;
 	//variable for sound effects
 	private CosmicWimpoutSoundPlayer sound;
+	private int notPlaying = 0;
 
 
 	//arrays that hold the die faces
@@ -107,6 +111,8 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 	 * sets the counter value in the text view
 	 */
 	protected void updateDisplay() {
+		//TODO fix these issues: it doesnt play until player rolls dice & keeps playing over itself
+		//this.sound.playBackground();
 
 		//set the text to current game state varibales
 		this.player1Score.setText(allPlayerNames[0] + ": " + state.getPlayer1Score());
@@ -114,10 +120,6 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 		this.player3Score.setText(allPlayerNames[2] + ": " + state.getPlayer3Score());
 		this.player4Score.setText(allPlayerNames[3] + ": " + state.getPlayer4Score());
 		this.turnScore.setText("Turn Score: " + state.getTurnScore() + "pts");
-
-		//initializing sound player
-		sound = new CosmicWimpoutSoundPlayer(myActivity);
-		this.sound.playBackground();
 
 		//setting die 1 face to whatever the current die state is
 		if(state.getDiceVal(0).equals("Tens")){
@@ -255,20 +257,55 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 			check5.setChecked(false);
 		}
 
-		//plays win/loss sound effects (isn't working yet)
+		//if roll is an instant winner, play win sound
 		if(state.getIsInstantWinner()){
 			sound.playWinner();
 		}
-		else if(state.getIsSuperNova()){
+		//if roll is a supernova, play lose sound
+		if(state.getIsSuperNova()){
 			sound.playLoser();
 		}
-		else if(state.getWhoseTurn() >= 500){
-			sound.playWinner();
+		if(requiresGui()){
+
 		}
-		else if(state.getWhoseTurn() < 500 && (state.getPlayer1Score()>= 500 ||
-				state.getPlayer2Score() >= 500 || state.getPlayer3Score() >= 500 ||
-				state.getPlayer4Score() >= 500)){
-			sound.playLoser();
+		//checks if current player won or lost the game and plays win/lose sound effect
+		switch(state.getWhoseTurn()){
+			case 1:
+				if(state.getPlayer1Score()< 500 && (state.getPlayer2Score() >= 500 ||
+						state.getPlayer3Score() >= 500 || state.getPlayer4Score() >= 500)){
+					sound.playLoser();
+				}
+				else if(state.getPlayer1Score() >= 500){
+					sound.playWinner();
+				}
+				break;
+			case 2:
+				if(state.getPlayer2Score()< 500 && (state.getPlayer1Score() >= 500 ||
+						state.getPlayer3Score() >= 500 || state.getPlayer4Score() >= 500)){
+					sound.playLoser();
+				}
+				else if(state.getPlayer2Score() >= 500){
+					sound.playWinner();
+				}
+				break;
+			case 3:
+				if(state.getPlayer3Score()< 500 && (state.getPlayer1Score() >= 500 ||
+						state.getPlayer2Score() >= 500 || state.getPlayer4Score() >= 500)){
+					sound.playLoser();
+				}
+				else if(state.getPlayer3Score() >= 500){
+					sound.playWinner();
+				}
+				break;
+			case 0:
+				if(state.getPlayer4Score()< 500 && (state.getPlayer1Score() >= 500 ||
+						state.getPlayer2Score() >= 500 || state.getPlayer3Score() >= 500)){
+					sound.playLoser();
+				}
+				else if(state.getPlayer4Score() >= 500){
+					sound.playWinner();
+				}
+				break;
 		}
 
 
@@ -322,9 +359,18 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 		if(this.actionsPressed == 0 || this.state.getTurnScore() == 0){
 			if(button == rollDiceButton ){
 				rollDiceClicked = true;
+				sound.playFiveDice();
+				//rolling animation
+				for(int i = 0; i < redDiceFaces.length; i++) {
+					this.die1.setImageResource(redDiceFaces[i]);
+					this.die2.setImageResource(redDiceFaces[i]);
+					this.die3.setImageResource(blackDiceFaces[i]);
+					this.die4.setImageResource(redDiceFaces[i]);
+					this.die5.setImageResource(redDiceFaces[i]);
+				}
 				game.sendAction(rollAct);
 				actionsPressed++;
-				sound.playFiveDice();
+
 			}
             else if(button == endGameButton){
                 game.sendAction(endGameAct);
@@ -366,6 +412,7 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 				else {
 					isCheck1 = true;
 					checkCount++;
+
 				}
 				if (!(check2.isChecked())) {
 					isCheck2 = false;
@@ -411,10 +458,6 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 					sound.playFiveDice();
 				}
 
-				if(this.state.getIsFlash()){
-
-				}
-
 				if(this.state.getIsFlash() && !legalMoveAllChecked5()){
 					this.flashReRoll();
 				}
@@ -436,6 +479,14 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 						CosmicWimpoutActionRollSelectedDie rollSelectedAct =
 								new CosmicWimpoutActionRollSelectedDie(this, isCheck1,
 										isCheck2, isCheck3, isCheck4, isCheck5);
+						//rolling animation
+						for(int i = 0; i < redDiceFaces.length; i++) {
+							this.die1.setImageResource(redDiceFaces[i]);
+							this.die2.setImageResource(redDiceFaces[i]);
+							this.die3.setImageResource(blackDiceFaces[i]);
+							this.die4.setImageResource(redDiceFaces[i]);
+							this.die5.setImageResource(redDiceFaces[i]);
+						}
 						game.sendAction(rollSelectedAct);
 					} else if (!legalMoveAllChecked5()) {
 						Toast.makeText(this.myActivity, "Cannot roll all dice",
@@ -448,6 +499,47 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 						CosmicWimpoutActionRollSelectedDie rollSelectedDie =
 								new CosmicWimpoutActionRollSelectedDie(this, isCheck1,
 										isCheck2, isCheck3, isCheck4, isCheck5);
+						//rolling animation for each possibility of 4 checks
+						if(isCheck1 && isCheck2 && isCheck3 && isCheck4 && !isCheck5) {
+							for(int i = 0; i < redDiceFaces.length; i++) {
+								this.die1.setImageResource(redDiceFaces[i]);
+								this.die2.setImageResource(redDiceFaces[i]);
+								this.die3.setImageResource(blackDiceFaces[i]);
+								this.die4.setImageResource(redDiceFaces[i]);
+							}
+						}
+						else if(isCheck1 && isCheck2 && isCheck3 && !isCheck4 && isCheck5) {
+							for(int i = 0; i < redDiceFaces.length; i++) {
+								this.die1.setImageResource(redDiceFaces[i]);
+								this.die2.setImageResource(redDiceFaces[i]);
+								this.die3.setImageResource(blackDiceFaces[i]);
+								this.die5.setImageResource(redDiceFaces[i]);
+							}
+						}
+						else if(isCheck1 && isCheck2 && !isCheck3 && isCheck4 && isCheck5) {
+							for(int i = 0; i < redDiceFaces.length; i++) {
+								this.die1.setImageResource(redDiceFaces[i]);
+								this.die2.setImageResource(redDiceFaces[i]);
+								this.die4.setImageResource(redDiceFaces[i]);
+								this.die5.setImageResource(redDiceFaces[i]);
+							}
+						}
+						else if(isCheck1 && !isCheck2 && isCheck3 && isCheck4 && isCheck5) {
+							for(int i = 0; i < redDiceFaces.length; i++) {
+								this.die1.setImageResource(redDiceFaces[i]);
+								this.die3.setImageResource(blackDiceFaces[i]);
+								this.die4.setImageResource(redDiceFaces[i]);
+								this.die5.setImageResource(redDiceFaces[i]);
+							}
+						}
+						else if(!isCheck1 && isCheck2 && isCheck3 && isCheck4 && isCheck5) {
+							for(int i = 0; i < redDiceFaces.length; i++) {
+								this.die2.setImageResource(redDiceFaces[i]);
+								this.die3.setImageResource(blackDiceFaces[i]);
+								this.die4.setImageResource(redDiceFaces[i]);
+								this.die5.setImageResource(redDiceFaces[i]);
+							}
+						}
 						game.sendAction(rollSelectedDie);
 					}
 					else{
@@ -461,6 +553,32 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 						CosmicWimpoutActionRollSelectedDie rollSelectedDie =
 								new CosmicWimpoutActionRollSelectedDie(this, isCheck1,
 										isCheck2, isCheck3, isCheck4, isCheck5);
+						//rolling animation
+						if(isCheck1){
+							for(int i = 0; i < redDiceFaces.length; i++) {
+								this.die1.setImageResource(redDiceFaces[i]);
+							}
+						}
+						if(isCheck2){
+							for(int i = 0; i < redDiceFaces.length; i++) {
+								this.die2.setImageResource(redDiceFaces[i]);
+							}
+						}
+						if(isCheck3){
+							for(int i = 0; i < redDiceFaces.length; i++) {
+								this.die3.setImageResource(blackDiceFaces[i]);
+							}
+						}
+						if(isCheck4){
+							for(int i = 0; i < redDiceFaces.length; i++) {
+								this.die4.setImageResource(redDiceFaces[i]);
+							}
+						}
+						if(isCheck5){
+							for(int i = 0; i < redDiceFaces.length; i++) {
+								this.die5.setImageResource(redDiceFaces[i]);
+							}
+						}
 						game.sendAction(rollSelectedDie);
 					}
 					else{
@@ -474,6 +592,32 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 						CosmicWimpoutActionRollSelectedDie rollSelectedDie =
 								new CosmicWimpoutActionRollSelectedDie(this, isCheck1,
 										isCheck2, isCheck3, isCheck4, isCheck5);
+						//rolling animation
+						if(isCheck1){
+							for(int i = 0; i < redDiceFaces.length; i++) {
+								this.die1.setImageResource(redDiceFaces[i]);
+							}
+						}
+						if(isCheck2){
+							for(int i = 0; i < redDiceFaces.length; i++) {
+								this.die2.setImageResource(redDiceFaces[i]);
+							}
+						}
+						if(isCheck3){
+							for(int i = 0; i < redDiceFaces.length; i++) {
+								this.die3.setImageResource(blackDiceFaces[i]);
+							}
+						}
+						if(isCheck4){
+							for(int i = 0; i < redDiceFaces.length; i++) {
+								this.die4.setImageResource(redDiceFaces[i]);
+							}
+						}
+						if(isCheck5){
+							for(int i = 0; i < redDiceFaces.length; i++) {
+								this.die5.setImageResource(redDiceFaces[i]);
+							}
+						}
 						game.sendAction(rollSelectedDie);
 					}
 					else{
@@ -487,6 +631,10 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 						CosmicWimpoutActionRollSelectedDie rollSelectedAct =
 								new CosmicWimpoutActionRollSelectedDie(this, isCheck1,
 										isCheck2, isCheck3, isCheck4, isCheck5);
+						//rolling animation
+						for(int i = 0; i < redDiceFaces.length; i++) {
+							this.die1.setImageResource(redDiceFaces[i]);
+						}
 						game.sendAction(rollSelectedAct);
 
 					}
@@ -499,6 +647,10 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 					if(legalOneChecked()){
 						CosmicWimpoutActionRollSelectedDie rollSelectedAct =
 								new CosmicWimpoutActionRollSelectedDie(this, isCheck1, isCheck2, isCheck3, isCheck4, isCheck5);
+						//rolling animation
+						for(int i = 0; i < redDiceFaces.length; i++) {
+							this.die5.setImageResource(redDiceFaces[i]);
+						}
 						game.sendAction(rollSelectedAct);
 
 					}
@@ -511,6 +663,10 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 					if(legalOneChecked()){
 						CosmicWimpoutActionRollSelectedDie rollSelectedAct =
 								new CosmicWimpoutActionRollSelectedDie(this, isCheck1, isCheck2, isCheck3, isCheck4, isCheck5);
+						//rolling animation
+						for(int i = 0; i < redDiceFaces.length; i++) {
+							this.die4.setImageResource(redDiceFaces[i]);
+						}
 						game.sendAction(rollSelectedAct);
 
 					}
@@ -523,6 +679,10 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 					if(legalOneChecked()){
 						CosmicWimpoutActionRollSelectedDie rollSelectedAct =
 								new CosmicWimpoutActionRollSelectedDie(this, isCheck1, isCheck2, isCheck3, isCheck4, isCheck5);
+						//rolling animation
+						for(int i = 0; i < redDiceFaces.length; i++) {
+							this.die3.setImageResource(blackDiceFaces[i]);
+						}
 						game.sendAction(rollSelectedAct);
 
 					}
@@ -535,6 +695,10 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 					if(legalOneChecked()){
 						CosmicWimpoutActionRollSelectedDie rollSelectedAct =
 								new CosmicWimpoutActionRollSelectedDie(this, isCheck1, isCheck2, isCheck3, isCheck4, isCheck5);
+						//rolling animation
+						for(int i = 0; i < redDiceFaces.length; i++) {
+							this.die2.setImageResource(redDiceFaces[i]);
+						}
 						game.sendAction(rollSelectedAct);
 					}
 					else{
@@ -585,6 +749,9 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 
 		// remember the activity
 		this.myActivity = activity;
+
+		//initialize sound player
+		this.sound = new CosmicWimpoutSoundPlayer(myActivity);
 
 		// Load the layout resource for our GUI
 		activity.setContentView(R.layout.cosmicwimpout_human_player);

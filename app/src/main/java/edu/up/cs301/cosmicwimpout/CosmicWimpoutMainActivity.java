@@ -39,7 +39,6 @@ public class CosmicWimpoutMainActivity extends GameMainActivity {
 	 */
 	@Override
 	public GameConfig createDefaultConfig() {
-		
 		// Define the allowed player types
 		ArrayList<GamePlayerType> playerTypes = new ArrayList<GamePlayerType>();
 		
@@ -103,8 +102,6 @@ public class CosmicWimpoutMainActivity extends GameMainActivity {
 	 * 		the local game, a cosmic wimpout game
 	 */
 	@Override
-	public LocalGame createLocalGame() {
-		return new CosmicWimpoutLocalGame();
-	}
+	public LocalGame createLocalGame() { return new CosmicWimpoutLocalGame(); }
 
 }

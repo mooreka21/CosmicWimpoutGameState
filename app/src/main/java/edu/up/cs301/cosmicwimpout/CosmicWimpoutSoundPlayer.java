@@ -28,7 +28,7 @@ public class CosmicWimpoutSoundPlayer {
 
     public CosmicWimpoutSoundPlayer(Context context) {
         //initialize soundPool player
-        soundPool = new SoundPool(5, AudioManager.STREAM_MUSIC, 0);
+        soundPool = new SoundPool(8, AudioManager.STREAM_MUSIC, 0);
 
         //load in sounds
         oneDie = soundPool.load(context, R.raw.one_die, 1);
