@@ -467,7 +467,66 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
                                         isCheck2, isCheck3, isCheck4, isCheck5);
                         game.sendAction(rollSelectedDie);
                     }
-                    flash++;
+					else if(isCheck1 && !isCheck5 && !isCheck4 && !isCheck3 && !isCheck2){
+						if(legalOneChecked()){
+							CosmicWimpoutActionRollSelectedDie rollSelectedAct =
+									new CosmicWimpoutActionRollSelectedDie(this, isCheck1,
+											isCheck2, isCheck3, isCheck4, isCheck5);
+							//rolling animation
+							for(int i = 0; i < redDiceFaces.length; i++) {
+								this.die1.setImageResource(redDiceFaces[i]);
+							}
+							game.sendAction(rollSelectedAct);
+						}
+					}
+					else if(!isCheck1 && isCheck5 && !isCheck4 && !isCheck3 && !isCheck2){
+						if(legalOneChecked()){
+							CosmicWimpoutActionRollSelectedDie rollSelectedAct =
+									new CosmicWimpoutActionRollSelectedDie(this, isCheck1, isCheck2, isCheck3, isCheck4, isCheck5);
+							//rolling animation
+							for(int i = 0; i < redDiceFaces.length; i++) {
+								this.die5.setImageResource(redDiceFaces[i]);
+							}
+							game.sendAction(rollSelectedAct);
+
+						}
+					}
+					else if(!isCheck1 && !isCheck5 && isCheck4 && !isCheck3 && !isCheck2){
+						if(legalOneChecked()){
+							CosmicWimpoutActionRollSelectedDie rollSelectedAct =
+									new CosmicWimpoutActionRollSelectedDie(this, isCheck1, isCheck2, isCheck3, isCheck4, isCheck5);
+							//rolling animation
+							for(int i = 0; i < redDiceFaces.length; i++) {
+								this.die4.setImageResource(redDiceFaces[i]);
+							}
+							game.sendAction(rollSelectedAct);
+
+						}
+					}
+					else if(!isCheck1 && !isCheck5 && !isCheck4 && isCheck3 && !isCheck2){
+						if(legalOneChecked()){
+							CosmicWimpoutActionRollSelectedDie rollSelectedAct =
+									new CosmicWimpoutActionRollSelectedDie(this, isCheck1, isCheck2, isCheck3, isCheck4, isCheck5);
+							//rolling animation
+							for(int i = 0; i < redDiceFaces.length; i++) {
+								this.die3.setImageResource(blackDiceFaces[i]);
+							}
+							game.sendAction(rollSelectedAct);
+
+						}
+					}
+					else if(!isCheck1 &&  !isCheck5 && !isCheck4 && !isCheck3 && isCheck2) {
+						if (legalOneChecked()) {
+							CosmicWimpoutActionRollSelectedDie rollSelectedAct =
+									new CosmicWimpoutActionRollSelectedDie(this, isCheck1, isCheck2, isCheck3, isCheck4, isCheck5);
+							//rolling animation
+							for (int i = 0; i < redDiceFaces.length; i++) {
+								this.die2.setImageResource(redDiceFaces[i]);
+							}
+							game.sendAction(rollSelectedAct);
+						}
+					}
+					flash++;
 				}
 				else if(legalMoveAllChecked5()){
 					if(isCheck1 && isCheck2 && isCheck3 && isCheck4 && isCheck5){
@@ -496,6 +555,7 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 							this.die4.setImageResource(redDiceFaces[i]);
 							this.die5.setImageResource(redDiceFaces[i]);
 						}
+						flash = 0;
 						game.sendAction(rollSelectedAct);
 					} else if (!legalMoveAllChecked5()) {
 						Toast.makeText(this.myActivity, "Cannot roll all dice",
