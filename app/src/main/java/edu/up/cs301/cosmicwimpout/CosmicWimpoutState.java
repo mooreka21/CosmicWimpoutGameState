@@ -1798,6 +1798,10 @@ public class CosmicWimpoutState extends GameState {
 
 		return false;
 	}
+
+	public boolean getIsWimpout(){
+	    return this.isWimpout;
+    }
     public boolean isDie1ReRoll() {
         return die1ReRoll;
     }
