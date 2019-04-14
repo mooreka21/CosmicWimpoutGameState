@@ -1855,7 +1855,7 @@ public class CosmicWimpoutState extends GameState {
 				int fourMoon = 0;
 				for (int i = 0; i < this.diceArray.length; i++) {
 					if (this.diceArray[i].getDieState() == 2) {
-						if (fourMoon == 3) {
+						if (fourMoon == 2) {
 							reRolls[i] = true;
 						} else {
 							reRolls[i] = false;
@@ -1881,7 +1881,7 @@ public class CosmicWimpoutState extends GameState {
 				int fourTriangle = 0;
 				for (int i = 0; i < this.diceArray.length; i++) {
 					if (this.diceArray[i].getDieState() == 3) {
-						if (fourTriangle == 3) {
+						if (fourTriangle == 2) {
 							reRolls[i] = true;
 						} else {
 							reRolls[i] = false;
@@ -1908,7 +1908,7 @@ public class CosmicWimpoutState extends GameState {
 				int fourBolt = 0;
 				for (int i = 0; i < this.diceArray.length; i++) {
 					if (this.diceArray[i].getDieState() == 4) {
-						if (fourBolt == 3) {
+						if (fourBolt == 2) {
 							reRolls[i] = true;
 						} else {
 							reRolls[i] = false;
@@ -1935,7 +1935,7 @@ public class CosmicWimpoutState extends GameState {
 				int fourStar = 0;
 				for (int i = 0; i < this.diceArray.length; i++) {
 					if (this.diceArray[i].getDieState() == 6) {
-						if (fourStar == 3) {
+						if (fourStar == 2) {
 							reRolls[i] = true;
 						} else {
 							reRolls[i] = false;
