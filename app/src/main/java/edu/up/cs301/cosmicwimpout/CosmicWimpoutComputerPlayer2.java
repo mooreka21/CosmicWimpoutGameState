@@ -67,7 +67,8 @@ public class CosmicWimpoutComputerPlayer2 extends CosmicWimpoutComputerPlayer {
      * @param info
      * 		the information (presumably containing the game's state)
      */
-	@Override
+	//@Override
+    /*
     protected void receiveInfo(GameInfo info) {
         int currentTurn = -1;
 
@@ -120,6 +121,32 @@ public class CosmicWimpoutComputerPlayer2 extends CosmicWimpoutComputerPlayer {
                     game.sendAction(selectedAction);
                 }
             }while(this.state.getTurnScore() < threshold);
+        }
+    }*/
+
+    /**
+     * callback method--game's state has changed
+     *
+     * @param info
+     * 		the information (presumably containing the game's state)
+     */
+    @Override
+    protected void receiveInfo(GameInfo info) {
+        int currentTurn = -1;
+
+        if (info instanceof CosmicWimpoutState) {
+            this.state = (CosmicWimpoutState) info;
+            currentTurn = this.state.getWhoseTurn();
+        }
+
+        if (currentTurn != playerNum) {}
+        else {
+            //delay to make it seem like they are thinking
+            sleep(5000);
+            CosmicWimpoutActionRollAllDice allDiceAction =
+                    new CosmicWimpoutActionRollAllDice(this);
+            game.sendAction(allDiceAction);
+            runSmartAi(info);
         }
     }
 	
@@ -192,7 +219,6 @@ public class CosmicWimpoutComputerPlayer2 extends CosmicWimpoutComputerPlayer {
 	public boolean runSmartAi(GameInfo info){
 	    int currentTurn = -1;
         if(info instanceof CosmicWimpoutState){
-
             this.state = (CosmicWimpoutState)info;
             currentTurn = this.state.getWhoseTurn();
             if(currentTurn != playerNum){}
@@ -218,13 +244,12 @@ public class CosmicWimpoutComputerPlayer2 extends CosmicWimpoutComputerPlayer {
                             needReroll[i] = this.state.isDie5ReRoll();
                     }
                 }
-				getScoresFromCopy((CosmicWimpoutState)info);
+				getScoresFromCopy(info);
 				int successes = getSuccess(this.scoresFromCopy);
                 int rerollCount = scoresFromCopy.length;
                 int turnScoreBefore = this.state.getTurnScore();
                 float odds = calcOdds(successes, rerollCount);
 				while(odds < 0.5){
-
                     CosmicWimpoutActionRollSelectedDie botRollsSomeDice =
                             new CosmicWimpoutActionRollSelectedDie(this,
                                     needReroll[0],
