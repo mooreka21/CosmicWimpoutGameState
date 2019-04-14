@@ -370,6 +370,7 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 				}
 				game.sendAction(rollAct);
 				actionsPressed++;
+				flash = 0;
 
 			}
             else if(button == endGameButton){
@@ -458,8 +459,15 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 					sound.playFiveDice();
 				}
 
-				if(this.state.getIsFlash() && !legalMoveAllChecked5()){
+				if(this.state.getIsFlash() && !legalMoveAllChecked5() && flash == 0){
 					this.flashReRoll();
+                    if(legal2Die()){
+                        CosmicWimpoutActionRollSelectedDie rollSelectedDie =
+                                new CosmicWimpoutActionRollSelectedDie(this, isCheck1,
+                                        isCheck2, isCheck3, isCheck4, isCheck5);
+                        game.sendAction(rollSelectedDie);
+                    }
+                    flash++;
 				}
 				else if(legalMoveAllChecked5()){
 					if(isCheck1 && isCheck2 && isCheck3 && isCheck4 && isCheck5){
@@ -467,6 +475,7 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 								new CosmicWimpoutActionRollSelectedDie(this, isCheck1,
 										isCheck2, isCheck3, isCheck4, isCheck5);
 						game.sendAction(rollSelectedAct);
+						flash = 0;
 					}
 					else{
 						Toast.makeText(this.myActivity, "Must roll all dice",

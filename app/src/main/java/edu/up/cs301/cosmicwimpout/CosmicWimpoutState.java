@@ -1955,7 +1955,7 @@ public class CosmicWimpoutState extends GameState {
 						} else {
 							reRolls[i] = true;
 						}
-					} else if (this.diceArray[i].getDieState() != 1 ||
+					} else if (this.diceArray[i].getDieState() != 1 &&
 							this.diceArray[i].getDieState() != 5) {
 						reRolls[i] = true;
 					} else {
@@ -1972,7 +1972,7 @@ public class CosmicWimpoutState extends GameState {
 						} else {
 							reRolls[i] = true;
 						}
-					} else if (this.diceArray[i].getDieState() != 1 ||
+					} else if (this.diceArray[i].getDieState() != 1 &&
 							this.diceArray[i].getDieState() != 5) {
 						reRolls[i] = true;
 					} else {
