@@ -62,7 +62,7 @@ public class CosmicWimpoutSoundPlayer {
     }
 
     public void playBackground(){
-        soundPool.play(background, 0.25f, 0.25f, 1, -1,1.0f);
+        soundPool.play(background, 0.1f, 0.1f, 1, 0,1.0f);
     }
 
     public void playWinner(){
