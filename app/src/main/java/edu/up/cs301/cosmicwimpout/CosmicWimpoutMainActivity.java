@@ -26,7 +26,7 @@ public class CosmicWimpoutMainActivity extends GameMainActivity {
 
 	// the port number that this game will use when playing over the network
 	private static final int PORT_NUMBER = 2234;
-	private static final long serialVersionUID= 5006874389L;
+	private static final long serialVersionUID= 5006874387L;
 
 	/**
 	 * Create the default configuration for this game:

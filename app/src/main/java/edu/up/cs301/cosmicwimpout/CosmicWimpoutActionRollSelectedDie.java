@@ -15,7 +15,7 @@ import edu.up.cs301.game.actionMsg.GameAction;
  * @version March 2019
  */
 public class CosmicWimpoutActionRollSelectedDie extends GameAction {
-    private static final long serialVersionUID= 95598448L;
+    private static final long serialVersionUID= 95598428L;
 
     //instance variables for each die
     private boolean isDie1;
