@@ -29,7 +29,7 @@ public class CosmicWimpoutComputerPlayer2 extends CosmicWimpoutComputerPlayer {
 
     private int numRollsThisTurn;
     private float odds;
-    private int intelligence = 1000;
+    private int intelligence = 10;
     private int[] scoresFromCopy = new int[intelligence];
     private int fails;
     //this boolean array helps determine which die are to be kept static in the copy reroll
@@ -37,7 +37,7 @@ public class CosmicWimpoutComputerPlayer2 extends CosmicWimpoutComputerPlayer {
 	/*
 	 * instance variables
 	 */
-	//private static final long serialVersionUID= 478598448L;
+	private static final long serialVersionUID= 478598448L;
 	// the most recent game state, as given to us by the CounterLocalGame
 	private CosmicWimpoutState state = null;
 	
@@ -160,20 +160,7 @@ public class CosmicWimpoutComputerPlayer2 extends CosmicWimpoutComputerPlayer {
 	    try {
 			sleep(1000);
 			Die[] ourDice = ((CosmicWimpoutState) info).getDiceArray();
-			for (int i = 0; i < 5; i++) {
-				switch (i) {
-					case 0:
-						this.needReroll[i] = this.state.isDie1ReRoll();
-					case 1:
-						this.needReroll[i] = this.state.isDie2ReRoll();
-					case 2:
-						this.needReroll[i] = this.state.isDie3ReRoll();
-					case 3:
-						this.needReroll[i] = this.state.isDie4ReRoll();
-					case 4:
-						this.needReroll[i] = this.state.isDie5ReRoll();
-				}
-			}
+
 			try {
 				getScoresFromCopy((CosmicWimpoutState) info);
 			} catch (Exception e) {
@@ -182,12 +169,26 @@ public class CosmicWimpoutComputerPlayer2 extends CosmicWimpoutComputerPlayer {
 			int successes = getSuccess(this.scoresFromCopy);
 			int rerollCount = scoresFromCopy.length;
 			int turnScoreBefore = this.state.getTurnScore();
-			float odds = calcOdds(successes, rerollCount);
-            Log.i(" Odds = ", odds+"" );
+			this.odds = calcOdds(successes, rerollCount);
+            Log.i(" Odds = ", this.odds +"" );
             Log.i(" Success = ",  successes+"" );
             Log.i(" Total Rolls = ",  rerollCount+"" );
-			while (odds > 0.5) {
-			    Log.i("Odds from 188 = ", odds+"" );
+			while (this.odds > 0.5) {
+                for (int i = 0; i < 5; i++) {
+                    switch (i) {
+                        case 0:
+                            this.needReroll[i] = this.state.isDie1ReRoll();
+                        case 1:
+                            this.needReroll[i] = this.state.isDie2ReRoll();
+                        case 2:
+                            this.needReroll[i] = this.state.isDie3ReRoll();
+                        case 3:
+                            this.needReroll[i] = this.state.isDie4ReRoll();
+                        case 4:
+                            this.needReroll[i] = this.state.isDie5ReRoll();
+                    }
+                }
+			    Log.i("Odds from 188 = ", this.odds+"" );
 				CosmicWimpoutActionRollSelectedDie botRollsSomeDice =
 						new CosmicWimpoutActionRollSelectedDie(this,
 								this.needReroll[0],
@@ -196,24 +197,27 @@ public class CosmicWimpoutComputerPlayer2 extends CosmicWimpoutComputerPlayer {
                                 this.needReroll[3],
                                 this.needReroll[4]);
 				game.sendAction(botRollsSomeDice);
-				//int newScore = state.getTurnScore();
+				int newScore = state.getTurnScore();
+				Log.i(" New score: ", ""+newScore);
+				Log.i("Old Score: ",""+turnScoreBefore);
 				this.updateDisplay();
-//				if (newScore > turnScoreBefore) {
-//					successes--;
-//					odds = calcOdds(successes, rerollCount);
-//				} else if (state.getTurnScore() == 0) {
-//					break;
-//				}
-
+				if (newScore >= turnScoreBefore) {
+					successes--;
+                    Log.i(" Success = ",  successes+"" );
+					this.odds = calcOdds(successes, rerollCount);
+					Log.i("New Odds: ", ""+ this.odds);
+				} else if (state.getTurnScore() == 0) {
+					break;
+				}
 			}
+            this.updateDisplay();
+            CosmicWimpoutActionEndTurn endTurn = new CosmicWimpoutActionEndTurn(this);
+            game.sendAction(endTurn);
+            return;
 		}
 		catch(Exception e){
 	    	Log.e("Error", "Found Exception " + e + " at outer try/catch" );
 		}
-		this.updateDisplay();
-        CosmicWimpoutActionEndTurn endTurn = new CosmicWimpoutActionEndTurn(this);
-        game.sendAction(endTurn);
-        return;
     }
 	//If the bot scores at all, it'll reroll non-scoring dice only.
 	//Those dice will have to remain static in the copy and not be rerolled.
@@ -257,10 +261,13 @@ public class CosmicWimpoutComputerPlayer2 extends CosmicWimpoutComputerPlayer {
 				numSuccess++;
 			}
 		}
+		Log.i("getSuccesses : ", ""+numSuccess );
 		return numSuccess;
 	}
 	private float calcOdds(int successes, int total){
-	    return (float)(successes/total);
+	    float newOdds = ((float)successes /(float) total);
+	    Log.i("calculated odds", newOdds+"");
+	    return newOdds;
     }
 
 }

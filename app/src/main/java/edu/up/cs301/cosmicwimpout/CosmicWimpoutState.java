@@ -1487,33 +1487,58 @@ public class CosmicWimpoutState extends GameState {
 
 
 	public boolean checkAllFiveReRoll() {
-		if (isFiveOf) {
+		int tenCount = 0;
+		int fiveCount = 0;
+		for (int i = 0; i < this.diceArray.length; i++) {
+			if (this.diceArray[i].getDieState() == 1) {
+				tenCount++;
+			} else if (this.diceArray[i].getDieState() == 5) {
+				fiveCount++;
+			}
+		}
+		if (tenCount == 5 || fiveCount == 5) {
+			return true;
+		}
+		if(tenCount == 4 && fiveCount == 1){
+			return true;
+		}
+		if(tenCount == 3 && fiveCount == 2) {
+			return true;
+		}
+		if(tenCount == 2 && fiveCount == 3){
+			return true;
+		}
+		if(tenCount == 4 && fiveCount == 1){
+			return true;
+		}
+
+		else if (isFiveOf) {
 			return true;
 		} else if (isFlash) {
-			int tenCount = 0;
-			int fiveCount = 0;
+			int tenCount1 = 0;
+			int fiveCount1 = 0;
 			for (int i = 0; i < this.diceArray.length; i++) {
 				if (this.diceArray[i].getDieState() == 1) {
-					tenCount++;
+					tenCount1++;
 				} else if (this.diceArray[i].getDieState() == 5) {
-					fiveCount++;
+					fiveCount1++;
 				}
 			}
-			if (tenCount == 2 || fiveCount == 2) {
+			if (tenCount1 == 2 || fiveCount1 == 2) {
 				//isFlash = false;
 				return true;
-			} else if (fiveCount == 1 && tenCount == 1) {
+			} else if (fiveCount1 == 1 && tenCount1 == 1) {
 				//isFlash = false;
 				return true;
 			}
 		} else {
-			int tenCount = 0;
-			int fiveCount = 0;
+			int tenCount2 = 0;
+			int fiveCount2 = 0;
 			for (int i = 0; i < this.diceArray.length; i++) {
 				if (this.diceArray[i].getDieState() == 1) {
-					tenCount++;
+					tenCount2++;
 				} else if (this.diceArray[i].getDieState() == 5) {
-					fiveCount++;
+					fiveCount2++;
 				}
 			}
 			if (tenCount == 5 || fiveCount == 5 || (tenCount == 4 && fiveCount == 1)
@@ -1842,7 +1867,7 @@ public class CosmicWimpoutState extends GameState {
 				} else if (this.diceArray[i].getDieState() == 2) {
 					moonCount++;
 				} else if (this.diceArray[i].getDieState() == 3) {
-					if (i != 3) {
+					if (i != 2) {
 						triangleCount++;
 					}
 				} else if (this.diceArray[i].getDieState() == 4) {
@@ -1995,7 +2020,12 @@ public class CosmicWimpoutState extends GameState {
 		}
 		return reRolls;
 	}
+
+	public void setIsFlash(boolean flash){
+		this.isFlash = flash;
+	}
 }
+
 
 /** External Citation
  *  Date: April 1, 2019
