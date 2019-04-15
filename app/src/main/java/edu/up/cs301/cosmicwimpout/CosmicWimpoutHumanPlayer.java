@@ -11,6 +11,7 @@ import edu.up.cs301.game.infoMsg.NotYourTurnInfo;
 
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -112,7 +113,10 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 	 */
 	protected void updateDisplay() {
 		//TODO fix these issues: it doesnt play until player rolls dice & keeps playing over itself
-		//this.sound.playBackground();
+		if(notPlaying < 1) {
+			this.sound.playBackground();
+			notPlaying++;
+		}
 
 		//set the text to current game state varibales
 		this.player1Score.setText(allPlayerNames[0] + ": " + state.getPlayer1Score());
@@ -265,9 +269,7 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 		if(state.getIsSuperNova()){
 			sound.playLoser();
 		}
-		if(requiresGui()){
 
-		}
 		//checks if current player won or lost the game and plays win/lose sound effect
 		switch(state.getWhoseTurn()){
 			case 1:
@@ -869,61 +871,24 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 	}
 
 	public boolean legalMoveAllChecked5(){
-		if(state.checkAllFiveReRoll()){
-			return true;
-		}
-		else{
-			return false;
-		}
+		return state.checkAllFiveReRoll();
 	}
 
 	private boolean legalOneChecked(){
 		if(isCheck1){
-			boolean check = state.check1Die(0);
-				if (check) {
-					return true;
-				}
-				else {
-                    return false;
-                }
-
+			return state.check1Die(0);
 		}
 		else if(isCheck2){
-			boolean check = state.check1Die(1);
-				if (check) {
-					return true;
-				}
-				else {
-                    return false;
-                }
-
+			return state.check1Die(1);
 		}
 		else if(isCheck3){
-			boolean check = state.check1Die(2);
-				if (check) {
-					return true;
-				}
-                else {
-                    return false;
-                }
+			return state.check1Die(2);
 		}
 		else if(isCheck4){
-			boolean check = state.check1Die(3);
-				if(check) {
-					return true;
-				}
-                else {
-                    return false;
-                }
+			return state.check1Die(3);
 		}
 		else if(isCheck5){
-			boolean check = state.check1Die(4);
-			if(check) {
-				return true;
-			}
-            else {
-                return false;
-            }
+			return state.check1Die(4);
 		}
 		return false;
 	}
@@ -969,169 +934,87 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 
 	public boolean legal2Die(){
 		if(isCheck1 && isCheck2){
-			if(this.state.check2Dice(0,1)){
-				return true;
-			}
-			return false;
-		}
-		else if (isCheck1 && isCheck3){
-			if(this.state.check2Dice(0,2)){
-				return true;
-			}
-			return false;
+			return this.state.check2Dice(0,1);
 		}
 		else if(isCheck1 && isCheck3){
-			if(this.state.check2Dice(0,2)){
-				return true;
-			}
-			return false;
+			return this.state.check2Dice(0,2);
 		}
 		else if(isCheck1 && isCheck4){
-			if(this.state.check2Dice(0,3)){
-				return true;
-			}
-			return false;
+			return this.state.check2Dice(0,3);
 		}
 		else if(isCheck1 && isCheck5){
-			if(this.state.check2Dice(0,4)){
-				return true;
-			}
-			return false;
+			return this.state.check2Dice(0,4);
 		}
 		else if(isCheck2 && isCheck3){
-			if(this.state.check2Dice(1,2)){
-				return true;
-			}
-			return false;
+			return this.state.check2Dice(1,2);
 		}
 		else if(isCheck2 && isCheck4){
-			if(this.state.check2Dice(1,3)){
-				return true;
-			}
-			return false;
+			return this.state.check2Dice(1,3);
 		}
 		else if(isCheck2 && isCheck5){
-			if(this.state.check2Dice(1,4)){
-				return true;
-			}
-			return false;
+			return this.state.check2Dice(1,4);
 		}
 		else if(isCheck3 && isCheck4){
-			if(this.state.check2Dice(2,3)){
-				return true;
-			}
-			return false;
+			return this.state.check2Dice(2,3);
 		}
 		else if(isCheck3 && isCheck5){
-			if(this.state.check2Dice(2,4)){
-				return true;
-			}
-			return false;
+			return this.state.check2Dice(2,4);
 		}
 		else if(isCheck4 && isCheck5){
-			if(this.state.check2Dice(3,4)){
-				return true;
-			}
-			return false;
+			return this.state.check2Dice(3,4);
 		}
-
 		return false;
 	}
 
 	private boolean legal3Die(){
 		if(isCheck1 && isCheck2 && isCheck3){
-			if(this.state.check3Dice(0,1,2)){
-				return true;
-			}
-			return false;
+			return this.state.check3Dice(0,1,2);
 		}
 		else if(isCheck1 && isCheck2 && isCheck4){
-			if(this.state.check3Dice(0,1,3)){
-				return true;
-			}
-			return false;
+			return this.state.check3Dice(0,1,3);
 		}
 		else if(isCheck1 && isCheck2 && isCheck5){
-			if(this.state.check3Dice(0,1,4)){
-				return true;
-			}
-			return false;
+			return this.state.check3Dice(0,1,4);
 		}
 		else if(isCheck1 && isCheck3 && isCheck4){
-			if(this.state.check3Dice(0,2,3)){
-				return true;
-			}
-			return false;
+			return this.state.check3Dice(0,2,3);
 		}
 		else if(isCheck1 && isCheck3 && isCheck5){
-			if(this.state.check3Dice(0,2,4)){
-				return true;
-			}
-			return false;
+			return this.state.check3Dice(0,2,4);
 		}
 		else if(isCheck1 && isCheck4 && isCheck5){
-			if(this.state.check3Dice(0,3,4)){
-				return true;
-			}
-			return false;
+			return this.state.check3Dice(0,3,4);
 		}
 		else if(isCheck2 && isCheck3 && isCheck4){
-			if(this.state.check3Dice(1,2,3)){
-				return true;
-			}
-			return false;
+			return this.state.check3Dice(1,2,3);
 		}
 		else if(isCheck2 && isCheck3 && isCheck5){
-			if(this.state.check3Dice(1,2,4)){
-				return true;
-			}
-			return false;
+			return this.state.check3Dice(1,2,4);
 		}
 		else if(isCheck2 && isCheck4 && isCheck5){
-			if(this.state.check3Dice(1,3,4)){
-				return true;
-			}
-			return false;
+			return this.state.check3Dice(1,3,4);
 		}
 		else if(isCheck3 && isCheck4 && isCheck5){
-			if(this.state.check3Dice(2,3,4)){
-				return true;
-			}
-			return false;
+			return this.state.check3Dice(2,3,4);
 		}
 		return false;
 	}
 
 	private boolean legal4Die(){
 		if(isCheck1 && isCheck2 && isCheck3 && isCheck4){
-			if(this.state.check4Dice(0,1,2,3)){
-				return true;
-			}
-			return false;
+			return this.state.check4Dice(0,1,2,3);
 		}
 		else if(isCheck1 && isCheck2 && isCheck3 && isCheck5) {
-			if(this.state.check4Dice(0,1,2,4)){
-				return true;
-			}
-			return false;
+			return this.state.check4Dice(0,1,2,4);
 		}
 		else if(isCheck1 && isCheck2 && isCheck4 && isCheck5) {
-			if(this.state.check4Dice(0,1,3,4)){
-				return true;
-			}
-			return false;
+			return this.state.check4Dice(0,1,3,4);
 		}
 		else if(isCheck1 && isCheck3 && isCheck4 && isCheck5) {
-			if(this.state.check4Dice(0,2,3,4)){
-				return true;
-			}
-			return false;
+			return this.state.check4Dice(0,2,3,4);
 		}
 		else if(isCheck2 && isCheck3 && isCheck4 && isCheck5) {
-			if(this.state.check4Dice(1,2,3,4)){
-				return true;
-			}
-			return false;
+			return this.state.check4Dice(1,2,3,4);
 		}
 		return false;
 	}
