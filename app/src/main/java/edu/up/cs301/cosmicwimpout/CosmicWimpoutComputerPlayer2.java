@@ -9,6 +9,7 @@ import android.util.Log;
 import android.widget.TextView;
 
 import java.io.Console;
+import java.io.Serializable;
 
 
 /**
@@ -25,7 +26,7 @@ import java.io.Console;
  * @author Kayla Moore
  * @version March 2019
 */
-public class CosmicWimpoutComputerPlayer2 extends CosmicWimpoutComputerPlayer {
+public class CosmicWimpoutComputerPlayer2 extends CosmicWimpoutComputerPlayer implements Serializable {
 
     private int numRollsThisTurn;
     private float odds;

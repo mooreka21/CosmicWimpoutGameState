@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import edu.up.cs301.game.GameMainActivity;
@@ -22,7 +23,7 @@ import edu.up.cs301.game.config.GamePlayerType;
  * @author Kayla Moore
  * @version March 2019
  */
-public class CosmicWimpoutMainActivity extends GameMainActivity {
+public class CosmicWimpoutMainActivity extends GameMainActivity implements Serializable {
 
 	// the port number that this game will use when playing over the network
 	private static final int PORT_NUMBER = 2234;

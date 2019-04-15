@@ -1,6 +1,8 @@
 package edu.up.cs301.cosmicwimpout;
 
 import edu.up.cs301.game.infoMsg.GameState;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 import edu.up.cs301.cosmicwimpout.Die;
 
@@ -10,7 +12,7 @@ import edu.up.cs301.cosmicwimpout.Die;
  * @author Olivia Dendinger, Sam Lemly, Kayla Moore, David Campbell
  * @version March 2019
  */
-public class CosmicWimpoutState extends GameState {
+public class CosmicWimpoutState extends GameState implements Serializable {
 
 
 	//instance variables that encompass all needed information

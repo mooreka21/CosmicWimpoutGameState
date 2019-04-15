@@ -20,6 +20,7 @@ import android.widget.TextView;
 import android.view.View.OnClickListener;
 import android.widget.Toast;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import static java.lang.Thread.sleep;
@@ -36,7 +37,7 @@ import static java.lang.Thread.sleep;
  * @author Kayla Moore
  *  @version March 2019
  */
-public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClickListener {
+public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClickListener, Serializable {
 
 	/* instance variables */
     private static final long serialVersionUID= 9876483921L;

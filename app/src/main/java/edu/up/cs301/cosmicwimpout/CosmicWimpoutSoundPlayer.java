@@ -4,6 +4,8 @@ import android.content.Context;
 import android.media.AudioManager;
 import android.media.SoundPool;
 
+import java.io.Serializable;
+
 import edu.up.cs301.game.R;
 
 /**
@@ -14,7 +16,7 @@ import edu.up.cs301.game.R;
  *  @version April 2019
  */
 
-public class CosmicWimpoutSoundPlayer {
+public class CosmicWimpoutSoundPlayer implements Serializable {
     private static final long serialVersionUID= 5006874389L;
 
     private SoundPool soundPool;

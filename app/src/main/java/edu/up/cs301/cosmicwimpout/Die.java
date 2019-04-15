@@ -1,5 +1,7 @@
 package edu.up.cs301.cosmicwimpout;
 
+import java.io.Serializable;
+
 /**
  * Dice
  *
@@ -9,7 +11,7 @@ package edu.up.cs301.cosmicwimpout;
  * @Authors: Olivia Dendinger, Sam Lemly, David Campbell, and Kayla Moore
  */
 
-public class Die {
+public class Die implements Serializable {
     private static final long serialVersionUID= 382491574830L;
     //initializing variables
     protected int dieState;

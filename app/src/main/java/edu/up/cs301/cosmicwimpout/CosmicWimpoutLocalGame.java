@@ -5,6 +5,8 @@ import edu.up.cs301.game.LocalGame;
 import edu.up.cs301.game.actionMsg.GameAction;
 import android.util.Log;
 
+import java.io.Serializable;
+
 /**
  * A class that represents the state of a game.
  * 
@@ -14,7 +16,7 @@ import android.util.Log;
  *  @author Kayla Moore
  *  * @version March 2019
  */
-public class CosmicWimpoutLocalGame extends LocalGame {
+public class CosmicWimpoutLocalGame extends LocalGame implements Serializable {
 
 	// When a cosmic wimpout game is played, any number of players.
 	// both players are trying to get to the TARGET_MAGNITUDE.
