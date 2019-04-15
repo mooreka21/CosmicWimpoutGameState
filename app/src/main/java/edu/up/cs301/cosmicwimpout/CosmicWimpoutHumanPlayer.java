@@ -114,7 +114,7 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 	protected void updateDisplay() {
 		//TODO fix these issues: it doesnt play until player rolls dice & keeps playing over itself
 		//if(notPlaying < 1) {
-			//this.sound.playBackground();
+			this.sound.playBackground();
 			//notPlaying++;
 		//}
 
@@ -451,19 +451,19 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 				}
 
 				//determining what sound to play
-				if(checkCount == 1){
+				if(checkCount == 1 && legalOneChecked()){
 					sound.playOneDie();
 				}
-				else if(checkCount == 2){
+				else if(checkCount == 2 && legal2Die()){
 					sound.playTwoDice();
 				}
-				else if(checkCount == 3){
+				else if(checkCount == 3 && legal3Die()){
 					sound.playThreeDice();
 				}
-				else if(checkCount == 4){
+				else if(checkCount == 4 && legal4Die()){
 					sound.playFourDice();
 				}
-				else if(checkCount == 5){
+				else if(checkCount == 5 && legalMoveAllChecked5()){
 					sound.playFiveDice();
 				}
 
