@@ -113,10 +113,10 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 	 */
 	protected void updateDisplay() {
 		//TODO fix these issues: it doesnt play until player rolls dice & keeps playing over itself
-		if(notPlaying < 1) {
-			this.sound.playBackground();
-			notPlaying++;
-		}
+		//if(notPlaying < 1) {
+			//this.sound.playBackground();
+			//notPlaying++;
+		//}
 
 		//set the text to current game state varibales
 		this.player1Score.setText(allPlayerNames[0] + ": " + state.getPlayer1Score());
