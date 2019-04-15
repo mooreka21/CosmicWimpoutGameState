@@ -160,7 +160,6 @@ public class CosmicWimpoutComputerPlayer2 extends CosmicWimpoutComputerPlayer {
 	    try {
 			sleep(1000);
 			Die[] ourDice = ((CosmicWimpoutState) info).getDiceArray();
-
 			try {
 				getScoresFromCopy((CosmicWimpoutState) info);
 			} catch (Exception e) {
@@ -178,6 +177,7 @@ public class CosmicWimpoutComputerPlayer2 extends CosmicWimpoutComputerPlayer {
                     switch (i) {
                         case 0:
                             this.needReroll[i] = this.state.isDie1ReRoll();
+
                         case 1:
                             this.needReroll[i] = this.state.isDie2ReRoll();
                         case 2:
@@ -187,6 +187,7 @@ public class CosmicWimpoutComputerPlayer2 extends CosmicWimpoutComputerPlayer {
                         case 4:
                             this.needReroll[i] = this.state.isDie5ReRoll();
                     }
+                    Log.i("Boolean "+i+"",""+(this.needReroll[i]));
                 }
 			    Log.i("Odds from 188 = ", this.odds+"" );
 				CosmicWimpoutActionRollSelectedDie botRollsSomeDice =

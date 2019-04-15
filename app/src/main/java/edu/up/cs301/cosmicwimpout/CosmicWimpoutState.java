@@ -44,7 +44,6 @@ public class CosmicWimpoutState extends GameState {
     private boolean die5ReRoll = false;
 
 
-
 	private boolean isFlash = false;
 	private boolean isFiveOf = false;
 	private boolean isWimpout = false;
@@ -1706,24 +1705,45 @@ public class CosmicWimpoutState extends GameState {
 				if (this.diceArray[die1].getDieState() == 2 ||
 						this.diceArray[die2].getDieState() == 2 ||
 						this.diceArray[die3].getDieState() == 2) {
+				    this.diceArray[die1].setCanReroll(true);
+                    this.diceArray[die2].setCanReroll(true);
+                    this.diceArray[die3].setCanReroll(true);
 					return false;
 				}
 			} else if (triangleCount == 3 || (triangleCount == 2 && this.diceArray[2].getDieState() == 3)) {
 				if (this.diceArray[die1].getDieState() == 3 ||
 						this.diceArray[die2].getDieState() == 3 ||
 						this.diceArray[die3].getDieState() == 3) {
+                    this.diceArray[die1].setCanReroll(true);
+                    this.diceArray[die2].setCanReroll(true);
+                    this.diceArray[die3].setCanReroll(true);
 					return false;
 				}
 			} else if (boltCount == 3 || (boltCount == 2 && this.diceArray[2].getDieState() == 3)) {
 				if (this.diceArray[die1].getDieState() == 4 ||
 						this.diceArray[die2].getDieState() == 4 ||
 						this.diceArray[die3].getDieState() == 4) {
+                    this.diceArray[die1].setCanReroll(true);
+                    this.diceArray[die2].setCanReroll(true);
+                    this.diceArray[die3].setCanReroll(true);
 					return false;
 				}
 			} else if (starCount == 3 || (starCount == 2 && this.diceArray[2].getDieState() == 3)) {
 				if (this.diceArray[die1].getDieState() == 6 ||
 						this.diceArray[die2].getDieState() == 6 ||
 						this.diceArray[die3].getDieState() == 6) {
+                    if(this.diceArray[die1].getDieState() == 5 ||
+                            this.diceArray[die1].getDieState() == 1){
+                        this.diceArray[die1].setCanReroll(false);
+                    }
+                    if(this.diceArray[die2].getDieState() == 5 ||
+                            this.diceArray[die2].getDieState() == 1){
+                        this.diceArray[die2].setCanReroll(false);
+                    }
+                    if(this.diceArray[die3].getDieState() == 5 ||
+                            this.diceArray[die3].getDieState() == 1){
+                        this.diceArray[die3].setCanReroll(false);
+                    }
 					return false;
 				}
 			} else if (this.diceArray[die1].getDieState() == 1 ||
@@ -1732,6 +1752,18 @@ public class CosmicWimpoutState extends GameState {
 					this.diceArray[die2].getDieState() == 5 ||
 					this.diceArray[die3].getDieState() == 1 ||
 					this.diceArray[die3].getDieState() == 5) {
+                if(this.diceArray[die1].getDieState() == 5 ||
+                        this.diceArray[die1].getDieState() == 1){
+                    this.diceArray[die1].setCanReroll(false);
+                }
+                if(this.diceArray[die2].getDieState() == 5 ||
+                        this.diceArray[die2].getDieState() == 1){
+                    this.diceArray[die2].setCanReroll(false);
+                }
+                if(this.diceArray[die3].getDieState() == 5 ||
+                        this.diceArray[die3].getDieState() == 1){
+                    this.diceArray[die3].setCanReroll(false);
+                }
 				return false;
 			} else {
 				return true;
@@ -1742,7 +1774,19 @@ public class CosmicWimpoutState extends GameState {
 				this.diceArray[die2].getDieState() == 5 ||
 				this.diceArray[die3].getDieState() == 1 ||
 				this.diceArray[die3].getDieState() == 5) {
-			return false;
+            if(this.diceArray[die1].getDieState() == 5 ||
+                    this.diceArray[die1].getDieState() == 1){
+                this.diceArray[die1].setCanReroll(false);
+            }
+            if(this.diceArray[die2].getDieState() == 5 ||
+                    this.diceArray[die2].getDieState() == 1){
+                this.diceArray[die2].setCanReroll(false);
+            }
+            if(this.diceArray[die3].getDieState() == 5 ||
+                    this.diceArray[die3].getDieState() == 1){
+                this.diceArray[die3].setCanReroll(false);
+            }
+            return false;
 		} else {
 			return true;
 		}

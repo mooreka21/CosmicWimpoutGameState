@@ -14,6 +14,17 @@ public class Die {
     //initializing variables
     protected int dieState;
     protected int dieID;
+    protected boolean canReroll;
+
+    public boolean getCanReroll() {
+        return canReroll;
+    }
+
+    public void setCanReroll(boolean canReroll) {
+        this.canReroll = canReroll;
+    }
+
+
 
     /**
      * Dice constructor
