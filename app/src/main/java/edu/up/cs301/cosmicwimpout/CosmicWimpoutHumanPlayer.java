@@ -538,11 +538,12 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 				}
 				else if(legalMoveAllChecked5()){
 					if(isCheck1 && isCheck2 && isCheck3 && isCheck4 && isCheck5){
+						this.state.setIsFlash(false);
 						CosmicWimpoutActionRollSelectedDie rollSelectedAct =
 								new CosmicWimpoutActionRollSelectedDie(this, isCheck1,
 										isCheck2, isCheck3, isCheck4, isCheck5);
-						game.sendAction(rollSelectedAct);
 						this.state.setIsFlash(false);
+						game.sendAction(rollSelectedAct);
 						flash = 0;
 					}
 					else{
@@ -553,6 +554,7 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 				//checking for legal move if all 5 are checked
 				else if(isCheck1 && isCheck2 && isCheck3 && isCheck4 && isCheck5) {
 					if (legalMoveAllChecked5()) {
+						this.state.setIsFlash(false);
 						CosmicWimpoutActionRollSelectedDie rollSelectedAct =
 								new CosmicWimpoutActionRollSelectedDie(this, isCheck1,
 										isCheck2, isCheck3, isCheck4, isCheck5);
@@ -565,6 +567,7 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 							this.die5.setImageResource(redDiceFaces[i]);
 						}
 						flash = 0;
+						this.state.setIsFlash(false);
 						game.sendAction(rollSelectedAct);
 					} else if (!legalMoveAllChecked5()) {
 						Toast.makeText(this.myActivity, "Cannot roll all dice",

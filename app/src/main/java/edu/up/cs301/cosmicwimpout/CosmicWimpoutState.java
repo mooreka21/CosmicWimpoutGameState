@@ -1496,18 +1496,23 @@ public class CosmicWimpoutState extends GameState {
 			}
 		}
 		if (tenCount == 5 || fiveCount == 5) {
+		    isFlash = false;
 			return true;
 		}
 		if(tenCount == 4 && fiveCount == 1){
+		    isFlash = false;
 			return true;
 		}
 		if(tenCount == 3 && fiveCount == 2) {
+            isFlash = false;
 			return true;
 		}
 		if(tenCount == 2 && fiveCount == 3){
+            isFlash = false;
 			return true;
 		}
 		if(tenCount == 4 && fiveCount == 1){
+            isFlash = false;
 			return true;
 		}
 
@@ -1525,7 +1530,7 @@ public class CosmicWimpoutState extends GameState {
 				}
 			}
 			if (tenCount1 == 2 || fiveCount1 == 2) {
-				//isFlash = false;
+				isFlash = false;
 				return true;
 			} else if (fiveCount1 == 1 && tenCount1 == 1) {
 				//isFlash = false;
@@ -1925,7 +1930,7 @@ public class CosmicWimpoutState extends GameState {
 				int fourMoon = 0;
 				for (int i = 0; i < this.diceArray.length; i++) {
 					if (this.diceArray[i].getDieState() == 2) {
-						if (fourMoon == 2) {
+						if (fourMoon == 3) {
 							reRolls[i] = true;
 						} else {
 							reRolls[i] = false;
@@ -1951,7 +1956,7 @@ public class CosmicWimpoutState extends GameState {
 				int fourTriangle = 0;
 				for (int i = 0; i < this.diceArray.length; i++) {
 					if (this.diceArray[i].getDieState() == 3) {
-						if (fourTriangle == 2) {
+						if (fourTriangle == 3) {
 							reRolls[i] = true;
 						} else {
 							reRolls[i] = false;
@@ -1978,7 +1983,7 @@ public class CosmicWimpoutState extends GameState {
 				int fourBolt = 0;
 				for (int i = 0; i < this.diceArray.length; i++) {
 					if (this.diceArray[i].getDieState() == 4) {
-						if (fourBolt == 2) {
+						if (fourBolt == 3) {
 							reRolls[i] = true;
 						} else {
 							reRolls[i] = false;
@@ -2005,7 +2010,7 @@ public class CosmicWimpoutState extends GameState {
 				int fourStar = 0;
 				for (int i = 0; i < this.diceArray.length; i++) {
 					if (this.diceArray[i].getDieState() == 6) {
-						if (fourStar == 2) {
+						if (fourStar == 3) {
 							reRolls[i] = true;
 						} else {
 							reRolls[i] = false;
