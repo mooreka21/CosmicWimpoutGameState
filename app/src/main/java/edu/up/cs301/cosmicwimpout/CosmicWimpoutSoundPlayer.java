@@ -15,6 +15,7 @@ import edu.up.cs301.game.R;
  */
 
 public class CosmicWimpoutSoundPlayer {
+    private static final long serialVersionUID= 5006874389L;
 
     private SoundPool soundPool;
     private int oneDie;
