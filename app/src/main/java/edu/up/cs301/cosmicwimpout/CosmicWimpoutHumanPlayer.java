@@ -390,14 +390,20 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
                 game.sendAction(endGameAct);
             }
 			else if(button == endTurnButton){
-				this.actionsPressed = 0;
-				game.sendAction(endTurnAct);
-				//clears checkboxes when player ends their turn
-				check1.setChecked(false);
-				check2.setChecked(false);
-				check3.setChecked(false);
-				check4.setChecked(false);
-				check5.setChecked(false);
+				if(this.state.getIsFlash() && flash == 0){
+					Toast.makeText(this.myActivity, "Must Clear the Flash!",
+							Toast.LENGTH_SHORT).show();
+				}
+				else {
+					this.actionsPressed = 0;
+					game.sendAction(endTurnAct);
+					//clears checkboxes when player ends their turn
+					check1.setChecked(false);
+					check2.setChecked(false);
+					check3.setChecked(false);
+					check4.setChecked(false);
+					check5.setChecked(false);
+				}
 			}
 			else if(button == rollDiceButton){
 				//illegal move, must select all 5
@@ -536,6 +542,7 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 								new CosmicWimpoutActionRollSelectedDie(this, isCheck1,
 										isCheck2, isCheck3, isCheck4, isCheck5);
 						game.sendAction(rollSelectedAct);
+						this.state.setIsFlash(false);
 						flash = 0;
 					}
 					else{
