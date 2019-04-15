@@ -1514,7 +1514,8 @@ public class CosmicWimpoutState extends GameState {
 
 		else if (isFiveOf) {
 			return true;
-		} else if (isFlash) {
+		}
+		else if (isFlash) {
 			int tenCount1 = 0;
 			int fiveCount1 = 0;
 			for (int i = 0; i < this.diceArray.length; i++) {
