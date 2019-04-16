@@ -87,6 +87,9 @@ public class CosmicWimpoutComputerPlayer2 extends CosmicWimpoutComputerPlayer im
                     new CosmicWimpoutActionRollAllDice(this);
             game.sendAction(allDiceAction);
             runSmartAi(info);
+            sleep(1000);
+			CosmicWimpoutActionEndTurn endTurn = new CosmicWimpoutActionEndTurn(this);
+			game.sendAction(endTurn);
         }
     }
 	
@@ -156,41 +159,39 @@ public class CosmicWimpoutComputerPlayer2 extends CosmicWimpoutComputerPlayer im
 
 
 	//SMART AI METHODS
+
+	/*
+	TODO: Resolve issues pertaining to updating the game state between the bot's rolls
+	Currently the game state is only updated at the end of the bot's turn,
+	 so the bot doesn't really know if it can keep rolling until after its turn has ended.
+	* */
 	public void runSmartAi(GameInfo info){
 	    int currentTurn = -1;
 	    try {
 			sleep(1000);
-			Die[] ourDice = ((CosmicWimpoutState) info).getDiceArray();
+			Die[] ourDice = ((CosmicWimpoutState) info).getDiceArray(); //copy dice array from gamestate
 			try {
 				getScoresFromCopy((CosmicWimpoutState) info);
 			} catch (Exception e) {
-				Log.e("Error", ("caught exception " + e + " at inner try/catch"));
+				Log.e("Error", ("caught exception " + e + " at inner try/catch"));//error check
 			}
 			int successes = getSuccess(this.scoresFromCopy);
 			int rerollCount = scoresFromCopy.length;
 			int turnScoreBefore = this.state.getTurnScore();
 			this.odds = calcOdds(successes, rerollCount);
+
+			//error checks
             Log.i(" Odds = ", this.odds +"" );
             Log.i(" Success = ",  successes+"" );
             Log.i(" Total Rolls = ",  rerollCount+"" );
+
 			while (this.odds > 0.5) {
                 for (int i = 0; i < 5; i++) {
-                    switch (i) {
-                        case 0:
-                            this.needReroll[i] = this.state.isDie1ReRoll();
-
-                        case 1:
-                            this.needReroll[i] = this.state.isDie2ReRoll();
-                        case 2:
-                            this.needReroll[i] = this.state.isDie3ReRoll();
-                        case 3:
-                            this.needReroll[i] = this.state.isDie4ReRoll();
-                        case 4:
-                            this.needReroll[i] = this.state.isDie5ReRoll();
-                    }
-                    Log.i("Boolean "+i+"",""+(this.needReroll[i]));
+                	this.needReroll[i] = this.state.getDiceArray()[i].getCanReroll();
+                    Log.i("Boolean "+i+"",""+(this.needReroll[i])); //error check
                 }
-			    Log.i("Odds from 188 = ", this.odds+"" );
+			    Log.i("Odds from 188 = ", this.odds+"" ); //error check
+				//this rolls the selected dice for the bot
 				CosmicWimpoutActionRollSelectedDie botRollsSomeDice =
 						new CosmicWimpoutActionRollSelectedDie(this,
 								this.needReroll[0],
@@ -213,9 +214,7 @@ public class CosmicWimpoutComputerPlayer2 extends CosmicWimpoutComputerPlayer im
 				}
 			}
             this.updateDisplay();
-            CosmicWimpoutActionEndTurn endTurn = new CosmicWimpoutActionEndTurn(this);
-            game.sendAction(endTurn);
-            return;
+
 		}
 		catch(Exception e){
 	    	Log.e("Error", "Found Exception " + e + " at outer try/catch" );
@@ -234,10 +233,19 @@ public class CosmicWimpoutComputerPlayer2 extends CosmicWimpoutComputerPlayer im
             */
 			for (int i = 0; i < intelligence; i++) {
 				CosmicWimpoutState newCopy = new CosmicWimpoutState((CosmicWimpoutState) info);
-				newCopy.rollSelectedDice(
-				        this.playerNum,this.needReroll[0],
-                        this.needReroll[1],this.needReroll[2],
-						this.needReroll[3],this.needReroll[4]);
+				/*I commented these out because I wanted to try doing the dice the other way,
+				by getting the booleans from the die classes within the game state instead of
+				tyring to read the game state */
+//				newCopy.rollSelectedDice(
+//				        this.playerNum,this.needReroll[0],
+//                        this.needReroll[1],this.needReroll[2],
+//						this.needReroll[3],this.needReroll[4]);
+				newCopy.rollSelectedDice(this.playerNum,
+						((CosmicWimpoutState) info).getDiceArray()[0].getCanReroll(),
+						((CosmicWimpoutState) info).getDiceArray()[1].getCanReroll(),
+						((CosmicWimpoutState) info).getDiceArray()[2].getCanReroll(),
+						((CosmicWimpoutState) info).getDiceArray()[3].getCanReroll(),
+						((CosmicWimpoutState) info).getDiceArray()[4].getCanReroll());
 				if(newCopy.getIsInstantWinner() || newCopy.getIsSuperNova() || newCopy.getIsWimpout()){
 				    this.scoresFromCopy[i] = 0;
                 }
@@ -247,6 +255,12 @@ public class CosmicWimpoutComputerPlayer2 extends CosmicWimpoutComputerPlayer im
 			}
 		}
 	}
+
+	/**
+	 * Calculates the number of failed rolls from a sample collection of scores
+	 * @param scores
+	 * @return numfailed
+	 */
 	private int getFailed(int[] scores){
 		int numFailed = 0;
 		for(int i =0; i<scores.length;i++){
@@ -256,6 +270,11 @@ public class CosmicWimpoutComputerPlayer2 extends CosmicWimpoutComputerPlayer im
 		}
 		return numFailed;
 	}
+	/**
+	 * Calculates the number of non-zero/nonwimpoutrolls from a sample collection of scores
+	 * @param scores
+	 * @return successes
+	 */
 	private int getSuccess(int[] scores){
 		int numSuccess = 0;
 		for(int i =0; i<scores.length;i++){

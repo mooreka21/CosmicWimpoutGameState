@@ -300,6 +300,7 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 		} else if (triangleCount == 2 && ourDice[2].dieState == 3) {
 			isFlash = true;
 			tally = tally + 30;
+
             /*
 			if(tenCount != 0){
 				if(fiveCount != 0){
@@ -521,7 +522,26 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 			return -1;
 		}
 		//END WIMPOUT CASE
-
+        if(this.diceArray[0].getDieState() == 5 ||
+                this.diceArray[0].getDieState() == 1){
+            this.diceArray[0].setCanReroll(false);
+        }else this.diceArray[0].setCanReroll(true);
+        if(this.diceArray[1].getDieState() == 5 ||
+                this.diceArray[1].getDieState() == 1){
+            this.diceArray[1].setCanReroll(false);
+        }else this.diceArray[1].setCanReroll(true);
+        if(this.diceArray[2].getDieState() == 5 ||
+                this.diceArray[2].getDieState() == 1){
+            this.diceArray[2].setCanReroll(false);
+        } else this.diceArray[2].setCanReroll(true);
+        if(this.diceArray[3].getDieState() == 5 ||
+                this.diceArray[3].getDieState() == 1){
+            this.diceArray[3].setCanReroll(false);
+        } else this.diceArray[3].setCanReroll(true);
+        if(this.diceArray[4].getDieState() == 5 ||
+                this.diceArray[4].getDieState() == 1){
+            this.diceArray[4].setCanReroll(false);
+        } else this.diceArray[4].setCanReroll(true);
 		return tally;
 	}
 
@@ -1486,7 +1506,6 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 		return isFiveOf;
 	}
 
-
 	public boolean checkAllFiveReRoll() {
 		int tenCount = 0;
 		int fiveCount = 0;
@@ -1590,28 +1609,53 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 
 			if (moonCount == 3 || (moonCount == 2 && this.diceArray[2].getDieState() == 3)) {
 				if (this.diceArray[diceId].getDieState() == 2) {
+//					if(this.diceArray[diceId].getDieState() == 5 ||
+//							this.diceArray[diceId].getDieState() == 1){
+//						this.diceArray[diceId].setCanReroll(false);
+//					}else this.diceArray[diceId].setCanReroll(true);
+
 					return false;
 				}
 			} else if (triangleCount == 3 || (triangleCount == 2 && this.diceArray[2].getDieState() == 3)) {
 				if (this.diceArray[diceId].getDieState() == 3) {
+//					if(this.diceArray[diceId].getDieState() == 5 ||
+//							this.diceArray[diceId].getDieState() == 1){
+//						this.diceArray[diceId].setCanReroll(false);
+//					}else this.diceArray[diceId].setCanReroll(true);
 					return false;
 				}
 			} else if (boltCount == 3 || (boltCount == 2 && this.diceArray[2].getDieState() == 3)) {
 				if (this.diceArray[diceId].getDieState() == 4) {
+//					if(this.diceArray[diceId].getDieState() == 5 ||
+//							this.diceArray[diceId].getDieState() == 1){
+//						this.diceArray[diceId].setCanReroll(false);
+//					}else this.diceArray[diceId].setCanReroll(true);
 					return false;
 				}
 			} else if (starCount == 3 || (starCount == 2 && this.diceArray[2].getDieState() == 3)) {
 				if (this.diceArray[diceId].getDieState() == 6) {
+					if(this.diceArray[diceId].getDieState() == 5 ||
+							this.diceArray[diceId].getDieState() == 1){
+						this.diceArray[diceId].setCanReroll(false);
+					}else this.diceArray[diceId].setCanReroll(true);
 					return false;
 				}
 			} else if (this.diceArray[diceId].getDieState() == 1 ||
 					this.diceArray[diceId].getDieState() == 5) {
+//				if(this.diceArray[diceId].getDieState() == 5 ||
+//						this.diceArray[diceId].getDieState() == 1){
+//					this.diceArray[diceId].setCanReroll(false);
+//				}else this.diceArray[diceId].setCanReroll(true);
 				return false;
 			} else {
 				return true;
 			}
 		} else if (this.diceArray[diceId].getDieState() == 1 ||
 				this.diceArray[diceId].getDieState() == 5) {
+//			if(this.diceArray[diceId].getDieState() == 5 ||
+//					this.diceArray[diceId].getDieState() == 1){
+//				this.diceArray[diceId].setCanReroll(false);
+//			}else this.diceArray[diceId].setCanReroll(true);
 			return false;
 		}
 		return true;
@@ -1646,30 +1690,70 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 			if (moonCount == 3 || (moonCount == 2 && this.diceArray[2].getDieState() == 3)) {
 				if (this.diceArray[die1].getDieState() == 2 ||
 						this.diceArray[die2].getDieState() == 2) {
+//					if(this.diceArray[die1].getDieState() == 5 ||
+//							this.diceArray[die1].getDieState() == 1){
+//						this.diceArray[die1].setCanReroll(false);
+//					}else this.diceArray[die1].setCanReroll(true);
+//					if(this.diceArray[die2].getDieState() == 5 ||
+//							this.diceArray[die2].getDieState() == 1) {
+//						this.diceArray[die2].setCanReroll(false);
+//					}else this.diceArray[die2].setCanReroll(true);
 					return false;
 				}
 			} else if (triangleCount == 3 || (triangleCount == 2 &&
                     this.diceArray[2].getDieState() == 3)) {
 				if (this.diceArray[die1].getDieState() == 3 ||
 						this.diceArray[die2].getDieState() == 3) {
+//					if(this.diceArray[die1].getDieState() == 5 ||
+//							this.diceArray[die1].getDieState() == 1){
+//						this.diceArray[die1].setCanReroll(false);
+//					}else this.diceArray[die1].setCanReroll(true);
+//					if(this.diceArray[die2].getDieState() == 5 ||
+//							this.diceArray[die2].getDieState() == 1) {
+//						this.diceArray[die2].setCanReroll(false);
+//					}else this.diceArray[die2].setCanReroll(true);
 					return false;
 				}
 			} else if (boltCount == 3 || (boltCount == 2 &&
                     this.diceArray[2].getDieState() == 3)) {
 				if (this.diceArray[die1].getDieState() == 4 ||
 						this.diceArray[die2].getDieState() == 4) {
-					return false;
+//					if(this.diceArray[die1].getDieState() == 5 ||
+//							this.diceArray[die1].getDieState() == 1){
+//						this.diceArray[die1].setCanReroll(false);
+//					}else this.diceArray[die1].setCanReroll(true);
+//					if(this.diceArray[die2].getDieState() == 5 ||
+//							this.diceArray[die2].getDieState() == 1) {
+//						this.diceArray[die2].setCanReroll(false);
+//					}else this.diceArray[die2].setCanReroll(true);
+//					return false;
 				}
 			} else if (starCount == 3 || (starCount == 2 &&
                     this.diceArray[2].getDieState() == 3)) {
 				if (this.diceArray[die1].getDieState() == 6 ||
 						this.diceArray[die2].getDieState() == 6) {
+//					if(this.diceArray[die1].getDieState() == 5 ||
+//							this.diceArray[die1].getDieState() == 1){
+//						this.diceArray[die1].setCanReroll(false);
+//					}else this.diceArray[die1].setCanReroll(true);
+//					if(this.diceArray[die2].getDieState() == 5 ||
+//							this.diceArray[die2].getDieState() == 1) {
+//						this.diceArray[die2].setCanReroll(false);
+//					}else this.diceArray[die2].setCanReroll(true);
 					return false;
 				}
 			} else if (this.diceArray[die1].getDieState() == 1 ||
 					this.diceArray[die1].getDieState() == 5 ||
 					this.diceArray[die2].getDieState() == 1 ||
 					this.diceArray[die2].getDieState() == 5) {
+//				if(this.diceArray[die1].getDieState() == 5 ||
+//						this.diceArray[die1].getDieState() == 1){
+//					this.diceArray[die1].setCanReroll(false);
+//				}else this.diceArray[die1].setCanReroll(true);
+//				if(this.diceArray[die2].getDieState() == 5 ||
+//						this.diceArray[die2].getDieState() == 1) {
+//					this.diceArray[die2].setCanReroll(false);
+//				}else this.diceArray[die2].setCanReroll(true);
 				return false;
 			}
 			return true;
@@ -1677,6 +1761,14 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 				this.diceArray[die1].getDieState() == 5 ||
 				this.diceArray[die2].getDieState() == 1 ||
 				this.diceArray[die2].getDieState() == 5) {
+//			if(this.diceArray[die1].getDieState() == 5 ||
+//					this.diceArray[die1].getDieState() == 1){
+//				this.diceArray[die1].setCanReroll(false);
+//			}else this.diceArray[die1].setCanReroll(true);
+//			if(this.diceArray[die2].getDieState() == 5 ||
+//					this.diceArray[die2].getDieState() == 1) {
+//				this.diceArray[die2].setCanReroll(false);
+//			}else this.diceArray[die2].setCanReroll(true);
 			return false;
 		} else {
 			return true;
@@ -1713,9 +1805,18 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 				if (this.diceArray[die1].getDieState() == 2 ||
 						this.diceArray[die2].getDieState() == 2 ||
 						this.diceArray[die3].getDieState() == 2) {
-				    this.diceArray[die1].setCanReroll(true);
-                    this.diceArray[die2].setCanReroll(true);
-                    this.diceArray[die3].setCanReroll(true);
+//					if(this.diceArray[die1].getDieState() == 5 ||
+//							this.diceArray[die1].getDieState() == 1){
+//						this.diceArray[die1].setCanReroll(false);
+//					}else this.diceArray[die1].setCanReroll(true);
+//					if(this.diceArray[die2].getDieState() == 5 ||
+//							this.diceArray[die2].getDieState() == 1){
+//						this.diceArray[die2].setCanReroll(false);
+//					}else this.diceArray[die1].setCanReroll(true);
+//					if(this.diceArray[die3].getDieState() == 5 ||
+//							this.diceArray[die3].getDieState() == 1){
+//						this.diceArray[die3].setCanReroll(false);
+//					} else this.diceArray[die3].setCanReroll(true);
 					return false;
 				}
 			} else if (triangleCount == 3 || (triangleCount == 2 && this.diceArray[2].getDieState() == 3)) {
@@ -1725,33 +1826,54 @@ public class CosmicWimpoutState extends GameState implements Serializable {
                     this.diceArray[die1].setCanReroll(true);
                     this.diceArray[die2].setCanReroll(true);
                     this.diceArray[die3].setCanReroll(true);
+//					if(this.diceArray[die1].getDieState() == 5 ||
+//							this.diceArray[die1].getDieState() == 1){
+//						this.diceArray[die1].setCanReroll(false);
+//					}else this.diceArray[die1].setCanReroll(true);
+//					if(this.diceArray[die2].getDieState() == 5 ||
+//							this.diceArray[die2].getDieState() == 1){
+//						this.diceArray[die2].setCanReroll(false);
+//					}else this.diceArray[die1].setCanReroll(true);
+//					if(this.diceArray[die3].getDieState() == 5 ||
+//							this.diceArray[die3].getDieState() == 1){
+//						this.diceArray[die3].setCanReroll(false);
+//					} else this.diceArray[die3].setCanReroll(true);
 					return false;
 				}
 			} else if (boltCount == 3 || (boltCount == 2 && this.diceArray[2].getDieState() == 3)) {
 				if (this.diceArray[die1].getDieState() == 4 ||
 						this.diceArray[die2].getDieState() == 4 ||
 						this.diceArray[die3].getDieState() == 4) {
-                    this.diceArray[die1].setCanReroll(true);
-                    this.diceArray[die2].setCanReroll(true);
-                    this.diceArray[die3].setCanReroll(true);
+//					if(this.diceArray[die1].getDieState() == 5 ||
+//							this.diceArray[die1].getDieState() == 1){
+//						this.diceArray[die1].setCanReroll(false);
+//					}else this.diceArray[die1].setCanReroll(true);
+//					if(this.diceArray[die2].getDieState() == 5 ||
+//							this.diceArray[die2].getDieState() == 1){
+//						this.diceArray[die2].setCanReroll(false);
+//					}else this.diceArray[die1].setCanReroll(true);
+//					if(this.diceArray[die3].getDieState() == 5 ||
+//							this.diceArray[die3].getDieState() == 1){
+//						this.diceArray[die3].setCanReroll(false);
+//					} else this.diceArray[die3].setCanReroll(true);
 					return false;
 				}
 			} else if (starCount == 3 || (starCount == 2 && this.diceArray[2].getDieState() == 3)) {
 				if (this.diceArray[die1].getDieState() == 6 ||
 						this.diceArray[die2].getDieState() == 6 ||
 						this.diceArray[die3].getDieState() == 6) {
-                    if(this.diceArray[die1].getDieState() == 5 ||
-                            this.diceArray[die1].getDieState() == 1){
-                        this.diceArray[die1].setCanReroll(false);
-                    }
-                    if(this.diceArray[die2].getDieState() == 5 ||
-                            this.diceArray[die2].getDieState() == 1){
-                        this.diceArray[die2].setCanReroll(false);
-                    }
-                    if(this.diceArray[die3].getDieState() == 5 ||
-                            this.diceArray[die3].getDieState() == 1){
-                        this.diceArray[die3].setCanReroll(false);
-                    }
+//					if(this.diceArray[die1].getDieState() == 5 ||
+//							this.diceArray[die1].getDieState() == 1){
+//						this.diceArray[die1].setCanReroll(false);
+//					}else this.diceArray[die1].setCanReroll(true);
+//					if(this.diceArray[die2].getDieState() == 5 ||
+//							this.diceArray[die2].getDieState() == 1){
+//						this.diceArray[die2].setCanReroll(false);
+//					}else this.diceArray[die1].setCanReroll(true);
+//					if(this.diceArray[die3].getDieState() == 5 ||
+//							this.diceArray[die3].getDieState() == 1){
+//						this.diceArray[die3].setCanReroll(false);
+//					} else this.diceArray[die3].setCanReroll(true);
 					return false;
 				}
 			} else if (this.diceArray[die1].getDieState() == 1 ||
@@ -1760,18 +1882,18 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 					this.diceArray[die2].getDieState() == 5 ||
 					this.diceArray[die3].getDieState() == 1 ||
 					this.diceArray[die3].getDieState() == 5) {
-                if(this.diceArray[die1].getDieState() == 5 ||
-                        this.diceArray[die1].getDieState() == 1){
-                    this.diceArray[die1].setCanReroll(false);
-                }
-                if(this.diceArray[die2].getDieState() == 5 ||
-                        this.diceArray[die2].getDieState() == 1){
-                    this.diceArray[die2].setCanReroll(false);
-                }
-                if(this.diceArray[die3].getDieState() == 5 ||
-                        this.diceArray[die3].getDieState() == 1){
-                    this.diceArray[die3].setCanReroll(false);
-                }
+//				if(this.diceArray[die1].getDieState() == 5 ||
+//						this.diceArray[die1].getDieState() == 1){
+//					this.diceArray[die1].setCanReroll(false);
+//				}else this.diceArray[die1].setCanReroll(true);
+//				if(this.diceArray[die2].getDieState() == 5 ||
+//						this.diceArray[die2].getDieState() == 1){
+//					this.diceArray[die2].setCanReroll(false);
+//				}else this.diceArray[die1].setCanReroll(true);
+//				if(this.diceArray[die3].getDieState() == 5 ||
+//						this.diceArray[die3].getDieState() == 1){
+//					this.diceArray[die3].setCanReroll(false);
+//				} else this.diceArray[die3].setCanReroll(true);
 				return false;
 			} else {
 				return true;
@@ -1782,18 +1904,18 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 				this.diceArray[die2].getDieState() == 5 ||
 				this.diceArray[die3].getDieState() == 1 ||
 				this.diceArray[die3].getDieState() == 5) {
-            if(this.diceArray[die1].getDieState() == 5 ||
-                    this.diceArray[die1].getDieState() == 1){
-                this.diceArray[die1].setCanReroll(false);
-            }
-            if(this.diceArray[die2].getDieState() == 5 ||
-                    this.diceArray[die2].getDieState() == 1){
-                this.diceArray[die2].setCanReroll(false);
-            }
-            if(this.diceArray[die3].getDieState() == 5 ||
-                    this.diceArray[die3].getDieState() == 1){
-                this.diceArray[die3].setCanReroll(false);
-            }
+//			if(this.diceArray[die1].getDieState() == 5 ||
+//					this.diceArray[die1].getDieState() == 1){
+//				this.diceArray[die1].setCanReroll(false);
+//			}else this.diceArray[die1].setCanReroll(true);
+//			if(this.diceArray[die2].getDieState() == 5 ||
+//					this.diceArray[die2].getDieState() == 1){
+//				this.diceArray[die2].setCanReroll(false);
+//			}else this.diceArray[die1].setCanReroll(true);
+//			if(this.diceArray[die3].getDieState() == 5 ||
+//					this.diceArray[die3].getDieState() == 1){
+//				this.diceArray[die3].setCanReroll(false);
+//			} else this.diceArray[die3].setCanReroll(true);
             return false;
 		} else {
 			return true;
@@ -1832,6 +1954,23 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 						this.diceArray[die2].getDieState() == 2 ||
 						this.diceArray[die3].getDieState() == 2 ||
 						this.diceArray[die4].getDieState() == 2) {
+//					if(this.diceArray[die1].getDieState() == 5 ||
+//							this.diceArray[die1].getDieState() == 1){
+//						this.diceArray[die1].setCanReroll(false);
+//					}else this.diceArray[die1].setCanReroll(true);
+//					if(this.diceArray[die2].getDieState() == 5 ||
+//							this.diceArray[die2].getDieState() == 1){
+//						this.diceArray[die2].setCanReroll(false);
+//					}else this.diceArray[die1].setCanReroll(true);
+//					if(this.diceArray[die3].getDieState() == 5 ||
+//							this.diceArray[die3].getDieState() == 1){
+//						this.diceArray[die3].setCanReroll(false);
+//					} else this.diceArray[die3].setCanReroll(true);
+//					if(this.diceArray[die4].getDieState() == 5 ||
+//							this.diceArray[die4].getDieState() == 1){
+//						this.diceArray[die4].setCanReroll(false);
+//					} else this.diceArray[die4].setCanReroll(true);
+
 					return false;
 				}
 			} else if (triangleCount == 3 || (triangleCount == 2 && this.diceArray[2].getDieState() == 3)) {
@@ -1839,6 +1978,7 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 						this.diceArray[die2].getDieState() == 3 ||
 						this.diceArray[die3].getDieState() == 3 ||
 						this.diceArray[die4].getDieState() == 3) {
+
 					return false;
 				}
 			} else if (boltCount == 3 || (boltCount == 2 && this.diceArray[2].getDieState() == 3)) {

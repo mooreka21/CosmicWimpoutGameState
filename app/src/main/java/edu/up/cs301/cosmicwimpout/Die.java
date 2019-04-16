@@ -16,6 +16,9 @@ public class Die implements Serializable {
     //initializing variables
     protected int dieState;
     protected int dieID;
+
+
+
     protected boolean canReroll;
 
     public boolean getCanReroll() {
@@ -58,6 +61,11 @@ public class Die implements Serializable {
      */
     public void rollMe(){
         this.dieState = (int)(Math.random()*6 + 1);
+
+        // these booleans are for the smart AI to know if it can reroll
+        if(this.dieState == 5 || this.dieState == 1){
+            this.setCanReroll(false);
+        }else this.setCanReroll(true);
     }
 
     /**
