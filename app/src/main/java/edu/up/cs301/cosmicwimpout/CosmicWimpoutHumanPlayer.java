@@ -811,7 +811,7 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 	@Override
 	public void receiveInfo(GameInfo info) {
 		if(info instanceof IllegalMoveInfo || info instanceof NotYourTurnInfo){
-			flash(Color.RED, 50);
+			Toast.makeText(this.myActivity, "Not Your Turn", Toast.LENGTH_SHORT).show();
 			//info instanceof IllegalMoveInfo ||
 		}
 		// ignore the message if it's not a CounterState message
