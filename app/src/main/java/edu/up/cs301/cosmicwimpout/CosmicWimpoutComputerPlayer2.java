@@ -88,8 +88,6 @@ public class CosmicWimpoutComputerPlayer2 extends CosmicWimpoutComputerPlayer im
             game.sendAction(allDiceAction);
             runSmartAi(info);
             sleep(1000);
-			CosmicWimpoutActionEndTurn endTurn = new CosmicWimpoutActionEndTurn(this);
-			game.sendAction(endTurn);
         }
     }
 	
@@ -200,8 +198,10 @@ public class CosmicWimpoutComputerPlayer2 extends CosmicWimpoutComputerPlayer im
                                 this.needReroll[3],
                                 this.needReroll[4]);
 				game.sendAction(botRollsSomeDice);
+				this.updateDisplay();
 				int newScore = state.getTurnScore();
 				Log.i(" New score: ", ""+newScore);
+				this.updateDisplay();
 				Log.i("Old Score: ",""+turnScoreBefore);
 				this.updateDisplay();
 				if (newScore >= turnScoreBefore) {
@@ -212,13 +212,18 @@ public class CosmicWimpoutComputerPlayer2 extends CosmicWimpoutComputerPlayer im
 				} else if (state.getTurnScore() == 0) {
 					break;
 				}
+				if(this.state.getTurnScore() >= 70){
+					CosmicWimpoutActionEndTurn endTurn = new CosmicWimpoutActionEndTurn(this);
+					game.sendAction(endTurn);
+				}
 			}
-            this.updateDisplay();
+
 
 		}
 		catch(Exception e){
 	    	Log.e("Error", "Found Exception " + e + " at outer try/catch" );
 		}
+
     }
 	//If the bot scores at all, it'll reroll non-scoring dice only.
 	//Those dice will have to remain static in the copy and not be rerolled.
