@@ -3,15 +3,10 @@ package edu.up.cs301.cosmicwimpout;
 import edu.up.cs301.game.GameHumanPlayer;
 import edu.up.cs301.game.GameMainActivity;
 import edu.up.cs301.game.R;
-import edu.up.cs301.game.actionMsg.GameAction;
-import edu.up.cs301.game.config.GamePlayerType;
 import edu.up.cs301.game.infoMsg.GameInfo;
 import edu.up.cs301.game.infoMsg.IllegalMoveInfo;
 import edu.up.cs301.game.infoMsg.NotYourTurnInfo;
 
-import android.graphics.Color;
-import android.graphics.drawable.Drawable;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -21,9 +16,6 @@ import android.view.View.OnClickListener;
 import android.widget.Toast;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-
-import static java.lang.Thread.sleep;
 
 /**
  * A GUI of a cosmic wimpout-player. The GUI displays the current value of the
@@ -31,12 +23,10 @@ import static java.lang.Thread.sleep;
  * turn score, and allows the human player to press the action buttons
  * in order to send moves to the game,
  *
- * @author Sam Lemly
- * @author Olivia Dendinger
- * @author David Campbell
- * @author Kayla Moore
- *  @version March 2019
+ * @author Kayla Moore, Olivia Dendinger, Sam Lemly, David Campbell
+ *  @version April 2019
  */
+
 public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClickListener, Serializable {
 
 	/* instance variables */
@@ -72,8 +62,6 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 	int flash = 0;
 	//variable for sound effects
 	private CosmicWimpoutSoundPlayer sound;
-	private int notPlaying = 0;
-
 
 	//arrays that hold the die faces
 	private int redDiceFaces[] = {R.drawable.ten, R.drawable.halfcircles, R.drawable.triangle,
@@ -110,14 +98,11 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 	}
 
 	/**
-	 * sets the counter value in the text view
+	 * sets display of the Cosmic Wimpout game
 	 */
 	protected void updateDisplay() {
-		//TODO fix these issues: it doesnt play until player rolls dice & keeps playing over itself
-		//if(notPlaying < 1) {
-			this.sound.playBackground();
-			//notPlaying++;
-		//}
+		//plays background music (layers over itself, need to fix)
+		this.sound.playBackground();
 
 		//set the text to current game state varibales
 		this.player1Score.setText(allPlayerNames[0] + ": " + state.getPlayer1Score());
@@ -310,8 +295,6 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 				}
 				break;
 		}
-
-
 	}
 
 	/**
@@ -348,15 +331,13 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 
 		}
 
-		//if end turn button, end trun action
+		//if button is pressed, send action
 		CosmicWimpoutActionEndTurn endTurnAct =
 				new CosmicWimpoutActionEndTurn(this);
 		CosmicWimpoutActionRollAllDice rollAct =
 				new CosmicWimpoutActionRollAllDice(this);
 		CosmicWimpoutActionEndGame endGameAct =
 				new CosmicWimpoutActionEndGame(this);
-		//CosmicWimpoutActionRollSelectedDie rollSelectedAct =
-			//new CosmicWimpoutActionRollSelectedDie(this, isCheck1, isCheck2, isCheck3, isCheck4,isCheck5);
 
 		//making sure that they press the roll all dice button first
 		if(this.actionsPressed == 0 || this.state.getTurnScore() == 0){
@@ -581,49 +562,32 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 						CosmicWimpoutActionRollSelectedDie rollSelectedDie =
 								new CosmicWimpoutActionRollSelectedDie(this, isCheck1,
 										isCheck2, isCheck3, isCheck4, isCheck5);
-						/*
-						//rolling animation for each possibility of 4 checks
-						if(isCheck1 && isCheck2 && isCheck3 && isCheck4 && !isCheck5) {
+						//rolling animation
+						if(isCheck1){
 							for(int i = 0; i < redDiceFaces.length; i++) {
 								this.die1.setImageResource(redDiceFaces[i]);
+							}
+						}
+						if(isCheck2){
+							for(int i = 0; i < redDiceFaces.length; i++) {
 								this.die2.setImageResource(redDiceFaces[i]);
+							}
+						}
+						if(isCheck3){
+							for(int i = 0; i < redDiceFaces.length; i++) {
 								this.die3.setImageResource(blackDiceFaces[i]);
+							}
+						}
+						if(isCheck4){
+							for(int i = 0; i < redDiceFaces.length; i++) {
 								this.die4.setImageResource(redDiceFaces[i]);
 							}
 						}
-						else if(isCheck1 && isCheck2 && isCheck3 && !isCheck4 && isCheck5) {
+						if(isCheck5){
 							for(int i = 0; i < redDiceFaces.length; i++) {
-								this.die1.setImageResource(redDiceFaces[i]);
-								this.die2.setImageResource(redDiceFaces[i]);
-								this.die3.setImageResource(blackDiceFaces[i]);
 								this.die5.setImageResource(redDiceFaces[i]);
 							}
 						}
-						else if(isCheck1 && isCheck2 && !isCheck3 && isCheck4 && isCheck5) {
-							for(int i = 0; i < redDiceFaces.length; i++) {
-								this.die1.setImageResource(redDiceFaces[i]);
-								this.die2.setImageResource(redDiceFaces[i]);
-								this.die4.setImageResource(redDiceFaces[i]);
-								this.die5.setImageResource(redDiceFaces[i]);
-							}
-						}
-						else if(isCheck1 && !isCheck2 && isCheck3 && isCheck4 && isCheck5) {
-							for(int i = 0; i < redDiceFaces.length; i++) {
-								this.die1.setImageResource(redDiceFaces[i]);
-								this.die3.setImageResource(blackDiceFaces[i]);
-								this.die4.setImageResource(redDiceFaces[i]);
-								this.die5.setImageResource(redDiceFaces[i]);
-							}
-						}
-						else if(!isCheck1 && isCheck2 && isCheck3 && isCheck4 && isCheck5) {
-							for(int i = 0; i < redDiceFaces.length; i++) {
-								this.die2.setImageResource(redDiceFaces[i]);
-								this.die3.setImageResource(blackDiceFaces[i]);
-								this.die4.setImageResource(redDiceFaces[i]);
-								this.die5.setImageResource(redDiceFaces[i]);
-							}
-						}
-						*/
 						game.sendAction(rollSelectedDie);
 					}
 					else{
@@ -881,10 +845,18 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 		}
 	}
 
+	/**
+	 * method legalMoveAllChecked5
+	 * @return returns true if all five dice are checked and it is legal to re-roll
+	 */
 	public boolean legalMoveAllChecked5(){
 		return state.checkAllFiveReRoll();
 	}
 
+	/**
+	 * legalOneChecked method
+	 * @return returns true if the seleced die is legal to roll
+	 */
 	private boolean legalOneChecked(){
 		if(isCheck1){
 			return state.check1Die(0);
@@ -904,45 +876,10 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 		return false;
 	}
 
-	//run method for the thread that will rotate through each face of the die once then land on the correct face
-	//@Override
-	/*
-	public void run(){
-		//for(int i = 0; i < redDiceFaces.length; i++) {
-			try {
-				for(int i = 0; i < redDiceFaces.length; i++) {
-					Thread.sleep(20);
-					if (rollDiceClicked) {
-						this.die1.setImageResource(redDiceFaces[i]);
-						this.die2.setImageResource(redDiceFaces[i]);
-						this.die3.setImageResource(blackDiceFaces[i]);
-						this.die4.setImageResource(redDiceFaces[i]);
-						this.die5.setImageResource(redDiceFaces[i]);
-						//this.updateDisplay();
-					}
-					else if(rollSelectedClicked) {
-						if (isCheck1) {
-							this.die1.setImageResource(redDiceFaces[i]);
-						}
-						if (isCheck2) {
-							this.die2.setImageResource(redDiceFaces[i]);
-						}
-						if (isCheck3) {
-							this.die3.setImageResource(blackDiceFaces[i]);
-						}
-						if (isCheck4) {
-							this.die4.setImageResource(redDiceFaces[i]);
-						}
-						if (isCheck5) {
-							this.die5.setImageResource(redDiceFaces[i]);
-						}
-					}
-				}
-				this.updateDisplay();
-			} catch (Exception e) {/*do nothing*/
-		//}
-	//}
-
+	/**
+	 * legal2Die method
+	 * @return returns true if it is legal to roll the 2 checked dice
+	 */
 	public boolean legal2Die(){
 		if(isCheck1 && isCheck2){
 			return this.state.check2Dice(0,1);
@@ -977,6 +914,10 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 		return false;
 	}
 
+	/**
+	 * legal3Die method
+	 * @return returns true if it is legal to roll the selected 3 dice
+	 */
 	private boolean legal3Die(){
 		if(isCheck1 && isCheck2 && isCheck3){
 			return this.state.check3Dice(0,1,2);
@@ -1011,6 +952,10 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 		return false;
 	}
 
+	/**
+	 * legal4Die method
+	 * @return returns true if it is legal to roll the selected 4 dice
+	 */
 	private boolean legal4Die(){
 		if(isCheck1 && isCheck2 && isCheck3 && isCheck4){
 			return this.state.check4Dice(0,1,2,3);
@@ -1030,7 +975,10 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 		return false;
 	}
 
-
+	/**
+	 * flashReRoll method sends messages to the player when they need to re-roll
+	 * certain dice to clear a flash
+	 */
 	private void flashReRoll(){
 		boolean[] reRolls = this.state.flashReRoll();
 		boolean die1 = reRolls[0];

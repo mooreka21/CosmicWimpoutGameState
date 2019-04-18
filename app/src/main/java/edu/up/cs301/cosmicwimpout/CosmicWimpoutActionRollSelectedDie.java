@@ -8,12 +8,9 @@ import edu.up.cs301.game.actionMsg.GameAction;
 /**
  * this is the roll selected dice action
  * takes 5 parameters besides the player
-    to determine which dice to re-roll
+ * to determine which dice to re-roll
  *
- * @author Sam Lemly
- *  * @author Olivia Dendinger
- *  * @author David Campbell
- *  * @author Kayla Moore
+ * @author Sam Lemly, Olivia Dendinger, David Campbell, Kayla Moore
  * @version March 2019
  */
 public class CosmicWimpoutActionRollSelectedDie extends GameAction implements Serializable {

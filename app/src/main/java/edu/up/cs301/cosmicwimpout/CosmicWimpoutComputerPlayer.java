@@ -11,11 +11,8 @@ import edu.up.cs301.game.infoMsg.GameInfo;
  * then with equal probabilty either ends the turn
  * or randomly selects one dice to re-roll
  *
- * @author Sam Lemly
- * @author Olivia Dendinger
- * @author David Campbell
- * @author Kayla Moore
-  * @version March 2019
+ * @author Sam Lemly, Olivia Dendinger, David Campbell, Kayla Moore
+  * @version April 2019
  */
 public class CosmicWimpoutComputerPlayer extends GameComputerPlayer implements Serializable {
 	private static final long serialVersionUID= 390598449L;
@@ -144,10 +141,7 @@ public class CosmicWimpoutComputerPlayer extends GameComputerPlayer implements S
 						game.sendAction(endTurnAction);
 					}
 				}
-
-
 			}
 		}
 	}
-
 }

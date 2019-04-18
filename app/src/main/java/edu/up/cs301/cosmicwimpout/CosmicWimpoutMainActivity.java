@@ -16,12 +16,9 @@ import edu.up.cs301.game.config.GamePlayerType;
 
 /**
  * this is the primary activity for Cosmic Wimpout game
- * 
- * @author Sam Lemly
- * @author Olivia Dendinger
- * @author David Campbell
- * @author Kayla Moore
- * @version March 2019
+ *
+ * @author Kayla Moore, Olivia Dendinger, Sam Lemly, David Campbell
+ *  @version April 2019
  */
 public class CosmicWimpoutMainActivity extends GameMainActivity implements Serializable {
 
@@ -60,17 +57,11 @@ public class CosmicWimpoutMainActivity extends GameMainActivity implements Seria
 				return new CosmicWimpoutComputerPlayer(name);
 			}});
 
-		// a computer player type (player type 1)
+		// a computer player type (player type 2)
 		playerTypes.add(new GamePlayerType("Smart Computer Player") {
 			public GamePlayer createPlayer(String name) {
 				return new CosmicWimpoutComputerPlayer2(name);
 			}});
-		
-		// a computer player type (player type 2)
-		/*playerTypes.add(new GamePlayerType("Computer Player (GUI)") {
-			public GamePlayer createPlayer(String name) {
-				return new CounterComputerPlayer2(name);
-			}});*/
 
 		// Create a game configuration class for Counter:
 		// - player types as given above
@@ -82,7 +73,6 @@ public class CosmicWimpoutMainActivity extends GameMainActivity implements Seria
 
 		// Add the default players to the configuration
 		defaultConfig.addPlayer("Human", 0); // player 1: a human player
-
 		defaultConfig.addPlayer("Siri", 1); // player 2: a computer player
 		defaultConfig.addPlayer("Alexa", 2); // player 3: a computer player
 		defaultConfig.addPlayer("HAL", 3); // player 4: a computer player
@@ -98,7 +88,7 @@ public class CosmicWimpoutMainActivity extends GameMainActivity implements Seria
 	}//createDefaultConfig
 
 	/**
-	 * create a local game
+	 * creates a local cosmic wimpout game
 	 * 
 	 * @return
 	 * 		the local game, a cosmic wimpout game

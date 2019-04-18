@@ -4,32 +4,28 @@ import edu.up.cs301.game.infoMsg.GameState;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import edu.up.cs301.cosmicwimpout.Die;
 
 /**
- * This contains the state for the Cosmic Wimpout game.
+ * This contains the game state for the Cosmic Wimpout game.
  *
  * @author Olivia Dendinger, Sam Lemly, Kayla Moore, David Campbell
- * @version March 2019
+ * @version April 2019
  */
+
 public class CosmicWimpoutState extends GameState implements Serializable {
-
-
-	//instance variables that encompass all needed information
 
 	//to satisfy Serializable interface
 	private static final long serialVersionUID = 12345678910L;
 
 	//initializing game variables
 	private int whoseTurn;
-	//private int numPlayers;
 	private int turnScore = 0;
 	private boolean canReRoll = true;
 	private boolean haveToReRoll = false;
 	private Die diceArray[] = new Die[5];
 	private ArrayList<Player> playerArrayList = new ArrayList();
 
-	//initializing dice re-roll variables
+	//declaring dice re-roll variables
 	private int halfMoonReRoll;
 	private int triangleReRoll;
 	private int boltReRoll;
@@ -45,7 +41,7 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 	private boolean die4ReRoll = false;
     private boolean die5ReRoll = false;
 
-
+	//special cases
 	private boolean isFlash = false;
 	private boolean isFiveOf = false;
 	private boolean isWimpout = false;
@@ -59,8 +55,8 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 
 
 	/**
-	 * CosmicWimpoutState default constructor
-	 * In the test iteration, this initializes two players
+	 * CosmicWimpoutState default constructor initializes variables and
+	 * four players
 	 */
 	public CosmicWimpoutState() {
 		whoseTurn = 0;
@@ -92,7 +88,7 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 	/**
 	 * CosmicWimpoutState constructor that creates a deep copy
 	 *
-	 * @param orig
+	 * @param orig - original state
 	 */
 	public CosmicWimpoutState(CosmicWimpoutState orig) {
 
@@ -119,8 +115,8 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 	 * Totals the scores of all possible rolls, as well has reroll for the
 	 * player when they are required.
 	 *
-	 * @param ourDice
-	 * @param playerId
+	 * @param ourDice - array of dice
+	 * @param playerId - current player's id
 	 * @returns an int
 	 */
 	public int totalDiceScore(Die[] ourDice, int playerId) {
@@ -133,7 +129,8 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 				ourDice[4].dieState == 1) {
 			isSuperNova = true;
 			return -1;
-		} else if (ourDice[0].dieState == 2 &&
+		}
+		else if (ourDice[0].dieState == 2 &&
 				ourDice[1].dieState == 2 &&
 				ourDice[2].dieState == 2 &&
 				ourDice[3].dieState == 2 &&
@@ -141,7 +138,8 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 			isFiveOf = true;
 			haveToReRoll = true;
 			tally = tally + 200;
-		} else if (ourDice[0].dieState == 4 &&
+		}
+		else if (ourDice[0].dieState == 4 &&
 				ourDice[1].dieState == 4 &&
 				ourDice[2].dieState == 4 &&
 				ourDice[3].dieState == 4 &&
@@ -150,7 +148,8 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 			isFiveOf = true;
 			haveToReRoll = true;
 			tally = tally + 400;
-		} else if (ourDice[0].dieState == 5 &&
+		}
+		else if (ourDice[0].dieState == 5 &&
 				ourDice[1].dieState == 5 &&
 				ourDice[2].dieState == 5 &&
 				ourDice[3].dieState == 5 &&
@@ -159,7 +158,8 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 			haveToReRoll = true;
 			// turnScore = turnScore + 500;
 			tally = tally + 500;
-		} else if (ourDice[0].dieState == 6 &&
+		}
+		else if (ourDice[0].dieState == 6 &&
 				ourDice[1].dieState == 6 &&
 				ourDice[2].dieState == 6 &&
 				ourDice[3].dieState == 6 &&
@@ -183,7 +183,8 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 				tenCount++;
 				if (tenCount == 4) {
 					tenReRoll = i;
-				} else if (tenCount == 2) {
+				}
+				else if (tenCount == 2) {
 					tenReRoll = i + 1;
 				}
 			}
@@ -191,7 +192,8 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 				halfMoonCount++;
 				if (halfMoonCount == 4) {
 					halfMoonReRoll = i;
-				} else if (halfMoonCount == 2) {
+				}
+				else if (halfMoonCount == 2) {
 					halfMoonReRoll = i + 1;
 				}
 			}
@@ -199,7 +201,8 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 				triangleCount++;
 				if (triangleCount == 4) {
 					triangleReRoll = i;
-				} else if (triangleCount == 2) {
+				}
+				else if (triangleCount == 2) {
 					triangleReRoll = i + 1;
 				}
 			}
@@ -207,7 +210,8 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 				boltCount++;
 				if (boltCount == 4) {
 					boltReRoll = i;
-				} else if (boltCount == 2) {
+				}
+				else if (boltCount == 2) {
 					boltReRoll = i + 1;
 				}
 			}
@@ -215,7 +219,8 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 				fiveCount++;
 				if (fiveCount == 4) {
 					fiveReRoll = i;
-				} else if (fiveCount == 2) {
+				}
+				else if (fiveCount == 2) {
 					fiveReRoll = i + 1;
 				}
 			}
@@ -223,7 +228,8 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 				starCount++;
 				if (starCount == 4) {
 					starReRoll = i;
-				} else if (starCount == 2) {
+				}
+				else if (starCount == 2) {
 					starReRoll = i + 1;
 				}
 			}
@@ -236,108 +242,43 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 			if (ourDice[2].dieState == 3) {
 				isFlash = true;
 				tally = tally + 100;
-			} else {
+			}
+			else {
 				tally = tally + 20;
 			}
-			/*
-            if(fiveCount != 0){
-				tally = tally + (fiveCount*5);
-				//I don't know if we need to set haveToReroll to true here --SL
-			}
-			*/
-		} else if (tenCount == 1) {
+		}
+		else if (tenCount == 1) {
 			tally = tally + 10;
 		}
 		if (fiveCount == 2) {
 			if (ourDice[2].dieState == 3) {
 				isFlash = true;
 				tally = tally + 50;
-			} else {
+			}
+			else {
 				tally = tally + 10;
 			}
-			/*
-			if(tenCount != 0){
-				tally = tally + (tenCount*10);
-				//I don't know if we need to set haveToReroll to true here --SL
-			}
-			*/
-		} else if (fiveCount == 1) {
+		}
+		else if (fiveCount == 1) {
 			tally = tally + 5;
 		}
 
 		if (starCount == 2 && ourDice[2].dieState == 3) {
 			isFlash = true;
 			tally = tally + 60;
-            /*
-			if(tenCount != 0){
-				if(fiveCount != 0){
-					tally = tally + (fiveCount*5) + (tenCount*10);
-					//I don't know if we need to set haveToReroll to true here --SL
-				}
-				tally = tally + (tenCount*10);
-			}
-			if(fiveCount != 0 && tenCount == 0){
-				tally = tally + (fiveCount*5);
-				//I don't know if we need to set haveToReroll to true here --SL
-			}
-			*/
-		} else if (boltCount == 2 && ourDice[2].dieState == 3) {
+		}
+		else if (boltCount == 2 && ourDice[2].dieState == 3) {
 			isFlash = true;
 			tally = tally + 40;
-            /*
-			if(tenCount != 0){
-				if(fiveCount != 0){
-					tally = tally + (fiveCount*5) + (tenCount*10);
-					//I don't know if we need to set haveToReroll to true here --SL
-				}
-				tally = tally + (tenCount*10);
-			}
-			if(fiveCount != 0 && tenCount == 0){
-				tally = tally + (fiveCount*5);
-				//I don't know if we need to set haveToReroll to true here --SL
-			}
-			*/
-		} else if (triangleCount == 2 && ourDice[2].dieState == 3) {
+		}
+		else if (triangleCount == 2 && ourDice[2].dieState == 3) {
 			isFlash = true;
 			tally = tally + 30;
-
-            /*
-			if(tenCount != 0){
-				if(fiveCount != 0){
-					tally = tally + (fiveCount*5) + (tenCount*10);
-					//I don't know if we need to set haveToReroll to true here --SL
-				}
-				tally = tally + (tenCount*10);
-			}
-			if(fiveCount != 0 && tenCount == 0){
-				tally = tally + (fiveCount*5);
-				//I don't know if we need to set haveToReroll to true here --SL
-			}
-			*/
-		} else if (halfMoonCount == 2 && ourDice[2].dieState == 3) {
+		}
+		else if (halfMoonCount == 2 && ourDice[2].dieState == 3) {
 			isFlash = true;
 			tally = tally + 20;
-            /*
-			if(tenCount != 0){
-				if(fiveCount != 0){
-					tally = tally + (fiveCount*5) + (tenCount*10);
-					//I don't know if we need to set haveToReroll to true here --SL
-				}
-				tally = tally + (tenCount*10);
-			}
-			if(fiveCount != 0 && tenCount == 0){
-				tally = tally + (fiveCount*5);
-				//I don't know if we need to set haveToReroll to true here --SL
-			}
-			*/
 		}
-		/*
-		else if(tenCount < 2 && fiveCount < 2 && triangleCount < 2 &&
-				boltCount < 2 && halfMoonCount < 2 && starCount <2 &&
-				ourDice[2].dieState == 3){
-			tally = tally + 10;
-		}
-		*/
 		//END 10 & 5 COUNTING CASES
 		//END FLAMING SUN FLASH CASE HANDLING
 
@@ -346,165 +287,47 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 		else if (halfMoonCount >= 3 && halfMoonCount < 5) {
 			isFlash = true;
 			if (halfMoonCount == 4) {
-				//rollSingleDie(playerId, (halfMoonReRoll + 1));
-				/**
-				 if(halfMoonReRoll == 4){
-				 rollSingleDie(playerId, 5);
-				 }
-				 else{
-				 rollSingleDie(playerId, halfMoonReRoll +1);
-				 }
-				 */
 				haveToReRoll = true;
 			}
 			tally = tally + 20;
-			/*
-			if(tenCount != 0){
-				if(fiveCount != 0){
-					tally = tally + (fiveCount*5) + (tenCount*10);
-					//I don't know if we need to set haveToReroll to true here --SL
-				}
-				tally = tally + (tenCount*10);
-			}
-			if(fiveCount != 0 && tenCount == 0){
-				tally = tally + (fiveCount*5);
-				//I don't know if we need to set haveToReroll to true here --SL
-			}
-			*/
-		} else if (triangleCount >= 3 && triangleCount < 5) {
+		}
+		else if (triangleCount >= 3 && triangleCount < 5) {
 			isFlash = true;
 			if (triangleCount == 4) {
-				/**
-				 if(triangleReRoll == 4){
-				 rollSingleDie(playerId, 5);
-				 }
-				 else{
-				 rollSingleDie(playerId, (triangleReRoll + 1));
-				 }
-				 */
+				haveToReRoll = true;
 			}
 			tally = tally + 30;
-			/*
-			if(tenCount != 0){
-				if(fiveCount != 0){
-					tally = tally + (fiveCount*5) + (tenCount*10);
-					//I don't know if we need to set haveToReroll to true here --SL
-				}
-				tally = tally + (tenCount*10);
-			}
-			if(fiveCount != 0 && tenCount == 0){
-				tally = tally + (fiveCount*5);
-				//I don't know if we need to set haveToReroll to true here --SL
-			}
-			*/
-
-		} else if (boltCount >= 3 && boltCount < 5) {
+		}
+		else if (boltCount >= 3 && boltCount < 5) {
 			isFlash = true;
 			if (boltCount == 4) {
-				//rollSingleDie(playerId, (boltReRoll + 1));
-				/**
-				 if(boltReRoll == 4){
-				 rollSingleDie(playerId, 5);
-				 }
-				 else{
-				 rollSingleDie(playerId, boltReRoll +1);
-				 }
-				 */
 				haveToReRoll = true;
 			}
 			tally = tally + 40;
-			/*
-			if(tenCount != 0){
-				if(fiveCount != 0){
-					tally = tally + (fiveCount*5) + (tenCount*10);
-					//I don't know if we need to set haveToReroll to true here --SL
-				}
-				tally = tally + (tenCount*10);
-			}
-			if(fiveCount != 0 && tenCount == 0){
-				tally = tally + (fiveCount*5);
-				//I don't know if we need to set haveToReroll to true here --SL
-			}
-			*/
-
-		} else if (fiveCount >= 3 && fiveCount < 5) {
+		}
+		else if (fiveCount >= 3 && fiveCount < 5) {
 			isFlash = true;
-			//  turnScore = turnScore + 50;
 			if (fiveCount == 4) {
-				//rollSingleDie(playerId, (fiveReRoll + 1));
-				/**
-				 if(fiveReRoll == 4){
-				 rollSingleDie(playerId, 5);
-				 }
-				 else{
-				 rollSingleDie(playerId, fiveReRoll + 1);
-				 }
-				 */
 				haveToReRoll = true;
 				tally = tally + 5;
 			}
 			tally = tally + 50;
-			/*
-			if(tenCount != 0){
-				tally = tally + (tenCount*10);
-				//I don't know if we need to set haveToReroll to true here --SL
-			}
-			*/
-		} else if (starCount >= 3 && starCount < 5) {
+		}
+		else if (starCount >= 3 && starCount < 5) {
 			isFlash = true;
-			//  turnScore = turnScore + 60;
 			if (starCount == 4) {
-				//rollSingleDie(playerId, (starReRoll + 1));
-				/**
-				 if(starReRoll == 4){
-				 rollSingleDie(playerId, 5);
-				 }
-				 else{
-				 rollSingleDie(playerId, starReRoll + 1);
-				 }
-				 */
 				haveToReRoll = true;
 			}
 			tally = tally + 60;
-			/*
-			if(tenCount != 0){
-				if(fiveCount != 0){
-					tally = tally + (fiveCount*5) + (tenCount*10);
-					//I don't know if we need to set haveToReroll to true here --SL
-				}
-				tally = tally + (tenCount*10);
-			}
-			if(fiveCount != 0 && tenCount == 0){
-				tally = tally + (fiveCount*5);
-				//I don't know if we need to set haveToReroll to true here --SL
-			}
-			*/
-		} else if (tenCount >= 3 && tenCount < 5) {
+		}
+		else if (tenCount >= 3 && tenCount < 5) {
 			isFlash = true;
-			// turnScore = turnScore + 100;
 			if (tenCount == 4) {
-				//rollSingleDie(playerId, (tenReRoll + 1));
-				/**
-				 if(tenReRoll == 4){
-				 rollSingleDie(playerId, 5);
-				 }
-				 else{
-				 rollSingleDie(playerId, tenReRoll + 1);
-				 }
-				 */
 				haveToReRoll = true;
 				tally = tally + 10;
 			}
 			tally = tally + 100;
-
-			/*
-			if(fiveCount != 0){
-				tally = tally + (fiveCount*5);
-				//I don't know if we need to set haveToReroll to true here --SL
-			}
-			*/
 		}
-
 		//END NORMAL FLASH HANDLING
 
 
@@ -522,26 +345,36 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 			return -1;
 		}
 		//END WIMPOUT CASE
-        if(this.diceArray[0].getDieState() == 5 ||
-                this.diceArray[0].getDieState() == 1){
+        if(this.diceArray[0].getDieState() == 5 || this.diceArray[0].getDieState() == 1){
             this.diceArray[0].setCanReroll(false);
-        }else this.diceArray[0].setCanReroll(true);
-        if(this.diceArray[1].getDieState() == 5 ||
-                this.diceArray[1].getDieState() == 1){
+        }
+        else {
+        	this.diceArray[0].setCanReroll(true);
+        }
+        if(this.diceArray[1].getDieState() == 5 || this.diceArray[1].getDieState() == 1){
             this.diceArray[1].setCanReroll(false);
-        }else this.diceArray[1].setCanReroll(true);
-        if(this.diceArray[2].getDieState() == 5 ||
-                this.diceArray[2].getDieState() == 1){
+        }
+        else {
+        	this.diceArray[1].setCanReroll(true);
+		}
+        if(this.diceArray[2].getDieState() == 5 || this.diceArray[2].getDieState() == 1){
             this.diceArray[2].setCanReroll(false);
-        } else this.diceArray[2].setCanReroll(true);
-        if(this.diceArray[3].getDieState() == 5 ||
-                this.diceArray[3].getDieState() == 1){
+        }
+        else {
+        	this.diceArray[2].setCanReroll(true);
+		}
+        if(this.diceArray[3].getDieState() == 5 || this.diceArray[3].getDieState() == 1){
             this.diceArray[3].setCanReroll(false);
-        } else this.diceArray[3].setCanReroll(true);
-        if(this.diceArray[4].getDieState() == 5 ||
-                this.diceArray[4].getDieState() == 1){
+        }
+        else {
+        	this.diceArray[3].setCanReroll(true);
+		}
+        if(this.diceArray[4].getDieState() == 5 || this.diceArray[4].getDieState() == 1){
             this.diceArray[4].setCanReroll(false);
-        } else this.diceArray[4].setCanReroll(true);
+        }
+        else {
+        	this.diceArray[4].setCanReroll(true);
+		}
 		return tally;
 	}
 
@@ -558,18 +391,17 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 	/**
 	 * getter for whose turn it currently is in the state
 	 *
-	 * @return whose turn
+	 * @return whoseTurn - current player's turn
 	 */
 	public int getWhoseTurn() {
 		return this.whoseTurn;
 	}
 
-
 	/**
 	 * endTurn - if player chooses to end turn, add up their turn score to their
 	 * overall game score, switch to next player
 	 *
-	 * @param playerId
+	 * @param playerId - player's id
 	 * @return true if legal move
 	 */
 	public boolean endTurn(int playerId) {
@@ -581,28 +413,27 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 				turnScore = 0; //reset turn score to 0 for next player
 				this.isFiveOf = false;
 				this.isFlash = false;
-				//this.isWimpout = false;
-			} else if (playerId == 1) {
+			}
+			else if (playerId == 1) {
 				playerArrayList.get(playerId).setPlayerScore(currentScore + turnScore);
 				whoseTurn = 2;
 				turnScore = 0;// reset turn score to 0
 				this.isFiveOf = false;
 				this.isFlash = false;
-				//this.isWimpout = false;
-			} else if (playerId == 2) {
+			}
+			else if (playerId == 2) {
 				playerArrayList.get(playerId).setPlayerScore(currentScore + turnScore);
 				whoseTurn = 3;
 				turnScore = 0; //reset turnScore to 0
 				this.isFiveOf = false;
 				this.isFlash = false;
-				//this.isWimpout = false;
-			} else if (playerId == 3) {
+			}
+			else if (playerId == 3) {
 				playerArrayList.get(playerId).setPlayerScore(currentScore + turnScore);
 				whoseTurn = 0;
 				turnScore = 0; //reset turnScore to 0
 				this.isFiveOf = false;
 				this.isFlash = false;
-				//this.isWimpout = false;
 			}
 			this.prevState = new CosmicWimpoutState(this);
 			return true;
@@ -615,39 +446,38 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 	/**
 	 * endGame - will quit the game and return back to main menu
 	 *
-	 * @param playerId
+	 * @param playerId - player's id
 	 * @return true if legal move
 	 */
 	public boolean endGame(int playerId) {
 		if (playerId == whoseTurn) {
 			System.exit(0);
 			return true;
-		} else {
-			// illegal move
-			return false;
+		}
+		else {
+			return false; //illegal move
 		}
 	}
 
 	/**
 	 * Rolls all five dice at once
 	 *
-	 * @param playerId
+	 * @param playerId - player's id
 	 * @return return true if legal move
 	 */
 	public boolean rollAllDice(int playerId) {
 		if (playerId == whoseTurn) {
 			//rolls all dice giving each a value 1-6
-
 			for (int i = 0; i < 5; i++) {
 				this.diceArray[i].dieState = (int) (Math.random() * 6 + 1);
 			}
 			if (totalDiceScore(diceArray, playerId) != -1) {
-				//not a wimpout add score to current turn score
+				//if not a wimpout, add score to current turn score
 				this.turnScore = this.turnScore + totalDiceScore(diceArray, playerId);
 				this.isWimpout = false;
-			} else {
-				//wimpout set turn score to 0 and
-				//and change players
+			}
+			else {
+				//wimpout set turn score to 0 and change players
 				turnScore = 0;
 				this.isWimpout = true;
 				if (playerId == 0) {
@@ -665,8 +495,7 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 			}
 			return true;
 		} else {
-			// illegal move
-			return false;
+			return false; //illegal move
 		}
 	}
 
@@ -681,9 +510,9 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 		if (playerId == whoseTurn) {
 			diceArray[id - 1].rollMe();
 			return true;
-		} else {
-			// illegal move
-			return false;
+		}
+		else {
+			return false; //illegal move
 		}
 	}
 
@@ -694,7 +523,7 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 	 * @param ourDice  - dice array
 	 * @param playerId - which player
 	 * @param diceID   - which die they want to roll
-	 * @return
+	 * @return score
 	 */
 	public int diceScoreForOneDice(Die[] ourDice, int playerId, int diceID) {
 		int diceState = ourDice[diceID - 1].dieState;
@@ -707,7 +536,8 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 		if (ourDice[diceID - 1].dieState == 1) {
 			//die state is 10
 			return 10;
-		} else if (ourDice[diceID - 1].dieState == 5) {
+		}
+		else if (ourDice[diceID - 1].dieState == 5) {
 			//die state is 5
 			return 5;
 		}
@@ -721,13 +551,13 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 	 * rollSelectedDice - action method for when the player
 	 * sends an action of roll selected dice
 	 *
-	 * @param playerId
+	 * @param playerId - player's id
 	 * @param dice1    - true if they select
 	 * @param dice2    - true if they select
-	 * @param dice3
-	 * @param dice4
-	 * @param dice5
-	 * @return
+	 * @param dice3	   - true if they select
+	 * @param dice4    - true if they select
+	 * @param dice5    - true if they select
+	 * @return boolean value
 	 */
 	public boolean rollSelectedDice
 	(int playerId, boolean dice1, boolean dice2, boolean dice3, boolean dice4, boolean dice5) {
@@ -738,7 +568,8 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 				rollSingleDie(playerId, 1);
 				trueCounter++;// to decide how to score the dice
 				die1ReRoll = true;
-			} else {
+			}
+			else {
 				//player didnt select this die
 				die1ReRoll = false;
 			}
@@ -747,7 +578,8 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 				rollSingleDie(playerId, 2);
 				trueCounter++;
 				die2ReRoll = true;
-			} else {
+			}
+			else {
 				//player didnt select this die
 				die2ReRoll = false;
 			}
@@ -755,7 +587,8 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 				rollSingleDie(playerId, 3);
 				trueCounter++;
 				die3ReRoll = true;
-			} else {
+			}
+			else {
 				//player didnt select this die
 				die3ReRoll = false;
 			}
@@ -763,7 +596,8 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 				rollSingleDie(playerId, 4);
 				trueCounter++;
 				die4ReRoll = true;
-			} else {
+			}
+			else {
 				//player didnt select this die
 				die4ReRoll = false;
 			}
@@ -771,13 +605,13 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 				rollSingleDie(playerId, 5);
 				trueCounter++;
 				die5ReRoll = true;
-			} else {
+			}
+			else {
 				//player didnt select this die
 				die5ReRoll = false;
 			}
 
-			//only selected one die
-			if (trueCounter == 1) {
+			if (trueCounter == 1) { //only selected one die
 				//get which dice they rolled
 				int whichDie = whichDice();
 				//score that dice
@@ -787,7 +621,8 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 					trueCounter = 0;
 					this.isWimpout = false;
 					return true;
-				} else {
+				}
+				else {
 					//wimpout end turn
 					turnScore = 0;
 					trueCounter = 0;
@@ -796,7 +631,7 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 					return true;
 				}
 			}
-			if (trueCounter == 2) {
+			if (trueCounter == 2) { //selected two dice
 				int[] whichDice = whichDice2();
 				int first = (int) whichDice[0];
 				int second = (int) whichDice[1];
@@ -806,7 +641,8 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 					trueCounter = 0;
 					this.isWimpout = false;
 					return true;
-				} else {
+				}
+				else {
 					turnScore = 0;
 					trueCounter = 0;
 					this.isWimpout = true;
@@ -814,7 +650,7 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 					return true;
 				}
 			}
-			if (trueCounter == 3) {
+			if (trueCounter == 3) { //selected three dice
 				int[] whichDice = whichDice3();
 				int first = whichDice[0];
 				int second = whichDice[1];
@@ -826,7 +662,8 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 					trueCounter = 0;
 					this.isWimpout = false;
 					return true;
-				} else {
+				}
+				else {
 					turnScore = 0;
 					trueCounter = 0;
 					this.isWimpout = true;
@@ -847,7 +684,8 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 					trueCounter = 0;
 					this.isWimpout = false;
 					return true;
-				} else {
+				}
+				else {
 					turnScore = 0;
 					trueCounter = 0;
 					this.isWimpout = true;
@@ -861,23 +699,7 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 				trueCounter = 0;
 				this.isWimpout = false;
 				return true;
-				/**
-				 int score = totalDiceScore(diceArray, playerId);
-				 if(score != -1) {
-				 this.turnScore = this.turnScore;
-				 turnScore = turnScore + score;
-				 trueCounter=0;
-				 return true;
-				 }
-				 else{
-				 turnScore = 0;
-				 trueCounter = 0;
-				 endTurn(playerId);
-				 return true;
-				 }
-				 */
 			}
-
 		}
 		trueCounter = 0;
 		return false;
@@ -890,7 +712,7 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 	 * @param ourDice - dice array
 	 * @param one     - die one they select
 	 * @param two     - die two they select
-	 * @return
+	 * @return        - score
 	 */
 	public int getDiceScore2(Die[] ourDice, int one, int two) {
 		int tally = 0;
@@ -905,7 +727,8 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 		if (ourDice[one - 1].dieState == 1) {
 			tally = tally + 10;
 			notWimp = true;
-		} else if (ourDice[one - 1].dieState == 5) {
+		}
+		else if (ourDice[one - 1].dieState == 5) {
 			tally = tally + 5;
 			notWimp = true;
 		}
@@ -913,11 +736,12 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 		if (ourDice[two - 1].dieState == 1) {
 			tally = tally + 10;
 			notWimp = true;
-		} else if (ourDice[two - 1].dieState == 5) {
+		}
+		else if (ourDice[two - 1].dieState == 5) {
 			tally = tally + 5;
 			notWimp = true;
 		}
-
+		//if not wimpout
 		if (notWimp) {
 			return tally;
 		} else {
@@ -929,27 +753,37 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 	}
 
 	/**
-	 * get player ones current score
+	 * get player 1s current score
 	 *
-	 * @return
+	 * @return player 1's score
 	 */
 	public int getPlayer1Score() {
 		return this.playerArrayList.get(0).getPlayerScore();
 	}
 
 	/**
-	 * get player twos current score
+	 * get player 2s current score
 	 *
-	 * @return
+	 * @return player 2's score
 	 */
 	public int getPlayer2Score() {
 		return this.playerArrayList.get(1).getPlayerScore();
 	}
 
+	/**
+	 * get player 3s current score
+	 *
+	 * @return player 3's score
+	 */
 	public int getPlayer3Score() {
 		return this.playerArrayList.get(2).getPlayerScore();
 	}
 
+	/**
+	 * get player 4s current score
+	 *
+	 * @return player 4's score
+	 */
 	public int getPlayer4Score() {
 		return this.playerArrayList.get(3).getPlayerScore();
 	}
@@ -957,34 +791,38 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 	/**
 	 * set whose turn it is
 	 *
-	 * @param player
+	 * @param player   - whose turn it is
 	 */
 	private void setWhoseTurn(int player) {
 		this.whoseTurn = player;
 	}
 
 	/**
-	 * finds which dice they selected
+	 * finds which die they selected
 	 *
 	 * @return - die id they select
 	 */
 	private int whichDice() {
 		if (die1ReRoll) {
 			return 1;
-		} else if (die2ReRoll) {
+		}
+		else if (die2ReRoll) {
 			return 2;
-		} else if (die3ReRoll) {
+		}
+		else if (die3ReRoll) {
 			return 3;
-		} else if (die4ReRoll) {
+		}
+		else if (die4ReRoll) {
 			return 4;
-		} else if (die5ReRoll) {
+		}
+		else if (die5ReRoll) {
 			return 5;
 		}
 		return 0;
 	}
 
 	/**
-	 * finds which dice they selected
+	 * finds which 2 dice they selected
 	 *
 	 * @return - dice id they select in an array
 	 */
@@ -1023,7 +861,7 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 	}
 
 	/**
-	 * finds which dice they selected
+	 * finds which 3 dice they selected
 	 *
 	 * @return - die id they select in an array
 	 */
@@ -1065,6 +903,11 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 		return threeDice;
 	}
 
+	/**
+	 * finds which 4 dice they selected
+	 *
+	 * @return - die id they select in an array
+	 */
 	private int[] whichDice4() {
 		int[] fourDice = new int[4];
 		if (die1ReRoll) {
@@ -1120,55 +963,75 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 
 		if (ourDice[one - 1].getDieState() == 1) {
 			tenCount++;
-		} else if (ourDice[one - 1].getDieState() == 2) {
+		}
+		else if (ourDice[one - 1].getDieState() == 2) {
 			moonCount++;
-		} else if (ourDice[one - 1].getDieState() == 3 && (one - 1) != 2) {
+		}
+		else if (ourDice[one - 1].getDieState() == 3 && (one - 1) != 2) {
 			triangleCount++;
-		} else if (ourDice[one - 1].getDieState() == 4) {
+		}
+		else if (ourDice[one - 1].getDieState() == 4) {
 			boltCount++;
-		} else if (ourDice[one - 1].getDieState() == 5) {
+		}
+		else if (ourDice[one - 1].getDieState() == 5) {
 			fiveCount++;
-		} else if (ourDice[one - 1].getDieState() == 6) {
+		}
+		else if (ourDice[one - 1].getDieState() == 6) {
 			starCount++;
 		}
 		if (ourDice[two - 1].getDieState() == 1) {
 			tenCount++;
-		} else if (ourDice[two - 1].getDieState() == 2) {
+		}
+		else if (ourDice[two - 1].getDieState() == 2) {
 			moonCount++;
-		} else if (ourDice[two - 1].getDieState() == 3 && (two - 1) != 2) {
+		}
+		else if (ourDice[two - 1].getDieState() == 3 && (two - 1) != 2) {
 			triangleCount++;
-		} else if (ourDice[two - 1].getDieState() == 4) {
+		}
+		else if (ourDice[two - 1].getDieState() == 4) {
 			boltCount++;
-		} else if (ourDice[two - 1].getDieState() == 5) {
+		}
+		else if (ourDice[two - 1].getDieState() == 5) {
 			fiveCount++;
-		} else if (ourDice[two - 1].getDieState() == 6) {
+		}
+		else if (ourDice[two - 1].getDieState() == 6) {
 			starCount++;
 		}
 		if (ourDice[three - 1].getDieState() == 1) {
 			tenCount++;
-		} else if (ourDice[three - 1].getDieState() == 2) {
+		}
+		else if (ourDice[three - 1].getDieState() == 2) {
 			moonCount++;
-		} else if (ourDice[three - 1].getDieState() == 3 && (three - 1) != 2) {
+		}
+		else if (ourDice[three - 1].getDieState() == 3 && (three - 1) != 2) {
 			triangleCount++;
-		} else if (ourDice[three - 1].getDieState() == 4) {
+		}
+		else if (ourDice[three - 1].getDieState() == 4) {
 			boltCount++;
-		} else if (ourDice[three - 1].getDieState() == 5) {
+		}
+		else if (ourDice[three - 1].getDieState() == 5) {
 			fiveCount++;
-		} else if (ourDice[three - 1].getDieState() == 6) {
+		}
+		else if (ourDice[three - 1].getDieState() == 6) {
 			starCount++;
 		}
 
 		if (ourDice[four - 1].getDieState() == 1) {
 			tenCount++;
-		} else if (ourDice[four - 1].getDieState() == 2) {
+		}
+		else if (ourDice[four - 1].getDieState() == 2) {
 			moonCount++;
-		} else if (ourDice[four - 1].getDieState() == 3 && (four - 1) != 2) {
+		}
+		else if (ourDice[four - 1].getDieState() == 3 && (four - 1) != 2) {
 			triangleCount++;
-		} else if (ourDice[four - 1].getDieState() == 4) {
+		}
+		else if (ourDice[four - 1].getDieState() == 4) {
 			boltCount++;
-		} else if (ourDice[four - 1].getDieState() == 5) {
+		}
+		else if (ourDice[four - 1].getDieState() == 5) {
 			fiveCount++;
-		} else if (ourDice[four - 1].getDieState() == 6) {
+		}
+		else if (ourDice[four - 1].getDieState() == 6) {
 			starCount++;
 		}
 
@@ -1177,23 +1040,28 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 			isFlash = true;
 			score = score + 100;
 			notWimp = true;
-		} else if (moonCount >= 3) {
+		}
+		else if (moonCount >= 3) {
 			isFlash = true;
 			score = score + 20;
 			notWimp = true;
-		} else if (triangleCount >= 3) {
+		}
+		else if (triangleCount >= 3) {
 			isFlash = true;
 			score = score + 30;
 			notWimp = true;
-		} else if (boltCount >= 3) {
+		}
+		else if (boltCount >= 3) {
 			isFlash = true;
 			score = score + 40;
 			notWimp = true;
-		} else if (fiveCount >= 3) {
+		}
+		else if (fiveCount >= 3) {
 			isFlash = true;
 			score = score + 50;
 			notWimp = true;
-		} else if (starCount >= 3) {
+		}
+		else if (starCount >= 3) {
 			isFlash = true;
 			score = score + 60;
 			notWimp = true;
@@ -1286,11 +1154,11 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 	 * calculates the score when they select
 	 * 3 dice
 	 *
-	 * @param ourDice
+	 * @param ourDice - array of dice
 	 * @param one     - first dice id
 	 * @param two     - second dice id
 	 * @param three   - third dice id
-	 * @return
+	 * @return        - score
 	 */
 	private int getScore3Dice(Die[] ourDice, int one, int two, int three) {
 		int score = 0;
@@ -1302,36 +1170,43 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 			//isFlash = true;
 			score = 100;
 			notWimp = true;
-		} else if (ourDice[one - 1].dieState == 2 && ourDice[two - 1].dieState == 2 &&
+		}
+		else if (ourDice[one - 1].dieState == 2 && ourDice[two - 1].dieState == 2 &&
 				ourDice[three - 1].dieState == 2) {
 			isFlash = true;
 			score = 20;
 			notWimp = true;
-		} else if (ourDice[one - 1].dieState == 3 && ourDice[two - 1].dieState == 3 &&
+		}
+		else if (ourDice[one - 1].dieState == 3 && ourDice[two - 1].dieState == 3 &&
 				ourDice[three - 1].dieState == 3) {
 			isFlash = true;
 			score = 30;
 			notWimp = true;
-		} else if (ourDice[one - 1].dieState == 4 && ourDice[two - 1].dieState == 4 &&
+		}
+		else if (ourDice[one - 1].dieState == 4 && ourDice[two - 1].dieState == 4 &&
 				ourDice[three - 1].dieState == 4) {
 			isFlash = true;
 			score = 40;
 			notWimp = true;
-		} else if (ourDice[one - 1].dieState == 5 && ourDice[two - 1].dieState == 5 &&
+		}
+		else if (ourDice[one - 1].dieState == 5 && ourDice[two - 1].dieState == 5 &&
 				ourDice[three - 1].dieState == 5) {
 			//isFlash = true;
 			score = 50;
 			notWimp = true;
-		} else if (ourDice[one - 1].dieState == 6 && ourDice[two - 1].dieState == 6 &&
+		}
+		else if (ourDice[one - 1].dieState == 6 && ourDice[two - 1].dieState == 6 &&
 				ourDice[three - 1].dieState == 6) {
 			isFlash = true;
 			score = 60;
 			notWimp = true;
-		} else if (flashWithSun(ourDice, one, two, three) != -1) {
+		}
+		else if (flashWithSun(ourDice, one, two, three) != -1) {
 			//gets score if there is a flash with flaming sun
 			score = flashWithSun(ourDice, one, two, three);
 			notWimp = true;
-		} else {
+		}
+		else {
 			if (one == 3 || two == 3 || three == 3) {
 				if (ourDice[2].dieState == 3) {
 					score = score + 10;
@@ -1342,7 +1217,8 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 			if (ourDice[one - 1].dieState == 1) {
 				score = score + 10;
 				notWimp = true;
-			} else if (ourDice[one - 1].dieState == 5) {
+			}
+			else if (ourDice[one - 1].dieState == 5) {
 				score = score + 5;
 				notWimp = true;
 			}
@@ -1350,7 +1226,8 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 			if (ourDice[two - 1].dieState == 1) {
 				score = score + 10;
 				notWimp = true;
-			} else if (ourDice[two - 1].dieState == 5) {
+			}
+			else if (ourDice[two - 1].dieState == 5) {
 				score = score + 5;
 				notWimp = true;
 			}
@@ -1358,14 +1235,16 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 			if (ourDice[three - 1].dieState == 1) {
 				score = score + 10;
 				notWimp = true;
-			} else if (ourDice[three - 1].dieState == 5) {
+			}
+			else if (ourDice[three - 1].dieState == 5) {
 				score = score + 5;
 				notWimp = true;
 			}
 		}
 		if (notWimp) {
 			return score;
-		} else {
+		}
+		else {
 			this.isFiveOf = false;
 			this.isFlash = false;
 			return -1;
@@ -1375,11 +1254,11 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 	/**
 	 * helper method to score flashes with flaming suns
 	 *
-	 * @param ourDice
-	 * @param one
-	 * @param two
-	 * @param three
-	 * @return
+	 * @param ourDice  - array of dice
+	 * @param one      - first dice id
+	 * @param two      - second dice id
+	 * @param three    - third dice id
+	 * @return         - score
 	 */
 	private int flashWithSun(Die[] ourDice, int one, int two, int three) {
 		int score = 0;
@@ -1388,25 +1267,32 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 				if (ourDice[two - 1].dieState == 1 && ourDice[three - 1].dieState == 1) {
 					isFlash = true;
 					score = 100;
-				} else if (ourDice[two - 1].dieState == 2 && ourDice[three - 1].dieState == 2) {
+				}
+				else if (ourDice[two - 1].dieState == 2 && ourDice[three - 1].dieState == 2) {
 					isFlash = true;
 					score = 20;
-				} else if (ourDice[two - 1].dieState == 3 && ourDice[three - 1].dieState == 3) {
+				}
+				else if (ourDice[two - 1].dieState == 3 && ourDice[three - 1].dieState == 3) {
 					isFlash = true;
 					score = 30;
-				} else if (ourDice[two - 1].dieState == 4 && ourDice[three - 1].dieState == 4) {
+				}
+				else if (ourDice[two - 1].dieState == 4 && ourDice[three - 1].dieState == 4) {
 					isFlash = true;
 					score = 40;
-				} else if (ourDice[two - 1].dieState == 5 && ourDice[three - 1].dieState == 5) {
+				}
+				else if (ourDice[two - 1].dieState == 5 && ourDice[three - 1].dieState == 5) {
 					isFlash = true;
 					score = 50;
-				} else if (ourDice[two - 1].dieState == 6 && ourDice[three - 1].dieState == 6) {
+				}
+				else if (ourDice[two - 1].dieState == 6 && ourDice[three - 1].dieState == 6) {
 					isFlash = true;
 					score = 60;
-				} else {
+				}
+				else {
 					score = -1;
 				}
-			} else {
+			}
+			else {
 				score = -1;
 			}
 		} else if (two == 3) {
@@ -1414,22 +1300,28 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 				if (ourDice[one - 1].dieState == 1 && ourDice[three - 1].dieState == 1) {
 					isFlash = true;
 					score = 100;
-				} else if (ourDice[one - 1].dieState == 2 && ourDice[three - 1].dieState == 2) {
+				}
+				else if (ourDice[one - 1].dieState == 2 && ourDice[three - 1].dieState == 2) {
 					isFlash = true;
 					score = 20;
-				} else if (ourDice[one - 1].dieState == 3 && ourDice[three - 1].dieState == 3) {
+				}
+				else if (ourDice[one - 1].dieState == 3 && ourDice[three - 1].dieState == 3) {
 					isFlash = true;
 					score = 30;
-				} else if (ourDice[one - 1].dieState == 4 && ourDice[three - 1].dieState == 4) {
+				}
+				else if (ourDice[one - 1].dieState == 4 && ourDice[three - 1].dieState == 4) {
 					isFlash = true;
 					score = 40;
-				} else if (ourDice[one - 1].dieState == 5 && ourDice[three - 1].dieState == 5) {
+				}
+				else if (ourDice[one - 1].dieState == 5 && ourDice[three - 1].dieState == 5) {
 					isFlash = true;
 					score = 50;
-				} else if (ourDice[one - 1].dieState == 6 && ourDice[three - 1].dieState == 6) {
+				}
+				else if (ourDice[one - 1].dieState == 6 && ourDice[three - 1].dieState == 6) {
 					isFlash = true;
 					score = 60;
-				} else {
+				}
+				else {
 					score = -1;
 				}
 			} else {
@@ -1440,28 +1332,36 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 				if (ourDice[two - 1].dieState == 1 && ourDice[one - 1].dieState == 1) {
 					isFlash = true;
 					score = 100;
-				} else if (ourDice[two - 1].dieState == 2 && ourDice[one - 1].dieState == 2) {
+				}
+				else if (ourDice[two - 1].dieState == 2 && ourDice[one - 1].dieState == 2) {
 					isFlash = true;
 					score = 20;
-				} else if (ourDice[two - 1].dieState == 3 && ourDice[one - 1].dieState == 3) {
+				}
+				else if (ourDice[two - 1].dieState == 3 && ourDice[one - 1].dieState == 3) {
 					isFlash = true;
 					score = 30;
-				} else if (ourDice[two - 1].dieState == 4 && ourDice[one - 1].dieState == 4) {
+				}
+				else if (ourDice[two - 1].dieState == 4 && ourDice[one - 1].dieState == 4) {
 					isFlash = true;
 					score = 40;
-				} else if (ourDice[two - 1].dieState == 5 && ourDice[one - 1].dieState == 5) {
+				}
+				else if (ourDice[two - 1].dieState == 5 && ourDice[one - 1].dieState == 5) {
 					isFlash = true;
 					score = 50;
-				} else if (ourDice[two - 1].dieState == 6 && ourDice[one - 1].dieState == 6) {
+				}
+				else if (ourDice[two - 1].dieState == 6 && ourDice[one - 1].dieState == 6) {
 					isFlash = true;
 					score = 60;
-				} else {
+				}
+				else {
 					score = -1;
 				}
-			} else {
+			}
+			else {
 				score = -1;
 			}
-		} else {
+		}
+		else {
 			score = -1;
 		}
 		return score;
@@ -1470,7 +1370,7 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 	/**
 	 * get turn score
 	 *
-	 * @return
+	 * @return turnScore
 	 */
 	public int getTurnScore() {
 		return this.turnScore;
@@ -1479,7 +1379,7 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 	/**
 	 * get isSuperNova boolean
 	 *
-	 * @return
+	 * @return isSuperNove
 	 */
 	public boolean getIsSuperNova() {
 		return this.isSuperNova;
@@ -1488,24 +1388,40 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 	/**
 	 * get isInstantWinner boolean
 	 *
-	 * @return
+	 * @return isInstantWinner
 	 */
 	public boolean getIsInstantWinner() {
 		return this.isInstantWinner;
 	}
 
+	/**
+	 * get diceArray array
+	 * @return diceArray
+	 */
 	public Die[] getDiceArray() {
 		return diceArray;
 	}
 
+	/**
+	 * get isFlash boolean
+	 * @return isFlash
+	 */
 	public boolean getIsFlash() {
 		return isFlash;
 	}
 
+	/**
+	 * get isFiveOf boolean
+	 * @return isFiveOf
+	 */
 	public boolean getIsFiveOf() {
 		return isFiveOf;
 	}
 
+	/**
+	 * checkAllFiveReRoll method returns a boolean
+	 * @return boolean value
+	 */
 	public boolean checkAllFiveReRoll() {
 		int tenCount = 0;
 		int fiveCount = 0;
@@ -1546,40 +1462,48 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 			for (int i = 0; i < this.diceArray.length; i++) {
 				if (this.diceArray[i].getDieState() == 1) {
 					tenCount1++;
-				} else if (this.diceArray[i].getDieState() == 5) {
+				}
+				else if (this.diceArray[i].getDieState() == 5) {
 					fiveCount1++;
 				}
 			}
 			if (tenCount1 == 2 || fiveCount1 == 2) {
 				isFlash = false;
 				return true;
-			} else if (fiveCount1 == 1 && tenCount1 == 1) {
+			}
+			else if (fiveCount1 == 1 && tenCount1 == 1) {
 				//isFlash = false;
 				return true;
 			}
-		} else {
+		}
+		else {
 			int tenCount2 = 0;
 			int fiveCount2 = 0;
 			for (int i = 0; i < this.diceArray.length; i++) {
 				if (this.diceArray[i].getDieState() == 1) {
 					tenCount2++;
-				} else if (this.diceArray[i].getDieState() == 5) {
+				}
+				else if (this.diceArray[i].getDieState() == 5) {
 					fiveCount2++;
 				}
 			}
 			if (tenCount == 5 || fiveCount == 5 || (tenCount == 4 && fiveCount == 1)
 					|| (tenCount == 3 && fiveCount == 2) || (tenCount == 2 && fiveCount == 3)
 					|| ((tenCount == 4 && fiveCount == 1))) {
-
 				return true;
-			} else {
+			}
+			else {
 				return false;
 			}
 		}
-
 		return false;
 	}
 
+	/**
+	 * check1Die method returns a boolean value
+	 * @param diceId  - id of first die
+	 * @return boolean value
+	 */
 	public boolean check1Die(int diceId) {
 		if (isFlash) {
 			int tenCount = 0;
@@ -1592,47 +1516,42 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 			for (int i = 0; i < this.diceArray.length; i++) {
 				if (this.diceArray[i].getDieState() == 1) {
 					tenCount++;
-				} else if (this.diceArray[i].getDieState() == 5) {
+				}
+				else if (this.diceArray[i].getDieState() == 5) {
 					fiveCount++;
-				} else if (this.diceArray[i].getDieState() == 2) {
+				}
+				else if (this.diceArray[i].getDieState() == 2) {
 					moonCount++;
-				} else if (this.diceArray[i].getDieState() == 3) {
+				}
+				else if (this.diceArray[i].getDieState() == 3) {
 					if (i != 3) {
 						triangleCount++;
 					}
-				} else if (this.diceArray[i].getDieState() == 4) {
+				}
+				else if (this.diceArray[i].getDieState() == 4) {
 					boltCount++;
-				} else if (this.diceArray[i].getDieState() == 6) {
+				}
+				else if (this.diceArray[i].getDieState() == 6) {
 					starCount++;
 				}
 			}
 
 			if (moonCount == 3 || (moonCount == 2 && this.diceArray[2].getDieState() == 3)) {
 				if (this.diceArray[diceId].getDieState() == 2) {
-//					if(this.diceArray[diceId].getDieState() == 5 ||
-//							this.diceArray[diceId].getDieState() == 1){
-//						this.diceArray[diceId].setCanReroll(false);
-//					}else this.diceArray[diceId].setCanReroll(true);
-
 					return false;
 				}
-			} else if (triangleCount == 3 || (triangleCount == 2 && this.diceArray[2].getDieState() == 3)) {
+			}
+			else if (triangleCount == 3 || (triangleCount == 2 && this.diceArray[2].getDieState() == 3)) {
 				if (this.diceArray[diceId].getDieState() == 3) {
-//					if(this.diceArray[diceId].getDieState() == 5 ||
-//							this.diceArray[diceId].getDieState() == 1){
-//						this.diceArray[diceId].setCanReroll(false);
-//					}else this.diceArray[diceId].setCanReroll(true);
 					return false;
 				}
-			} else if (boltCount == 3 || (boltCount == 2 && this.diceArray[2].getDieState() == 3)) {
+			}
+			else if (boltCount == 3 || (boltCount == 2 && this.diceArray[2].getDieState() == 3)) {
 				if (this.diceArray[diceId].getDieState() == 4) {
-//					if(this.diceArray[diceId].getDieState() == 5 ||
-//							this.diceArray[diceId].getDieState() == 1){
-//						this.diceArray[diceId].setCanReroll(false);
-//					}else this.diceArray[diceId].setCanReroll(true);
 					return false;
 				}
-			} else if (starCount == 3 || (starCount == 2 && this.diceArray[2].getDieState() == 3)) {
+			}
+			else if (starCount == 3 || (starCount == 2 && this.diceArray[2].getDieState() == 3)) {
 				if (this.diceArray[diceId].getDieState() == 6) {
 					if(this.diceArray[diceId].getDieState() == 5 ||
 							this.diceArray[diceId].getDieState() == 1){
@@ -1640,27 +1559,28 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 					}else this.diceArray[diceId].setCanReroll(true);
 					return false;
 				}
-			} else if (this.diceArray[diceId].getDieState() == 1 ||
+			}
+			else if (this.diceArray[diceId].getDieState() == 1 ||
 					this.diceArray[diceId].getDieState() == 5) {
-//				if(this.diceArray[diceId].getDieState() == 5 ||
-//						this.diceArray[diceId].getDieState() == 1){
-//					this.diceArray[diceId].setCanReroll(false);
-//				}else this.diceArray[diceId].setCanReroll(true);
 				return false;
-			} else {
+			}
+			else {
 				return true;
 			}
-		} else if (this.diceArray[diceId].getDieState() == 1 ||
+		}
+		else if (this.diceArray[diceId].getDieState() == 1 ||
 				this.diceArray[diceId].getDieState() == 5) {
-//			if(this.diceArray[diceId].getDieState() == 5 ||
-//					this.diceArray[diceId].getDieState() == 1){
-//				this.diceArray[diceId].setCanReroll(false);
-//			}else this.diceArray[diceId].setCanReroll(true);
 			return false;
 		}
 		return true;
 	}
 
+	/**
+	 * check2Dice method returns a boolean value
+	 * @param die1 - id of first die
+	 * @param die2 - id of second die
+	 * @return     - boolean value
+	 */
 	public boolean check2Dice(int die1, int die2) {
 		if (isFlash) {
 			int tenCount = 0;
@@ -1673,108 +1593,77 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 			for (int i = 0; i < this.diceArray.length; i++) {
 				if (this.diceArray[i].getDieState() == 1) {
 					tenCount++;
-				} else if (this.diceArray[i].getDieState() == 5) {
+				}
+				else if (this.diceArray[i].getDieState() == 5) {
 					fiveCount++;
-				} else if (this.diceArray[i].getDieState() == 2) {
+				}
+				else if (this.diceArray[i].getDieState() == 2) {
 					moonCount++;
-				} else if (this.diceArray[i].getDieState() == 3) {
+				}
+				else if (this.diceArray[i].getDieState() == 3) {
 					if (i != 3) {
 						triangleCount++;
 					}
-				} else if (this.diceArray[i].getDieState() == 4) {
+				}
+				else if (this.diceArray[i].getDieState() == 4) {
 					boltCount++;
-				} else if (this.diceArray[i].getDieState() == 6) {
+				}
+				else if (this.diceArray[i].getDieState() == 6) {
 					starCount++;
 				}
 			}
 			if (moonCount == 3 || (moonCount == 2 && this.diceArray[2].getDieState() == 3)) {
 				if (this.diceArray[die1].getDieState() == 2 ||
 						this.diceArray[die2].getDieState() == 2) {
-//					if(this.diceArray[die1].getDieState() == 5 ||
-//							this.diceArray[die1].getDieState() == 1){
-//						this.diceArray[die1].setCanReroll(false);
-//					}else this.diceArray[die1].setCanReroll(true);
-//					if(this.diceArray[die2].getDieState() == 5 ||
-//							this.diceArray[die2].getDieState() == 1) {
-//						this.diceArray[die2].setCanReroll(false);
-//					}else this.diceArray[die2].setCanReroll(true);
 					return false;
 				}
-			} else if (triangleCount == 3 || (triangleCount == 2 &&
+			}
+			else if (triangleCount == 3 || (triangleCount == 2 &&
                     this.diceArray[2].getDieState() == 3)) {
 				if (this.diceArray[die1].getDieState() == 3 ||
 						this.diceArray[die2].getDieState() == 3) {
-//					if(this.diceArray[die1].getDieState() == 5 ||
-//							this.diceArray[die1].getDieState() == 1){
-//						this.diceArray[die1].setCanReroll(false);
-//					}else this.diceArray[die1].setCanReroll(true);
-//					if(this.diceArray[die2].getDieState() == 5 ||
-//							this.diceArray[die2].getDieState() == 1) {
-//						this.diceArray[die2].setCanReroll(false);
-//					}else this.diceArray[die2].setCanReroll(true);
 					return false;
 				}
-			} else if (boltCount == 3 || (boltCount == 2 &&
+			}
+			else if (boltCount == 3 || (boltCount == 2 &&
                     this.diceArray[2].getDieState() == 3)) {
 				if (this.diceArray[die1].getDieState() == 4 ||
 						this.diceArray[die2].getDieState() == 4) {
-//					if(this.diceArray[die1].getDieState() == 5 ||
-//							this.diceArray[die1].getDieState() == 1){
-//						this.diceArray[die1].setCanReroll(false);
-//					}else this.diceArray[die1].setCanReroll(true);
-//					if(this.diceArray[die2].getDieState() == 5 ||
-//							this.diceArray[die2].getDieState() == 1) {
-//						this.diceArray[die2].setCanReroll(false);
-//					}else this.diceArray[die2].setCanReroll(true);
-//					return false;
 				}
-			} else if (starCount == 3 || (starCount == 2 &&
+			}
+			else if (starCount == 3 || (starCount == 2 &&
                     this.diceArray[2].getDieState() == 3)) {
 				if (this.diceArray[die1].getDieState() == 6 ||
 						this.diceArray[die2].getDieState() == 6) {
-//					if(this.diceArray[die1].getDieState() == 5 ||
-//							this.diceArray[die1].getDieState() == 1){
-//						this.diceArray[die1].setCanReroll(false);
-//					}else this.diceArray[die1].setCanReroll(true);
-//					if(this.diceArray[die2].getDieState() == 5 ||
-//							this.diceArray[die2].getDieState() == 1) {
-//						this.diceArray[die2].setCanReroll(false);
-//					}else this.diceArray[die2].setCanReroll(true);
 					return false;
 				}
-			} else if (this.diceArray[die1].getDieState() == 1 ||
+			}
+			else if (this.diceArray[die1].getDieState() == 1 ||
 					this.diceArray[die1].getDieState() == 5 ||
 					this.diceArray[die2].getDieState() == 1 ||
 					this.diceArray[die2].getDieState() == 5) {
-//				if(this.diceArray[die1].getDieState() == 5 ||
-//						this.diceArray[die1].getDieState() == 1){
-//					this.diceArray[die1].setCanReroll(false);
-//				}else this.diceArray[die1].setCanReroll(true);
-//				if(this.diceArray[die2].getDieState() == 5 ||
-//						this.diceArray[die2].getDieState() == 1) {
-//					this.diceArray[die2].setCanReroll(false);
-//				}else this.diceArray[die2].setCanReroll(true);
 				return false;
 			}
 			return true;
-		} else if (this.diceArray[die1].getDieState() == 1 ||
+		}
+		else if (this.diceArray[die1].getDieState() == 1 ||
 				this.diceArray[die1].getDieState() == 5 ||
 				this.diceArray[die2].getDieState() == 1 ||
 				this.diceArray[die2].getDieState() == 5) {
-//			if(this.diceArray[die1].getDieState() == 5 ||
-//					this.diceArray[die1].getDieState() == 1){
-//				this.diceArray[die1].setCanReroll(false);
-//			}else this.diceArray[die1].setCanReroll(true);
-//			if(this.diceArray[die2].getDieState() == 5 ||
-//					this.diceArray[die2].getDieState() == 1) {
-//				this.diceArray[die2].setCanReroll(false);
-//			}else this.diceArray[die2].setCanReroll(true);
 			return false;
-		} else {
+		}
+		else {
 			return true;
 		}
 	}
 
+	/**
+	 * check3Dice method returns boolean value
+	 * @param die1 - id of first die
+	 * @param die2 - id of second die
+	 * @param die3 - id of third die
+	 * @return     - boolean value
+	 */
 	public boolean check3Dice(int die1, int die2, int die3) {
 		if (isFlash) {
 			int tenCount = 0;
@@ -1787,17 +1676,22 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 			for (int i = 0; i < this.diceArray.length; i++) {
 				if (this.diceArray[i].getDieState() == 1) {
 					tenCount++;
-				} else if (this.diceArray[i].getDieState() == 5) {
+				}
+				else if (this.diceArray[i].getDieState() == 5) {
 					fiveCount++;
-				} else if (this.diceArray[i].getDieState() == 2) {
+				}
+				else if (this.diceArray[i].getDieState() == 2) {
 					moonCount++;
-				} else if (this.diceArray[i].getDieState() == 3) {
+				}
+				else if (this.diceArray[i].getDieState() == 3) {
 					if (i != 3) {
 						triangleCount++;
 					}
-				} else if (this.diceArray[i].getDieState() == 4) {
+				}
+				else if (this.diceArray[i].getDieState() == 4) {
 					boltCount++;
-				} else if (this.diceArray[i].getDieState() == 6) {
+				}
+				else if (this.diceArray[i].getDieState() == 6) {
 					starCount++;
 				}
 			}
@@ -1805,97 +1699,42 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 				if (this.diceArray[die1].getDieState() == 2 ||
 						this.diceArray[die2].getDieState() == 2 ||
 						this.diceArray[die3].getDieState() == 2) {
-//					if(this.diceArray[die1].getDieState() == 5 ||
-//							this.diceArray[die1].getDieState() == 1){
-//						this.diceArray[die1].setCanReroll(false);
-//					}else this.diceArray[die1].setCanReroll(true);
-//					if(this.diceArray[die2].getDieState() == 5 ||
-//							this.diceArray[die2].getDieState() == 1){
-//						this.diceArray[die2].setCanReroll(false);
-//					}else this.diceArray[die1].setCanReroll(true);
-//					if(this.diceArray[die3].getDieState() == 5 ||
-//							this.diceArray[die3].getDieState() == 1){
-//						this.diceArray[die3].setCanReroll(false);
-//					} else this.diceArray[die3].setCanReroll(true);
 					return false;
 				}
-			} else if (triangleCount == 3 || (triangleCount == 2 && this.diceArray[2].getDieState() == 3)) {
+			}
+			else if (triangleCount == 3 || (triangleCount == 2 && this.diceArray[2].getDieState() == 3)) {
 				if (this.diceArray[die1].getDieState() == 3 ||
 						this.diceArray[die2].getDieState() == 3 ||
 						this.diceArray[die3].getDieState() == 3) {
                     this.diceArray[die1].setCanReroll(true);
                     this.diceArray[die2].setCanReroll(true);
                     this.diceArray[die3].setCanReroll(true);
-//					if(this.diceArray[die1].getDieState() == 5 ||
-//							this.diceArray[die1].getDieState() == 1){
-//						this.diceArray[die1].setCanReroll(false);
-//					}else this.diceArray[die1].setCanReroll(true);
-//					if(this.diceArray[die2].getDieState() == 5 ||
-//							this.diceArray[die2].getDieState() == 1){
-//						this.diceArray[die2].setCanReroll(false);
-//					}else this.diceArray[die1].setCanReroll(true);
-//					if(this.diceArray[die3].getDieState() == 5 ||
-//							this.diceArray[die3].getDieState() == 1){
-//						this.diceArray[die3].setCanReroll(false);
-//					} else this.diceArray[die3].setCanReroll(true);
 					return false;
 				}
-			} else if (boltCount == 3 || (boltCount == 2 && this.diceArray[2].getDieState() == 3)) {
+			}
+			else if (boltCount == 3 || (boltCount == 2 && this.diceArray[2].getDieState() == 3)) {
 				if (this.diceArray[die1].getDieState() == 4 ||
 						this.diceArray[die2].getDieState() == 4 ||
 						this.diceArray[die3].getDieState() == 4) {
-//					if(this.diceArray[die1].getDieState() == 5 ||
-//							this.diceArray[die1].getDieState() == 1){
-//						this.diceArray[die1].setCanReroll(false);
-//					}else this.diceArray[die1].setCanReroll(true);
-//					if(this.diceArray[die2].getDieState() == 5 ||
-//							this.diceArray[die2].getDieState() == 1){
-//						this.diceArray[die2].setCanReroll(false);
-//					}else this.diceArray[die1].setCanReroll(true);
-//					if(this.diceArray[die3].getDieState() == 5 ||
-//							this.diceArray[die3].getDieState() == 1){
-//						this.diceArray[die3].setCanReroll(false);
-//					} else this.diceArray[die3].setCanReroll(true);
 					return false;
 				}
-			} else if (starCount == 3 || (starCount == 2 && this.diceArray[2].getDieState() == 3)) {
+			}
+			else if (starCount == 3 || (starCount == 2 && this.diceArray[2].getDieState() == 3)) {
 				if (this.diceArray[die1].getDieState() == 6 ||
 						this.diceArray[die2].getDieState() == 6 ||
 						this.diceArray[die3].getDieState() == 6) {
-//					if(this.diceArray[die1].getDieState() == 5 ||
-//							this.diceArray[die1].getDieState() == 1){
-//						this.diceArray[die1].setCanReroll(false);
-//					}else this.diceArray[die1].setCanReroll(true);
-//					if(this.diceArray[die2].getDieState() == 5 ||
-//							this.diceArray[die2].getDieState() == 1){
-//						this.diceArray[die2].setCanReroll(false);
-//					}else this.diceArray[die1].setCanReroll(true);
-//					if(this.diceArray[die3].getDieState() == 5 ||
-//							this.diceArray[die3].getDieState() == 1){
-//						this.diceArray[die3].setCanReroll(false);
-//					} else this.diceArray[die3].setCanReroll(true);
 					return false;
 				}
-			} else if (this.diceArray[die1].getDieState() == 1 ||
+			}
+			else if (this.diceArray[die1].getDieState() == 1 ||
 					this.diceArray[die1].getDieState() == 5 ||
 					this.diceArray[die2].getDieState() == 1 ||
 					this.diceArray[die2].getDieState() == 5 ||
 					this.diceArray[die3].getDieState() == 1 ||
 					this.diceArray[die3].getDieState() == 5) {
-//				if(this.diceArray[die1].getDieState() == 5 ||
-//						this.diceArray[die1].getDieState() == 1){
-//					this.diceArray[die1].setCanReroll(false);
-//				}else this.diceArray[die1].setCanReroll(true);
-//				if(this.diceArray[die2].getDieState() == 5 ||
-//						this.diceArray[die2].getDieState() == 1){
-//					this.diceArray[die2].setCanReroll(false);
-//				}else this.diceArray[die1].setCanReroll(true);
-//				if(this.diceArray[die3].getDieState() == 5 ||
-//						this.diceArray[die3].getDieState() == 1){
-//					this.diceArray[die3].setCanReroll(false);
-//				} else this.diceArray[die3].setCanReroll(true);
 				return false;
-			} else {
+			}
+			else {
 				return true;
 			}
 		} else if (this.diceArray[die1].getDieState() == 1 ||
@@ -1904,25 +1743,22 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 				this.diceArray[die2].getDieState() == 5 ||
 				this.diceArray[die3].getDieState() == 1 ||
 				this.diceArray[die3].getDieState() == 5) {
-//			if(this.diceArray[die1].getDieState() == 5 ||
-//					this.diceArray[die1].getDieState() == 1){
-//				this.diceArray[die1].setCanReroll(false);
-//			}else this.diceArray[die1].setCanReroll(true);
-//			if(this.diceArray[die2].getDieState() == 5 ||
-//					this.diceArray[die2].getDieState() == 1){
-//				this.diceArray[die2].setCanReroll(false);
-//			}else this.diceArray[die1].setCanReroll(true);
-//			if(this.diceArray[die3].getDieState() == 5 ||
-//					this.diceArray[die3].getDieState() == 1){
-//				this.diceArray[die3].setCanReroll(false);
-//			} else this.diceArray[die3].setCanReroll(true);
             return false;
-		} else {
+		}
+		else {
 			return true;
 		}
-
 		return false;
 	}
+
+	/**
+	 * check4Dice method returns a boolean value
+	 * @param die1  - id of first die
+	 * @param die2  - id of second die
+	 * @param die3  - id of third die
+	 * @param die4  - id of fourth die
+	 * @return      - boolean value
+	 */
 	public boolean check4Dice(int die1, int die2, int die3, int die4) {
 		if (isFlash) {
 			int tenCount = 0;
@@ -1935,17 +1771,22 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 			for (int i = 0; i < this.diceArray.length; i++) {
 				if (this.diceArray[i].getDieState() == 1) {
 					tenCount++;
-				} else if (this.diceArray[i].getDieState() == 5) {
+				}
+				else if (this.diceArray[i].getDieState() == 5) {
 					fiveCount++;
-				} else if (this.diceArray[i].getDieState() == 2) {
+				}
+				else if (this.diceArray[i].getDieState() == 2) {
 					moonCount++;
-				} else if (this.diceArray[i].getDieState() == 3) {
+				}
+				else if (this.diceArray[i].getDieState() == 3) {
 					if (i != 3) {
 						triangleCount++;
 					}
-				} else if (this.diceArray[i].getDieState() == 4) {
+				}
+				else if (this.diceArray[i].getDieState() == 4) {
 					boltCount++;
-				} else if (this.diceArray[i].getDieState() == 6) {
+				}
+				else if (this.diceArray[i].getDieState() == 6) {
 					starCount++;
 				}
 			}
@@ -1954,48 +1795,34 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 						this.diceArray[die2].getDieState() == 2 ||
 						this.diceArray[die3].getDieState() == 2 ||
 						this.diceArray[die4].getDieState() == 2) {
-//					if(this.diceArray[die1].getDieState() == 5 ||
-//							this.diceArray[die1].getDieState() == 1){
-//						this.diceArray[die1].setCanReroll(false);
-//					}else this.diceArray[die1].setCanReroll(true);
-//					if(this.diceArray[die2].getDieState() == 5 ||
-//							this.diceArray[die2].getDieState() == 1){
-//						this.diceArray[die2].setCanReroll(false);
-//					}else this.diceArray[die1].setCanReroll(true);
-//					if(this.diceArray[die3].getDieState() == 5 ||
-//							this.diceArray[die3].getDieState() == 1){
-//						this.diceArray[die3].setCanReroll(false);
-//					} else this.diceArray[die3].setCanReroll(true);
-//					if(this.diceArray[die4].getDieState() == 5 ||
-//							this.diceArray[die4].getDieState() == 1){
-//						this.diceArray[die4].setCanReroll(false);
-//					} else this.diceArray[die4].setCanReroll(true);
-
 					return false;
 				}
-			} else if (triangleCount == 3 || (triangleCount == 2 && this.diceArray[2].getDieState() == 3)) {
+			}
+			else if (triangleCount == 3 || (triangleCount == 2 && this.diceArray[2].getDieState() == 3)) {
 				if (this.diceArray[die1].getDieState() == 3 ||
 						this.diceArray[die2].getDieState() == 3 ||
 						this.diceArray[die3].getDieState() == 3 ||
 						this.diceArray[die4].getDieState() == 3) {
-
 					return false;
 				}
-			} else if (boltCount == 3 || (boltCount == 2 && this.diceArray[2].getDieState() == 3)) {
+			}
+			else if (boltCount == 3 || (boltCount == 2 && this.diceArray[2].getDieState() == 3)) {
 				if (this.diceArray[die1].getDieState() == 4 ||
 						this.diceArray[die2].getDieState() == 4 ||
 						this.diceArray[die3].getDieState() == 4 ||
 						this.diceArray[die4].getDieState() == 4) {
 					return false;
 				}
-			} else if (starCount == 3 || (starCount == 2 && this.diceArray[2].getDieState() == 3)) {
+			}
+			else if (starCount == 3 || (starCount == 2 && this.diceArray[2].getDieState() == 3)) {
 				if (this.diceArray[die1].getDieState() == 6 ||
 						this.diceArray[die2].getDieState() == 6 ||
 						this.diceArray[die3].getDieState() == 6 ||
 						this.diceArray[die4].getDieState() == 6) {
 					return false;
 				}
-			} else if (this.diceArray[die1].getDieState() == 1 ||
+			}
+			else if (this.diceArray[die1].getDieState() == 1 ||
 					this.diceArray[die1].getDieState() == 5 ||
 					this.diceArray[die2].getDieState() == 1 ||
 					this.diceArray[die2].getDieState() == 5 ||
@@ -2004,10 +1831,12 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 					this.diceArray[die4].getDieState() == 1 ||
 					this.diceArray[die4].getDieState() == 5) {
 				return false;
-			} else {
+			}
+			else {
 				return true;
 			}
-		} else if (this.diceArray[die1].getDieState() == 1 ||
+		}
+		else if (this.diceArray[die1].getDieState() == 1 ||
 				this.diceArray[die1].getDieState() == 5 ||
 				this.diceArray[die2].getDieState() == 1 ||
 				this.diceArray[die2].getDieState() == 5 ||
@@ -2016,31 +1845,65 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 				this.diceArray[die4].getDieState() == 1 ||
 				this.diceArray[die4].getDieState() == 5) {
 			return false;
-		} else {
+		}
+		else {
 			return true;
 		}
-
 		return false;
 	}
 
+	/**
+	 * get isWimpout boolean
+	 * @return isWimpout
+	 */
 	public boolean getIsWimpout(){
 	    return this.isWimpout;
     }
-    public boolean isDie1ReRoll() {
+
+	/**
+	 * get die1ReRoll boolean
+	 * @return die1ReRoll
+	 */
+	public boolean isDie1ReRoll() {
         return die1ReRoll;
     }
+
+	/**
+	 * get die2ReRoll boolean
+	 * @return die2ReRoll
+	 */
     public boolean isDie2ReRoll() {
         return die2ReRoll;
     }
+
+	/**
+	 * get die3ReRoll boolean
+	 * @return die3ReRoll
+	 */
     public boolean isDie3ReRoll() {
         return die3ReRoll;
     }
+
+	/**
+	 * get die4ReRoll boolean
+	 * @return die4ReRoll
+	 */
     public boolean isDie4ReRoll() {
         return die4ReRoll;
     }
+
+	/**
+	 * get die5ReRoll boolean
+	 * @return die5ReRoll
+	 */
     public boolean isDie5ReRoll() {
         return die5ReRoll;
     }
+
+	/**
+	 * flashReRoll method
+	 * @return reRolls
+	 */
 	public boolean[] flashReRoll() {
 		boolean[] reRolls = new boolean[5];
 		if (isFlash) {
@@ -2213,6 +2076,10 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 		return reRolls;
 	}
 
+	/**
+	 * setter method setIsFlash
+	 * @param flash - holds true or false depending if there is a flash or not
+	 */
 	public void setIsFlash(boolean flash){
 		this.isFlash = flash;
 	}

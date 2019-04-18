@@ -5,25 +5,26 @@ import java.io.Serializable;
 import edu.up.cs301.game.GamePlayer;
 import edu.up.cs301.game.actionMsg.GameAction;
 
+/**
+ * this class holds all the cosmic wimpout game actions
+ *
+ * @author Kayla Moore, Olivia Dendinger, Sam Lemly, David Campbell
+ * @version March 2019
+ */
+
 public class CosmicWimpoutActions extends GameAction implements Serializable {
 
     // to satisfy the serializable interface
     private static final long serialVersionUID = 28062013L;
-
-    //whether this move is a plus (true) or minus (false)
-    private boolean isPlus;
 
     /**
      * Constructor for the CounterMoveAction class.
      *
      * @param player
      *            the player making the move
-     * @param isPlus
-     *            value to initialize this.isPlus
      */
-    public CosmicWimpoutActions(GamePlayer player, boolean isPlus) {
+    public CosmicWimpoutActions(GamePlayer player) {
         super(player);
-        this.isPlus = isPlus;
     }
 
     /**
@@ -65,15 +66,5 @@ public class CosmicWimpoutActions extends GameAction implements Serializable {
      */
     public boolean rollSingleDie(int playerId, int id ){
         return false;
-    }
-    /**
-     * getter method, to tell whether the move is a "plus"
-     *
-     * @return
-     * 		a boolean that tells whether this move is a "plus"
-     */
-    public boolean isPlus() {
-        return isPlus;
-
     }
 }

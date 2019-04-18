@@ -9,18 +9,16 @@ import java.io.Serializable;
 
 /**
  * A class that represents the state of a game.
- * 
- * @author Sam Lemly
- *  @author Olivia Dendinger
- *  @author David Campbell
- *  @author Kayla Moore
- *  * @version March 2019
+ *
+ * @author Kayla Moore, Olivia Dendinger, Sam Lemly, David Campbell
+ *  @version April 2019
  */
 public class CosmicWimpoutLocalGame extends LocalGame implements Serializable {
 
 	// When a cosmic wimpout game is played, any number of players.
 	// both players are trying to get to the TARGET_MAGNITUDE.
 	public static final int TARGET_MAGNITUDE = 500;
+	//serializable id
 	private static final long serialVersionUID= 109876254625L;
 	// the game's state
 	private CosmicWimpoutState gameState;
@@ -41,7 +39,7 @@ public class CosmicWimpoutLocalGame extends LocalGame implements Serializable {
 	}
 
 	/**
-	 * This should be called when a new cosmic wimpout game
+	 * Ctor. This should be called when a new cosmic wimpout game
 	 * is created
 	 */
 	public CosmicWimpoutLocalGame() {
@@ -80,8 +78,7 @@ public class CosmicWimpoutLocalGame extends LocalGame implements Serializable {
 			return this.gameState.rollSelectedDice(whoseTurn, act.getDie1(), act.getDie2(), act.getDie3(),
 					act.getDie4(), act.getDie5());
 		}
-		//illegal move
-		return false;
+		return false; //illegal move
 	}//makeMove
 	
 	/**
@@ -147,11 +144,9 @@ public class CosmicWimpoutLocalGame extends LocalGame implements Serializable {
 				return playerNames[3] + " has won";
 			}
 		}
-
 			// game is still between the two limit: return null, as the game
 			// is not yet over
 			return null;
-
 	}
 
 }// class CosmicWimpoutLocalGame

@@ -8,11 +8,14 @@ import java.io.Serializable;
  * Player is essentially what will be in our human player and computer player
  * classes in the game framework. We only care about the player and their score.
  *
- * @Authors: Olivia Dendinger, Sam Lemly, David Campbell, and Kayla Moore
+ * @author Olivia Dendinger, Kayla Moore, Sam Lemly, David Campbell
+ *   @version April 2019
  */
 
 public class Player implements Serializable {
+    //serializable id
     private static final long serialVersionUID= 38527183904L;
+
     //initializing variables
     private int playerID;
     private int score;

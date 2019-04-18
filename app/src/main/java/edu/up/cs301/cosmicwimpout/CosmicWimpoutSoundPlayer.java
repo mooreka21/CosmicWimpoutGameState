@@ -29,6 +29,11 @@ public class CosmicWimpoutSoundPlayer implements Serializable {
     private int winner;
     private int loser;
 
+    /**
+     * Ctor for CosmicWimpoutSoundPlayer
+     *
+     * @param context - context of the sound player (activity)
+     */
     public CosmicWimpoutSoundPlayer(Context context) {
         //initialize soundPool player
         soundPool = new SoundPool(8, AudioManager.STREAM_MUSIC, 0);
@@ -44,34 +49,58 @@ public class CosmicWimpoutSoundPlayer implements Serializable {
         loser = soundPool.load(context, R.raw.lose_sound, 1);
     }
 
+    /**
+     * playOneDie method is void and has no parameters, it plays the oneDie rolling sound effect
+     */
     public void playOneDie(){
         soundPool.play(oneDie, 1.0f, 1.0f, 1, 0,1.0f);
     }
 
+    /**
+     * playTwoDice method is void and has no parameters, it plays the twoDice rolling sound effect
+     */
     public void playTwoDice(){
         soundPool.play(twoDice, 1.0f, 1.0f, 1, 0,1.0f);
     }
 
+    /**
+     * playThreeDice method is void and has no parameters, it plays the threeDice rolling sound effect
+     */
     public void playThreeDice(){
         soundPool.play(threeDice, 1.0f, 1.0f, 1, 0,1.0f);
     }
 
+    /**
+     * playFourDice method is void and has no parameters, it plays the fourDice rolling sound effect
+     */
     public void playFourDice(){
         soundPool.play(fourDice, 1.0f, 1.0f, 1, 0,1.0f);
     }
 
+    /**
+     * playFiveDice method is void and has no parameters, it plays the fiveDice rolling sound effect
+     */
     public void playFiveDice(){
         soundPool.play(fiveDice, 1.0f, 1.0f, 1, 0,1.0f);
     }
 
+    /**
+     * playBackground method is void and has no parameters, it plays the background music
+     */
     public void playBackground(){
         soundPool.play(background, 0.1f, 0.1f, 1, 0,1.0f);
     }
 
+    /**
+     * playWinner method is void and has no parameters, it plays the winner sound effect
+     */
     public void playWinner(){
         soundPool.play(winner, 1.0f, 1.0f, 1, 0,1.0f);
     }
 
+    /**
+     * playLoser method is void and has no parameters, it plays the loser sound effect
+     */
     public void playLoser(){
         soundPool.play(loser, 1.0f, 1.0f, 1, 0,1.0f);
     }

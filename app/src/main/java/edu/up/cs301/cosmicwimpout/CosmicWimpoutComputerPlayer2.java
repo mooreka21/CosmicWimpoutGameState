@@ -8,7 +8,6 @@ import android.os.Handler;
 import android.util.Log;
 import android.widget.TextView;
 
-import java.io.Console;
 import java.io.Serializable;
 
 
@@ -20,11 +19,8 @@ import java.io.Serializable;
 * device, this player will display a GUI that shows the value of the counter
 * as the game is being played.
 * 
-*@author Sam Lemly
-* @author Olivia Dendinger
- * @author David Campbell
- * @author Kayla Moore
- * @version March 2019
+* @author Sam Lemly, Olivia Dendinger, David Campbell, Kayla Moore
+*  @version April 2019
 */
 public class CosmicWimpoutComputerPlayer2 extends CosmicWimpoutComputerPlayer implements Serializable {
 

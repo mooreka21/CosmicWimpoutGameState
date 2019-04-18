@@ -8,28 +8,17 @@ import java.io.Serializable;
  * Dice allows us to access the state of the dice after it has been rolled.
  * as well as retrieve which dice we are looking at.
  *
- * @Authors: Olivia Dendinger, Sam Lemly, David Campbell, and Kayla Moore
+ * @author Olivia Dendinger, Kayla Moore, Sam Lemly, David Campbell
+ *   @version April 2019
  */
 
 public class Die implements Serializable {
+    //serializable id
     private static final long serialVersionUID= 382491574830L;
     //initializing variables
     protected int dieState;
     protected int dieID;
-
-
-
     protected boolean canReroll;
-
-    public boolean getCanReroll() {
-        return canReroll;
-    }
-
-    public void setCanReroll(boolean canReroll) {
-        this.canReroll = canReroll;
-    }
-
-
 
     /**
      * Dice constructor
@@ -37,19 +26,35 @@ public class Die implements Serializable {
      */
     public Die(int ID){
         this.dieID = ID;
-       // dieState = 1;
+        // dieState = 1;
     }
 
     /**
-     * getDiceState method gets the current state of the die
-     * @return diceState
+     * getCanReroll method is used to determine if a player can re-roll the dice
+     * @return canReroll
+     */
+    public boolean getCanReroll() {
+        return canReroll;
+    }
+
+    /**
+     * setCanReroll is a setter method that sets if a player can re-roll the dice
+     * @param canReroll
+     */
+    public void setCanReroll(boolean canReroll) {
+        this.canReroll = canReroll;
+    }
+
+    /**
+     * getDieState method gets the current state of the die
+     * @return dieState
      */
     public int getDieState(){
         return dieState;
     }
 
     /**
-     * setDiceID sets the ID of the current die
+     * setDieID sets the ID of the current die
      * @param newid
      */
     public void setDieID(int newid){
@@ -71,7 +76,7 @@ public class Die implements Serializable {
     /**
      * getValAsString returns the name of each respective
      * side of the current die.
-     * @return
+     * @return a String value
      */
     public String getValAsString(){
         switch (this.dieState) {
