@@ -12,8 +12,13 @@ import edu.up.cs301.game.actionMsg.GameAction;
  * @version March 2019
  */
 public class CosmicWimpoutActionEndGame extends GameAction implements Serializable {
+    //seralizable id
     private static final long serialVersionUID= 210598428L;
-    //invokes super constructor
+
+    /**
+     * Ctor for CosmicWimpoutActionEndGame invokes super constructor
+     * @param player - current player
+     */
     public CosmicWimpoutActionEndGame(GamePlayer player){
         super(player);
     }

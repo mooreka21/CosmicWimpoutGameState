@@ -51,11 +51,7 @@ public class CosmicWimpoutActions extends GameAction implements Serializable {
      * @param playerId
      * @return true if legal move
      */
-    public boolean endTurn(int playerId) {
-
-
-        return false;
-    }
+    public boolean endTurn(int playerId) { return false; }
 
     /**
      * Rolls only a single dice
