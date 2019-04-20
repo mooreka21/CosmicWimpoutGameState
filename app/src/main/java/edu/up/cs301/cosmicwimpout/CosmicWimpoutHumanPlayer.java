@@ -799,6 +799,8 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 
 		//initializes media player and plays background music
 		music = MediaPlayer.create(myActivity, R.raw.bensound_theelevatorbossanova);
+		music.setLooping(true);
+		music.setVolume(.25f, .25f);
 		music.start();
 
 		// Load the layout resource for our GUI
