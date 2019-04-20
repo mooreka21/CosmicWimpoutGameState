@@ -44,7 +44,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:background="#ffcecece"
+        android:background="#FFB7B1A3"
         android:orientation="horizontal">
 
         <TextView
@@ -113,7 +113,7 @@
         <ImageView
             android:id="@+id/die1"
             android:layout_width="wrap_content"
-            android:layout_height="80dp"
+            android:layout_height="100dp"
             android:layout_weight="1"
             android:src="@drawable/bolts" />
 
@@ -122,7 +122,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0.3"
-            android:text="Select This Dice" />
+            android:text="Select This Die" />
 
     </LinearLayout>
 
@@ -137,7 +137,7 @@
         <ImageView
             android:id="@+id/die2"
             android:layout_width="wrap_content"
-            android:layout_height="80dp"
+            android:layout_height="100dp"
             android:layout_weight="1"
             android:src="@drawable/halfcircles" />
 
@@ -161,7 +161,7 @@
         <ImageView
             android:id="@+id/die3"
             android:layout_width="wrap_content"
-            android:layout_height="80dp"
+            android:layout_height="100dp"
             android:layout_weight="1"
             android:src="@drawable/five" />
 
@@ -185,7 +185,7 @@
         <ImageView
             android:id="@+id/die4"
             android:layout_width="wrap_content"
-            android:layout_height="80dp"
+            android:layout_height="100dp"
             android:layout_weight="1"
             android:src="@drawable/stars" />
 
@@ -209,7 +209,7 @@
         <ImageView
             android:id="@+id/die5"
             android:layout_width="wrap_content"
-            android:layout_height="80dp"
+            android:layout_height="100dp"
             android:layout_weight="1"
             android:src="@drawable/blackbolt" />
 
@@ -232,28 +232,44 @@
             android:id="@+id/rollDiceButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="5dp"
             android:layout_weight="1"
+            android:alpha="1"
+            android:background="#FFB7B1A3"
             android:text="Roll Dice" />
 
         <Button
             android:id="@+id/rollSelectedDieButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
             android:layout_weight="1"
+            android:alpha="1"
+            android:background="#FFB7B1A3"
             android:text="Roll Selected Dice" />
 
         <Button
             android:id="@+id/endTurnButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
             android:layout_weight="1"
+            android:alpha="1"
+            android:background="#FFB7B1A3"
             android:text="End Turn" />
 
         <Button
             android:id="@+id/endGameButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="10dp"
             android:layout_weight="1"
+            android:alpha="1"
+            android:background="#FFB7B1A3"
             android:text="End Game" />
 
     </LinearLayout>

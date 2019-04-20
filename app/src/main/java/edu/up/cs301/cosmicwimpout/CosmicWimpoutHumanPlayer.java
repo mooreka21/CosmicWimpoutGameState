@@ -217,27 +217,27 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 		int turn = this.state.getWhoseTurn();
 		if(turn == 0){
 			this.player1Score.setBackgroundColor(0xFFFF0000);
-			this.player2Score.setBackgroundColor(0xFFCECECE);
-			this.player3Score.setBackgroundColor(0xFFCECECE);
-			this.player4Score.setBackgroundColor(0xFFCECECE);
+			this.player2Score.setBackgroundColor(0xFFB7B1A3);
+			this.player3Score.setBackgroundColor(0xFFB7B1A3);
+			this.player4Score.setBackgroundColor(0xFFB7B1A3);
 		}
 		if(turn == 1){
 			this.player2Score.setBackgroundColor(0xFFFF0000);
-			this.player1Score.setBackgroundColor(0xFFCECECE);
-			this.player3Score.setBackgroundColor(0xFFCECECE);
-			this.player4Score.setBackgroundColor(0xFFCECECE);
+			this.player1Score.setBackgroundColor(0xFFB7B1A3);
+			this.player3Score.setBackgroundColor(0xFFB7B1A3);
+			this.player4Score.setBackgroundColor(0xFFB7B1A3);
 		}
 		if(turn == 2){
 			this.player3Score.setBackgroundColor(0xFFFF0000);
-			this.player1Score.setBackgroundColor(0xFFCECECE);
-			this.player2Score.setBackgroundColor(0xFFCECECE);
-			this.player4Score.setBackgroundColor(0xFFCECECE);
+			this.player1Score.setBackgroundColor(0xFFB7B1A3);
+			this.player2Score.setBackgroundColor(0xFFB7B1A3);
+			this.player4Score.setBackgroundColor(0xFFB7B1A3);
 		}
 		if(turn == 3){
 			this.player4Score.setBackgroundColor(0xFFFF0000);
-			this.player1Score.setBackgroundColor(0xFFCECECE);
-			this.player2Score.setBackgroundColor(0xFFCECECE);
-			this.player3Score.setBackgroundColor(0xFFCECECE);
+			this.player1Score.setBackgroundColor(0xFFB7B1A3);
+			this.player2Score.setBackgroundColor(0xFFB7B1A3);
+			this.player3Score.setBackgroundColor(0xFFB7B1A3);
 		}
 
 		//when the player wimps out, any checkboxes will be cleared
@@ -809,6 +809,10 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 
 		// Load the layout resource for our GUI
 		activity.setContentView(R.layout.cosmicwimpout_human_player);
+		/**
+		 * Citation: bamboobackground image found from:
+		 * https://www.freepik.com/free-photos-vectors/simple-background
+		 */
 
 		this.player1Score = myActivity.findViewById(R.id.player1Score);
 		this.player2Score = myActivity.findViewById(R.id.player2Score);
