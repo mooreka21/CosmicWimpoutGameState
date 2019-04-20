@@ -7,6 +7,7 @@ import edu.up.cs301.game.infoMsg.GameInfo;
 import edu.up.cs301.game.infoMsg.IllegalMoveInfo;
 import edu.up.cs301.game.infoMsg.NotYourTurnInfo;
 
+import android.media.MediaPlayer;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -60,8 +61,10 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 	private boolean rollDiceClicked = false;
 	private boolean rollSelectedClicked = false;
 	int flash = 0;
-	//variable for sound effects
+
+	//variable for sound effects and background music
 	private CosmicWimpoutSoundPlayer sound;
+	private MediaPlayer music;
 
 	//arrays that hold the die faces
 	private int redDiceFaces[] = {R.drawable.ten, R.drawable.halfcircles, R.drawable.triangle,
@@ -101,8 +104,6 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 	 * sets display of the Cosmic Wimpout game
 	 */
 	protected void updateDisplay() {
-		//plays background music (layers over itself, need to fix)
-		this.sound.playBackground();
 
 		//set the text to current game state varibales
 		this.player1Score.setText(allPlayerNames[0] + ": " + state.getPlayer1Score());
@@ -306,12 +307,7 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 	 * 		the button that was clicked
 	 */
 	public void onClick(View button) {
-		//starts a thread that rotates through die faces while rolling
-		//Thread th1 = new Thread(this);
-		//th1.start();
-
-		//if the button is any of the checkboxes, update
-		//variable to true
+		//if the button is any of the checkboxes, update variable to true
 		if(button == check1 ){
 				isCheck1 = true;
 		}
@@ -800,6 +796,10 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 
 		//initialize sound player
 		this.sound = new CosmicWimpoutSoundPlayer(myActivity);
+
+		//initializes media player and plays background music
+		music = MediaPlayer.create(myActivity, R.raw.bensound_theelevatorbossanova);
+		music.start();
 
 		// Load the layout resource for our GUI
 		activity.setContentView(R.layout.cosmicwimpout_human_player);
