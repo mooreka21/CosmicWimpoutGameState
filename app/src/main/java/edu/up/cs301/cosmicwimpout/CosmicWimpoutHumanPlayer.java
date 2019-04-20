@@ -65,6 +65,7 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 	//variable for sound effects and background music
 	private CosmicWimpoutSoundPlayer sound;
 	private MediaPlayer music;
+	private boolean isPlaying = false;
 
 	//arrays that hold the die faces
 	private int redDiceFaces[] = {R.drawable.ten, R.drawable.halfcircles, R.drawable.triangle,
@@ -801,7 +802,10 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 		music = MediaPlayer.create(myActivity, R.raw.bensound_theelevatorbossanova);
 		music.setLooping(true);
 		music.setVolume(.25f, .25f);
-		music.start();
+		if(!isPlaying){ //so music doesn't layer over itself
+			music.start();
+			isPlaying = true;
+		}
 
 		// Load the layout resource for our GUI
 		activity.setContentView(R.layout.cosmicwimpout_human_player);
