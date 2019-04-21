@@ -260,40 +260,47 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 
 		//checks if current player won or lost the game and plays win/lose sound effect
 		switch(state.getWhoseTurn()){
-			case 1:
-				if(state.getPlayer1Score()< 500 && (state.getPlayer2Score() >= 500 ||
-						state.getPlayer3Score() >= 500 || state.getPlayer4Score() >= 500)){
-					sound.playLoser();
-				}
-				else if(state.getPlayer1Score() >= 500){
-					sound.playWinner();
-				}
-				break;
-			case 2:
-				if(state.getPlayer2Score()< 500 && (state.getPlayer1Score() >= 500 ||
-						state.getPlayer3Score() >= 500 || state.getPlayer4Score() >= 500)){
-					sound.playLoser();
-				}
-				else if(state.getPlayer2Score() >= 500){
-					sound.playWinner();
+			case 0: //player 1's turn
+				if(this.requiresGui()){ //player 1 is the human player
+					if(state.getPlayer1Score()< 500 && (state.getPlayer2Score() >= 500 ||
+							state.getPlayer3Score() >= 500 || state.getPlayer4Score() >= 500)){
+						sound.playLoser();
+					}
+					else if(state.getPlayer1Score() >= 500){
+						sound.playWinner();
+					}
 				}
 				break;
-			case 3:
-				if(state.getPlayer3Score()< 500 && (state.getPlayer1Score() >= 500 ||
-						state.getPlayer2Score() >= 500 || state.getPlayer4Score() >= 500)){
-					sound.playLoser();
-				}
-				else if(state.getPlayer3Score() >= 500){
-					sound.playWinner();
+			case 1: //player 2's turn
+				if(this.requiresGui()){ //player 2 is the human player
+					if(state.getPlayer2Score()< 500 && (state.getPlayer1Score() >= 500 ||
+							state.getPlayer3Score() >= 500 || state.getPlayer4Score() >= 500)){
+						sound.playLoser();
+					}
+					else if(state.getPlayer2Score() >= 500){
+						sound.playWinner();
+					}
 				}
 				break;
-			case 0:
-				if(state.getPlayer4Score()< 500 && (state.getPlayer1Score() >= 500 ||
-						state.getPlayer2Score() >= 500 || state.getPlayer3Score() >= 500)){
-					sound.playLoser();
+			case 2: //player 3's turn
+				if(this.requiresGui()){ //player 3 is the human player
+					if(state.getPlayer3Score()< 500 && (state.getPlayer1Score() >= 500 ||
+							state.getPlayer2Score() >= 500 || state.getPlayer4Score() >= 500)){
+						sound.playLoser();
+					}
+					else if(state.getPlayer3Score() >= 500){
+						sound.playWinner();
+					}
 				}
-				else if(state.getPlayer4Score() >= 500){
-					sound.playWinner();
+				break;
+			case 3: //player 3's turn
+				if(this.requiresGui()) { //player 4 is the human player
+					if (state.getPlayer4Score() < 500 && (state.getPlayer1Score() >= 500 ||
+							state.getPlayer2Score() >= 500 || state.getPlayer3Score() >= 500)) {
+						sound.playLoser();
+					} else if (state.getPlayer4Score() >= 500) {
+						sound.playWinner();
+					}
 				}
 				break;
 		}

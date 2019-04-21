@@ -115,7 +115,7 @@
         <ImageView
             android:id="@+id/die1"
             android:layout_width="wrap_content"
-            android:layout_height="100dp"
+            android:layout_height="120dp"
             android:layout_weight="1"
             android:src="@drawable/bolts"
             tools:paddingTop="20dp" />
@@ -123,7 +123,7 @@
         <ImageView
             android:id="@+id/die2"
             android:layout_width="wrap_content"
-            android:layout_height="100dp"
+            android:layout_height="120dp"
             android:layout_weight="1"
             android:src="@drawable/halfcircles"
             tools:paddingTop="20dp" />
@@ -131,7 +131,7 @@
         <ImageView
             android:id="@+id/die3"
             android:layout_width="wrap_content"
-            android:layout_height="100dp"
+            android:layout_height="120dp"
             android:layout_weight="1"
             android:src="@drawable/five"
             tools:paddingTop="20dp" />
@@ -139,7 +139,7 @@
         <ImageView
             android:id="@+id/die4"
             android:layout_width="wrap_content"
-            android:layout_height="100dp"
+            android:layout_height="120dp"
             android:layout_weight="1"
             android:src="@drawable/stars"
             tools:paddingTop="20dp" />
@@ -147,7 +147,7 @@
         <ImageView
             android:id="@+id/die5"
             android:layout_width="wrap_content"
-            android:layout_height="100dp"
+            android:layout_height="120dp"
             android:layout_weight="1"
             android:src="@drawable/blackbolt"
             tools:paddingTop="20dp" />
