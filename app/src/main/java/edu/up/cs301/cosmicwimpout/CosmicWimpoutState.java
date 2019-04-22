@@ -86,7 +86,7 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 	}
 
 	/**
-	 * CosmicWimpoutState constructor that creates a deep copy
+	 * CosmicWimpoutState constructor that creates a deep copy of the current game state
 	 *
 	 * @param orig - original state
 	 */

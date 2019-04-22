@@ -7,24 +7,35 @@ import android.app.Activity;
 import android.os.Handler;
 import android.util.Log;
 import android.widget.TextView;
-
 import java.io.Serializable;
 
 
 /**
-* A computer-version of a counter-player.  Since this is such a simple game,
-* it just sends "+" and "-" commands with equal probability, at an average
-* rate of one per second. This computer player does, however, have an option to
-* display the game as it is progressing, so if there is no human player on the
-* device, this player will display a GUI that shows the value of the counter
-* as the game is being played.
+* A computer-version of a counter-player.
+ * This player is the smart AI, and rerolls dice it is able to reroll until it wimps out,
+ * or scores above 70 points for the turn.
+ * The way the bot decides when to re-roll
+ * is by making a number of copies (the number equal to its intelligence scalar)
+ * of the current gamestate after its first roll,
+ * and rolling the dice that it can in each of those copies.
+ * The bot then looks at the number of those copies in which the new roll did not wimp out,
+ * score a flash, or instantly lose; this number is stored as a number of successful rolls.
+ * The bot then calculates odds by using a (successful rolls in copies count)/(total copies made)
+ * formula, and if the odds of success are over 50%, it rerolls all eligible dice in the active
+ * gamestate. If the bot doesn't wimpout or isntantly lose,
+ * the number of successes are decremented, to symbolize a successful roll being used. The odds are
+ * then recalculated - the turn ends if the odds of success are <50% , if else,
+ * the process repeats until the bot scores over 70 points for its turn.
 * 
 * @author Sam Lemly, Olivia Dendinger, David Campbell, Kayla Moore
 *  @version April 2019
 */
-public class CosmicWimpoutComputerPlayer2 extends CosmicWimpoutComputerPlayer implements Serializable {
+public class CosmicWimpoutComputerPlayer2
+        extends CosmicWimpoutComputerPlayer
+        implements Serializable {
 
     private int numRollsThisTurn;
+    private int maxTurnScore = 70;
     private float odds;
     private int intelligence = 10;
     private int[] scoresFromCopy = new int[intelligence];
@@ -152,14 +163,13 @@ public class CosmicWimpoutComputerPlayer2 extends CosmicWimpoutComputerPlayer im
 	}
 
 
-	//SMART AI METHODS
 
-	/*
-	TODO: Resolve issues pertaining to updating the game state between the bot's rolls
-	Currently the game state is only updated at the end of the bot's turn,
-	 so the bot doesn't really know if it can keep rolling until after its turn has ended.
-	* */
-	public void runSmartAi(GameInfo info){
+    /**
+     * This method is the smart AI's thinking algorithm. The class javadoc description has
+     * a more detailed breakdown of how the process exactly works.
+     * @param info
+     */
+	private void runSmartAi(GameInfo info){
 	    int currentTurn = -1;
 	    try {
 			sleep(1000);
@@ -182,6 +192,7 @@ public class CosmicWimpoutComputerPlayer2 extends CosmicWimpoutComputerPlayer im
 			while (this.odds > 0.5) {
                 for (int i = 0; i < 5; i++) {
                 	this.needReroll[i] = this.state.getDiceArray()[i].getCanReroll();
+                    Log.i("OG Boolean "+i+"",""+(this.state.getDiceArray()[i].getCanReroll())); //error check
                     Log.i("Boolean "+i+"",""+(this.needReroll[i])); //error check
                 }
 			    Log.i("Odds from 188 = ", this.odds+"" ); //error check
@@ -208,24 +219,23 @@ public class CosmicWimpoutComputerPlayer2 extends CosmicWimpoutComputerPlayer im
 				} else if (state.getTurnScore() == 0) {
 					break;
 				}
-				if(this.state.getTurnScore() >= 70){
+				if(this.state.getTurnScore() >= maxTurnScore){
 					CosmicWimpoutActionEndTurn endTurn = new CosmicWimpoutActionEndTurn(this);
 					game.sendAction(endTurn);
 				}
 			}
-
-
 		}
 		catch(Exception e){
 	    	Log.e("Error", "Found Exception " + e + " at outer try/catch" );
 		}
 
     }
-	//If the bot scores at all, it'll reroll non-scoring dice only.
-	//Those dice will have to remain static in the copy and not be rerolled.
-    //If the bot rolls a Supernova or Instant winner, the turn score gets set to 0.
+	/*If the bot scores at all, it'll reroll non-scoring dice only.
+	Those dice will have to remain static in the copy and not be rerolled.
+    If the bot rolls a Supernova or Instant winner, the turn score gets set to 0.*/
     private void getScoresFromCopy(GameInfo info){
 		if(info instanceof CosmicWimpoutState){
+		    this.updateDisplay();
             /*
 			this generates a number of copies equal to the bot's intelligence,
 			and then puts those scores into the bot's scoresFromCopy array.
@@ -234,13 +244,6 @@ public class CosmicWimpoutComputerPlayer2 extends CosmicWimpoutComputerPlayer im
             */
 			for (int i = 0; i < intelligence; i++) {
 				CosmicWimpoutState newCopy = new CosmicWimpoutState((CosmicWimpoutState) info);
-				/*I commented these out because I wanted to try doing the dice the other way,
-				by getting the booleans from the die classes within the game state instead of
-				tyring to read the game state */
-//				newCopy.rollSelectedDice(
-//				        this.playerNum,this.needReroll[0],
-//                        this.needReroll[1],this.needReroll[2],
-//						this.needReroll[3],this.needReroll[4]);
 				newCopy.rollSelectedDice(this.playerNum,
 						((CosmicWimpoutState) info).getDiceArray()[0].getCanReroll(),
 						((CosmicWimpoutState) info).getDiceArray()[1].getCanReroll(),
@@ -253,6 +256,7 @@ public class CosmicWimpoutComputerPlayer2 extends CosmicWimpoutComputerPlayer im
                 else{
                     this.scoresFromCopy[i] = ((CosmicWimpoutState) newCopy).getTurnScore();
                 }
+                this.updateDisplay();
 			}
 		}
 	}
@@ -286,6 +290,13 @@ public class CosmicWimpoutComputerPlayer2 extends CosmicWimpoutComputerPlayer im
 		Log.i("getSuccesses : ", ""+numSuccess );
 		return numSuccess;
 	}
+
+    /**
+     * Calculates a simple float, which equates to (successes)/(total rolls)
+     * @param successes
+     * @param total
+     * @return newOdds
+     */
 	private float calcOdds(int successes, int total){
 	    float newOdds = ((float)successes /(float) total);
 	    Log.i("calculated odds", newOdds+"");

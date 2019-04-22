@@ -59,18 +59,25 @@ public class Die implements Serializable {
      */
     public void setDieID(int newid){
         this.dieID = newid;
+        if(this.dieState == 5 || this.dieState == 1){
+            this.setCanReroll(false);
+        }else {
+            this.setCanReroll(true);
+        }
     }
 
     /**
-     * rollMe rolls the current die
+     * rollMe rolls the current die, and updates the canReroll boolean if the die is a 1 or 5
      */
     public void rollMe(){
         this.dieState = (int)(Math.random()*6 + 1);
 
-        // these booleans are for the smart AI to know if it can reroll
+        // these booleans are for the smart AI to know if it can reroll this particular die
         if(this.dieState == 5 || this.dieState == 1){
             this.setCanReroll(false);
-        }else this.setCanReroll(true);
+        }else {
+            this.setCanReroll(true);
+        }
     }
 
     /**
