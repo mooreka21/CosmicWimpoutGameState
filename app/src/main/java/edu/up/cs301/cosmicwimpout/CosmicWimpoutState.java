@@ -408,31 +408,35 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 		if (playerId == whoseTurn) {
 			int currentScore = playerArrayList.get(playerId).getPlayerScore();
 			if (playerId == 0) {
+				//player 0's turn, get their score and add it to their total running score
 				playerArrayList.get(playerId).setPlayerScore(currentScore + turnScore);
-				whoseTurn = 1;
+				whoseTurn = 1; // set the turn to next player
 				turnScore = 0; //reset turn score to 0 for next player
-				this.isFiveOf = false;
+				this.isFiveOf = false; //reset booleans
 				this.isFlash = false;
 			}
 			else if (playerId == 1) {
+				//get their score and add it to total running score
 				playerArrayList.get(playerId).setPlayerScore(currentScore + turnScore);
-				whoseTurn = 2;
+				whoseTurn = 2;//set to next players turn
 				turnScore = 0;// reset turn score to 0
-				this.isFiveOf = false;
+				this.isFiveOf = false; //reset booleans
 				this.isFlash = false;
 			}
 			else if (playerId == 2) {
+				//get their score and add it to total running score
 				playerArrayList.get(playerId).setPlayerScore(currentScore + turnScore);
-				whoseTurn = 3;
+				whoseTurn = 3; //set to next player
 				turnScore = 0; //reset turnScore to 0
-				this.isFiveOf = false;
+				this.isFiveOf = false; //reset booleans
 				this.isFlash = false;
 			}
 			else if (playerId == 3) {
+				//get score and add it to total running score
 				playerArrayList.get(playerId).setPlayerScore(currentScore + turnScore);
-				whoseTurn = 0;
+				whoseTurn = 0; //reset to player 0's turn
 				turnScore = 0; //reset turnScore to 0
-				this.isFiveOf = false;
+				this.isFiveOf = false; //reset booleans
 				this.isFlash = false;
 			}
 			this.prevState = new CosmicWimpoutState(this);
@@ -451,6 +455,7 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 	 */
 	public boolean endGame(int playerId) {
 		if (playerId == whoseTurn) {
+			//exits out of app
 			System.exit(0);
 			return true;
 		}
@@ -479,7 +484,9 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 			else {
 				//wimpout set turn score to 0 and change players
 				turnScore = 0;
+				//they wimped out
 				this.isWimpout = true;
+				//set to the next players turn
 				if (playerId == 0) {
 					setWhoseTurn(1);
 				}
@@ -507,6 +514,7 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 	 * @return - if it was a legal move or not
 	 */
 	public boolean rollSingleDie(int playerId, int id) {
+		//roll single die
 		if (playerId == whoseTurn) {
 			diceArray[id - 1].rollMe();
 			return true;
@@ -541,9 +549,10 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 			//die state is 5
 			return 5;
 		}
+		//when rolling one die, you cannot get a flash or five of a kind
 		this.isFiveOf = false;
 		this.isFlash = false;
-		this.isWimpout = true;
+		this.isWimpout = true; //wimped out
 		return -1;
 	}
 
@@ -562,6 +571,7 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 	public boolean rollSelectedDice
 	(int playerId, boolean dice1, boolean dice2, boolean dice3, boolean dice4, boolean dice5) {
 		if (playerId == whoseTurn) {
+			//check to see if they selected each individual die
 			int currentScore = playerArrayList.get(playerId).getPlayerScore();
 			if (dice1) {
 				//roll it and get the state
@@ -575,8 +585,9 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 			}
 
 			if (dice2) {
+				//selected, so roll the die
 				rollSingleDie(playerId, 2);
-				trueCounter++;
+				trueCounter++; //count up one
 				die2ReRoll = true;
 			}
 			else {
@@ -584,8 +595,9 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 				die2ReRoll = false;
 			}
 			if (dice3) {
+				//roll die 3
 				rollSingleDie(playerId, 3);
-				trueCounter++;
+				trueCounter++; //die count up 1
 				die3ReRoll = true;
 			}
 			else {
@@ -593,8 +605,9 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 				die3ReRoll = false;
 			}
 			if (dice4) {
+				//roll die 4
 				rollSingleDie(playerId, 4);
-				trueCounter++;
+				trueCounter++;// die count up 1
 				die4ReRoll = true;
 			}
 			else {
@@ -602,8 +615,9 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 				die4ReRoll = false;
 			}
 			if (dice5) {
+				//roll die 5
 				rollSingleDie(playerId, 5);
-				trueCounter++;
+				trueCounter++; //die count up one
 				die5ReRoll = true;
 			}
 			else {
@@ -612,7 +626,7 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 			}
 
 			if (trueCounter == 1) { //only selected one die
-				//get which dice they rolled
+				//get which die they rolled
 				int whichDie = whichDice();
 				//score that dice
 				int score = diceScoreForOneDice(diceArray, playerId, whichDie);
@@ -624,17 +638,19 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 				}
 				else {
 					//wimpout end turn
-					turnScore = 0;
-					trueCounter = 0;
+					turnScore = 0; //reset turn score to 0
+					trueCounter = 0; //reset
 					this.isWimpout = true;
 					endTurn(playerId);
 					return true;
 				}
 			}
 			if (trueCounter == 2) { //selected two dice
+				//get which die they selected
 				int[] whichDice = whichDice2();
-				int first = (int) whichDice[0];
-				int second = (int) whichDice[1];
+				int first = (int) whichDice[0]; //first die they selected
+				int second = (int) whichDice[1]; //second die they selected
+				//score the two dice
 				int score = getDiceScore2(diceArray, first, second);
 				if (score != -1) {
 					turnScore = turnScore + score;
@@ -643,19 +659,22 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 					return true;
 				}
 				else {
+					//wimpout, reset turn score and counter
 					turnScore = 0;
 					trueCounter = 0;
 					this.isWimpout = true;
-					endTurn(playerId);
+					endTurn(playerId); //end turn
 					return true;
 				}
 			}
 			if (trueCounter == 3) { //selected three dice
+				//get which dice they selected
 				int[] whichDice = whichDice3();
-				int first = whichDice[0];
-				int second = whichDice[1];
-				int third = whichDice[2];
+				int first = whichDice[0]; //first die
+				int second = whichDice[1]; //second die
+				int third = whichDice[2]; //third die
 
+				//score only those 3 die
 				int score = getScore3Dice(diceArray, first, second, third);
 				if (score != -1) {
 					turnScore = turnScore + score;
@@ -664,6 +683,7 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 					return true;
 				}
 				else {
+					//wimpout, end turn, reset turn score and counter
 					turnScore = 0;
 					trueCounter = 0;
 					this.isWimpout = true;
@@ -671,13 +691,15 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 					return true;
 				}
 			}
-			if (trueCounter == 4) {
+			if (trueCounter == 4) { //selected 4 dice
+				//get which dice they selected
 				int[] whichDice = whichDice4();
-				int first = whichDice[0];
-				int second = whichDice[1];
-				int third = whichDice[2];
-				int fourth = whichDice[3];
+				int first = whichDice[0]; //first die
+				int second = whichDice[1]; //second die
+				int third = whichDice[2]; //third die
+				int fourth = whichDice[3]; //fourth die
 
+				//score those 4 dice
 				int score = getScore4Dice(diceArray, first, second, third, fourth);
 				if (score != -1) {
 					turnScore = turnScore + score;
@@ -686,15 +708,16 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 					return true;
 				}
 				else {
-					turnScore = 0;
+					//wimpout
+					turnScore = 0; //reset for next player
 					trueCounter = 0;
 					this.isWimpout = true;
-					endTurn(playerId);
+					endTurn(playerId); //end turn
 					return true;
 				}
 			}
-			if (trueCounter == 5) {
-				rollAllDice(playerId);
+			if (trueCounter == 5) { //selected all 5 dice
+				rollAllDice(playerId); //roll all 5
 				this.turnScore = this.turnScore;
 				trueCounter = 0;
 				this.isWimpout = false;
@@ -718,33 +741,40 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 		int tally = 0;
 		boolean notWimp = false;
 
+		//flaming sun case
 		if (one == 3 || two == 3) {
 			if (ourDice[2].dieState == 3) {
 				tally = 10;
 				notWimp = true;
 			}
 		}
+		//if the first die is a 10
 		if (ourDice[one - 1].dieState == 1) {
-			tally = tally + 10;
+			tally = tally + 10; //add 10
 			notWimp = true;
 		}
 		else if (ourDice[one - 1].dieState == 5) {
+			//die 1 is a 5, add 5
 			tally = tally + 5;
 			notWimp = true;
 		}
 
 		if (ourDice[two - 1].dieState == 1) {
+			//second die is a 10, add 10
 			tally = tally + 10;
 			notWimp = true;
 		}
 		else if (ourDice[two - 1].dieState == 5) {
+			//second die is a 5, add 5
 			tally = tally + 5;
 			notWimp = true;
 		}
-		//if not wimpout
+		//if they did not wimpout out
 		if (notWimp) {
+			//return their score for that roll
 			return tally;
 		} else {
+			//wimpout
 			this.isFiveOf = false;
 			this.isFlash = false;
 			return -1;
@@ -804,18 +834,23 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 	 */
 	private int whichDice() {
 		if (die1ReRoll) {
+			//selected 1
 			return 1;
 		}
 		else if (die2ReRoll) {
+			//selected 2
 			return 2;
 		}
 		else if (die3ReRoll) {
+			//selected 3
 			return 3;
 		}
 		else if (die4ReRoll) {
+			//selected 4
 			return 4;
 		}
 		else if (die5ReRoll) {
+			//selected 5
 			return 5;
 		}
 		return 0;
@@ -829,15 +864,19 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 	private int[] whichDice2() {
 		int[] twoDice = new int[2];
 		if (die1ReRoll) {
+			//1 was selected, put in array
 			twoDice[0] = 1;
 		}
 		if (die2ReRoll) {
+			//2 was selected, add to array
 			if (twoDice[0] == 0) {
+				//check to see if die 1 was selected
 				twoDice[0] = 2;
 			}
 			twoDice[1] = 2;
 		}
 		if (die3ReRoll) {
+			//check to see if 1 or 2 were selected
 			if (twoDice[0] == 0) {
 				twoDice[0] = 3;
 			}
@@ -845,18 +884,23 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 
 		}
 		if (die4ReRoll) {
+			//checks to see if its the first to be selected
 			if (twoDice[0] == 0) {
 				twoDice[0] = 4;
 			}
+			//second die
 			twoDice[1] = 4;
 
 		}
 		if (die5ReRoll) {
+			//checkes to see if it was the first to be selected
 			if (twoDice[0] == 0) {
 				twoDice[0] = 5;
 			}
+			//second die
 			twoDice[1] = 5;
 		}
+		//return the dice array containing the id's
 		return (twoDice);
 	}
 
@@ -900,6 +944,7 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 			}
 			threeDice[2] = 5;
 		}
+		//return the array containing the id's
 		return threeDice;
 	}
 
@@ -961,6 +1006,8 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 		int fiveCount = 0;
 		int starCount = 0;
 
+		//Counting to check for flashes
+		//count die 1
 		if (ourDice[one - 1].getDieState() == 1) {
 			tenCount++;
 		}
@@ -979,6 +1026,7 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 		else if (ourDice[one - 1].getDieState() == 6) {
 			starCount++;
 		}
+		//count die 2
 		if (ourDice[two - 1].getDieState() == 1) {
 			tenCount++;
 		}
@@ -997,6 +1045,7 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 		else if (ourDice[two - 1].getDieState() == 6) {
 			starCount++;
 		}
+		//count die 3
 		if (ourDice[three - 1].getDieState() == 1) {
 			tenCount++;
 		}
@@ -1015,7 +1064,7 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 		else if (ourDice[three - 1].getDieState() == 6) {
 			starCount++;
 		}
-
+		//count die 4
 		if (ourDice[four - 1].getDieState() == 1) {
 			tenCount++;
 		}
@@ -1035,38 +1084,46 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 			starCount++;
 		}
 
-		//flash cases
+		//flash cases, add corresponding score
+		//set flash to true, if there is one
 		if (tenCount >= 3) {
 			isFlash = true;
+			//10 three of a kind
 			score = score + 100;
 			notWimp = true;
 		}
 		else if (moonCount >= 3) {
 			isFlash = true;
+			//moon three of a kind
 			score = score + 20;
 			notWimp = true;
 		}
 		else if (triangleCount >= 3) {
 			isFlash = true;
+			//triangles three of a kind
 			score = score + 30;
 			notWimp = true;
 		}
 		else if (boltCount >= 3) {
 			isFlash = true;
+			//bolts three of a kind
 			score = score + 40;
 			notWimp = true;
 		}
 		else if (fiveCount >= 3) {
 			isFlash = true;
+			//five three of a kind
 			score = score + 50;
 			notWimp = true;
 		}
 		else if (starCount >= 3) {
 			isFlash = true;
+			//stars three of a kind
 			score = score + 60;
 			notWimp = true;
 		}
 
+		//flash, flaming sun cases
 		if (tenCount == 2 && (one == 3 || two == 3 || three == 3 || four == 3) &&
 				ourDice[2].dieState == 3) {
 			if (ourDice[2].dieState == 3) {
@@ -1075,15 +1132,18 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 				notWimp = true;
 			}
 			else {
+				//if no flaming score add 20
 				score = score + 20;
 				notWimp = true;
 			}
 		}
+		//if no flaming sun add 20
 		else if (tenCount == 2) {
 			score = score + 20;
 			notWimp = true;
 		}
 
+		//moon flash
 		if (moonCount == 2 && (one == 3 || two == 3 || three == 3 || four == 3)) {
 			if (ourDice[2].dieState == 3) {
 				isFlash = true;
@@ -1091,6 +1151,7 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 				notWimp = true;
 			}
 		}
+		//triangle flash
 		if (triangleCount == 2 && (one == 3 || two == 3 || three == 3 || four == 3)) {
 			if (ourDice[2].dieState == 3) {
 				isFlash = true;
@@ -1098,6 +1159,7 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 				notWimp = true;
 			}
 		}
+		//bolt flash
 		if (boltCount == 2 && (one == 3 || two == 3 || three == 3 || four == 3)) {
 			if (ourDice[2].dieState == 3) {
 				isFlash = true;
@@ -1105,15 +1167,17 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 				notWimp = true;
 			}
 		}
+		//five flash
 		if (fiveCount == 2 && (one == 3 || two == 3 || three == 3 || four == 3) && ourDice[2].dieState == 3) {
 			isFlash = true;
 			score = score + 50;
 			notWimp = true;
 		} else if (fiveCount == 2) {
+			//if no flaming sun, add 10
 			score = score + 10;
 			notWimp = true;
 		}
-
+		//star flsah
 		if (starCount == 2 && (one == 3 || two == 3 || three == 3 || four == 3)) {
 			if (ourDice[2].dieState == 3) {
 				isFlash = true;
@@ -1122,28 +1186,36 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 			}
 		}
 
+		//check to see if there is only one 10
 		if (tenCount == 1) {
+			//add 10
 			score = score + 10;
 			notWimp = true;
 		}
 
+		//check to see if only one five
 		if (fiveCount == 1) {
+			//add five
 			score = score + 5;
 			notWimp = true;
 		}
 
+		//Checking to see if the flaming sun is the only scoring die
 		if ((one == 3 || two == 3 || three == 3 || four == 3) && tenCount == 0
 				&& fiveCount == 0 && !isFlash) {
 			if (ourDice[2].dieState == 3) {
+				//if so add 10
 				score = score + 10;
 				notWimp = true;
 			}
 		}
 
-
+		//if they didnt wimpout
 		if (notWimp) {
+			//return their score for that roll
 			return score;
 		} else {
+			//wimpout
 			this.isFiveOf = false;
 			this.isFlash = false;
 			return -1;
@@ -1201,12 +1273,14 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 			score = 60;
 			notWimp = true;
 		}
+		//flash and flaming sun case
 		else if (flashWithSun(ourDice, one, two, three) != -1) {
 			//gets score if there is a flash with flaming sun
 			score = flashWithSun(ourDice, one, two, three);
 			notWimp = true;
 		}
 		else {
+			//no flashes check for five's and ten's
 			if (one == 3 || two == 3 || three == 3) {
 				if (ourDice[2].dieState == 3) {
 					score = score + 10;
@@ -1241,10 +1315,12 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 				notWimp = true;
 			}
 		}
+		//if they did not wimpout, return their score for that roll
 		if (notWimp) {
 			return score;
 		}
 		else {
+			//wimpout
 			this.isFiveOf = false;
 			this.isFlash = false;
 			return -1;
