@@ -16,11 +16,20 @@
 
 
         <ImageView
+            android:id="@+id/title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_gravity="bottom"
+            android:layout_marginLeft="30dp"
             android:src="@drawable/cosmicwimpout_title"/>
+
+        <ImageButton
+            android:id="@+id/info"
+            android:layout_width="43dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:src="@android:drawable/ic_dialog_info" />
 
     </LinearLayout>
 

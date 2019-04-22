@@ -8,9 +8,11 @@ import edu.up.cs301.game.infoMsg.IllegalMoveInfo;
 import edu.up.cs301.game.infoMsg.NotYourTurnInfo;
 
 import android.media.MediaPlayer;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.view.View.OnClickListener;
@@ -44,6 +46,8 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 	private Button endTurnButton = null;
 	private Button rollDiceButton = null;
 	private Button rollSelectedButton = null;
+	private ImageButton infoButton = null;
+	private ImageButton exitButton = null;
 
 	//variables for image views
 	private ImageView die1, die2, die3, die4, die5;
@@ -315,6 +319,16 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 	 * 		the button that was clicked
 	 */
 	public void onClick(View button) {
+		//goes to rules page
+		if(button == infoButton){
+			this.myActivity.setContentView(R.layout.cosmicwimpout_rules);
+			this.exitButton = myActivity.findViewById(R.id.exit);
+            exitButton.setOnClickListener(this);
+			if(button == exitButton){
+				this.myActivity.setContentView(R.layout.cosmicwimpout_human_player);
+				updateDisplay();
+			}
+		}
 		//if the button is any of the checkboxes, update variable to true
 		if(button == check1 ){
 				isCheck1 = true;
@@ -821,6 +835,12 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 		 * https://www.freepik.com/free-photos-vectors/simple-background
 		 */
 
+		View decorView = this.myActivity.getWindow().getDecorView();
+		int uiOptions = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION |
+				View.SYSTEM_UI_FLAG_FULLSCREEN |
+				View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY;
+		decorView.setSystemUiVisibility(uiOptions);
+
 		this.player1Score = myActivity.findViewById(R.id.player1Score);
 		this.player2Score = myActivity.findViewById(R.id.player2Score);
 		this.player3Score = myActivity.findViewById(R.id.player3Score);
@@ -831,6 +851,7 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 		this.endTurnButton = myActivity.findViewById(R.id.endTurnButton);
 		this.rollDiceButton = myActivity.findViewById(R.id.rollDiceButton);
 		this.rollSelectedButton = myActivity.findViewById(R.id.rollSelectedDieButton);
+		this.infoButton = myActivity.findViewById(R.id.info);
 
 		this.die1 = myActivity.findViewById(R.id.die1);
 		this.die2 = myActivity.findViewById(R.id.die2);
@@ -849,6 +870,8 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 		endTurnButton.setOnClickListener(this);
 		rollDiceButton.setOnClickListener(this);
 		rollSelectedButton.setOnClickListener(this);
+		infoButton.setOnClickListener(this);
+		//exitButton.setOnClickListener(this);
 		check1.setOnClickListener(this);
 		check2.setOnClickListener(this);
 		check3.setOnClickListener(this);
@@ -1065,6 +1088,8 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 					Toast.LENGTH_SHORT).show();
 		}
 	}
+
+
 
 }// class CounterHumanPlayer
 
