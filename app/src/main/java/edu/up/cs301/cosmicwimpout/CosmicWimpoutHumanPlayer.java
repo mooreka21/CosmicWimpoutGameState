@@ -324,10 +324,10 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 			this.myActivity.setContentView(R.layout.cosmicwimpout_rules);
 			this.exitButton = myActivity.findViewById(R.id.exit);
             exitButton.setOnClickListener(this);
-			if(button == exitButton){
-				this.myActivity.setContentView(R.layout.cosmicwimpout_human_player);
-				updateDisplay();
-			}
+		}
+		if(button == exitButton){
+			this.myActivity.setContentView(R.layout.cosmicwimpout_human_player);
+			this.setAsGui(myActivity);
 		}
 		//if the button is any of the checkboxes, update variable to true
 		if(button == check1 ){
@@ -871,7 +871,6 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 		rollDiceButton.setOnClickListener(this);
 		rollSelectedButton.setOnClickListener(this);
 		infoButton.setOnClickListener(this);
-		//exitButton.setOnClickListener(this);
 		check1.setOnClickListener(this);
 		check2.setOnClickListener(this);
 		check3.setOnClickListener(this);
