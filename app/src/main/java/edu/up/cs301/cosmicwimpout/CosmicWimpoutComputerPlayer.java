@@ -7,7 +7,7 @@ import edu.up.cs301.game.infoMsg.GameInfo;
 
 /**
  * A computer-version of a cosmic wimpout -player. this is the dumb AI
- * first rolls all the dice first - rules of the game
+ * first rolls all the dice - rules of the game
  * then with equal probabilty either ends the turn
  * or randomly selects one dice to re-roll
  *

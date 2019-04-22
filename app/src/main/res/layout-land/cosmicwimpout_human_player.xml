@@ -222,7 +222,7 @@
             android:layout_marginRight="5dp"
             android:layout_weight="1"
             android:alpha="1"
-            android:background="#FFB7B1A3"
+            android:background="@drawable/button_background"
             android:text="Roll Dice" />
 
         <Button
@@ -233,7 +233,7 @@
             android:layout_marginRight="5dp"
             android:layout_weight="1"
             android:alpha="1"
-            android:background="#FFB7B1A3"
+            android:background="@drawable/button_background"
             android:text="Roll Selected Dice" />
 
         <Button
@@ -244,7 +244,7 @@
             android:layout_marginRight="5dp"
             android:layout_weight="1"
             android:alpha="1"
-            android:background="#FFB7B1A3"
+            android:background="@drawable/button_background"
             android:text="End Turn" />
 
         <Button
@@ -255,8 +255,9 @@
             android:layout_marginRight="10dp"
             android:layout_weight="1"
             android:alpha="1"
-            android:background="#FFB7B1A3"
-            android:text="End Game" />
+            android:background="@drawable/button_background"
+            android:text="End Game"
+            />
 
     </LinearLayout>
 
