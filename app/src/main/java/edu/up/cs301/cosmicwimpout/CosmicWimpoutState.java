@@ -1338,39 +1338,49 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 	 */
 	private int flashWithSun(Die[] ourDice, int one, int two, int three) {
 		int score = 0;
+		//checks to see if one of the dice they selected is die 3
 		if (one == 3) {
 			if (ourDice[one - 1].dieState == 3) {
+				//check for flash cases with flaming sun
 				if (ourDice[two - 1].dieState == 1 && ourDice[three - 1].dieState == 1) {
 					isFlash = true;
+					//ten flash, add 100
 					score = 100;
 				}
 				else if (ourDice[two - 1].dieState == 2 && ourDice[three - 1].dieState == 2) {
 					isFlash = true;
+					//moon flash, add 20
 					score = 20;
 				}
 				else if (ourDice[two - 1].dieState == 3 && ourDice[three - 1].dieState == 3) {
 					isFlash = true;
+					//triangle flash, add 30
 					score = 30;
 				}
 				else if (ourDice[two - 1].dieState == 4 && ourDice[three - 1].dieState == 4) {
 					isFlash = true;
+					//bolts flash, add 40
 					score = 40;
 				}
 				else if (ourDice[two - 1].dieState == 5 && ourDice[three - 1].dieState == 5) {
 					isFlash = true;
+					//fives flash add 50
 					score = 50;
 				}
 				else if (ourDice[two - 1].dieState == 6 && ourDice[three - 1].dieState == 6) {
 					isFlash = true;
+					//stars flash, add 60
 					score = 60;
 				}
 				else {
+					//no flash with flaming sun
 					score = -1;
 				}
 			}
 			else {
 				score = -1;
 			}
+			//repeat for the second die they selected
 		} else if (two == 3) {
 			if (ourDice[two - 1].dieState == 3) {
 				if (ourDice[one - 1].dieState == 1 && ourDice[three - 1].dieState == 1) {
@@ -1398,11 +1408,13 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 					score = 60;
 				}
 				else {
+					//no flash with flaming sun
 					score = -1;
 				}
 			} else {
 				score = -1;
 			}
+			//repeat for the third die they selected
 		} else if (three == 3) {
 			if (ourDice[three - 1].dieState == 3) {
 				if (ourDice[two - 1].dieState == 1 && ourDice[one - 1].dieState == 1) {
@@ -1434,10 +1446,12 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 				}
 			}
 			else {
+				//no flash with flaming sun
 				score = -1;
 			}
 		}
 		else {
+			//no flash with flaming sun 
 			score = -1;
 		}
 		return score;
