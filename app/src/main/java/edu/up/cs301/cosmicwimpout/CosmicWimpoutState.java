@@ -1789,6 +1789,7 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 	 * @return     - boolean value
 	 */
 	public boolean check3Dice(int die1, int die2, int die3) {
+		//flash cases
 		if (isFlash) {
 			int tenCount = 0;
 			int fiveCount = 0;
@@ -1819,6 +1820,7 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 					starCount++;
 				}
 			}
+			//cannot re roll the moon
 			if (moonCount == 3 || (moonCount == 2 && this.diceArray[2].getDieState() == 3)) {
 				if (this.diceArray[die1].getDieState() == 2 ||
 						this.diceArray[die2].getDieState() == 2 ||
@@ -1826,6 +1828,7 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 					return false;
 				}
 			}
+			//cannot re roll a triangle
 			else if (triangleCount == 3 || (triangleCount == 2 && this.diceArray[2].getDieState() == 3)) {
 				if (this.diceArray[die1].getDieState() == 3 ||
 						this.diceArray[die2].getDieState() == 3 ||
@@ -1836,6 +1839,7 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 					return false;
 				}
 			}
+			//cannot re roll a bolt
 			else if (boltCount == 3 || (boltCount == 2 && this.diceArray[2].getDieState() == 3)) {
 				if (this.diceArray[die1].getDieState() == 4 ||
 						this.diceArray[die2].getDieState() == 4 ||
@@ -1843,6 +1847,7 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 					return false;
 				}
 			}
+			//cannot re roll a star
 			else if (starCount == 3 || (starCount == 2 && this.diceArray[2].getDieState() == 3)) {
 				if (this.diceArray[die1].getDieState() == 6 ||
 						this.diceArray[die2].getDieState() == 6 ||
@@ -1850,6 +1855,7 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 					return false;
 				}
 			}
+			//cannot re roll a five or ten
 			else if (this.diceArray[die1].getDieState() == 1 ||
 					this.diceArray[die1].getDieState() == 5 ||
 					this.diceArray[die2].getDieState() == 1 ||
@@ -1858,10 +1864,13 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 					this.diceArray[die3].getDieState() == 5) {
 				return false;
 			}
+			//able to re roll all 3
 			else {
 				return true;
 			}
-		} else if (this.diceArray[die1].getDieState() == 1 ||
+		}
+		//cannot re roll if any of them are a ten or five
+		else if (this.diceArray[die1].getDieState() == 1 ||
 				this.diceArray[die1].getDieState() == 5 ||
 				this.diceArray[die2].getDieState() == 1 ||
 				this.diceArray[die2].getDieState() == 5 ||
@@ -1870,13 +1879,18 @@ public class CosmicWimpoutState extends GameState implements Serializable {
             return false;
 		}
 		else {
+			//able to re roll all three
 			return true;
 		}
+		//unable to re roll all three
 		return false;
 	}
 
 	/**
 	 * check4Dice method returns a boolean value
+	 *
+	 * checks to see if the player can re roll all
+	 * four selected dice.
 	 * @param die1  - id of first die
 	 * @param die2  - id of second die
 	 * @param die3  - id of third die
@@ -1884,6 +1898,7 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 	 * @return      - boolean value
 	 */
 	public boolean check4Dice(int die1, int die2, int die3, int die4) {
+		//flash case
 		if (isFlash) {
 			int tenCount = 0;
 			int fiveCount = 0;
@@ -1914,6 +1929,7 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 					starCount++;
 				}
 			}
+			//cannot re roll a moon
 			if (moonCount == 3 || (moonCount == 2 && this.diceArray[2].getDieState() == 3)) {
 				if (this.diceArray[die1].getDieState() == 2 ||
 						this.diceArray[die2].getDieState() == 2 ||
@@ -1922,6 +1938,7 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 					return false;
 				}
 			}
+			//cannot re roll a triangle
 			else if (triangleCount == 3 || (triangleCount == 2 && this.diceArray[2].getDieState() == 3)) {
 				if (this.diceArray[die1].getDieState() == 3 ||
 						this.diceArray[die2].getDieState() == 3 ||
@@ -1930,6 +1947,7 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 					return false;
 				}
 			}
+			//cannot re roll a bolt
 			else if (boltCount == 3 || (boltCount == 2 && this.diceArray[2].getDieState() == 3)) {
 				if (this.diceArray[die1].getDieState() == 4 ||
 						this.diceArray[die2].getDieState() == 4 ||
@@ -1938,6 +1956,7 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 					return false;
 				}
 			}
+			//cannot re roll a star
 			else if (starCount == 3 || (starCount == 2 && this.diceArray[2].getDieState() == 3)) {
 				if (this.diceArray[die1].getDieState() == 6 ||
 						this.diceArray[die2].getDieState() == 6 ||
@@ -1946,6 +1965,7 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 					return false;
 				}
 			}
+			//cannot re roll a five or ten
 			else if (this.diceArray[die1].getDieState() == 1 ||
 					this.diceArray[die1].getDieState() == 5 ||
 					this.diceArray[die2].getDieState() == 1 ||
@@ -1957,9 +1977,11 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 				return false;
 			}
 			else {
+				//able to re roll all four
 				return true;
 			}
 		}
+		//cannot re roll a five or ten
 		else if (this.diceArray[die1].getDieState() == 1 ||
 				this.diceArray[die1].getDieState() == 5 ||
 				this.diceArray[die2].getDieState() == 1 ||
@@ -1970,9 +1992,11 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 				this.diceArray[die4].getDieState() == 5) {
 			return false;
 		}
+		//able to re roll all four
 		else {
 			return true;
 		}
+		//unable to re roll all four
 		return false;
 	}
 
@@ -2026,10 +2050,15 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 
 	/**
 	 * flashReRoll method
+	 *
+	 * helper method to check which dice
+	 * the player has to re roll when
+	 * a flash occurs
 	 * @return reRolls
 	 */
 	public boolean[] flashReRoll() {
 		boolean[] reRolls = new boolean[5];
+		//makes sure there is a flash
 		if (isFlash) {
 			int tenCount = 0;
 			int fiveCount = 0;
@@ -2038,6 +2067,7 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 			int starCount = 0;
 			int boltCount = 0;
 
+			//checks to see which type of flash it is
 			for (int i = 0; i < this.diceArray.length; i++) {
 				if (this.diceArray[i].getDieState() == 1) {
 					tenCount++;
@@ -2055,39 +2085,51 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 					starCount++;
 				}
 			}
+			//moon flash
 			if (moonCount >= 3 || (moonCount == 2 && this.diceArray[2].getDieState() == 3)) {
 				int fourMoon = 0;
 				for (int i = 0; i < this.diceArray.length; i++) {
 					if (this.diceArray[i].getDieState() == 2) {
 						if (fourMoon == 3) {
+							//if its the fourth moon, they can
 							reRolls[i] = true;
 						} else {
+							//if moon, dont have to reroll
 							reRolls[i] = false;
 						}
 						fourMoon++;
 					} else {
-						if (this.diceArray[i].getDieState() == 1 ||
-								this.diceArray[i].getDieState() == 5) {
-							reRolls[i] = false;
-						} else if (i == 2) {
+						if (i == 2) {
 							if (this.diceArray[i].getDieState() == 3 ||
 									this.diceArray[i].getDieState() == 1 ||
 									this.diceArray[i].getDieState() == 5) {
+								//dont have to re roll flaming sun
 								reRolls[i] = false;
 							} else {
+								//they have to
 								reRolls[i] = true;
 							}
 						}
-						reRolls[i] = true;
+						else if (this.diceArray[i].getDieState() == 1 ||
+								 this.diceArray[i].getDieState() == 5) {
+							 //do not have to reroll five or ten
+							 reRolls[i] = false;
+						}
+						else {
+							//they have to re roll
+							reRolls[i] = true;
+						}
 
 					}
 				}
 			}
+			//cannot re roll a triangle
 			if (triangleCount >= 3 || (triangleCount == 2 && this.diceArray[2].getDieState() == 3)) {
 				int fourTriangle = 0;
 				for (int i = 0; i < this.diceArray.length; i++) {
 					if (this.diceArray[i].getDieState() == 3) {
 						if (fourTriangle == 3) {
+							//can re roll a traingle if its the fourth
 							reRolls[i] = true;
 						} else {
 							reRolls[i] = false;
@@ -2098,83 +2140,106 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 								this.diceArray[i].getDieState() == 5) {
 							reRolls[i] = false;
 						} else if (i == 2) {
+							//if die 2 (one with the flaming sun)
 							if (this.diceArray[i].getDieState() == 3 ||
 									this.diceArray[i].getDieState() == 1 ||
 									this.diceArray[i].getDieState() == 5) {
+								//cannot reroll flaming sun or five or ten
 								reRolls[i] = false;
 							} else {
+								//otherwise have to re roll
 								reRolls[i] = true;
 							}
 						}
+						//otherwise have to reroll
 						reRolls[i] = true;
 
 					}
 				}
 			}
-
+			//cannot re roll bolt
 			if (boltCount >= 3 || (boltCount == 2 && this.diceArray[2].getDieState() == 3)) {
 				int fourBolt = 0;
 				for (int i = 0; i < this.diceArray.length; i++) {
 					if (this.diceArray[i].getDieState() == 4) {
 						if (fourBolt == 3) {
+							//can re roll if its the fourth
 							reRolls[i] = true;
 						} else {
+							//otherwise cannot re roll
 							reRolls[i] = false;
 						}
 						boltCount++;
 					} else {
 						if (this.diceArray[i].getDieState() == 1 ||
 								this.diceArray[i].getDieState() == 5) {
+							//if its a five or ten cannot re roll
 							reRolls[i] = false;
 						} else if (i == 2) {
+							//if die two with flaming sun
 							if (this.diceArray[i].getDieState() == 3 ||
 									this.diceArray[i].getDieState() == 1 ||
 									this.diceArray[i].getDieState() == 5) {
+								//cannot re roll
 								reRolls[i] = false;
 							} else {
+								//otherwise re roll
 								reRolls[i] = true;
 							}
 						}
+						//otherwise have to re roll
 						reRolls[i] = true;
 
 					}
 				}
 			}
 
+			//cannot re re roll a star
 			if (starCount >= 3 || (starCount == 2 && this.diceArray[2].getDieState() == 3)) {
 				int fourStar = 0;
 				for (int i = 0; i < this.diceArray.length; i++) {
 					if (this.diceArray[i].getDieState() == 6) {
 						if (fourStar == 3) {
+							//unless it is the fourth star
 							reRolls[i] = true;
 						} else {
+							//otherwise cannot re roll
 							reRolls[i] = false;
 						}
 						fourStar++;
 					} else {
+						//cannot re roll if five or ten
 						if (this.diceArray[i].getDieState() == 1 ||
 								this.diceArray[i].getDieState() == 5) {
 							reRolls[i] = false;
 						} else if (i == 2) {
+							//cannot re roll if flaming sun
 							if (this.diceArray[i].getDieState() == 3 ||
 									this.diceArray[i].getDieState() == 1 ||
 									this.diceArray[i].getDieState() == 5) {
 								reRolls[i] = false;
 							} else {
+								//otherwise have to re roll
 								reRolls[i] = true;
 							}
 						}
+						//otherwise have to re roll
 						reRolls[i] = true;
 					}
 				}
 			}
 
+			//cannot re roll if its a ten
 			if (tenCount >= 3 || (tenCount == 2 && this.diceArray[2].getDieState() == 3)) {
 				for (int i = 0; i < this.diceArray.length; i++) {
 					if (i == 2) {
-						if (this.diceArray[i].getDieState() == 1) {
+						if (this.diceArray[i].getDieState() == 1 ||
+								this.diceArray[i].getDieState() == 3 ||
+								this.diceArray[i].getDieState() == 5) {
+							//cannot re roll
 							reRolls[i] = false;
 						} else {
+							//otherwise have to re roll
 							reRolls[i] = true;
 						}
 					} else if (this.diceArray[i].getDieState() != 1 &&
@@ -2186,24 +2251,31 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 				}
 			}
 
+			//cannot re roll a five
 			if (fiveCount >= 3 || (fiveCount == 2 && this.diceArray[2].getDieState() == 3)) {
 				for (int i = 0; i < this.diceArray.length; i++) {
 					if (i == 2) {
-						if (this.diceArray[i].getDieState() == 5) {
+						if (this.diceArray[i].getDieState() == 5 ||
+								this.diceArray[i].getDieState() == 1 ||
+								this.diceArray[i].getDieState() == 3 ) {
+							//cannot re roll flaming sun five or ten
 							reRolls[i] = false;
 						} else {
 							reRolls[i] = true;
 						}
 					} else if (this.diceArray[i].getDieState() != 1 &&
 							this.diceArray[i].getDieState() != 5) {
+						//if its not a five or ten can re roll
 						reRolls[i] = true;
 					} else {
+						//cannot re roll
 						reRolls[i] = false;
 					}
 				}
 			}
 
 		}
+		//array that contains which ones they have to re roll
 		return reRolls;
 	}
 
