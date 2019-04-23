@@ -288,9 +288,12 @@ public class CosmicWimpoutComputerPlayer extends GameComputerPlayer implements S
 			game.sendAction(allDiceAction);
 
 			updateDisplay();
+			//delay to make it seem like they are thinking
 			sleep(2000);
 
+			//must clear a flash
 			if(this.state.getIsFlash()){
+				//get the booleans (true if they have to re roll)
 				boolean[] reRolls = this.state.flashReRoll();
 				boolean die1 = reRolls[0];
 				boolean die2 = reRolls[1];
@@ -298,9 +301,11 @@ public class CosmicWimpoutComputerPlayer extends GameComputerPlayer implements S
 				boolean die4 = reRolls[3];
 				boolean die5 = reRolls[4];
 
+				//send the action with the must re rolls
 				CosmicWimpoutActionRollSelectedDie selectedDie =
 						new CosmicWimpoutActionRollSelectedDie(this,die1, die2,die3,die4,die5);
 				game.sendAction(selectedDie);
+				//update display
 				updateDisplay();
 
 			}
@@ -311,19 +316,23 @@ public class CosmicWimpoutComputerPlayer extends GameComputerPlayer implements S
 					randomNumber = (int)(Math.random() * 10);
 				}
 
-
+				//variables to send the action with
 				boolean one = false;
 				boolean two = false;
 				boolean three = false;
 				boolean four = false;
 				boolean five = false;
+
 				if(randomNumber < 5){
 
 					//select random die to re roll
 					int randomDice = (int)(Math.random() * 5 + 1);
 					if(randomDice == 1){
+						//that is the one they want to re roll
 						one = true;
+						//check to make sure its legal
 						if(state.check1Die(0)){
+							//send the action
 							CosmicWimpoutActionRollSelectedDie selectedAction =
 									new CosmicWimpoutActionRollSelectedDie(this, one, two,
 											three, four, five);
@@ -332,6 +341,7 @@ public class CosmicWimpoutComputerPlayer extends GameComputerPlayer implements S
 					}
 					else if(randomDice == 2){
 						two = true;
+						//check to make sure its legal
 						if(state.check1Die(1)){
 							CosmicWimpoutActionRollSelectedDie selectedAction =
 									new CosmicWimpoutActionRollSelectedDie(this, one, two,
@@ -342,6 +352,7 @@ public class CosmicWimpoutComputerPlayer extends GameComputerPlayer implements S
 					}
 					else if(randomDice == 3){
 						three = true;
+						//check to make sure its legal
 						if(state.check1Die(2)){
 							CosmicWimpoutActionRollSelectedDie selectedAction =
 									new CosmicWimpoutActionRollSelectedDie(this, one, two,
@@ -351,6 +362,7 @@ public class CosmicWimpoutComputerPlayer extends GameComputerPlayer implements S
 					}
 					else if(randomDice == 4){
 						four = true;
+						//check to make sure its legal
 						if(state.check1Die(3)){
 							CosmicWimpoutActionRollSelectedDie selectedAction =
 									new CosmicWimpoutActionRollSelectedDie(this, one, two,
@@ -360,6 +372,7 @@ public class CosmicWimpoutComputerPlayer extends GameComputerPlayer implements S
 					}
 					else if(randomDice == 5){
 						five = true;
+						//check to make sure its legal
 						if(state.check1Die(4)){
 							CosmicWimpoutActionRollSelectedDie selectedAction =
 									new CosmicWimpoutActionRollSelectedDie(this, one, two,
@@ -370,7 +383,9 @@ public class CosmicWimpoutComputerPlayer extends GameComputerPlayer implements S
 					updateDisplay();
 				}
 			}
+			//update display
 			updateDisplay();
+			//end its turn 
 			CosmicWimpoutActionEndTurn endTurnAction = new CosmicWimpoutActionEndTurn(this);
 			game.sendAction(endTurnAction);
 		}
