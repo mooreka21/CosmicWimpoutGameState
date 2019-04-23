@@ -385,7 +385,7 @@ public class CosmicWimpoutComputerPlayer extends GameComputerPlayer implements S
 			}
 			//update display
 			updateDisplay();
-			//end its turn 
+			//end its turn
 			CosmicWimpoutActionEndTurn endTurnAction = new CosmicWimpoutActionEndTurn(this);
 			game.sendAction(endTurnAction);
 		}
