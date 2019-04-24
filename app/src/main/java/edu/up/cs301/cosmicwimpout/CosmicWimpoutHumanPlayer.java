@@ -579,6 +579,7 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 						flash = 0;
 						this.state.setIsFlash(false);
 						game.sendAction(rollSelectedAct);
+						this.state.setIsFlash(false);
 					} else if (!legalMoveAllChecked5()) {
 						Toast.makeText(this.myActivity, "Cannot roll all dice",
 								Toast.LENGTH_SHORT).show();

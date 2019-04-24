@@ -304,6 +304,7 @@ public class CosmicWimpoutComputerPlayer extends GameComputerPlayer implements S
 				//send the action with the must re rolls
 				CosmicWimpoutActionRollSelectedDie selectedDie =
 						new CosmicWimpoutActionRollSelectedDie(this,die1, die2,die3,die4,die5);
+				this.state.setIsFlash(false);
 				game.sendAction(selectedDie);
 				//update display
 				updateDisplay();

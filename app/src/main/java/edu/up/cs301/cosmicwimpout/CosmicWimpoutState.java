@@ -8,6 +8,11 @@ import java.util.ArrayList;
 /**
  * This contains the game state for the Cosmic Wimpout game.
  *
+ * Bug: sometimes when there is a flash of stars, it does not
+ * allow you to re roll the dice you have to. It only occurs when
+ * it is a flash of stars and only occurs sometimes, we have debugged
+ * code looks the same as other flashes etc.
+ *
  * @author Olivia Dendinger, Sam Lemly, Kayla Moore, David Campbell
  * @version April 2019
  */
@@ -1533,7 +1538,7 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 				}
 			}
 			//if there are two 10s or two 5's, they can re roll all 5
-			if (tenCount1 == 2 || fiveCount1 == 2) {
+			if (tenCount1 >= 2 || fiveCount1 >= 2) {
 				isFlash = false;
 				return true;
 			}
