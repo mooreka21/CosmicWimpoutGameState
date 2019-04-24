@@ -35,9 +35,9 @@ public class CosmicWimpoutComputerPlayer2
         implements Serializable {
 
     private int numRollsThisTurn;
-    private int maxTurnScore = 70;
+    private int maxTurnScore = 50;
     private float odds;
-    private int intelligence = 10;
+    private int intelligence = 25;
     private int[] scoresFromCopy = new int[intelligence];
     private int fails;
     //this boolean array helps determine which die are to be kept static in the copy reroll
@@ -172,7 +172,7 @@ public class CosmicWimpoutComputerPlayer2
 			int rerollCount = scoresFromCopy.length;
 			int turnScoreBefore = this.state.getTurnScore();
 			this.odds = calcOdds(successes, rerollCount);
-
+            Log.i("***Initial odds: ", this.odds+"**********");
             while (this.odds > 0.5) {
                 sleep(750);
                 //flash handling, in case the bot has rolled a flash on the roll prior.
@@ -193,9 +193,7 @@ public class CosmicWimpoutComputerPlayer2
                     //update display
                     updateDisplay();
                 }
-//                for (int i = 0; i < this.state.getDiceArray().length; i++) {
-//                    this.needReroll[i] = this.state.getDiceArray()[i].getCanReroll();
-//                }
+
                 this.needReroll = this.state.findScoringDice();
                 //this rolls the selected dice for the bot
                 CosmicWimpoutActionRollSelectedDie botRollsSomeDice =
@@ -207,8 +205,11 @@ public class CosmicWimpoutComputerPlayer2
                                 this.needReroll[4]);
                 game.sendAction(botRollsSomeDice);
                 this.updateDisplay();
-                int newScore = state.getTurnScore();
-                this.updateDisplay();
+                this.needReroll = this.state.findScoringDice();
+                /*
+                if the bot rolled a roll that scored it more points than it
+                started that turn with, it ends its turn.
+                */
                 if (this.state.getTurnScore() >= turnScoreBefore) {
                     successes--;
                     this.odds = calcOdds(successes, rerollCount);
@@ -220,7 +221,7 @@ public class CosmicWimpoutComputerPlayer2
                     updateDisplay();
                     break;
                 }
-                this.needReroll = null;
+                //this.needReroll = null;
             }
 
 		}
@@ -232,9 +233,11 @@ public class CosmicWimpoutComputerPlayer2
         updateDisplay();
 
     }
-	/*If the bot scores at all, it'll reroll non-scoring dice only.
+	/*
+	If the bot scores at all, it'll reroll non-scoring dice only.
 	Those dice will have to remain static in the copy and not be rerolled.
-    If the bot rolls a Supernova or Instant winner, the turn score gets set to 0.*/
+    If the bot rolls a Supernova or Instant winner, the turn score gets set to 0.
+    */
     private void getScoresFromCopy(CosmicWimpoutState stateToCopy){
         /*
         this generates a number of copies equal to the bot's intelligence,
