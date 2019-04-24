@@ -2151,8 +2151,10 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 								reRolls[i] = true;
 							}
 						}
-						//otherwise have to reroll
-						reRolls[i] = true;
+						else {
+							//otherwise have to reroll
+							reRolls[i] = true;
+						}
 
 					}
 				}
@@ -2187,8 +2189,10 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 								reRolls[i] = true;
 							}
 						}
-						//otherwise have to re roll
-						reRolls[i] = true;
+						else {
+							//otherwise have to re roll
+							reRolls[i] = true;
+						}
 
 					}
 				}
@@ -2223,8 +2227,10 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 								reRolls[i] = true;
 							}
 						}
-						//otherwise have to re roll
-						reRolls[i] = true;
+						else {
+							//otherwise have to re roll
+							reRolls[i] = true;
+						}
 					}
 				}
 			}
