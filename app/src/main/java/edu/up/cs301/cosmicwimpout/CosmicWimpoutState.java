@@ -475,6 +475,10 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 			//rolls all dice giving each a value 1-6
 			for (int i = 0; i < 5; i++) {
 				this.diceArray[i].dieState = (int) (Math.random() * 6 + 1);
+				if (this.diceArray[i].dieState == 5 || this.diceArray[i].dieState == 1){
+				    this.diceArray[i].setCanReroll(false);
+				}
+				else{this.diceArray[i].setCanReroll(true);}
 			}
 			if (totalDiceScore(diceArray, playerId) != -1) {
 				//if not a wimpout, add score to current turn score
@@ -2275,6 +2279,18 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 	public void setIsFlash(boolean flash){
 		this.isFlash = flash;
 	}
+
+	public boolean[] findScoringDice(){
+	    boolean[] toReturn = new boolean[this.diceArray.length];
+	    for (int i = 0; i < this.diceArray.length; i++) {
+	        if(this.diceArray[i].getDieState() == 1
+                    || this.diceArray[i].getDieState()== 5
+                    || (this.diceArray[i].getDieState()== 3 && i == 2)){
+	            toReturn[i] = false;
+            }else toReturn[i] = true;
+	    }
+	    return toReturn;
+    }
 }
 
 

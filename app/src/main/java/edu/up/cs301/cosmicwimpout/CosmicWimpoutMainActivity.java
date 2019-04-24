@@ -26,18 +26,6 @@ public class CosmicWimpoutMainActivity extends GameMainActivity implements Seria
 	private static final int PORT_NUMBER = 2234;
 	private static final long serialVersionUID= 5006874387L;
 
-	/*@Override
-	public void onResume() {
-		super.onResume();
-
-		//Remove layout borders from tablet
-		View decorView = getWindow().getDecorView();
-		int uiOptions = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION |
-				View.SYSTEM_UI_FLAG_FULLSCREEN |
-				View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY;
-		decorView.setSystemUiVisibility(uiOptions);
-	}*/
-
 	/**
 	 * Create the default configuration for this game:
 	 * - one human player vs. one computer player
@@ -75,10 +63,10 @@ public class CosmicWimpoutMainActivity extends GameMainActivity implements Seria
 				return new CosmicWimpoutComputerPlayer2(name);
 			}});
 
-		// Create a game configuration class for Counter:
+		// Create a game configuration class for CosmicWimpout:
 		// - player types as given above
 		// - from 1 to 2 players
-		// - name of game is "Counter Game"
+		// - name of game is "CosmicWimpout Game"
 		// - port number as defined above
 		GameConfig defaultConfig = new GameConfig(playerTypes, 4, 4, "CosmicWimpout Game",
 				PORT_NUMBER);

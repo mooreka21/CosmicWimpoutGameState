@@ -325,10 +325,12 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 			this.exitButton = myActivity.findViewById(R.id.exit);
             exitButton.setOnClickListener(this);
 		}
+		//returns user back to game from rules page
 		if(button == exitButton){
 			this.myActivity.setContentView(R.layout.cosmicwimpout_human_player);
 			this.setAsGui(myActivity);
 		}
+
 		//if the button is any of the checkboxes, update variable to true
 		if(button == check1 ){
 				isCheck1 = true;
@@ -361,16 +363,20 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 		if(this.actionsPressed == 0 || this.state.getTurnScore() == 0){
 			if(button == rollDiceButton ){
 				rollDiceClicked = true;
-				sound.playFiveDice();
-				//rolling animation
-				for(int i = 0; i < redDiceFaces.length; i++) {
-					this.die1.setImageResource(redDiceFaces[i]);
-					this.die2.setImageResource(redDiceFaces[i]);
-					this.die3.setImageResource(blackDiceFaces[i]);
-					this.die4.setImageResource(redDiceFaces[i]);
-					this.die5.setImageResource(redDiceFaces[i]);
+				//making sure the player cant roll dice once the game is over
+				if(state.getPlayer1Score() < 500 && state.getPlayer2Score() < 500 &&
+					state.getPlayer3Score() < 500 && state.getPlayer4Score() < 500) {
+					sound.playFiveDice();
+					//rolling animation
+					for (int i = 0; i < redDiceFaces.length; i++) {
+						this.die1.setImageResource(redDiceFaces[i]);
+						this.die2.setImageResource(redDiceFaces[i]);
+						this.die3.setImageResource(blackDiceFaces[i]);
+						this.die4.setImageResource(redDiceFaces[i]);
+						this.die5.setImageResource(redDiceFaces[i]);
+					}
+					game.sendAction(rollAct);
 				}
-				game.sendAction(rollAct);
 				actionsPressed++;
 				flash = 0;
 
@@ -777,7 +783,6 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 
 					}
 				}
-
 				else{
 					CosmicWimpoutActionRollSelectedDie rollSelectedAct =
 							new CosmicWimpoutActionRollSelectedDie(this, isCheck1, isCheck2, isCheck3, isCheck4, isCheck5);
@@ -835,10 +840,11 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 		// Load the layout resource for our GUI
 		activity.setContentView(R.layout.cosmicwimpout_human_player);
 		/**
-		 * Citation: bamboobackground image found from:
+		 * Citation: bamboobackground image in our XML layout was found from:
 		 * https://www.freepik.com/free-photos-vectors/simple-background
 		 */
 
+		//fullscreen mode, received help from the Labyrinth team on this
 		View decorView = this.myActivity.getWindow().getDecorView();
 		int uiOptions = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION |
 				View.SYSTEM_UI_FLAG_FULLSCREEN |
