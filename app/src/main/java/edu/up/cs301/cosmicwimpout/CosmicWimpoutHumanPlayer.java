@@ -378,6 +378,9 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
             else if(button == endGameButton){
                 game.sendAction(endGameAct);
             }
+            else if(button == infoButton || button == exitButton){
+            	//ignore
+			}
 			else {
 				//illegal move
 				Toast.makeText(this.myActivity, "Illegal Move! Must" +
