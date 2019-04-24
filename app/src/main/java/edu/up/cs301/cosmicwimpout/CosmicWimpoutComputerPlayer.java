@@ -24,10 +24,6 @@ import edu.up.cs301.game.infoMsg.GameInfo;
 public class CosmicWimpoutComputerPlayer extends GameComputerPlayer implements Serializable {
 	private static final long serialVersionUID= 390598449L;
 	//instance variables
-	private int ScoresFromCopy[] = new int[10];
-	private int numRollsThisTurn;
-	private float odds;
-	private int intelligence;
 	private CosmicWimpoutState state;
 
 	private TextView player1Score;

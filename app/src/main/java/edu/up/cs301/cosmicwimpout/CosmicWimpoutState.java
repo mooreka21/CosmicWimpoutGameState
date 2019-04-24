@@ -2280,6 +2280,17 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 		this.isFlash = flash;
 	}
 
+
+    /**
+     * This boolean array method returns an array of booleans corresponding to the
+     * scoring nature of the die in the game state - if the die is a 1, 5
+     * (or is the 3rd die and has the flaming sun face on), that index in the
+     * array is marked as false.
+     * This method is primarily used for the smart AI to know which die it can
+     * reroll in the copies it makes, as well as which dice it wants to reroll
+     * that turn.
+     * @return toReturn
+     */
 	public boolean[] findScoringDice(){
 	    boolean[] toReturn = new boolean[this.diceArray.length];
 	    for (int i = 0; i < this.diceArray.length; i++) {
