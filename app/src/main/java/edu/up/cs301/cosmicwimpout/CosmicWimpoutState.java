@@ -2126,7 +2126,7 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 				}
 			}
 			//cannot re roll a triangle
-			if (triangleCount >= 3 || (triangleCount == 2 && this.diceArray[2].getDieState() == 3)) {
+			else if (triangleCount >= 3 || (triangleCount == 2 && this.diceArray[2].getDieState() == 3)) {
 				int fourTriangle = 0;
 				for (int i = 0; i < this.diceArray.length; i++) {
 					if (this.diceArray[i].getDieState() == 3) {
@@ -2162,7 +2162,7 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 				}
 			}
 			//cannot re roll bolt
-			if (boltCount >= 3 || (boltCount == 2 && this.diceArray[2].getDieState() == 3)) {
+			else if (boltCount >= 3 || (boltCount == 2 && this.diceArray[2].getDieState() == 3)) {
 				int fourBolt = 0;
 				for (int i = 0; i < this.diceArray.length; i++) {
 					if (this.diceArray[i].getDieState() == 4) {
@@ -2201,7 +2201,7 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 			}
 
 			//cannot re re roll a star
-			if (starCount >= 3 || (starCount == 2 && this.diceArray[2].getDieState() == 3)) {
+			else if (starCount >= 3 || (starCount == 2 && this.diceArray[2].getDieState() == 3)) {
 				int fourStar = 0;
 				for (int i = 0; i < this.diceArray.length; i++) {
 					if (this.diceArray[i].getDieState() == 6) {
@@ -2238,7 +2238,7 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 			}
 
 			//cannot re roll if its a ten
-			if (tenCount >= 3 || (tenCount == 2 && this.diceArray[2].getDieState() == 3)) {
+			else if (tenCount >= 3 || (tenCount == 2 && this.diceArray[2].getDieState() == 3)) {
 				for (int i = 0; i < this.diceArray.length; i++) {
 					if (i == 2) {
 						if (this.diceArray[i].getDieState() == 1 ||
@@ -2260,7 +2260,7 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 			}
 
 			//cannot re roll a five
-			if (fiveCount >= 3 || (fiveCount == 2 && this.diceArray[2].getDieState() == 3)) {
+			else if (fiveCount >= 3 || (fiveCount == 2 && this.diceArray[2].getDieState() == 3)) {
 				for (int i = 0; i < this.diceArray.length; i++) {
 					if (i == 2) {
 						if (this.diceArray[i].getDieState() == 5 ||
