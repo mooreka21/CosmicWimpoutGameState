@@ -61,10 +61,11 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 	private boolean isCheck4 = false;
 	private boolean isCheck5 = false;
 
-	//variables for thread
-	private boolean rollDiceClicked = false;
-	private boolean rollSelectedClicked = false;
-	int flash = 0;
+	//variable for thread
+	private int flash = 0;
+
+	private boolean gameOver = false;
+	private int guiPlayer;
 
 	//variable for sound effects and background music
 	private CosmicWimpoutSoundPlayer sound;
@@ -256,54 +257,68 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 		//if roll is an instant winner, play win sound
 		if(state.getIsInstantWinner()){
 			sound.playWinner();
+			gameOver = true;
 		}
 		//if roll is a supernova, play lose sound
 		if(state.getIsSuperNova()){
 			sound.playLoser();
+			gameOver = true;
 		}
 
 		//checks if current player won or lost the game and plays win/lose sound effect
 		switch(state.getWhoseTurn()){
 			case 0: //player 1's turn
 				if(this.requiresGui()){ //player 1 is the human player
+					guiPlayer = 0;
 					if(state.getPlayer1Score()< 500 && (state.getPlayer2Score() >= 500 ||
 							state.getPlayer3Score() >= 500 || state.getPlayer4Score() >= 500)){
 						sound.playLoser();
+						gameOver = true;
 					}
 					else if(state.getPlayer1Score() >= 500){
 						sound.playWinner();
+						gameOver = true;
 					}
 				}
 				break;
 			case 1: //player 2's turn
 				if(this.requiresGui()){ //player 2 is the human player
+					guiPlayer = 1;
 					if(state.getPlayer2Score()< 500 && (state.getPlayer1Score() >= 500 ||
 							state.getPlayer3Score() >= 500 || state.getPlayer4Score() >= 500)){
 						sound.playLoser();
+						gameOver = true;
 					}
 					else if(state.getPlayer2Score() >= 500){
 						sound.playWinner();
+						gameOver = true;
 					}
 				}
 				break;
 			case 2: //player 3's turn
 				if(this.requiresGui()){ //player 3 is the human player
+					guiPlayer = 2;
 					if(state.getPlayer3Score()< 500 && (state.getPlayer1Score() >= 500 ||
 							state.getPlayer2Score() >= 500 || state.getPlayer4Score() >= 500)){
 						sound.playLoser();
+						gameOver = true;
 					}
 					else if(state.getPlayer3Score() >= 500){
 						sound.playWinner();
+						gameOver = true;
 					}
 				}
 				break;
 			case 3: //player 3's turn
 				if(this.requiresGui()) { //player 4 is the human player
+					guiPlayer = 3;
 					if (state.getPlayer4Score() < 500 && (state.getPlayer1Score() >= 500 ||
 							state.getPlayer2Score() >= 500 || state.getPlayer3Score() >= 500)) {
 						sound.playLoser();
+						gameOver = true;
 					} else if (state.getPlayer4Score() >= 500) {
 						sound.playWinner();
+						gameOver = true;
 					}
 				}
 				break;
@@ -359,10 +374,17 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 		CosmicWimpoutActionEndGame endGameAct =
 				new CosmicWimpoutActionEndGame(this);
 
+		//if the game is over, user can exit the game by clicking "End Game" button
+		if(gameOver){
+			endGameButton.setOnClickListener(this);
+			if(button == endGameButton){
+				System.exit(0);
+			}
+		}
+
 		//making sure that they press the roll all dice button first
 		if(this.actionsPressed == 0 || this.state.getTurnScore() == 0){
 			if(button == rollDiceButton ){
-				rollDiceClicked = true;
 				//making sure the player cant roll dice once the game is over
 				if(state.getPlayer1Score() < 500 && state.getPlayer2Score() < 500 &&
 					state.getPlayer3Score() < 500 && state.getPlayer4Score() < 500) {
@@ -393,7 +415,6 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 						" Roll All Dice First!", Toast.LENGTH_SHORT).show();
 			}
 		}
-
 		else if (this.actionsPressed > 0){
             if(button == endGameButton){
                 game.sendAction(endGameAct);
@@ -422,7 +443,6 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 			}
 			else if(button == rollSelectedButton) {
 				int checkCount = 0;
-				rollSelectedClicked = true;
 				//checking to see which ones are true to send in the action
 				if (!(check1.isChecked())) {
 					isCheck1 = false;
