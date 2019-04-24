@@ -8,6 +8,7 @@ public class CosmicWimpoutComputerPlayerTest {
 
     @Test
     public void receiveInfo() {
-
+        CosmicWimpoutState testState = new CosmicWimpoutState();
+        assertEquals(testState.check1Die(0), testState.check1Die(0));
     }
 }
