@@ -8,5 +8,6 @@ public class CosmicWimpoutComputerPlayerTest {
 
     @Test
     public void receiveInfo() {
+
     }
 }
