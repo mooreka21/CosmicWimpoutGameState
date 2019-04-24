@@ -70,10 +70,14 @@ public class CosmicWimpoutStateTest {
 
     @Test
     public void rollSelectedDice() {
+        CosmicWimpoutState testState = new CosmicWimpoutState();
+        boolean rollSelectedDice = testState.rollSelectedDice(0,true,true,true,true,true);
+        assertTrue(rollSelectedDice);
     }
 
     @Test
     public void getDiceScore2() {
+
     }
 
     @Test
@@ -113,80 +117,126 @@ public class CosmicWimpoutStateTest {
 
     @Test
     public void getIsSuperNova() {
-
+        CosmicWimpoutState testState = new CosmicWimpoutState();
+        boolean isSupernova = testState.getIsSuperNova();
+        assertFalse("It is not a supernova", isSupernova);
     }
 
     @Test
     public void getIsInstantWinner() {
-
+        CosmicWimpoutState testState = new CosmicWimpoutState();
+        boolean isInstantWinner = testState.getIsInstantWinner();
+        assertFalse("It is not an instant winner", isInstantWinner);
     }
 
     @Test
     public void getDiceArray() {
-
+        CosmicWimpoutState testState = new CosmicWimpoutState();
+        Die[] diceArray = testState.getDiceArray();
+        assertArrayEquals("Should get the dice array",diceArray,diceArray);
     }
 
     @Test
     public void getIsFlash() {
-
+        CosmicWimpoutState testState = new CosmicWimpoutState();
+        boolean getFlash = testState.getIsFlash();
+        assertFalse("It is not a flash", getFlash);
     }
 
     @Test
     public void getIsFiveOf() {
-
+        CosmicWimpoutState testState = new CosmicWimpoutState();
+        boolean getIsFive = testState.getIsFiveOf();
+        assertFalse("It is not five of a kind", getIsFive);
     }
 
     @Test
     public void checkAllFiveReRoll() {
+        CosmicWimpoutState testState = new CosmicWimpoutState();
+        boolean check5 = testState.checkAllFiveReRoll();
+        assertTrue("It is five of a kind", check5);
     }
 
     @Test
     public void check1Die() {
+        CosmicWimpoutState testState = new CosmicWimpoutState();
+        boolean check1Die = testState.check1Die(0);
+        assertFalse(check1Die);
 
     }
 
     @Test
     public void check2Dice() {
-
+        CosmicWimpoutState testState = new CosmicWimpoutState();
+        boolean check2Die = testState.check2Dice(0,1);
+        assertFalse(check2Die);
     }
 
     @Test
     public void check3Dice() {
+        CosmicWimpoutState testState = new CosmicWimpoutState();
+        boolean check3Die = testState.check3Dice(0,1,2);
+        assertFalse(check3Die);
     }
 
     @Test
     public void check4Dice() {
+        CosmicWimpoutState testState = new CosmicWimpoutState();
+        boolean check4Die = testState.check4Dice(0,1,2,3);
+        assertFalse(check4Die);
     }
 
     @Test
     public void getIsWimpout() {
+        CosmicWimpoutState testState = new CosmicWimpoutState();
+        boolean getWimout = testState.getIsWimpout();
+        assertFalse(getWimout);
     }
 
     @Test
     public void isDie1ReRoll() {
+        CosmicWimpoutState testState = new CosmicWimpoutState();
+        boolean isDie1 = testState.isDie1ReRoll();
+        assertFalse(isDie1);
     }
 
     @Test
     public void isDie2ReRoll() {
+        CosmicWimpoutState testState = new CosmicWimpoutState();
+        boolean isDie2 = testState.isDie2ReRoll();
+        assertFalse(isDie2);
     }
 
     @Test
     public void isDie3ReRoll() {
+        CosmicWimpoutState testState = new CosmicWimpoutState();
+        boolean isDie3 = testState.isDie3ReRoll();
+        assertFalse(isDie3);
     }
 
     @Test
     public void isDie4ReRoll() {
+        CosmicWimpoutState testState = new CosmicWimpoutState();
+        boolean isDie4 = testState.isDie4ReRoll();
+        assertFalse(isDie4);
     }
 
     @Test
     public void isDie5ReRoll() {
+        CosmicWimpoutState testState = new CosmicWimpoutState();
+        boolean isDie5 = testState.isDie5ReRoll();
+        assertFalse(isDie5);
     }
 
     @Test
     public void flashReRoll() {
+        CosmicWimpoutState testState = new CosmicWimpoutState();
+        boolean[] flashReRoll = testState.flashReRoll();
+        assertArrayEquals("Flash ReRoll", flashReRoll, flashReRoll);
     }
 
     @Test
     public void setIsFlash() {
+
     }
 }
