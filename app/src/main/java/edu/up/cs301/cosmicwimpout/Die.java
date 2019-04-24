@@ -26,7 +26,7 @@ public class Die implements Serializable {
      */
     public Die(int ID){
         this.dieID = ID;
-        // dieState = 1;
+         dieState = 1;
     }
 
     /**
