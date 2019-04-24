@@ -8,9 +8,6 @@ import android.os.Handler;
 import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import org.w3c.dom.Text;
-
 import java.io.Serializable;
 
 
@@ -29,20 +26,28 @@ import java.io.Serializable;
  * formula, and if the odds of success are over 50%, it rerolls all eligible dice in the active
  * gamestate. If the bot doesn't wimpout or isntantly lose,
  * the number of successes are decremented, to symbolize a successful roll being used. The odds are
- * then recalculated - the turn ends if the odds of success are <50%
- * (Note : Our group agreed <50% odds would be unacceptable to a human if he/she knew them when
- * that person went to reroll, and based the behaviour of the smart bot on this.)
- * , if else, the process repeats until the bot scores over 70 points for its turn.
-* 
+ * then recalculated - the turn ends if the odds of success are <50%(see beloow) , if else,
+ * the process repeats until the bot scores over 70 points for its turn.
+*
+ * Note: The 50% odds mark was selected, as all of us agreed none of us would choose to reroll
+ * if we knew we had >50% odds of wimpout or loss of the game.
+ *
+ * KNOWN ISSUES: Currently, the bot does not respond well to flashes rolled after its initial roll.
+ * This is an issue with the state and retrieval of information from the state. With more time, we
+ * would implement a series of methods to force an update of the master state after an action takes
+ * place in-game during the smart bot's turn.
+ *
+ *
 * @author Sam Lemly, Olivia Dendinger, David Campbell, Kayla Moore
 *  @version April 2019
 */
+
+
 public class CosmicWimpoutComputerPlayer2
         extends CosmicWimpoutComputerPlayer
         implements Serializable {
 
-    private int numRollsThisTurn;
-    private int maxTurnScore = 50;
+    private int maxTurnScore = 30;
     private float odds;
     private int intelligence = 10;
     private int[] scoresFromCopy = new int[intelligence];
@@ -115,6 +120,7 @@ public class CosmicWimpoutComputerPlayer2
             if(this.state.getWhoseTurn() == playerNum) {
                 this.updateDisplay();
                 runSmartAi(info);
+                sleep(1000);
             }
         }
     }
@@ -265,7 +271,7 @@ public class CosmicWimpoutComputerPlayer2
                                     player2Score.setBackgroundColor(0xFFB7B1A3);
                                     player3Score.setBackgroundColor(0xFFB7B1A3);
                                 }
-                                //cosmicWimpoutValueTextView.setText("" + currentGameState.getCounter());
+
                             }
 
 						}
@@ -337,14 +343,15 @@ public class CosmicWimpoutComputerPlayer2
         int rerollCount = scoresFromCopy.length;
         int turnScoreBefore = this.state.getTurnScore();
         this.odds = calcOdds(successes, rerollCount);
-        Log.i("***Initial odds: ", this.odds+"**********");
+
 
         while (this.odds > 0.5) {
-            //this.state = (CosmicWimpoutState)info;
-            sleep(1000);
-            //flash handling, in case the bot has rolled a flash on the roll prior.
+            sleep(1250);
+
+            //flash handling, in case the bot has rolled a flash on the first roll of the turn.
             //This includes the initial roll of the turn.
             if(this.state.getIsFlash()){
+
                 //get the booleans (true if they have to re roll)
                 boolean[] reRolls = this.state.flashReRoll();
                 boolean die1 = reRolls[0];
@@ -373,58 +380,59 @@ public class CosmicWimpoutComputerPlayer2
             game.sendAction(botRollsSomeDice);
             this.updateDisplay();
             this.needReroll = this.state.findScoringDice();
-            Log.i("Score this turn : ", ""+this.state.getTurnScore());
+
             /*
             if the bot rolled a roll that scored it more points than it
-            started that turn with, it ends its turn.
+            started that turn with, it continues, as it is experiencing success.
             */
             int newScore = this.state.getTurnScore();
             if (newScore >= turnScoreBefore) {
                 successes--;
-                Log.i(" Success = ",  successes+"" );
+
                 this.odds = calcOdds(successes, rerollCount);
-                Log.i("New Odds: ", ""+ this.odds);
+
             } else if (state.getTurnScore() == 0) {
                 break;
             }
             if (this.state.getTurnScore() >= maxTurnScore) {
-                if(this.state.getIsFlash()){
-                    //get the booleans (true if they have to re roll)
-                    boolean[] reRolls = this.state.flashReRoll();
-                    boolean die1 = reRolls[0];
-                    boolean die2 = reRolls[1];
-                    boolean die3 = reRolls[2];
-                    boolean die4 = reRolls[3];
-                    boolean die5 = reRolls[4];
-
-                    //send the action with the must re rolls
-                    CosmicWimpoutActionRollSelectedDie selectedDie =
-                            new CosmicWimpoutActionRollSelectedDie(this,die1, die2,die3,die4,die5);
-                    game.sendAction(selectedDie);
-                    //update display
-                    updateDisplay();
-                }
                 updateDisplay();
                 break;
             }
-            //this.needReroll = null;
         }
+        //flash handling before the bot decides to end its turn,
+        //as it has now passed the score threshold.
+        if(this.state.getIsFlash()){
+            //get the booleans (true if they have to re roll)
+            boolean[] reRolls = this.state.flashReRoll();
+            boolean die1 = reRolls[0];
+            boolean die2 = reRolls[1];
+            boolean die3 = reRolls[2];
+            boolean die4 = reRolls[3];
+            boolean die5 = reRolls[4];
+
+            //send the action with the must re rolls
+            CosmicWimpoutActionRollSelectedDie selectedDie =
+                    new CosmicWimpoutActionRollSelectedDie(this,die1, die2,die3,die4,die5);
+            this.state.setIsFlash(false);
+            game.sendAction(selectedDie);
+
+        }
+        sleep(1500);
         CosmicWimpoutActionEndTurn endTurn = new CosmicWimpoutActionEndTurn(this);
         game.sendAction(endTurn);
         updateDisplay();
     }
-	/*
-	If the bot scores at all, it'll reroll non-scoring dice only.
-	Those dice will have to remain static in the copy and not be rerolled.
-    If the bot rolls a Supernova or Instant winner, the turn score gets set to 0.
-    */
+
+    /**
+     * This void method takes the current game state, makes copies of it, and rolls eligible die.
+     * All scores are then index in the getTurnScore array in this class.
+     * If the bot scores at all in its turn, it'll reroll non-scoring dice only.
+     * Those dice will remain static in the copies and not be rerolled.
+     * If the created copy rolls a Supernova, wimpout, or Instant winner,
+     * the turn score gets set to 0.
+     * @param stateToCopy
+     */
     private void getScoresFromCopy(CosmicWimpoutState stateToCopy){
-        /*
-        this generates a number of copies equal to the bot's intelligence,
-        and then puts those scores into the bot's scoresFromCopy array.
-        This method needs to be reworked for instances in which the bot doesn't have to
-        reroll all its dice - this means only a few die will be copied and have to be rerolled.
-        */
         for (int i = 0; i < intelligence; i++) {
             CosmicWimpoutState newCopy = new CosmicWimpoutState(stateToCopy);
             newCopy.rollSelectedDice(this.playerNum,
@@ -444,20 +452,6 @@ public class CosmicWimpoutComputerPlayer2
 
 	}
 
-	/**
-	 * Calculates the number of failed rolls from a sample collection of scores
-	 * @param scores
-	 * @return numfailed
-	 */
-	private int getFailed(int[] scores){
-		int numFailed = 0;
-		for(int i =0; i<scores.length;i++){
-			if(scores[i] == 0){
-				numFailed++;
-			}
-		}
-		return numFailed;
-	}
 	/**
 	 * Calculates the number of non-zero/nonwimpoutrolls from a sample collection of scores
 	 * @param scores
@@ -484,13 +478,6 @@ public class CosmicWimpoutComputerPlayer2
 	    float newOdds = ((float)successes /(float) total);
 	    Log.i("calculated odds", newOdds+"");
 	    return newOdds;
-    }
-
-    private void findRerolls(){
-	    Die[] ourDice = this.state.getDiceArray();
-	    for(int i = 0 ;i < ourDice.length; i++){
-	        //if
-        }
     }
 
 }
