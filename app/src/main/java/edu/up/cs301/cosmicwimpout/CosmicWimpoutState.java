@@ -1541,17 +1541,12 @@ public class CosmicWimpoutState extends GameState implements Serializable {
             isFlash = false;
 			return true;
 		}
-		if(tenCount == 4 && fiveCount == 1){
+		if(tenCount == 1 && fiveCount == 4){
             isFlash = false;
 			return true;
 		}
-
-		//if there was a five of a kind, they can re roll all 5
-		else if (isFiveOf) {
-			return true;
-		}
 		//check for flash and a mix of fives and tens
-		else if (isFlash) {
+		if (isFlash) {
 			int tenCount1 = 0;
 			int fiveCount1 = 0;
 			//count the fives and tens, if any
@@ -1574,6 +1569,11 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 				return true;
 			}
 		}
+		//if there was a five of a kind, they can re roll all 5
+		else if (isFiveOf) {
+			return true;
+		}
+
 		else {
 			//again checking for the mixture of all fives and tens
 			int tenCount2 = 0;
@@ -1595,8 +1595,10 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 				return false;
 			}
 		}
-		//player is unable to re roll all 5 dice
-		return false;
+
+			//player is unable to re roll all 5 dice
+			return false;
+
 	}
 
 	/**
