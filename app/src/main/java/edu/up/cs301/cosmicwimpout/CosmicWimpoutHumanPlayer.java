@@ -553,6 +553,7 @@ public class CosmicWimpoutHumanPlayer extends GameHumanPlayer implements OnClick
 										isCheck2, isCheck3, isCheck4, isCheck5);
 						this.state.setIsFlash(false);
 						game.sendAction(rollSelectedAct);
+						this.state.setIsFlash((false));
 						flash = 0;
 					}
 					else{

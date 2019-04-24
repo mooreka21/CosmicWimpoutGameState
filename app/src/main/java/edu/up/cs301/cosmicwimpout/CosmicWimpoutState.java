@@ -1243,7 +1243,7 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 		//Flash Cases
 		if (ourDice[one - 1].dieState == 1 && ourDice[two - 1].dieState == 1 &&
 				ourDice[three - 1].dieState == 1) {
-			//isFlash = true;
+			isFlash = true;
 			score = 100;
 			notWimp = true;
 		}
@@ -1267,7 +1267,7 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 		}
 		else if (ourDice[one - 1].dieState == 5 && ourDice[two - 1].dieState == 5 &&
 				ourDice[three - 1].dieState == 5) {
-			//isFlash = true;
+			isFlash = true;
 			score = 50;
 			notWimp = true;
 		}
@@ -1519,38 +1519,8 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 	 * @return boolean value
 	 */
 	public boolean checkAllFiveReRoll() {
-		int tenCount = 0;
-		int fiveCount = 0;
-		//check for a mix of fives and tens
-		for (int i = 0; i < this.diceArray.length; i++) {
-			if (this.diceArray[i].getDieState() == 1) {
-				tenCount++;
-			} else if (this.diceArray[i].getDieState() == 5) {
-				fiveCount++;
-			}
-		}
-		if (tenCount == 5 || fiveCount == 5) {
-		    isFlash = false;
-			return true;
-		}
-		if(tenCount == 4 && fiveCount == 1){
-		    isFlash = false;
-			return true;
-		}
-		if(tenCount == 3 && fiveCount == 2) {
-            isFlash = false;
-			return true;
-		}
-		if(tenCount == 2 && fiveCount == 3){
-            isFlash = false;
-			return true;
-		}
-		if(tenCount == 1 && fiveCount == 4){
-            isFlash = false;
-			return true;
-		}
 		//check for flash and a mix of fives and tens
-		if (isFlash) {
+		if (this.isFlash) {
 			int tenCount1 = 0;
 			int fiveCount1 = 0;
 			//count the fives and tens, if any
@@ -1579,24 +1549,35 @@ public class CosmicWimpoutState extends GameState implements Serializable {
 		}
 
 		else {
-			//again checking for the mixture of all fives and tens
-			int tenCount2 = 0;
-			int fiveCount2 = 0;
+			int tenCount = 0;
+			int fiveCount = 0;
+			//check for a mix of fives and tens
 			for (int i = 0; i < this.diceArray.length; i++) {
 				if (this.diceArray[i].getDieState() == 1) {
-					tenCount2++;
-				}
-				else if (this.diceArray[i].getDieState() == 5) {
-					fiveCount2++;
+					tenCount++;
+				} else if (this.diceArray[i].getDieState() == 5) {
+					fiveCount++;
 				}
 			}
-			if (tenCount == 5 || fiveCount == 5 || (tenCount == 4 && fiveCount == 1)
-					|| (tenCount == 3 && fiveCount == 2) || (tenCount == 2 && fiveCount == 3)
-					|| ((tenCount == 4 && fiveCount == 1))) {
+			if (tenCount == 5 || fiveCount == 5) {
+				isFlash = false;
 				return true;
 			}
-			else {
-				return false;
+			if(tenCount == 4 && fiveCount == 1){
+				isFlash = false;
+				return true;
+			}
+			if(tenCount == 3 && fiveCount == 2) {
+				isFlash = false;
+				return true;
+			}
+			if(tenCount == 2 && fiveCount == 3){
+				isFlash = false;
+				return true;
+			}
+			if(tenCount == 1 && fiveCount == 4){
+				isFlash = false;
+				return true;
 			}
 		}
 
